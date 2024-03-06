@@ -1,5 +1,5 @@
 import Header from "./components/Header";
-// import "./css/globals.css";
+import "./globals.css";
 import Layout from "./components/Layout";
 // import "slick-carousel/slick/slick.css";
 // import Footer from "@/components/Footer";
