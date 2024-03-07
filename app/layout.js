@@ -17,9 +17,11 @@ export default function RootLayout({ children }) {
       <body className="font-bodyFont w-full bg-main-bg text-darkText">
         <Layout>
           <Header />
-          <div >
-          {children}
+          <div style={{minHeight: '536px'}}>
+            {children}
           </div>
+          
+         
        
           <Footer/>
         </Layout>
