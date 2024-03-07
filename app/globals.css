@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+main {
+  padding-bottom: 72px; /* Adjust the value based on the height of your footer */
+}
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

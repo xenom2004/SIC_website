@@ -6,8 +6,8 @@ import Layout from "./components/Layout";
 import Footer from "./components/Footer";
 export const metadata = {
   title: {
-    template: "shopping_mart",
-    default: "Shopping Mart - A place for all!",
+    template: "SIC",
+    default: "SIC-website",
   },
 };
 
@@ -17,7 +17,10 @@ export default function RootLayout({ children }) {
       <body className="font-bodyFont w-full bg-main-bg text-darkText">
         <Layout>
           <Header />
+          <div >
           {children}
+          </div>
+       
           <Footer/>
         </Layout>
       </body>
