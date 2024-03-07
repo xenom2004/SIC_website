@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import Container from "./Container";
 import { useSession, signIn, signOut } from "next-auth/react";
@@ -12,21 +13,21 @@ const Header = () => {
 
   return (
     <div className="bg-bodyColor h-20 top-0 sticky z-50">
-      <Container className="h-full flex items-center md:gap-x-5 justify-between md:justify-start">
-      
+      <Container className="h-full flex items-center justify-between md:justify-end">
         {/* Login/Register */}
         {!session && (
           <div onClick={() => signIn()} className="headerDiv cursor-pointer">
-            <p className="text-sm font-semibold">Login/Register</p>
+            <button className="text-sm font-semibold px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105">
+              Login/Register
+            </button>
           </div>
         )}
         {/* Logout button */}
         {session && (
-          <div
-            onClick={() => signOut()}
-            className="headerDiv px-2 gap-x-1 cursor-pointer"
-          >
-            <p className="text-sm font-semibold">Logout</p>
+          <div onClick={() => signOut()} className="headerDiv cursor-pointer">
+            <button className="text-sm font-semibold px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition duration-300 ease-in-out transform hover:scale-105">
+              Logout
+            </button>
           </div>
         )}
       </Container>

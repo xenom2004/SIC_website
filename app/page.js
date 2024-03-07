@@ -1,4 +1,5 @@
-import Logit from "./components/loginbutton"
+import Header from "./components/Header";
+
 export default function Home(){
   return (
     <main>
@@ -6,7 +7,7 @@ export default function Home(){
       <div className="ml-24 pl-24">
       <Logit/></div>
       
-      
+
     </main>
   )
 }
