@@ -8,6 +8,7 @@ import Link from "next/link";
 
 const Header = () => {
   const { data: session } = useSession();
+  {console.log(session,"thi sis my session")};
 
   return (
     <div className="bg-bodyColor h-20 top-0 sticky z-50">
