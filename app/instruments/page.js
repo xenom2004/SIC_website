@@ -1,19 +1,25 @@
 "use client"
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 
 const InstrumentCard = ({ instrument }) => {
   return (
     <div className="border rounded-md p-4 shadow-md mb-4">
-      <h2 className="text-lg font-semibold mb-2">{instrument.name}</h2>
-      <p className="text-gray-600 mb-2">ID: {instrument.id}</p>
-      <p className={`text-sm ${getStatusColor(instrument.status)} mb-2`}>
-        Status: {instrument.status}
-      </p>
-      <p className="text-gray-700">{instrument.info}</p>
+      <Link href={`/instruments/${instrument.id}`}>
+       
+          <h2 className="text-lg font-semibold mb-2">{instrument.name}</h2>
+          <p className="text-gray-600 mb-2">ID: {instrument.id}</p>
+          <p className={`text-sm ${getStatusColor(instrument.status)} mb-2`}>
+            Status: {instrument.status}
+          </p>
+          <p className="text-gray-700">{instrument.info}</p>
+        
+      </Link>
     </div>
   );
 };
+
 
 const getStatusColor = (status) => {
   switch (status) {
