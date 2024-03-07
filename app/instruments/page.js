@@ -1,6 +1,36 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 
+
+const InstrumentCard = ({ instrument }) => {
+  return (
+    <div className="border rounded-md p-4 shadow-md mb-4">
+      <h2 className="text-lg font-semibold mb-2">{instrument.name}</h2>
+      <p className="text-gray-600 mb-2">ID: {instrument.id}</p>
+      <p className={`text-sm ${getStatusColor(instrument.status)} mb-2`}>
+        Status: {instrument.status}
+      </p>
+      <p className="text-gray-700">{instrument.info}</p>
+    </div>
+  );
+};
+
+const getStatusColor = (status) => {
+  switch (status) {
+    case 'working':
+      return 'text-green-500';
+    case 'calibrating':
+      return 'text-yellow-500';
+    case 'maintenance':
+      return 'text-red-500';
+    case 'offline':
+      return 'text-gray-500';
+    default:
+      return 'text-gray-500';
+  }
+};
+
+
 const InstrumentList = () => {
   const [instruments, setInstruments] = useState([]);
 
@@ -23,15 +53,13 @@ const InstrumentList = () => {
 
   return (
     <div>
-      <h1>Instruments</h1>
+      <h1 className="text-2xl font-bold mb-4">Instruments</h1>
       {instruments.length > 0 ? (
-        <ul>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {instruments.map((instrument) => (
-            <li key={instrument.id}>
-              ID: {instrument.id} - Name: {instrument.name} - Status: {instrument.status}
-            </li>
+            <InstrumentCard key={instrument.id} instrument={instrument} />
           ))}
-        </ul>
+        </div>
       ) : (
         <p>Loading instruments...</p>
       )}
