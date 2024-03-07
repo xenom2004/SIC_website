@@ -28,12 +28,27 @@ const Header = () => {
           />
         </a>
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-          <a className="mr-5 hover:text-blue-900 cursor-pointer">Home</a>
-          <a className="mr-5 hover:text-blue-900 cursor-pointer">Instruments</a>
-          <a className="mr-5 hover:text-blue-900 cursor-pointer">AboutSIC</a>
-          <a className="mr-5 hover:text-blue-900 cursor-pointer">
+          <Link href="/" className="mr-5 hover:text-blue-900 cursor-pointer">
+            Home
+          </Link>
+          <Link
+            href="/instruments"
+            className="mr-5 hover:text-blue-900 cursor-pointer"
+          >
+            Instruments
+          </Link>
+          <Link
+            href="/about"
+            className="mr-5 hover:text-blue-900 cursor-pointer"
+          >
+            AboutSIC
+          </Link>
+          <Link
+            href="/usageCharges"
+            className="mr-5 hover:text-blue-900 cursor-pointer"
+          >
             Usage Charges
-          </a>
+          </Link>
         </nav>
         <Container className="h-full flex items-center justify-between md:justify-end">
           {/* Login/Register */}
