@@ -44,24 +44,26 @@ const Header = () => {
             Usage Charges
           </Link>
         </nav>
-        <Container>
+        <div className="flex items-center">
           {/* Login/Register */}
           {!session && (
-            <div onClick={handleSignIn} className="headerDiv cursor-pointer">
-              <button className="text-sm font-semibold px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105">
-                Login/Register
-              </button>
-            </div>
+            <button
+              onClick={handleSignIn}
+              className="text-sm font-semibold px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 mr-4"
+            >
+              Login/Register
+            </button>
           )}
           {/* Logout button */}
           {session && (
-            <div onClick={handleSignOut} className="headerDiv cursor-pointer">
-              <button className="text-sm font-semibold px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition duration-300 ease-in-out transform hover:scale-105">
-                Logout
-              </button>
-            </div>
+            <button
+              onClick={handleSignOut}
+              className="text-sm font-semibold px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition duration-300 ease-in-out transform hover:scale-105"
+            >
+              Logout
+            </button>
           )}
-        </Container>
+        </div>
       </div>
     </header>
   );
