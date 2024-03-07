@@ -3,7 +3,7 @@ import "./globals.css";
 import Layout from "./components/Layout";
 // import "slick-carousel/slick/slick.css";
 // import Footer from "@/components/Footer";
-
+import Footer from "./components/Footer";
 export const metadata = {
   title: {
     template: "shopping_mart",
@@ -18,6 +18,7 @@ export default function RootLayout({ children }) {
         <Layout>
           <Header />
           {children}
+          <Footer/>
         </Layout>
       </body>
     </html>
