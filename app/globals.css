@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+main {
+  padding-bottom: 72px; /* Adjust the value based on the height of your footer */
+}
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
