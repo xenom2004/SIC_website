@@ -4,7 +4,7 @@ const instruments = [
     id: 1,
     name: 'X-Ray',
     image:'https://sic.iiti.ac.in/wp-content/uploads/2022/09/IMG20220720123624__1_-removebg-preview.png',
-    info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod tempus posuere.',
+    info: 'State the art dual core Agilent Technologies (Oxford Diffraction) Super Nova CCD System Access to micro-focus Cu and Mo sources which allows even small-size crystals data collection Oxford Cryosystems which enable temperature range from 90 to 400K High-definition microscopes for the separation and mounting of crystals',
     status: 'working',
     
   },
