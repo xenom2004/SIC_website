@@ -6,27 +6,30 @@ import Link from 'next/link';
 
 const InstrumentCard = ({ instrument }) => {
   return (
-    <div className="border rounded-md p-4 shadow-md mb-4">
+    <div className="border rounded-md p-8 shadow-md mb-6 flex flex-col">
       <Link href={`/instruments/${instrument.id}`}>
-        
-          <div className="mb-4">
-            <img
-              src={instrument.image}
-              alt={instrument.name}
-              className="w-full h-32 object-cover rounded-md"
-            />
-          </div>
-          <h2 className="text-lg font-semibold mb-2">{instrument.name}</h2>
+        <div className="mb-6 flex justify-center">
+          <img
+            src={instrument.image}
+            alt={instrument.name}
+            className="w-full h-100 object-cover rounded-md"
+          />
+        </div>
+        <div>
+          <h2 className="text-xl font-semibold mb-2">{instrument.name}</h2>
           <p className="text-gray-600 mb-2">ID: {instrument.id}</p>
           <p className={`text-sm ${getStatusColor(instrument.status)} mb-2`}>
             Status: {instrument.status}
           </p>
           <p className="text-gray-700">{instrument.info}</p>
-        
+        </div>
       </Link>
     </div>
   );
 };
+
+
+
 
 const getStatusColor = (status) => {
   switch (status) {

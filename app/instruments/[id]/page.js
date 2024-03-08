@@ -60,13 +60,15 @@ export default function Instrument({ params }) {
           Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic turmeric truffaut hexagon try-hard chambray.
         </p>
       </div>
-      <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+      <div className="border rounded-md p-8 shadow-md mb-6 flex flex-col">
         <img
-          className="object-cover object-center rounded-lg shadow-md"
+          className="w-full h-100 object-cover rounded-md"
           alt="instrument"
-          src="https://sic.iiti.ac.in/wp-content/uploads/2022/09/XANES.jpg"
+          src={instrument.image}
+          style={{ maxWidth: '100%', maxHeight: '100%' }}
         />
       </div>
+
     </div>
   </section>
 );
