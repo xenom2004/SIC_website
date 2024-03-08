@@ -5,6 +5,12 @@ import Link from 'next/link';
 
 
 const InstrumentCard = ({ instrument }) => {
+  // Function to slice the info into 10 words
+  const sliceInfo = (info) => {
+    const words = info.split(' ');
+    return words.slice(0, 10).join(' ') + '...';
+  };
+
   return (
     <div className="border rounded-md p-8 shadow-md mb-6 flex flex-col">
       <Link href={`/instruments/${instrument.id}`}>
@@ -21,7 +27,7 @@ const InstrumentCard = ({ instrument }) => {
           <p className={`text-sm ${getStatusColor(instrument.status)} mb-2`}>
             Status: {instrument.status}
           </p>
-          <p className="text-gray-700">{instrument.info}</p>
+          <p className="text-gray-700">{sliceInfo(instrument.info)}</p> {/* Use the sliceInfo function */}
         </div>
       </Link>
     </div>

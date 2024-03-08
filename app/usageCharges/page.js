@@ -1,15 +1,26 @@
 "use client"
-import React, { useState } from 'react';
-
-const instrumentsData = [
-  { id: 1, name: 'Instrument 1', charge: 10 },
-  { id: 2, name: 'Instrument 2', charge: 15 },
-  { id: 3, name: 'Instrument 3', charge: 20 },
-  // Add more instruments as needed
-];
+import React, { useState, useEffect } from 'react';
 
 const ChargeCalculator = () => {
+  const [instruments, setInstruments] = useState([]);
   const [selectedInstruments, setSelectedInstruments] = useState([]);
+
+  useEffect(() => {
+    const fetchInstruments = async () => {
+      try {
+        const response = await fetch('/api/instruments'); // Replace '/api/instruments' with your actual API endpoint
+        if (!response.ok) {
+          throw new Error(`Failed to fetch instruments: ${response.status}`);
+        }
+        const data = await response.json();
+        setInstruments(data);
+      } catch (error) {
+        console.error('Error fetching instruments:', error);
+      }
+    };
+
+    fetchInstruments();
+  }, []);
 
   const handleInstrumentChange = (instrument) => {
     const index = selectedInstruments.findIndex((item) => item.id === instrument.id);
@@ -34,11 +45,11 @@ const ChargeCalculator = () => {
           <tr>
             <th className="px-4 py-2">#</th>
             <th className="px-4 py-2">Instrument Name</th>
-            <th className="px-4 py-2">Charge ($)</th>
+            <th className="px-4 py-2">Charge (₹)</th>
           </tr>
         </thead>
         <tbody>
-          {instrumentsData.map((instrument) => (
+          {instruments.map((instrument) => (
             <tr key={instrument.id}>
               <td className="border px-4 py-2">{instrument.id}</td>
               <td className="border px-4 py-2">{instrument.name}</td>
@@ -56,7 +67,7 @@ const ChargeCalculator = () => {
       </table>
       <div className="mt-8">
         <h2 className="text-3xl font-bold mb-4">Total Charges:</h2>
-        <p className="text-xl font-semibold">${calculateTotalCharge()}</p>
+        <p className="text-xl font-semibold">₹{calculateTotalCharge()}</p>
       </div>
     </div>
   );
