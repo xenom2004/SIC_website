@@ -6,6 +6,7 @@ const instruments = [
     image:'https://sic.iiti.ac.in/wp-content/uploads/2022/09/IMG20220720123624__1_-removebg-preview.png',
     info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod tempus posuere.',
     status: 'working',
+    
   },
   {
     id: 2,

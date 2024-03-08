@@ -8,6 +8,7 @@ import Link from "next/link";
 
 const Header = () => {
   const { data: session } = useSession();
+  {console.log(session,"thi sis my session")};
 
   const handleSignIn = () => {
     signIn();
