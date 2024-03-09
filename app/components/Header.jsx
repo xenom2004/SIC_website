@@ -7,10 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Header = () => {
-  const { data: session } = useSession();
-  {
-    console.log(session, "thi sis my session");
-  }
+  const { data: session, status } = useSession();
 
   const handleSignIn = () => {
     signIn();
@@ -19,6 +16,20 @@ const Header = () => {
   const handleSignOut = () => {
     signOut();
   };
+
+  // Render loading spinner while session is being fetched
+  if (status === "loading") {
+    return (
+      <header className="text-gray-100 bg-gradient-to-r from-blue-700 to-indigo-800 body-font shadow-md">
+        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-between">
+          <div className="flex items-center text-white">
+            <div className="h-16 px-10 bg-white rounded-full animate-pulse"></div>
+            <span className="text-xl font-bold ml-2 bg-white rounded-full animate-pulse w-40 h-6"></span>
+          </div>
+        </div>
+      </header>
+    );
+  }
 
   return (
     <header className="text-gray-100 bg-gradient-to-r from-blue-700 to-indigo-800 body-font shadow-md">
@@ -48,14 +59,12 @@ const Header = () => {
           </Link>
         </nav>
         <div className="flex items-center">
-          {/* Login/Register */}
-          {!session && (
-            <button
-              onClick={handleSignIn}
-              className="text-sm font-semibold px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 mr-4"
-            >
-              Login/Register
-            </button>
+          {session && (
+            <Link href="/profile">
+              <button className="text-sm font-semibold px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 mr-4">
+                Profile
+              </button>
+            </Link>
           )}
           {/* Logout button */}
           {session && (
@@ -64,6 +73,15 @@ const Header = () => {
               className="text-sm font-semibold px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition duration-300 ease-in-out transform hover:scale-105"
             >
               Logout
+            </button>
+          )}
+          {/* Login/Register */}
+          {!session && (
+            <button
+              onClick={handleSignIn}
+              className="text-sm font-semibold px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 mr-4"
+            >
+              Login/Register
             </button>
           )}
         </div>
