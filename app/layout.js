@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
       <body className="font-bodyFont w-full bg-main-bg text-darkText">
         <Layout>
           <Header />
-          <div style={{minHeight: '1000px'}}>
+          <div className=" mt-48 md:mt-24" style={{minHeight: '1000px'}}>
             {children}
           </div>
           <Footer/>
