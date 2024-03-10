@@ -6,6 +6,8 @@ const instruments = [
     info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod tempus posuere.',
     status: 'working',
     
+
+    
   },
   {
     id: 2,
