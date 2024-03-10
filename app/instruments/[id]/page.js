@@ -46,8 +46,8 @@ export default function Instrument({ params }) {
           {instrument.name}
         </h1>
         <p className="mb-8 leading-relaxed">
-          EXAFS provides precise local structural information like bond distances, coordination number, and type of neighboring atoms, and disorder in crystalline or non-crystalline systems. XANES provides the oxidation state of the absorbing ion, thus providing information related to charging transfer, orbital occupancy, and symmetry around the absorbing ion.
-        </p>
+          {instrument.info}
+          </p>
         <div className="flex justify-center mb-8">
           <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded-full text-lg mr-4">
             Form Submission
@@ -56,17 +56,16 @@ export default function Instrument({ params }) {
             Cost Calculator
           </button>
         </div>
-        <p className="mb-8 leading-relaxed">
-          Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic turmeric truffaut hexagon try-hard chambray.
-        </p>
       </div>
-      <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+      <div className="border rounded-md p-8 shadow-md mb-6 flex flex-col">
         <img
-          className="object-cover object-center rounded-lg shadow-md"
+          className="w-full h-100 object-cover rounded-md"
           alt="instrument"
-          src="https://sic.iiti.ac.in/wp-content/uploads/2022/09/XANES.jpg"
+          src={instrument.image}
+          style={{ maxWidth: '100%', maxHeight: '100%' }}
         />
       </div>
+
     </div>
   </section>
 );

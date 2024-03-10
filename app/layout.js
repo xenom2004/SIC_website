@@ -21,16 +21,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
      
-      <head><script src="https://kit.fontawesome.com/4abac0a3cd.js" crossorigin="anonymous"></script></head>
+      <head><script src="https://kit.fontawesome.com/4abac0a3cd.js" crossOrigin="anonymous"></script></head>
       <body className="font-bodyFont w-full bg-main-bg text-darkText">
         <Layout>
           <Header />
           <div style={{minHeight: '1000px'}}>
             {children}
           </div>
-          
-         
-       
           <Footer/>
         </Layout>
       </body>
