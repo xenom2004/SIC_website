@@ -4,7 +4,7 @@ const AboutUs = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">About Us</h1>
-      <div className="flex flex-col md:flex-row">
+      <div className="flex flex-col md:flex-row"> 
         <div className="md:w-1/2 md:pr-8 mb-8">
           <img
             src="https://cdn.pixabay.com/photo/2017/02/16/10/20/target-2070972_640.png" // Replace with your actual image source
