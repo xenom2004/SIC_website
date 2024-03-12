@@ -3,6 +3,14 @@ import { useSession } from "next-auth/react";
 
 export default function HomePage() {
     const session = useSession();
+    if(session?.status === "unauthenticated"){
+        return (
+            <div className="flex flex-col items-center justify-center h-screen">
+                <h1 className="text-3xl font-bold mb-4">Please Login</h1>
+                {/* Additional content can be added here */}
+            </div>
+        );
+    }
 
     return (
         <div className="flex flex-col items-center justify-center h-screen">
