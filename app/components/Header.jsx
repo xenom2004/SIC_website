@@ -8,22 +8,6 @@ import Link from "next/link";
 
 const Header = () => {
   const { data: session, status } = useSession();
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 50;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [scrolled]);
 
   const handleSignIn = () => {
     signIn();
@@ -36,11 +20,8 @@ const Header = () => {
   // Render loading spinner while session is being fetched
   if (status === "loading") {
     return (
-      <header
-        className={`text-gray-100 bg-gradient-to-r from-blue-700 to-indigo-800 body-font shadow-md fixed w-full z-50 top-0 transition-all duration-300 ${
-          scrolled ? "h-24" : "h-22"
-        }`}
-      >
+      <header className="text-gray-100 bg-gradient-to-r from-blue-700 to-indigo-800 body-font shadow-md fixed w-full z-50 top-0">
+        {" "}
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-between">
           <div className="flex items-center text-white">
             <div className="h-16 px-10 bg-white rounded-full animate-pulse"></div>
@@ -52,11 +33,8 @@ const Header = () => {
   }
 
   return (
-    <header
-      className={`text-gray-100 bg-gradient-to-r from-blue-700 to-indigo-800 body-font shadow-md fixed w-full z-50 top-0 transition-all duration-300 ${
-        scrolled ? "h-24" : "h-22"
-      }`}
-    >
+    <header className="text-gray-100 bg-gradient-to-r from-blue-700 to-indigo-800 body-font shadow-md fixed w-full z-50 top-0">
+      {" "}
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-between">
         <Link href="/" className="flex items-center text-white mb-4 md:mb-0">
           <img
@@ -113,5 +91,4 @@ const Header = () => {
     </header>
   );
 };
-
 export default Header;
