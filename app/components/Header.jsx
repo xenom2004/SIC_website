@@ -59,6 +59,11 @@ const Header = () => {
           <Link href="/usageCharges" className="mr-5 hover:text-white">
             Usage Charges
           </Link>
+          {session && (
+            <Link href="/user" className="mr-5 hover:text-white">
+              Orders
+            </Link>
+          )}
         </nav>
         <div className="flex items-center">
           {session && (
