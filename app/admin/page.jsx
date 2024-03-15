@@ -184,7 +184,7 @@ const admin = () => {
               <i
                 className="fa-brands fa-hive fa-3xl "
                 style={{ color: "black" }}
-              ></i>{" "}
+              ></i>
               <p className="ml-4 justify-center">DashBoard</p>
             </h1>
             <h1
