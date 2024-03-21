@@ -6,6 +6,8 @@ const SingleCrystalXRayForm = () => {
   const [color, setColor] = useState("");
   const [temperature, setTemperature] = useState("");
   const [stability, setStability] = useState([]);
+  const [otherTechniques, setOtherTechniques] = useState([]);
+  const [structureMaterial, setstructureMaterial] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,6 +17,7 @@ const SingleCrystalXRayForm = () => {
       color,
       temperature,
       stability,
+      otherTechniques,
     });
   };
 
@@ -26,9 +29,19 @@ const SingleCrystalXRayForm = () => {
     }
   };
 
+  const handleTechniquesChange = (selectedTechnique) => {
+    if (otherTechniques.includes(selectedTechnique)) {
+      setOtherTechniques(
+        otherTechniques.filter((item) => item !== selectedTechnique)
+      );
+    } else {
+      setOtherTechniques([...otherTechniques, selectedTechnique]);
+    }
+  };
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold mb-4">
+    <div className="container mx-auto px-4 py-8 ">
+      <h2 className="text-3xl font-bold mb-4  max-w-md mx-auto">
         Single Crystal X-ray Diffraction Facility Form
       </h2>
       <form onSubmit={handleSubmit} className="max-w-md mx-auto">
@@ -117,6 +130,58 @@ const SingleCrystalXRayForm = () => {
             />
             <span className="ml-2">Moisture-Sensitive</span>
           </label>
+        </div>
+        <div className="mb-4">
+          <p className="block text-gray-700 text-sm font-bold mb-2">
+            Other Techniques Used for Characterization
+          </p>
+          <label className="inline-flex items-center">
+            <input
+              type="checkbox"
+              value="IR"
+              checked={otherTechniques.includes("IR")}
+              onChange={() => handleTechniquesChange("IR")}
+              className="form-checkbox h-5 w-5 text-gray-600"
+            />
+            <span className="ml-2">IR</span>
+          </label>
+          <label className="inline-flex items-center ml-6">
+            <input
+              type="checkbox"
+              value="NMR"
+              checked={otherTechniques.includes("NMR")}
+              onChange={() => handleTechniquesChange("NMR")}
+              className="form-checkbox h-5 w-5 text-gray-600"
+            />
+            <span className="ml-2">NMR</span>
+          </label>
+          <label className="inline-flex items-center ml-6">
+            <input
+              type="checkbox"
+              value="Mass Spectrum"
+              checked={otherTechniques.includes("Mass Spectrum")}
+              onChange={() => handleTechniquesChange("Mass Spectrum")}
+              className="form-checkbox h-5 w-5 text-gray-600"
+            />
+            <span className="ml-2">Mass Spectrum</span>
+          </label>
+          <div className="mb-4 mt-4">
+            <label
+              htmlFor="crystalInfo"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Starting Materials and Solvent Information
+            </label>
+            <input
+              type="text"
+              id="crystalInfo"
+              value={structureMaterial}
+              onChange={(e) => setstructureMaterial(e.target.value)}
+              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              placeholder="Enter starting material and solvent Information"
+              required
+            />
+          </div>
         </div>
         <div className="flex items-center justify-center mt-6">
           <button
