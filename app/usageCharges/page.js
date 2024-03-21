@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
@@ -6,6 +6,7 @@ import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 const ChargeCalculator = () => {
   const [instruments, setInstruments] = useState([]);
   const [selectedInstruments, setSelectedInstruments] = useState([]);
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     const fetchInstruments = async () => {
@@ -47,6 +48,14 @@ const ChargeCalculator = () => {
 
   const calculateTotalCharge = () => {
     return selectedInstruments.reduce((total, instrument) => total + (instrument.charge * instrument.quantity), 0);
+  };
+
+  const handlePayNowClick = () => {
+    if (selectedInstruments.length === 0) {
+      alert('Please select at least one instrument.');
+    } else {
+      setShowForm(true);
+    }
   };
 
   return (
@@ -100,8 +109,28 @@ const ChargeCalculator = () => {
         <h2 className="text-3xl font-bold mb-4">Total Charges:</h2>
         <p className="text-xl font-semibold">₹{calculateTotalCharge()}</p>
       </div>
+      <button 
+        className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        onClick={handlePayNowClick}
+      >
+        Pay Now
+      </button>
+      {showForm && (
+        <div className="mt-8">
+          <h2 className="text-3xl font-bold mb-4">Selected Instruments:</h2>
+          <ul>
+            {selectedInstruments.map((instrument) => (
+              <li key={instrument.id}>
+                {instrument.name} - {instrument.quantity}
+              </li>
+            ))}
+          </ul>
+          {/* Render your form components here based on selectedInstruments */}
+        </div>
+      )}
     </div>
   );
 };
 
 export default ChargeCalculator;
+
