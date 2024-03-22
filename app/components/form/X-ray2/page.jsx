@@ -32,7 +32,36 @@ const XAFSForm = () => {
           <p className="block text-gray-700 text-sm font-bold mb-2">
             Measurement Type
           </p>
-          {/* Measurement Type Radio Buttons */}
+          <label className="inline-flex items-center">
+            <input
+              type="radio"
+              value="XANES"
+              checked={measurementType === "XANES"}
+              onChange={() => setMeasurementType("XANES")}
+              className="form-radio h-5 w-5 text-gray-600"
+            />
+            <span className="ml-2">XANES</span>
+          </label>
+          <label className="inline-flex items-center ml-6">
+            <input
+              type="radio"
+              value="EXAFS"
+              checked={measurementType === "EXAFS"}
+              onChange={() => setMeasurementType("EXAFS")}
+              className="form-radio h-5 w-5 text-gray-600"
+            />
+            <span className="ml-2">EXAFS</span>
+          </label>
+          <label className="inline-flex items-center ml-6">
+            <input
+              type="radio"
+              value="Both"
+              checked={measurementType === "Both"}
+              onChange={() => setMeasurementType("Both")}
+              className="form-radio h-5 w-5 text-gray-600"
+            />
+            <span className="ml-2">Both</span>
+          </label>
         </div>
         <div className="mb-4">
           <label

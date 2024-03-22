@@ -129,7 +129,7 @@ const ChargeCalculator = () => {
   };
 
   return (
-    <div className=" flex flex-col items-center justify-center px-4 py-8">
+    <div className=" flex flex-col items-center justify-center px-4 py-8  ">
       <table className="w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
                             <thead className="bg-gray-100 dark:bg-gray-700">
                                 
@@ -232,8 +232,8 @@ const ChargeCalculator = () => {
             <th className={`hidden   md:table-cell text-center px-4 py-2`}>academic Charge (₹)</th>
             <th className={`hidden md:table-cell text-center px-4 py-2`}>commercial/industrial Charge (₹)</th>
             <th className={`hidden   md:table-cell text-center px-4 py-2`}>Charge (₹)</th>
-            <th className=" text-center px-4 py-2">Quantity</th>
-            <th className=" text-center px-4 py-2">select</th>
+            <th className="text-center px-4 py-2">Quantity</th>
+            <th className="text-center px-4 py-2">select</th>
           </tr>
         </thead>
         <tbody>
