@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 // import React from "react";
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
-
+import { useRouter } from 'next/navigation'
 
 
 const Row=({instrument,selectedInstruments,setSelectedInstruments,handleQuantityChange,handleInstrumentChange,current_charge})=>{
@@ -51,6 +51,7 @@ const Row=({instrument,selectedInstruments,setSelectedInstruments,handleQuantity
 
 }
 const ChargeCalculator = () => {
+  const router = useRouter()
   const [instruments, setInstruments] = useState([]);
   const [selectedInstruments, setSelectedInstruments] = useState([]);
   const [showForm, setShowForm] = useState(false);
@@ -124,7 +125,10 @@ const ChargeCalculator = () => {
     if (selectedInstruments.length === 0) {
       alert('Please select at least one instrument.');
     } else {
-      setShowForm(true);
+      // Serialize selected instruments data before storing
+      const serializedData = JSON.stringify(selectedInstruments);
+      localStorage.setItem('selectedInstruments', serializedData);
+      router.push('/form');
     }
   };
 
