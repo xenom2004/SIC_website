@@ -129,14 +129,13 @@ const ChargeCalculator = () => {
     if (selectedInstruments.length === 0) {
       alert('Please select at least one instrument.');
     } else {
-      // Serialize selected instruments data before storing
-      const serializedData = JSON.stringify(selectedInstruments);
-      localStorage.setItem('selectedInstruments', serializedData);
-      router.push('/form');
       if(status=="unauthenticated"){
         alert("Please login to continue");}
         else{
           setShowForm(true);
+          const serializedData = JSON.stringify(selectedInstruments);
+          localStorage.setItem('selectedInstruments', serializedData);
+          router.push('/form');
         }
       
     }
