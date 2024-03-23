@@ -47,9 +47,9 @@ const Header = () => {
           </span>
         </Link>
         <nav className="md:ml-auto flex flex-wrap items-center text-base">
-          <div className="mr-5 hover:text-white">
-            <Home />
-          </div>
+          <Link href="/" className="mr-5 hover:text-white">
+            Home
+          </Link>
           <div className="mr-5 hover:text-white">
             <Instruments />
           </div>
