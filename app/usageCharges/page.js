@@ -129,73 +129,73 @@ const ChargeCalculator = () => {
   };
 
   return (
-    <div className=" flex flex-col items-center justify-center px-4 py-8">
-      <table class="w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
-                            <thead class="bg-gray-100 dark:bg-gray-700">
+    <div className=" flex flex-col items-center justify-center px-4 py-8  ">
+      <table className="w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
+                            <thead className="bg-gray-100 dark:bg-gray-700">
                                 
                                 <tr>
-                                    <th scope="colgroup" class="py-3 px-6 text-xs font-medium tracking-wider text-center text-gray-700 uppercase dark:text-gray-400">
+                                    <th scope="colgroup" className="py-3 px-6 text-xs font-medium tracking-wider text-center text-gray-700 uppercase dark:text-gray-400">
                                         Category of User:
                                     </th>
-                                    <th scope="col" class={`${current_charge==="charge"?"table-cell":"hidden"} md:table-cell py-3 px-6 text-xs font-medium tracking-wider text-center text-gray-700 uppercase dark:text-gray-400`}>
+                                    <th scope="col" className={`${current_charge==="charge"?"table-cell":"hidden"} md:table-cell py-3 px-6 text-xs font-medium tracking-wider text-center text-gray-700 uppercase dark:text-gray-400`}>
                                         IITI Community
                                     </th>
-                                    <th scope="col" class={`${current_charge==="academic"?"table-cell":"hidden"} md:table-cell py-3 px-6 text-xs font-medium tracking-wider text-center text-gray-700 uppercase dark:text-gray-400`}>
+                                    <th scope="col" className={`${current_charge==="academic"?"table-cell":"hidden"} md:table-cell py-3 px-6 text-xs font-medium tracking-wider text-center text-gray-700 uppercase dark:text-gray-400`}>
                                         Academic Institutions
                                     </th>
-                                    <th scope="col" class={`${current_charge==="commercial"?"table-cell":"hidden"} md:table-cell py-3 px-6 text-xs font-medium tracking-wider text-center text-gray-700 uppercase dark:text-gray-400`}>
+                                    <th scope="col" className={`${current_charge==="commercial"?"table-cell":"hidden"} md:table-cell py-3 px-6 text-xs font-medium tracking-wider text-center text-gray-700 uppercase dark:text-gray-400`}>
                                         Commercial/ Industry
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-                                <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
-                                    <th scope="row" class="py-4 px-6 text-sm font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
-                                        <div class="flex items-center justify-center">
+                            <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                                <tr className="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <th scope="row" className="py-4 px-6 text-sm font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div className="flex items-center justify-center">
                                             Instrument Charges (In Rs.):
                                         </div>
                                     </th>
-                                    <td class={`${current_charge==="charge"?"table-cell":"hidden"}  md:table-cell py-4 px-6 text-sm font-medium text-center text-gray-900 whitespace-nowrap dark:text-white`}>
-                                        <div  class=" h-full p-2 border rounded-md">{totalcharge}</div>
+                                    <td className={`${current_charge==="charge"?"table-cell":"hidden"}  md:table-cell py-4 px-6 text-sm font-medium text-center text-gray-900 whitespace-nowrap dark:text-white`}>
+                                        <div  className=" h-full p-2 border rounded-md">{totalcharge}</div>
                                     </td>
-                                    <td class={`${current_charge==="academic"?"table-cell":"hidden"} md:table-cell  py-4 px-6 text-sm font-medium text-center text-gray-500 whitespace-nowrap dark:text-white`}>
-                                    <div  class=" h-full p-2 border rounded-md">{totalAcademiccharge}</div>
+                                    <td className={`${current_charge==="academic"?"table-cell":"hidden"} md:table-cell  py-4 px-6 text-sm font-medium text-center text-gray-500 whitespace-nowrap dark:text-white`}>
+                                    <div  className=" h-full p-2 border rounded-md">{totalAcademiccharge}</div>
                                         
                                     </td>
-                                    <td class={`${current_charge==="commercial"?"table-cell":"hidden"} md:table-cell py-4 px-6 text-sm font-medium text-center text-gray-900 whitespace-nowrap dark:text-white`}>
-                                    <div  class=" h-full p-2 border rounded-md">{totalCommercialcharge}</div>
+                                    <td className={`${current_charge==="commercial"?"table-cell":"hidden"} md:table-cell py-4 px-6 text-sm font-medium text-center text-gray-900 whitespace-nowrap dark:text-white`}>
+                                    <div  className=" h-full p-2 border rounded-md">{totalCommercialcharge}</div>
                                  
                                     </td>
                                 </tr>
-                                <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
-                                    <th scope="row" class="py-4 px-6 text-sm font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
-                                        <div class="flex items-center justify-center">
+                                <tr className="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <th scope="row" className="py-4 px-6 text-sm font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div className="flex items-center justify-center">
                                             GST (In Rs.):
                                         </div>
                                     </th>
-                                    <td class={`${current_charge==="charge"?"table-cell":"hidden"} md:table-cell py-4 px-6 text-sm font-medium text-center text-gray-900 whitespace-nowrap dark:text-white`}>
-                                    <div  class=" h-full p-2 border rounded-md">{gst(totalcharge,gst_value)}</div>
+                                    <td className={`${current_charge==="charge"?"table-cell":"hidden"} md:table-cell py-4 px-6 text-sm font-medium text-center text-gray-900 whitespace-nowrap dark:text-white`}>
+                                    <div  className=" h-full p-2 border rounded-md">{gst(totalcharge,gst_value)}</div>
                                     </td>
-                                    <td class={`${current_charge==="academic"?"table-cell":"hidden"} md:table-cell py-4 px-6 text-sm font-medium text-center text-gray-500 whitespace-nowrap dark:text-white`}>
-                                    <div  class=" h-full p-2 border rounded-md">{gst(totalAcademiccharge,gst_value)}</div>
+                                    <td className={`${current_charge==="academic"?"table-cell":"hidden"} md:table-cell py-4 px-6 text-sm font-medium text-center text-gray-500 whitespace-nowrap dark:text-white`}>
+                                    <div  className=" h-full p-2 border rounded-md">{gst(totalAcademiccharge,gst_value)}</div>
                                     </td>
-                                    <td class={`${current_charge==="commercial"?"table-cell":"hidden"} md:table-cell py-4 px-6 text-sm font-medium text-center text-gray-900 whitespace-nowrap dark:text-white`}>
-                                    <div  class=" h-full p-2 border rounded-md">{gst(totalCommercialcharge,gst_value)}</div>
+                                    <td className={`${current_charge==="commercial"?"table-cell":"hidden"} md:table-cell py-4 px-6 text-sm font-medium text-center text-gray-900 whitespace-nowrap dark:text-white`}>
+                                    <div  className=" h-full p-2 border rounded-md">{gst(totalCommercialcharge,gst_value)}</div>
                                     </td>
                                 </tr>
-                                <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
-                                    <th scope="row" class="py-4 px-6 text-sm font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
-                                        <div class="flex items-center justify-center">
+                                <tr className="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <th scope="row" className="py-4 px-6 text-sm font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
+                                        <div className="flex items-center justify-center">
                                             Total Charges (In Rs.):
                                         </div>
                                     </th>
-                                    <td class={`${current_charge==="charge"?"table-cell":"hidden"} md:table-cell py-4 px-6 text-sm font-medium text-center text-gray-900 whitespace-nowrap dark:text-white`}>
-                                    <div  class=" h-full p-2 border rounded-md">{gst_total(totalcharge,gst_value)}</div>
+                                    <td className={`${current_charge==="charge"?"table-cell":"hidden"} md:table-cell py-4 px-6 text-sm font-medium text-center text-gray-900 whitespace-nowrap dark:text-white`}>
+                                    <div  className=" h-full p-2 border rounded-md">{gst_total(totalcharge,gst_value)}</div>
                                     </td>
-                                    <td class={`${current_charge==="academic"?"table-cell":"hidden"} md:table-cell py-4 px-6 text-sm font-medium text-center text-gray-500 whitespace-nowrap dark:text-white`}>
-                                    <div  class=" h-full p-2 border rounded-md">{gst_total(totalAcademiccharge,gst_value)}</div>                                    </td>
-                                    <td class={`${current_charge==="commercial"?"table-cell":"hidden"} md:table-cell py-4 px-6 text-sm font-medium text-center text-gray-900 whitespace-nowrap dark:text-white`}>
-                                    <div  class=" h-full p-2 border rounded-md">{gst_total(totalCommercialcharge,gst_value)}</div>
+                                    <td className={`${current_charge==="academic"?"table-cell":"hidden"} md:table-cell py-4 px-6 text-sm font-medium text-center text-gray-500 whitespace-nowrap dark:text-white`}>
+                                    <div  className=" h-full p-2 border rounded-md">{gst_total(totalAcademiccharge,gst_value)}</div>                                    </td>
+                                    <td className={`${current_charge==="commercial"?"table-cell":"hidden"} md:table-cell py-4 px-6 text-sm font-medium text-center text-gray-900 whitespace-nowrap dark:text-white`}>
+                                    <div  className=" h-full p-2 border rounded-md">{gst_total(totalCommercialcharge,gst_value)}</div>
                                     </td>
                                 </tr>
                                 
@@ -215,7 +215,7 @@ const ChargeCalculator = () => {
               <Button 
                 variant="bordered" 
               >
-                {current_charge}
+                {current_charge}⌄
               </Button>
             </DropdownTrigger>
             <DropdownMenu 
@@ -232,8 +232,8 @@ const ChargeCalculator = () => {
             <th className={`hidden   md:table-cell text-center px-4 py-2`}>academic Charge (₹)</th>
             <th className={`hidden md:table-cell text-center px-4 py-2`}>commercial/industrial Charge (₹)</th>
             <th className={`hidden   md:table-cell text-center px-4 py-2`}>Charge (₹)</th>
-            <th className=" text-center px-4 py-2">Quantity</th>
-            <th className=" text-center px-4 py-2">select</th>
+            <th className="text-center px-4 py-2">Quantity</th>
+            <th className="text-center px-4 py-2">select</th>
           </tr>
         </thead>
         <tbody>

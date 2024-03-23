@@ -24,11 +24,13 @@ export default function RootLayout({ children }) {
       <head><script src="https://kit.fontawesome.com/4abac0a3cd.js" crossOrigin="anonymous"></script></head>
       <body className="font-bodyFont w-full bg-main-bg text-darkText">
         <Layout>
+          <div className="flex flex-col gap-y-4">
           <Header />
           <div className=" mt-48 md:mt-24" style={{minHeight: '1000px'}}>
             {children}
           </div>
           <Footer/>
+          </div>
         </Layout>
       </body>
       

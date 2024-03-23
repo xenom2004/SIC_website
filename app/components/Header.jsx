@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Container from "./Container";
 import { useSession, signIn, signOut } from "next-auth/react";
-import Image from "next/image";
 import Link from "next/link";
+import Home from "./buttons/Home/Home";
+import Instruments from "./buttons/Instruments/Instruments";
 
 const Header = () => {
   const { data: session, status } = useSession();
@@ -50,9 +50,9 @@ const Header = () => {
           <Link href="/" className="mr-5 hover:text-white">
             Home
           </Link>
-          <Link href="/instruments" className="mr-5 hover:text-white">
-            Instruments
-          </Link>
+          <div className="mr-5 hover:text-white">
+            <Instruments />
+          </div>
           <Link href="/about" className="mr-5 hover:text-white">
             About SIC
           </Link>
