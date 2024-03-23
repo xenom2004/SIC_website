@@ -2,10 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import { useSession } from 'next-auth/react';
 // import React from "react";
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
 
-
+import { Elemental_analyser} from "../components/form/elemental_analysis/page"
 
 const Row=({instrument,selectedInstruments,setSelectedInstruments,handleQuantityChange,handleInstrumentChange,current_charge})=>{
   
@@ -51,6 +52,7 @@ const Row=({instrument,selectedInstruments,setSelectedInstruments,handleQuantity
 
 }
 const ChargeCalculator = () => {
+  const { data: session, status } = useSession();
   const [instruments, setInstruments] = useState([]);
   const [selectedInstruments, setSelectedInstruments] = useState([]);
   const [showForm, setShowForm] = useState(false);
@@ -124,7 +126,12 @@ const ChargeCalculator = () => {
     if (selectedInstruments.length === 0) {
       alert('Please select at least one instrument.');
     } else {
-      setShowForm(true);
+      if(status=="unauthenticated"){
+        alert("Please login to continue");}
+        else{
+          setShowForm(true);
+        }
+      
     }
   };
 

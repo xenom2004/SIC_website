@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-const XAFSForm = () => {
+const BET = () => {
 
   const [sampleNature, setSampleNature] = useState("");
   const [sampleType,setsampleType]=useState("");
@@ -166,4 +166,4 @@ const XAFSForm = () => {
   );
 };
 
-export default XAFSForm;
+export default BET;

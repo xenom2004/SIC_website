@@ -103,6 +103,16 @@ const instruments = [
     commertial_charge:50,
     academic_charge:50
   },
+  {
+    id: 11,
+    name: 'Elemental analyser',
+    image:"https://sic.iiti.ac.in/wp-content/uploads/2022/12/IMG_0065-removebg-preview.png",
+    info: 'Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.',
+    status: 'working',
+    charge:1050,
+    commertial_charge:50,
+    academic_charge:50
+  },
 ];
 
 
