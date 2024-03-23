@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
         <Layout>
           <div className="flex flex-col gap-y-4">
           <Header />
-          <div className=" mt-48 md:mt-24" style={{minHeight: '1000px'}}>
+          <div className=" mt-48 md:mt-24 mx" style={{minHeight: '1000px'}}>
             {children}
           </div>
           <Footer/>
