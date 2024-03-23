@@ -14,27 +14,37 @@ const FormComponent = () => {
   const [totalcharge,settotalcharge]=useState(0);
   const [totalCommercialcharge,settotalCommercialcharge]=useState(0);
   const [totalAcademiccharge,settotalAcademiccharge]=useState(0);
+  const calculateTotalCharge = () => {
+    // console.log("ll",selectedInstruments)
+    settotalcharge(selectedInstruments.reduce((total, instrument) => total + (instrument.charge * instrument.quantity), 0));
+    settotalAcademiccharge(selectedInstruments.reduce((total, instrument) => total + (instrument.academic_charge * instrument.quantity), 0));
+    settotalCommercialcharge(selectedInstruments.reduce((total, instrument) => total + (instrument.commertial_charge * instrument.quantity), 0));
 
-  useEffect(() => {
+   
+    
+  };
+  useEffect( () => {
     // Retrieve data from local storage
     const storedData = localStorage.getItem('selectedInstruments');
     if (storedData) {
       // Parse the stored data
-      const instruments = JSON.parse(storedData);
+      const instruments =  JSON.parse(storedData);
+      
       setSelectedInstruments(instruments);
+      
     }
     calculateTotalCharge();
 
   }, []);
 
-  const calculateTotalCharge = () => {
-    console.log("ll")
-    settotalcharge(selectedInstruments.reduce((total, instrument) => total + (instrument.charge * instrument.quantity), 0));
-    settotalAcademiccharge(selectedInstruments.reduce((total, instrument) => total + (instrument.academic_charge * instrument.quantity), 0));
-    settotalCommercialcharge(selectedInstruments.reduce((total, instrument) => total + (instrument.commertial_charge * instrument.quantity), 0));
-   
+
+  useEffect( () => {
+    // Retrieve data from local storage
     
-  };
+    calculateTotalCharge();
+
+  }, [selectedInstruments]);
+
   const gst=(val,percent)=>{
     return ((((1/100)*percent*val)*1000) | 0)/1000;
 
@@ -54,9 +64,10 @@ const FormComponent = () => {
         return (forms_instrument[instrument.id]);
    
 })}
+{console.log(selectedInstruments,"ftftf" )}
 
       </div>
-      <div>
+      <div className='text-center text-4xl font-bold '>
         Total charge: {totalcharge}
       </div>
     </div>
