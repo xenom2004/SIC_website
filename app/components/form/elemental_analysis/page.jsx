@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-const SingleCrystalXRayForm = () => {
+const Elemental_analyser = () => {
   const [crystalInfo, setCrystalInfo] = useState("");
   const [stability, setStability] = useState([]);
   const [BP,setBP]=useState("");
@@ -186,4 +186,4 @@ const SingleCrystalXRayForm = () => {
   );
 };
 
-export default SingleCrystalXRayForm;
+export default Elemental_analyser;
