@@ -64,7 +64,7 @@ const FormComponent = () => {
         return (forms_instrument[instrument.id]);
    
 })}
-{console.log(selectedInstruments,"ftftf" )}
+{/* {console.log(selectedInstruments,"ftftf" )} */}
 
       </div>
       <div className='text-center text-4xl font-bold '>
