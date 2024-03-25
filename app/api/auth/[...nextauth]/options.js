@@ -1,15 +1,10 @@
 import { NextAuthOptions } from "next-auth";
-import GitHubProvider from 'next-auth/providers/github';
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 
 export const options={
     providers: [
-        GitHubProvider({
-            clientId:process.env.GITHUB_ID,
-            clientSecret:process.env.GITHUB_SECRET
-        }),
         GoogleProvider({
             clientId:process.env.GOOGLE_ID,
             clientSecret:process.env.GOOGLE_SECRET,
@@ -50,7 +45,7 @@ export const options={
     callbacks:{
         session: async ({session, token, user}) => {
             if(session?.user){
-                session.user.id = token.uid;
+                session.user.loginType = token.sub?.includes('google.com')? 'google' :'credentials';
             }
             return session
         },
