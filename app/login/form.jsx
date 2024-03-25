@@ -97,14 +97,12 @@ export const LoginForm = () => {
         onClick={() => signIn("google", { callbackUrl })}
         role="button"
       >
-        <img
-          className="pr-2"
-          src="/images/google.svg"
-          alt=""
-          style={{ height: "2rem" }}
-        />
+        
         Continue with Google
       </a>
+      <div className="flex flex-row justify-center ">
+       Don't have an account? <span className="text-blue-500 pl-2" ><Link href="/register">Sign Up</Link ></span>
+      </div>
     </form>
   );
 };

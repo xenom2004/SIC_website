@@ -2,9 +2,11 @@ const mongoose = require('mongoose');
 
 // Define product schema
 const productSchema = new mongoose.Schema({
+    profileName: String,
     name: String,
     password: String,
     email:String,
+    loginType:String,
     order: [{}]
 });
 

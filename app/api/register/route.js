@@ -14,6 +14,7 @@ export async function POST(req, res) {
 
     try {
         // Check if user with the given username already exists
+        await mongoose.connect(connection.connection);
         const existingUser = await User.findOne({ "name": data.username });
         if (existingUser) {
             return NextResponse.json({ "status": "error", "message": "Username is already taken" });
@@ -23,7 +24,7 @@ export async function POST(req, res) {
         const hashedPassword = await bcrypt.hash(data.password, 10);
 
         // Create a new user with the hashed password
-        const newUser = await User.create({ "name": data.username, "password": hashedPassword, "order": data.order });
+        const newUser = await User.create({"profileName": data.username,  "name": data.username, "password": hashedPassword, "order": data.order, "loginType": "cred" });
 
         console.log(newUser, "created user", data);
 

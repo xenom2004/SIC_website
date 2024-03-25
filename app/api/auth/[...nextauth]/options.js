@@ -1,4 +1,5 @@
 import { NextAuthOptions } from "next-auth";
+import GitHubProvider from 'next-auth/providers/github';
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import mongoose from "mongoose";
@@ -8,10 +9,7 @@ import bcrypt from "bcrypt"; // Import bcrypt for password hashing
 
 export const options = {
     providers: [
-        GitHubProvider({
-            clientId: process.env.GITHUB_ID,
-            clientSecret: process.env.GITHUB_SECRET
-        }),
+     
         GoogleProvider({
             clientId: process.env.GOOGLE_ID,
             clientSecret: process.env.GOOGLE_SECRET,
@@ -31,7 +29,6 @@ export const options = {
                 }
             },
             async authorize(credentials) {
-                // console.log("called")
                 const connect = await mongoose.connect(connection.connection);
 
                 try {
@@ -66,7 +63,26 @@ export const options = {
     callbacks: {
         session: async ({ session, token, user }) => {
             // console.log(session,"session","user");
-            
+            const connect = await mongoose.connect(connection.connection);
+
+            try {
+                // Find user by username
+                const user = await User.findOne({ email: session.user.email });
+
+                if (!user) {
+                    const r=await User.create({name:session.user.name,email:session.user.email,loginType:"google_auth"});
+                    console.log(r,"Add")
+                }
+                // If credentials are valid, return user
+              
+            } catch (error) {
+                throw error;
+            } finally {
+                // Close the database connection
+                await mongoose.connection.close();
+            }
+
+
             if (session?.user) {
                 session.user.googleId = token.uid;
             }
@@ -80,8 +96,7 @@ export const options = {
         }
     },
     session: {
-        strategy: 'jwt',
-        
+        strategy: 'jwt'
     },
     secret: process.env.NEXTAUTH_SECRET,
 };
