@@ -43,6 +43,7 @@ import { getSession } from 'next-auth/react';
 
 export default function Page() {
   const { data: session, status } = useSession();
+  {console.log(session)}
   const router = useRouter();
 
   if (status === "loading") {

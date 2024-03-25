@@ -10,6 +10,8 @@ export const LoginForm = () => {
   const [formValues, setFormValues] = useState({
     username: "",
     password: "",
+    order:[{"ins":"aa","iui":"i"},{"ins":"aa","iui":"i"}],
+    
   });
   const [error, setError] = useState("");
 
@@ -20,26 +22,30 @@ export const LoginForm = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      setFormValues({ username: "", password: "" });
+      console.log("form values",formValues);
+      const data = await fetch('api/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formValues)
+    })
+      const res=await data.json();
 
-      const res = await signIn("credentials", {
-        redirect: false,
-        username: formValues.username,
-        password: formValues.password,
-        callbackUrl,
-      });
 
+      // setFormValues({ username: "", password: "" });
       setLoading(false);
 
       console.log(res);
-      if (!res?.error) {
-        router.push(callbackUrl);
+      if (res.status=="error") {
+       alert("Username already taken")
+        
       } else {
-        setError("invalid email or password");
+        alert("Successfully registered")
       }
     } catch (error) {
       setLoading(false);
-      setError(error);
+      setError(error.message);
     }
   };
 
@@ -120,7 +126,7 @@ export const LoginForm = () => {
         Continue with GitHub
       </a>
       <div>
-        Don't have an account <span ><Link href="/register">Sign Up</Link ></span>
+        Have an account <span ><Link href="/login">Sign In</Link ></span>
       </div>
     </form>
   );

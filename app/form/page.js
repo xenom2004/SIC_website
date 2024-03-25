@@ -4,10 +4,13 @@ import { Button } from '@nextui-org/react';
 import  Elemental_analyser from "../components/form/elemental_analysis/page"
 import BET from "../components/form/BET_surfaceAnalyser/page"
 import FTIRForm from "../components/form/spectroscopy/ftir/page"
+import HPLCForm from "../components/form/chromatography/hplc/page"
+
 const forms_instrument={
   25:(<BET/>),
   12:(<Elemental_analyser/>),
-  13:( <FTIRForm/>)
+  13:( <FTIRForm/>),
+  20:(<HPLCForm/>),
 }
 const FormComponent = () => {
   const [selectedInstruments, setSelectedInstruments] = useState([]);
@@ -46,6 +49,39 @@ const FormComponent = () => {
 
   }, [selectedInstruments]);
 
+
+  const send= async (e) => {
+    e.preventDefault();
+
+    // Extract form data
+    const formData = localStorage.getItem('form_details');
+    console.log(formData,"lop")
+    try {
+      // Send POST request to server
+      const response = await fetch("/api/User", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      // Check if request was successful
+      if (response.ok) {
+        console.log("Form submitted successfully");
+        // You can handle success actions here, e.g., redirect user to another page
+      } else {
+        // Handle server errors or other issues
+        console.error("Failed to submit form:", response.statusText);
+        // You can display an error message to the user
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error.message);
+      // Handle network errors or other exceptions
+      // You can display an error message to the user
+    }
+  };
+
   const gst=(val,percent)=>{
     return ((((1/100)*percent*val)*1000) | 0)/1000;
 
@@ -72,7 +108,7 @@ const FormComponent = () => {
         Total charge: {totalcharge}
       </div>
       <div className='flex justify-center mt-4'>
-      <Button className='text-center px-auto text-2xl hover:bg-green-500 justify-center flex  '>Send for verification</Button></div>
+      <Button onClick={send} className='text-center px-auto text-2xl hover:bg-green-500 justify-center flex  '>Send for verification</Button></div>
       
     </div>
   );
