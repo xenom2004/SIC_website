@@ -148,8 +148,7 @@ const ChargeCalculator = () => {
 
 
   const handlePayNowClick = () => {
-    console.log(selectedInstruments); // Log for debugging purposes
-  
+    localStorage.removeItem('selectedInstruments');
     if (selectedInstruments.length === 0) {
       alert('Please select at least one instrument.');
     } else {
@@ -157,7 +156,7 @@ const ChargeCalculator = () => {
         alert("Please login to continue");
       } else {
         // Clear old data from localStorage
-        localStorage.removeItem('selectedInstruments');
+  
         
         // Serialize and store new data
         const serializedData = JSON.stringify(selectedInstruments);
