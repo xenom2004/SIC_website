@@ -1,10 +1,11 @@
 "use client"
 import React, { useState, useEffect } from 'react';
+import { Button } from '@nextui-org/react';
 import  Elemental_analyser from "../components/form/elemental_analysis/page"
 import BET from "../components/form/BET_surfaceAnalyser/page"
 import FTIRForm from "../components/form/spectroscopy/ftir/page"
 const forms_instrument={
-  11:(<BET/>),
+  25:(<BET/>),
   12:(<Elemental_analyser/>),
   13:( <FTIRForm/>)
 }
@@ -64,12 +65,15 @@ const FormComponent = () => {
         return (forms_instrument[instrument.id]);
    
 })}
-{/* {console.log(selectedInstruments,"ftftf" )} */}
+
 
       </div>
       <div className='text-center text-4xl font-bold '>
         Total charge: {totalcharge}
       </div>
+      <div className='flex justify-center mt-4'>
+      <Button className='text-center px-auto text-2xl hover:bg-green-500 justify-center flex  '>Send for verification</Button></div>
+      
     </div>
   );
 };

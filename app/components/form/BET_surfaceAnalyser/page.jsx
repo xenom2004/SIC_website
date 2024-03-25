@@ -1,15 +1,23 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const BET = () => {
 
-  const [sampleNature, setSampleNature] = useState("");
-  const [sampleType,setsampleType]=useState("");
-  const [temperature,settemperature]=useState("");
-  const [Rate,setRate]=useState("");
-  const [Soaktime,setSoaktime]=useState("");
-  const [desc,setdesc]=useState("");
+  const [sampleNature, setSampleNature] = useState(typeof window !== 'undefined' && localStorage.getItem("sampleNature")? localStorage.getItem("sampleNature"):null);
 
+  const [sampleType,setsampleType]= useState(typeof window !== 'undefined' && localStorage.getItem("sampleType")? localStorage.getItem("sampleType"):null);
+  const [temperature,settemperature]= useState(typeof window !== 'undefined' && localStorage.getItem("sampletemperature")? localStorage.getItem("sampletemperature"):null);
+  const [Rate,setRate]= useState(typeof window !== 'undefined' && localStorage.getItem("sampleRate")? localStorage.getItem("sampleRate"):null);
+  const [Soaktime,setSoaktime]= useState(typeof window !== 'undefined' && localStorage.getItem("sampleSoaktime")? localStorage.getItem("sampleSoaktime"):null);
+  const [desc,setdesc]= useState(typeof window !== 'undefined' && localStorage.getItem("sampledesc")? localStorage.getItem("sampledesc"):null);
+  const formData = {
+    sampleNature,
+    sampleType,
+    temperature,
+    Rate,
+    Soaktime,
+    desc,
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission, e.g., send data to server
@@ -23,6 +31,8 @@ const BET = () => {
       
     });
   };
+
+  
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -39,7 +49,8 @@ const BET = () => {
               type="radio"
               value="Powder"
               checked={sampleType === "Powder"}
-              onChange={() => setsampleType("Powder")}
+              onChange={() => (
+                localStorage.setItem('sampleType', "Powder"),setsampleType("Powder"))}
               className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Powder</span>
@@ -49,7 +60,9 @@ const BET = () => {
               type="radio"
               value="Pellet"
               checked={sampleType === "Pellet"}
-              onChange={() => setsampleType("Pellet")}
+              onChange={() => (
+                localStorage.setItem('sampleType', "Pellet"),
+                setsampleType("Pellet"))}
               className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Pellet</span>
@@ -64,7 +77,10 @@ const BET = () => {
               type="radio"
               value="Hazardous"
               checked={sampleNature === "Hazardous"}
-              onChange={() => setSampleNature("Hazardous")}
+              onChange={() => (
+                localStorage.setItem('sampleNature',"Hazardous"),
+                setSampleNature("Hazardous")
+              )}
               className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Hazardous</span>
@@ -74,7 +90,10 @@ const BET = () => {
               type="radio"
               value="Non-Hazardous"
               checked={sampleNature === "Non-Hazardous"}
-              onChange={() => setSampleNature("Non-Hazardous")}
+              onChange={() => (
+                localStorage.setItem('sampleNature', "Non-Hazardous"),
+                setSampleNature("Non-Hazardous")
+              )}
               className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Non-Hazardous</span>
@@ -92,7 +111,7 @@ const BET = () => {
           <textarea
             id="specialPrecautions"
             value={temperature}
-            onChange={(e) => settemperature(e.target.value)}
+            onChange={(e) =>(localStorage.setItem('sampletemperature',e.target.value), settemperature(e.target.value))}
             rows="1"
             className="resize-none appearance-none border rounded w-full  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter temperature"
@@ -109,7 +128,7 @@ const BET = () => {
           <textarea
             id="specialPrecautions"
             value={Rate}
-            onChange={(e) => setRate(e.target.value)}
+            onChange={(e) => (localStorage.setItem('sampleRate',e.target.value),setRate(e.target.value))}
             rows="1"
             className="resize-none appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter Rate"
@@ -127,7 +146,7 @@ const BET = () => {
           <textarea
             id="specialPrecautions"
             value={Soaktime}
-            onChange={(e) => setSoaktime(e.target.value)}
+            onChange={(e) => (localStorage.setItem('sampleSoaktime',e.target.value),setSoaktime(e.target.value))}
             rows="1"
             className="resize-none appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter Soak Time"
@@ -146,7 +165,7 @@ const BET = () => {
           <textarea
             id="specialPrecautions"
             value={desc}
-            onChange={(e) => setdesc(e.target.value)}
+            onChange={(e) =>(localStorage.setItem('sampledesc',e.target.value), setdesc(e.target.value))}
             rows="4"
             className="resize-none appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter desc "
