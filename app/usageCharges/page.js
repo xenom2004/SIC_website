@@ -148,20 +148,26 @@ const ChargeCalculator = () => {
 
 
   const handlePayNowClick = () => {
-    {console.log(selectedInstruments)}
+    localStorage.removeItem('selectedInstruments');
     if (selectedInstruments.length === 0) {
       alert('Please select at least one instrument.');
     } else {
-      if(status=="unauthenticated"){
-        alert("Please login to continue");}
-        else{
-          const serializedData = JSON.stringify(selectedInstruments);
-          localStorage.setItem('selectedInstruments', serializedData);
-          router.push('/form');
-        }
-      
+      if (status === "unauthenticated") {
+        alert("Please login to continue");
+      } else {
+        // Clear old data from localStorage
+  
+        
+        // Serialize and store new data
+        const serializedData = JSON.stringify(selectedInstruments);
+        localStorage.setItem('selectedInstruments', serializedData);
+        
+        // Redirect to form page
+        router.push('/form');
+      }
     }
   };
+  
 
   if(isLoading)
   {
