@@ -33,7 +33,9 @@ const BET = () => {
       ? localStorage.getItem("sampledesc")
       : null
   );
+  
   const formData = {
+    id:25,
     sampleNature,
     sampleType,
     temperature,
@@ -41,6 +43,9 @@ const BET = () => {
     Soaktime,
     desc,
   };
+  const form_details={
+    25:{formData}
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
 

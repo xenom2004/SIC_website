@@ -55,6 +55,7 @@ const FormComponent = () => {
 
     // Extract form data
     const formData = localStorage.getItem('form_details');
+    
     console.log(formData,"lop")
     try {
       // Send POST request to server
@@ -69,6 +70,8 @@ const FormComponent = () => {
       // Check if request was successful
       if (response.ok) {
         console.log("Form submitted successfully");
+        alert("form submitted successfully");
+
         // You can handle success actions here, e.g., redirect user to another page
       } else {
         // Handle server errors or other issues

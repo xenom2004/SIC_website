@@ -149,6 +149,7 @@ const ChargeCalculator = () => {
 
   const handlePayNowClick = () => {
     localStorage.removeItem('selectedInstruments');
+    localStorage.removeItem('form_details');
     if (selectedInstruments.length === 0) {
       alert('Please select at least one instrument.');
     } else {
