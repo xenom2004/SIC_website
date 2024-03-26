@@ -24,8 +24,10 @@ export default function Home() {
                 Learn More
               </button>
               </Link>
+       
             
             </div>
+            
         </section>
 
 

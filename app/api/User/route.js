@@ -2,17 +2,17 @@ import mongoose from "mongoose";
 import connection from "../../lib/db"
 import instrument  from "../../lib/modal/instrument"
 import { NextResponse } from "next/server"
-
+let id=0;
 const user={
     'name':"Joe",
     'password':"1234",
+    
      'order':[
-        [
+        
 
-        ],
-        [
+        
 
-        ]
+        
      ]
 }
 
@@ -34,9 +34,11 @@ export async function POST(req,res){
     // const resdata=await instrument.create({"name":data.name,"description":data.description,"image":data.image,"status":data.status});
     // await mongoose.connection.close();
     // console.log(resdata);
-
-    user.order[0].push(data);
-    console.log(user.order[0],"hiii");
+    console.log(data);
+    const new_data={id:id,forms:JSON.parse(data)};
+    user.order.push(new_data);
+    id+=1;
+    console.log(user.order,"hiii");
 
     
 

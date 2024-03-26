@@ -70,8 +70,8 @@ export const options = {
                 const user = await User.findOne({ email: session.user.email });
 
                 if (!user) {
-                    const r=await User.create({name:session.user.name,email:session.user.email,loginType:"google_auth"});
-                    console.log(r,"Add")
+                    const r=await User.create({profileName:session.user.name,name:session.user.email,email:session.user.email,loginType:"google_auth"});
+                    // console.log(r,"Add")
                 }
                 // If credentials are valid, return user
               

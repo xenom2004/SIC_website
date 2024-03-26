@@ -2,21 +2,8 @@
 import React, { useState } from 'react';
 const id=20;
 const HPLCForm = () => {
-  const GETitem=(def,variable)=>{
-    
-      if (typeof window !== "undefined" && localStorage.getItem("form_details")) {
-          const formDetails = JSON.parse(localStorage.getItem("form_details"));
-          if (formDetails[id] && formDetails[id][variable]) {
-              return formDetails[id][variable];
-          }
-      }
-      return def;
   
-
-
-  }
   const SETitem=(e,setvariable,variable)=>{
-    
       var formDetails = JSON.parse(localStorage.getItem("form_details")) || {};
       formDetails[id] = formDetails[id] || {};
       formDetails[id][variable]= e.target.value;
@@ -24,6 +11,18 @@ const HPLCForm = () => {
       setvariable(e.target.value)
 
   }
+  const GETitem=(def,variable)=>{
+
+    
+    if (typeof window !== "undefined" && localStorage.getItem("form_details")) {
+        const formDetails = JSON.parse(localStorage.getItem("form_details"));
+        if (formDetails[id] && formDetails[id][variable]) {
+            return formDetails[id][variable];
+        }
+        
+    }
+    return def;
+}
   const [solubility, setSolubility] = useState(GETitem(null,"solubility"));
   const [numberOfComponents, setNumberOfComponents] = useState(GETitem(null,"numberOfComponents"));
   const [hazards, setHazards] = useState(GETitem(null,"hazards"));
@@ -31,7 +30,7 @@ const HPLCForm = () => {
 
   const [mobilePhase, setMobilePhase] = useState(GETitem(null,"mobilePhase"));
   const [runTime, setRunTime] = useState(GETitem(null,"runTime"));
-  const [flowType, setFlowType] = useState(GETitem("isocratic","flowType")); // Default to isocratic
+  const [flowType, setFlowType] = useState(GETitem(null,"flowType")); // Default to isocratic
   const [structures, setStructures] = useState(GETitem(null,"structures"));  
 
   const handleSubmit = (e) => {
