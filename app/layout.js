@@ -6,6 +6,8 @@ import {NextUIProvider} from "@nextui-org/react";
 import Layout from "./components/Layout";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
+import Script from "next/script";
+
 config.autoAddCss = false;
 // import "slick-carousel/slick/slick.css";
 // import Footer from "@/components/Footer";
@@ -19,6 +21,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    <>
     <html lang="en">
      
       <head><script src="https://kit.fontawesome.com/4abac0a3cd.js" crossOrigin="anonymous"></script></head>
@@ -35,5 +38,8 @@ export default function RootLayout({ children }) {
       </body>
       
     </html>
+
+    <Script src="https://checkout.razorpay.com/v1/checkout.js"/>
+    </>
   );
 }
