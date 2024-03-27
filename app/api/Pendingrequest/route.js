@@ -5,10 +5,11 @@ import { NextResponse } from "next/server";
 
 export async function GET(req, res) {
     const val = await mongoose.connect(connection.connection);
-    console.log(connection);
+    // console.log(connection);
     try {
         const activeOrders = await Order.find({ status: 'Pending' });
-        console.log
+
+        // console.log(activeOrders)
         return NextResponse.json(activeOrders);
     } catch (err) {
         console.error(err);

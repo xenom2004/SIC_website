@@ -44,6 +44,9 @@ const InstrumentCard = ({ instrument }) => {
 };
 
 export function RequestCard({ req }) {
+  const objectIdObject = req._id;
+  const hexString = objectIdObject.toString().match(/[a-fA-F0-9]{24}/)[0];
+
   return (
     <div className="flex items-center bg-blue-300 rounded-xl flex-row w-full p-2 ">
       <div className="flex grow">
@@ -54,15 +57,15 @@ export function RequestCard({ req }) {
         ></img>
         <div className="flex flex-col pl-8">
           <h1 className="text-black font-bold text-xs items-center">
-            External
+            {req.loginType}
           </h1>
           <h1 className="text-black text-2xl items-center">
             {limit(req.name)}
           </h1>
         </div>
       </div>
-      <button className="mr-8 bg-black text-white w-[100px] text-center rounded-xl">
-        View
+      <button  className="mr-8 bg-black text-white w-[100px] text-center rounded-xl">
+        <Link href={`admin/${hexString}?id=${hexString}`}>View</Link>
       </button>
     </div>
   );
@@ -108,7 +111,7 @@ export function App({ people }) {
   return <div></div>;
 }
 const admin = () => {
-  const [state, setstate] = useState("instruments");
+  const [state, setstate] = useState("stats");
   const [instruments, setInstruments] = useState([]);
   const [peoplereq, setpeoplereq] = useState([]);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -117,6 +120,39 @@ const admin = () => {
   const [new_inst_imagelink, setnew_inst_imagelink] = useState("");
   const [new_inst_status, setnew_inst_status] = useState("active");
   const add_ins_button = useRef(null);
+
+  // const [activeOrders, setActiveOrders] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            setIsLoading(true);
+            setError(null);
+
+            try {
+                const response = await fetch('/api/Pendingrequest');
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch orders');
+                   
+                }
+                const data = await response.json();
+                console.log(data,"my res");
+
+                setpeoplereq(data);
+            } catch (err) {
+                console.error(err);
+                setError('Failed to fetch orders');
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+
   const AddInstrument = async () => {
     try {
       const response = await fetch("/api/addinstruments", {
@@ -172,7 +208,7 @@ const admin = () => {
     };
 
     fetchInstruments();
-    fetchRequest();
+    // fetchRequest();
   }, []);
 
   return (
@@ -242,7 +278,7 @@ const admin = () => {
               <div className="bg-custompurple rounded-xl p-4 gap-y-2 flex flex-col w-full min-h-[400px] ">
                 <div className="flex flex-row  ">
                   <p className="text-black grow  text-md">Pending request</p>
-                  <App people={{ item: peoplereq }} />
+                  {/* <App people={{ item: peoplereq }} /> */}
                 </div>
                 <div className="gap-y-2  flex flex-col rounded-xl bg-white p-4 w-full max-h-[350px] overflow-y-auto  h-full">
                   {peoplereq.length > 0 ? (

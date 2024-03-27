@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const id=20;
 const HPLCForm = () => {
   
+  
   const SETitem=(e,setvariable,variable)=>{
       var formDetails = JSON.parse(localStorage.getItem("form_details")) || {};
       formDetails[id] = formDetails[id] || {};

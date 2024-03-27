@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import mongoose from "mongoose";
 import connection from "../../lib/db"
-import usertry  from "../../lib/modal/usertry"
-import {Prod} from "../../lib/modal/prod"
+
+
 // const { MongoClient } = require('mongodb');
 // export async function GET(){
 //     // {console.log("goooooooooooo",connection.connection)}

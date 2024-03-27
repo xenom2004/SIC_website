@@ -82,7 +82,7 @@ const FormComponent = () => {
          
       }
   }
-  console.log(new_form_data,"final")
+  // console.log(new_form_data,"final")
     // const new_form_data=add_number(formData["20"],"20",JSON.parse(localStorage.getItem("selectedInstruments")));
     
     
