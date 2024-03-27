@@ -10,21 +10,22 @@ let id=0;
 export async function POST(req,res){
     const data  =await req.json()
     const new_data={id:id,forms:JSON.parse(data)};
-    let updatedDocument=null;
-    try{
-    const val=await mongoose.connect(connection.connection)
-    // const resdata=await User.find({"name":"Joee"});
-    const filter = { "name":"Joee"}; // specify the filter to match the document you want to update
-    const update = { $push: { order: new_data } }; // specify the update operation
-    const options = { new: true }; // optional: returns the modified document instead of the original
-    updatedDocument = await User.findOneAndUpdate(filter, update, options);
-    // console.log(updatedDocument,"Updated");
-    await mongoose.connection.close();}
-    catch(err){
-        console.log(err,"ERERERRE")
-    }
+    console.log(data);
+    // let updatedDocument=null;
+    // try{
+    // const val=await mongoose.connect(connection.connection)
+    // // const resdata=await User.find({"name":"Joee"});
+    // const filter = { "name":"Joee"}; // specify the filter to match the document you want to update
+    // const update = { $push: { order: new_data } }; // specify the update operation
+    // const options = { new: true }; // optional: returns the modified document instead of the original
+    // updatedDocument = await User.findOneAndUpdate(filter, update, options);
+    // // console.log(updatedDocument,"Updated");
+    // await mongoose.connection.close();}
+    // catch(err){
+    //     console.log(err,"ERERERRE")
+    // }
 
-    id+=1;
+    // id+=1;
 
     
 

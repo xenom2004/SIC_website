@@ -63,6 +63,7 @@ export const options = {
     callbacks: {
         session: async ({ session, token, user }) => {
             // console.log(session,"session","user");
+            // console.log(session,"My session",token,user);
             const connect = await mongoose.connect(connection.connection);
 
             try {
@@ -79,7 +80,7 @@ export const options = {
                 throw error;
             } finally {
                 // Close the database connection
-                await mongoose.connection.close();
+                // await mongoose.connection.close();
             }
 
 
