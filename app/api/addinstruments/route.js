@@ -7,8 +7,7 @@ export async function POST(req, res) {
     try {
         // Access the JSON data directly from req.body
         const data= await req.json() 
-        console.log(body)
-     
+       
         // Check if the required fields are present
         // if (!data.name || !data.info || !data.image || !data.status) {
         //     return NextResponse.json({ status: "error", message: "Missing required fields" }, { status: 400 });

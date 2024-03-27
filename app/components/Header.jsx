@@ -5,7 +5,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import Home from "./buttons/Home/Home";
 import Instruments from "./buttons/Instruments/Instruments";
-import About from "./buttons/AboutSic/page"
+import About from "./buttons/AboutSic/page";
 
 const Header = () => {
   const { data: session, status } = useSession();
@@ -55,9 +55,9 @@ const Header = () => {
             <Instruments />
           </div>
           <div className="mr-5 hover:text-white">
-          <About/>
+            <About />
           </div>
-          
+
           <Link href="/usageCharges" className="mr-5 hover:text-white">
             Usage Charges
           </Link>
