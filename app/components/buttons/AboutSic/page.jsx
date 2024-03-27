@@ -64,10 +64,10 @@ const About = () => {
           </li>
           <li>
             <a
-              href="#"
+              href="/components/buttons/AboutSic/outreach_activities/outreach_activities"
               className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
-              Earnings
+              OutReach activities
             </a>
           </li>
           <li>

@@ -5,6 +5,7 @@ import  Elemental_analyser from "../components/form/elemental_analysis/page"
 import BET from "../components/form/BET_surfaceAnalyser/page"
 import FTIRForm from "../components/form/spectroscopy/ftir/page"
 import HPLCForm from "../components/form/chromatography/hplc/page"
+import { useSession } from 'next-auth/react';
 
 const forms_instrument={
   25:(<BET/>),
@@ -13,6 +14,7 @@ const forms_instrument={
   20:(<HPLCForm/>),
 }
 const FormComponent = () => {
+  const { data: session, status } = useSession();
   const [selectedInstruments, setSelectedInstruments] = useState([]);
   const gst_value=18;//in percentage (18 %)
   const [totalcharge,settotalcharge]=useState(0);
@@ -54,9 +56,16 @@ const FormComponent = () => {
     e.preventDefault();
 
     // Extract form data
+    const mysession = session.user; // assuming 'usersession' is the key in localStorage
     const formData = localStorage.getItem('form_details');
-    
-    console.log(formData,"lop")
+    console.log("HE")
+     // assuming 'form_details' is the key in localStorage
+     const final_data = JSON.stringify({
+      "usersession": mysession,
+      "formData": formData
+    });
+    console.log("HE2")
+
     try {
       // Send POST request to server
       const response = await fetch("/api/User", {
@@ -64,7 +73,7 @@ const FormComponent = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: final_data,
       });
 
       // Check if request was successful
@@ -91,6 +100,14 @@ const FormComponent = () => {
   }
   const gst_total=(val,percent)=>{
     return gst(val,percent)+val;
+  }
+
+  if (status === "loading") {
+    return <p>Loading...</p>
+  }
+
+  if (status === "unauthenticated") {
+   router.push("./");
   }
 
 
