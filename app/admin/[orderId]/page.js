@@ -1,13 +1,19 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-
+const orderID=12
 const OrderDetails = ({ params }) => {
     const [order, setOrder] = useState(null);
 
     useEffect(() => {
         const fetchOrder = async () => {
             try {
-                const response = await fetch(`/api/orderId`);
+                const response = await fetch(`/api/orderId/${orderID}`,{
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                       
+                    },
+                });
                 if (!response.ok) {
                     throw new Error('Failed to fetch order details');
                 }

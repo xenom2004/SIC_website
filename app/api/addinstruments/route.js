@@ -17,7 +17,7 @@ export async function POST(req,res){
 
    
     const resdata=await instrument.create({"name":data.name,"description":data.description,"image":data.image,"status":data.status});
-    await mongoose.connection.close();
+  
     console.log(resdata);
 
 
