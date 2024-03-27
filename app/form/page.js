@@ -6,6 +6,7 @@ import BET from "../components/form/BET_surfaceAnalyser/page"
 import FTIRForm from "../components/form/spectroscopy/ftir/page"
 import HPLCForm from "../components/form/chromatography/hplc/page"
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 const forms_instrument={
   25:(<BET/>),
@@ -14,6 +15,7 @@ const forms_instrument={
   20:(<HPLCForm/>),
 }
 const FormComponent = () => {
+  const router = useRouter();
   const { data: session, status } = useSession();
   const [selectedInstruments, setSelectedInstruments] = useState([]);
   const gst_value=18;//in percentage (18 %)
