@@ -1,29 +1,16 @@
 
 const id=20;
 const HPLCForm = (prop) => {
-  console.log(prop,"hellooooo")
+  // console.log(prop,"hellooooo")
  
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission (send data to server)
-    console.log('Form Data:', { 
-      solubility, 
-      numberOfComponents,
-      hazards,
-      absorptionWavelength,
-      mobilePhase,
-      runTime,
-      flowType,
-      structures
-    }); 
-  };
+  
 
   return (
     <div className="container mx-auto px-4 py-8">
       <h2 className="text-3xl font-bold mb-4 text-center">HPLC Analysis Request Form</h2>
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+      <form  className="max-w-md mx-auto">
         <div className="grid grid-cols-2 gap-8">
           <div className="mb-4">
             <label for="solubility" className="block text-gray-700 text-sm font-bold mb-2">Solubility</label>
@@ -130,9 +117,7 @@ const HPLCForm = (prop) => {
           </div>
         </div>
         
-        <div className="flex items-center justify-center mt-6">
-          <button type="submit" className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
-        </div>
+        
       </form>
     </div>
   );

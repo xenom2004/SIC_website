@@ -2,43 +2,29 @@ import mongoose from "mongoose";
 import connection from "../../lib/db"
 import instrument  from "../../lib/modal/instrument"
 import { NextResponse } from "next/server"
+import User from "../../lib/modal/user"
 let id=0;
-const user={
-    'name':"Joe",
-    'password':"1234",
-    
-     'order':[
-        
 
-        
-
-        
-     ]
-}
 
 
 export async function POST(req,res){
     const data  =await req.json()
-    console.log(data)
-    // if(!data.name || !data.description){
-        
-    //     return NextResponse.json({"status":"error"})
-    // }
-
-    // const val=await mongoose.connect(connection.connection)
-    // // console.log(process.env.MONGODB_connection)
-    // // console.log("product",usertry);
-    
-
-   
-    // const resdata=await instrument.create({"name":data.name,"description":data.description,"image":data.image,"status":data.status});
-    // await mongoose.connection.close();
-    // console.log(resdata);
-    console.log(data);
     const new_data={id:id,forms:JSON.parse(data)};
-    user.order.push(new_data);
+    let updatedDocument=null;
+    try{
+    const val=await mongoose.connect(connection.connection)
+    // const resdata=await User.find({"name":"Joee"});
+    const filter = { "name":"Joee"}; // specify the filter to match the document you want to update
+    const update = { $push: { order: new_data } }; // specify the update operation
+    const options = { new: true }; // optional: returns the modified document instead of the original
+    updatedDocument = await User.findOneAndUpdate(filter, update, options);
+    // console.log(updatedDocument,"Updated");
+    await mongoose.connection.close();}
+    catch(err){
+        console.log(err,"ERERERRE")
+    }
+
     id+=1;
-    console.log(user.order,"hiii");
 
     
 
@@ -46,5 +32,11 @@ export async function POST(req,res){
 }
 
 export async function GET() {
+    console.log("jjjjjjj")
+    await mongoose.connect(connection.connection)
+    const user=await User.find({"name":"Joee"});
+    await mongoose.connection.close();
+    console.log(user,"kkk");
+
     return Response.json(user);
 }
