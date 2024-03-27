@@ -83,9 +83,9 @@ export const options = {
                 // await mongoose.connection.close();
             }
 
-
+            
             if (session?.user) {
-                session.user.googleId = token.uid;
+                session.user.token = token.uid;
             }
             return session;
         },

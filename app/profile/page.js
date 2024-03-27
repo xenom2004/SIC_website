@@ -1,6 +1,13 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+
 const ProfilePage = () => {
+  const { data: session, status } =useSession();
+  const router = useRouter();
+  const [user_details,setuser_details]=useState(null);
+
   const [isEditing, setIsEditing] = useState(false);
   const [profileData, setProfileData] = useState({
     name: 'John Doe',
@@ -26,9 +33,56 @@ const ProfilePage = () => {
     e.preventDefault();
     setIsEditing(!isEditing);
   };
+  
+  useEffect(() => {
+    async function getData() {
+      
+      if(status === "unauthenticated" || status==="loading"){
+        return {}
+      }
+      else{
+        console.log(session)
+     
+
+      const timestamp = Date.now();
+      const res = await fetch(`http://localhost:3000/api/Userdetail/${session.user.name}`,{
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache', 
+          'sessionyuyuy':session.user.name,
+        },
+       
+      })
+      // The return value is *not* serialized
+      // You can return Date, Map, Set, etc.
+     
+      if (!res.ok) {
+        // This will activate the closest `error.js` Error Boundary
+        throw new Error('Failed to fetch data')
+      }
+      const data = await res.json();
+      // console.log(data);
+      setuser_details(data.details[0]);
+      // console.log(data[0],"on data")
+     
+      return {}}
+    }
+    getData();
+    
+  },[session])
+
+
+  if (status === "loading") {
+    return <p>Loading...</p>
+  }
+
+  if (status === "unauthenticated") {
+   router.push("./");
+  }
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-screen">{user_details!==null && console.log(user_details)}
 
     <div className="w-full max-w-xl mx-auto p-6 bg-white shadow-md rounded-lg">
 
