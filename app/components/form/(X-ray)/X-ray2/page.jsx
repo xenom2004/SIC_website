@@ -1,14 +1,38 @@
 "use client";
 import React, { useState } from "react";
-
+const id=3;
 const XAFSForm = () => {
-  const [measurementType, setMeasurementType] = useState("");
-  const [caution, setCaution] = useState("");
-  const [numberOfSamples, setNumberOfSamples] = useState("");
-  const [sampleNature, setSampleNature] = useState("");
-  const [mdsSheet, setMdsSheet] = useState("");
-  const [specialPrecautions, setSpecialPrecautions] = useState("");
+  const id = "xafsForm"; // Unique identifier for the form data
 
+  // Function to set form data into local storage
+  const SETitem = (e, setVariable, variable) => {
+    const formDetails = JSON.parse(localStorage.getItem("form_details")) || {};
+    formDetails[id] = formDetails[id] || {};
+    formDetails[id][variable] = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    localStorage.setItem("form_details", JSON.stringify(formDetails));
+    setVariable(e.target.type === "checkbox" ? e.target.checked : e.target.value);
+  };
+
+  // Function to get form data from local storage
+  const GETitem = (def, variable) => {
+    if (typeof window !== "undefined" && localStorage.getItem("form_details")) {
+      const formDetails = JSON.parse(localStorage.getItem("form_details"));
+      if (formDetails[id] && formDetails[id][variable]) {
+        return formDetails[id][variable];
+      }
+    }
+    return def;
+  };
+
+  // State variables for form inputs
+  const [measurementType, setMeasurementType] = useState(GETitem("", "measurementType"));
+  const [caution, setCaution] = useState(GETitem("", "caution"));
+  const [numberOfSamples, setNumberOfSamples] = useState(GETitem("", "numberOfSamples"));
+  const [sampleNature, setSampleNature] = useState(GETitem("", "sampleNature"));
+  const [mdsSheet, setMdsSheet] = useState(GETitem("", "mdsSheet"));
+  const [specialPrecautions, setSpecialPrecautions] = useState(GETitem("", "specialPrecautions"));
+
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission, e.g., send data to server
@@ -24,7 +48,7 @@ const XAFSForm = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold mb-4  max-w-md mx-auto">
+      <h2 className="text-3xl font-bold mb-4 max-w-md mx-auto">
         XAFS Facility Form
       </h2>
       <form onSubmit={handleSubmit} className="max-w-md mx-auto">
@@ -37,7 +61,7 @@ const XAFSForm = () => {
               type="radio"
               value="XANES"
               checked={measurementType === "XANES"}
-              onChange={() => setMeasurementType("XANES")}
+              onChange={() => SETitem(e, setMeasurementType, "measurementType")}
               className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">XANES</span>
@@ -47,7 +71,7 @@ const XAFSForm = () => {
               type="radio"
               value="EXAFS"
               checked={measurementType === "EXAFS"}
-              onChange={() => setMeasurementType("EXAFS")}
+              onChange={() => SETitem(e, setMeasurementType, "measurementType")}
               className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">EXAFS</span>
@@ -57,7 +81,7 @@ const XAFSForm = () => {
               type="radio"
               value="Both"
               checked={measurementType === "Both"}
-              onChange={() => setMeasurementType("Both")}
+              onChange={() => SETitem(e, setMeasurementType, "measurementType")}
               className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Both</span>
@@ -73,7 +97,7 @@ const XAFSForm = () => {
           <textarea
             id="caution"
             value={caution}
-            onChange={(e) => setCaution(e.target.value)}
+            onChange={(e) => SETitem(e, setCaution, "caution")}
             rows="3"
             className="resize-none appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter caution..."
@@ -91,7 +115,7 @@ const XAFSForm = () => {
             type="number"
             id="numberOfSamples"
             value={numberOfSamples}
-            onChange={(e) => setNumberOfSamples(e.target.value)}
+            onChange={(e) => SETitem(e, setNumberOfSamples, "numberOfSamples")}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter number of samples..."
             required
@@ -106,7 +130,7 @@ const XAFSForm = () => {
               type="radio"
               value="Hazardous"
               checked={sampleNature === "Hazardous"}
-              onChange={() => setSampleNature("Hazardous")}
+              onChange={() => SETitem(e, setSampleNature, "sampleNature")}
               className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Hazardous</span>
@@ -116,7 +140,7 @@ const XAFSForm = () => {
               type="radio"
               value="Hygroscopic"
               checked={sampleNature === "Hygroscopic"}
-              onChange={() => setSampleNature("Hygroscopic")}
+              onChange={() => SETitem(e, setSampleNature, "sampleNature")}
               className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Hygroscopic</span>
@@ -126,7 +150,7 @@ const XAFSForm = () => {
               type="radio"
               value="Oxidises in air"
               checked={sampleNature === "Oxidises in air"}
-              onChange={() => setSampleNature("Oxidises in air")}
+              onChange={() => SETitem(e, setSampleNature, "sampleNature")}
               className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Oxidises in air</span>
@@ -136,8 +160,8 @@ const XAFSForm = () => {
               type="radio"
               value="None of these"
               checked={sampleNature === "None of these"}
-              onChange={() => setSampleNature("None of these")}
-              className=" form-radio h-5 w-5 text-gray-600"
+              onChange={() => SETitem(e, setSampleNature, "sampleNature")}
+              className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">None of these</span>
           </label>
@@ -151,7 +175,7 @@ const XAFSForm = () => {
               type="radio"
               value="Attached"
               checked={mdsSheet === "Attached"}
-              onChange={() => setMdsSheet("Attached")}
+              onChange={() => SETitem(e, setMdsSheet, "mdsSheet")}
               className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Attached</span>
@@ -161,7 +185,7 @@ const XAFSForm = () => {
               type="radio"
               value="Non-attached"
               checked={mdsSheet === "Non-attached"}
-              onChange={() => setMdsSheet("Non-attached")}
+              onChange={() => SETitem(e, setMdsSheet, "mdsSheet")}
               className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Non-attached</span>
@@ -177,7 +201,7 @@ const XAFSForm = () => {
           <textarea
             id="specialPrecautions"
             value={specialPrecautions}
-            onChange={(e) => setSpecialPrecautions(e.target.value)}
+            onChange={(e) => SETitem(e, setSpecialPrecautions, "specialPrecautions")}
             rows="3"
             className="resize-none appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter special precautions..."

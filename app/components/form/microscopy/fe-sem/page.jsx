@@ -1,21 +1,42 @@
 "use client"
 import React, { useState } from 'react';
-
+const id=27;
 const PLForm = () => {
+  const SETitem=(e,setvariable,variable)=>{
+    var formDetails = JSON.parse(localStorage.getItem("form_details")) || {};
+    formDetails[id] = formDetails[id] || {};
+    formDetails[id][variable]= e.target.value;
+    localStorage.setItem("form_details", JSON.stringify(formDetails));
+    setvariable(e.target.value)
 
-  const [natureOfSample, setNatureOfSample] = useState('');
-  const [noOfSamples, setNoOfSamples]=useState('');
+}
+const GETitem=(def,variable)=>{
+
+  
+  if (typeof window !== "undefined" && localStorage.getItem("form_details")) {
+      const formDetails = JSON.parse(localStorage.getItem("form_details"));
+      if (formDetails[id] && formDetails[id][variable]) {
+          return formDetails[id][variable];
+      }
+      
+  }
+  return def;
+}
+
+  const [natureOfSample, setNatureOfSample] = useState(GETitem(null,"natureOfSample"));
+  const [noOfSamples, setNoOfSamples]=useState(GETitem(null,"noOfSamples"));
+  const [nonconductive, setonductive] = useState(GETitem(null,"noOfSamples"));
   const [conductive, setConductive] = useState({
-    conductive:false,
-    nonconductive:false
+    conductive:GETitem(null,"conductive"),
+    nonconductive:GETitem(null,"nonconductive")
   });
   const [description,setDescription]=useState({
-    SEM:false,
-    EDX:false,
-    WDX:false
+    SEM:GETitem(null,"SEM"),
+    EDX:GETitem(null,"EDX"),
+    WDX:GETitem(null,"WDX")
   }
   )
-  const [expectedElements,setExpectedElements]=useState('');
+  const [expectedElements,setExpectedElements]=useState(GETitem(null,"expectedElements"));
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -48,7 +69,7 @@ const PLForm = () => {
           <textarea
             id="natureOfSample"
             value={natureOfSample}
-            onChange={(e) => setNatureOfSample(e.target.value)}
+            onChange={(e) => SETitem(e,setNatureOfSample,"natureOfSample")}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Kindly intimate if toxic"
             required
@@ -61,7 +82,7 @@ const PLForm = () => {
           <textarea
             id="noOfSamples"
             value={noOfSamples}
-            onChange={(e) => setNoOfSamples(e.target.value)}
+            onChange={(e) => SETitem(e,setNoOfSamples,"noOfSamples")}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="No of sample"
             required
@@ -76,7 +97,7 @@ const PLForm = () => {
               type="checkbox"
               value="Conductive"
               checked={conductive.conductive}
-              onChange={() => handleConductiveChange('conductive')}
+              onChange={(e) => SETitem(e,setConductive,"conductive")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Conductive</span>
@@ -86,7 +107,7 @@ const PLForm = () => {
               type="checkbox"
               value="nonconductive"
               checked={conductive.nonconductive}
-              onChange={() => handleConductiveChange('nonconductive')}
+              onChange={(e) => SETitem(e,setConductive,"nonconductive")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Non-conductive</span>
@@ -101,7 +122,7 @@ const PLForm = () => {
               type="checkbox"
               value="SEM"
               checked={description.SEM}
-              onChange={() => handleDescriptionChange('SEM')}
+              onChange={(e) => SETitem(e,setDescription,"SEM")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">SEM</span>
@@ -111,7 +132,7 @@ const PLForm = () => {
               type="checkbox"
               value="EDM"
               checked={description.EDM}
-              onChange={() => handleDescriptionChange('EDM')}
+              onChange={(e) => SETitem(e,setDescription,"EDM")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">EDM</span>
@@ -121,7 +142,7 @@ const PLForm = () => {
               type="checkbox"
               value="WDX"
               checked={description.WDX}
-              onChange={() => handleDescriptionChange('WDX')}
+              onChange={(e) => SETitem(e,setDescription,"WDX")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">WDX</span>
@@ -135,7 +156,7 @@ const PLForm = () => {
           <textarea
             id="expectedElements"
             value={expectedElements}
-            onChange={(e) => setExpectedElements(e.target.value)}
+            onChange={(e) => SETitem(e,setExpectedElements,"expectedElements")}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter..."
             required

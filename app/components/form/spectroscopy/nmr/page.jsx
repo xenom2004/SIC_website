@@ -1,29 +1,46 @@
 "use client"
 import React, { useState } from 'react';
 
-const ChemicalDataForm = () => {
+const id = 7;
 
-  const [amount, setAmount] = useState('');
-  const [solubility, setSolubility] = useState({
+const ChemicalDataForm = () => {
+  const SETitem = (e, setVariable, variable) => {
+    const formDetails = JSON.parse(localStorage.getItem('form_details')) || {};
+    formDetails[id] = formDetails[id] || {};
+    formDetails[id][variable] = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    localStorage.setItem('form_details', JSON.stringify(formDetails));
+    setVariable(e.target.type === 'checkbox' ? e.target.checked : e.target.value);
+  };
+
+  const GETitem = (def, variable) => {
+    if (typeof window !== 'undefined' && localStorage.getItem('form_details')) {
+      const formDetails = JSON.parse(localStorage.getItem('form_details'));
+      if (formDetails[id] && formDetails[id][variable]) {
+        return formDetails[id][variable];
+      }
+    }
+    return def;
+  };
+
+  const [amount, setAmount] = useState(() => GETitem('', 'amount'));
+  const [solubility, setSolubility] = useState(() => ({
     D2O: false,
     CD3COCH3: false,
     MeOD: false,
     Other: false,
-  });
-
-  const [molecularFormula, setMolecularFormula] = useState('');
-  const [molecularStructure, setMolecularStructure] = useState('');
+  }));
+  const [molecularFormula, setMolecularFormula] = useState(() => GETitem('', 'molecularFormula'));
+  const [molecularStructure, setMolecularStructure] = useState(() => GETitem('', 'molecularStructure'));
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission (send data to server)
     console.log('Form Data:', { amount, solubility, molecularFormula, molecularStructure });
   };
 
   const handleSolubilityChange = (solvent) => {
     setSolubility({
       ...solubility,
-      [solvent]: !solubility[solvent], 
+      [solvent]: !solubility[solvent],
     });
   };
 
@@ -31,14 +48,14 @@ const ChemicalDataForm = () => {
     <div className="container mx-auto px-4 py-8">
       <h2 className="mx-auto text-3xl font-bold mb-4">NMR Form</h2>
       <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-      <div className="mb-4">
+        <div className="mb-4">
           <label htmlFor="amount" className="block text-gray-700 text-sm font-bold mb-2">
             Amount (mg)
           </label>
           <textarea
             id="amount"
             value={amount}
-            onChange={(e) => setAmount(e.target.value)}
+            onChange={(e) => SETitem(e, setAmount, 'amount')}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter amount..."
             required
@@ -58,7 +75,6 @@ const ChemicalDataForm = () => {
             />
             <span className="ml-2">D2O</span>
           </label>
-          {/* ... (Existing D2O checkbox) */}
           <label className="inline-flex items-center ml-6">
             <input
               type="checkbox"
@@ -91,7 +107,6 @@ const ChemicalDataForm = () => {
           </label>
         </div>
 
-
         <div className="mb-4">
           <label htmlFor="molecularFormula" className="block text-gray-700 text-sm font-bold mb-2">
             Molecular Formula
@@ -99,7 +114,7 @@ const ChemicalDataForm = () => {
           <textarea
             id="molecularFormula"
             value={molecularFormula}
-            onChange={(e) => setMolecularFormula(e.target.value)}
+            onChange={(e) => SETitem(e, setMolecularFormula, 'molecularFormula')}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter molecular formula..."
             required
@@ -113,15 +128,13 @@ const ChemicalDataForm = () => {
           <textarea
             id="molecularStructure"
             value={molecularStructure}
-            onChange={(e) => setMolecularStructure(e.target.value)}
+            onChange={(e) => SETitem(e, setMolecularStructure, 'molecularStructure')}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter molecular structure..."
             required
           />
         </div>
 
-        
-        
         <div className="flex items-center justify-center mt-6">
           <button
             type="submit"
@@ -130,7 +143,6 @@ const ChemicalDataForm = () => {
             Submit
           </button>
         </div>
-
       </form>
     </div>
   );

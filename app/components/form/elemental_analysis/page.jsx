@@ -1,42 +1,44 @@
 "use client";
 import React, { useState, useEffect } from "react";
-
+const id=27;
 const Elemental_analyser = () => {
-  const [crystalInfo, setCrystalInfo] = useState("");
-  const [stability, setStability] = useState([]);
-  const [BP, setBP] = useState("");
-  const [MP, setMP] = useState("");
-  const [mw, setmw] = useState("");
-  const [weight, setweight] = useState("");
-  const [store, setstore] = useState("");
+
+
+  const SETitem=(e,setvariable,variable)=>{
+    var formDetails = JSON.parse(localStorage.getItem("form_details")) || {};
+    formDetails[id] = formDetails[id] || {};
+    formDetails[id][variable]= e.target.value;
+    localStorage.setItem("form_details", JSON.stringify(formDetails));
+    setvariable(e.target.value)
+
+}
+const GETitem=(def,variable)=>{
+
+  
+  if (typeof window !== "undefined" && localStorage.getItem("form_details")) {
+      const formDetails = JSON.parse(localStorage.getItem("form_details"));
+      if (formDetails[id] && formDetails[id][variable]) {
+          return formDetails[id][variable];
+      }
+      
+  }
+  return def;
+}
+
+
+  const [crystalInfo, setCrystalInfo] = useState(GETitem(null,"crystalInfo"));
+  const [stability, setStability] = useState([GETitem(null,"stability")]);
+  const [BP, setBP] = useState(GETitem(null,"BP"));
+  const [MP, setMP] = useState(GETitem(null,"MP"));
+  const [mw, setmw] = useState(GETitem(null,"mw"));
+  const [weight, setweight] = useState(GETitem(null,"weight"));
+  const [store, setstore] = useState(GETitem(null,"store"));
   // Load data from localStorage when the component mounts
 
-  useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem("form_data"));
-    setstore(storedData);
-    if (storedData) {
-      console.log("Present");
-      setCrystalInfo(storedData.crystalInfo || "");
-      setStability(storedData.stability || []);
-      setBP(storedData.BP || "");
-      setMP(storedData.MP || "");
-      setmw(storedData.mw || "");
-      setweight(storedData.weight || "");
-    }
-  }, []);
+  
 
   // Update localStorage whenever form data changes
-  useEffect(() => {
-    const formData = {
-      crystalInfo,
-      stability,
-      BP,
-      MP,
-      mw,
-      weight,
-    };
-    localStorage.setItem("form_data", JSON.stringify(formData));
-  }, [crystalInfo, stability, BP, MP, mw, weight]);
+ 
 
   // Function to handle stability changes
   const handleStabilityChange = (selectedStability) => {
@@ -79,7 +81,7 @@ const Elemental_analyser = () => {
             type="text"
             id="crystalInfo"
             value={crystalInfo}
-            onChange={(e) => setCrystalInfo(e.target.value)}
+            onChange={(e) => SETitem(e,setCrystalInfo,"crystalInfo")}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Crystal crystallized from ..."
             required
@@ -95,7 +97,7 @@ const Elemental_analyser = () => {
             type="text"
             id="crystalInfo"
             value={mw}
-            onChange={(e) => setmw(e.target.value)}
+            onChange={(e) => SETitem(e,setmw,"mw")}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="molecular weight"
             required
@@ -112,7 +114,7 @@ const Elemental_analyser = () => {
             type="text"
             id="color"
             value={MP}
-            onChange={(e) => setMP(e.target.value)}
+            onChange={(e) => SETitem(e,setMP,"MP")}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter crystal melting point"
             required
@@ -130,7 +132,7 @@ const Elemental_analyser = () => {
             type="text"
             id="temperature"
             value={BP}
-            onChange={(e) => setBP(e.target.value)}
+            onChange={(e) => SETitem(e,setBP,"BP")}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter crystal boiling point"
             required
@@ -147,7 +149,7 @@ const Elemental_analyser = () => {
             id="temperature"
             value={weight}
             rows="4"
-            onChange={(e) => setweight(e.target.value)}
+            onChange={(e) => SETitem(e,setweight,"weight")}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter weight percent of Carbon,nitrogen,hydrogen and sulphur"
             required
@@ -162,17 +164,17 @@ const Elemental_analyser = () => {
               type="checkbox"
               value="stable"
               checked={stability.includes("stable")}
-              onChange={() => handleStabilityChange("stable")}
+              onChange={(e) => SETitem(e,setStability,"stability")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">light sensitive</span>
           </label>
           <label className="inline-flex items-center ml-6">
             <input
-              type="checkbox"
+              type="checkbox" 
               value="air-sensitive"
               checked={stability.includes("air-sensitive")}
-              onChange={() => handleStabilityChange("air-sensitive")}
+              onChange={(e) => SETitem(e,setStability,"stability")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Air-Sensitive</span>
@@ -182,7 +184,7 @@ const Elemental_analyser = () => {
               type="checkbox"
               value="moisture-sensitive"
               checked={stability.includes("moisture-sensitive")}
-              onChange={() => handleStabilityChange("moisture-sensitive")}
+              onChange={(e) => SETitem(e,setStability,"stability")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Moisture-Sensitive</span>

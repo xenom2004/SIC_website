@@ -1,13 +1,37 @@
 "use client";
 import React, { useState } from "react";
-
+const id=2;
 const PowderXRDForm = () => {
+  
+
+  // Function to set form data into local storage
+  const SETitem = (e, setVariable, variable) => {
+    const formDetails = JSON.parse(localStorage.getItem("form_details")) || {};
+    formDetails[id] = formDetails[id] || {};
+    formDetails[id][variable] = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    localStorage.setItem("form_details", JSON.stringify(formDetails));
+    setVariable(e.target.type === "checkbox" ? e.target.checked : e.target.value);
+  };
+
+  // Function to get form data from local storage
+  const GETitem = (def, variable) => {
+    if (typeof window !== "undefined" && localStorage.getItem("form_details")) {
+      const formDetails = JSON.parse(localStorage.getItem("form_details"));
+      if (formDetails[id] && formDetails[id][variable]) {
+        return formDetails[id][variable];
+      }
+    }
+    return def;
+  };
+
+  // State variable for samples
   const [samples, setSamples] = useState([
     { srNo: 1, sampleCode: "", description: "" },
     { srNo: 2, sampleCode: "", description: "" },
     { srNo: 3, sampleCode: "", description: "" },
   ]);
 
+  // Function to add a new sample
   const handleAddSample = () => {
     const newSample = {
       srNo: samples.length + 1,
@@ -17,12 +41,14 @@ const PowderXRDForm = () => {
     setSamples([...samples, newSample]);
   };
 
+  // Function to handle changes in sample input fields
   const handleSampleChange = (index, field, value) => {
     const updatedSamples = [...samples];
     updatedSamples[index][field] = value;
     setSamples(updatedSamples);
   };
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission, e.g., send data to server

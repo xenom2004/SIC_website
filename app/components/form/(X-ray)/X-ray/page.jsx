@@ -1,111 +1,139 @@
-"use client";
-import React, { useState } from "react";
+"use client"
+import React, { useState } from 'react';
+
+const id = 'singleCrystalXRayForm';
 
 const SingleCrystalXRayForm = () => {
-  const [crystalInfo, setCrystalInfo] = useState("");
-  const [color, setColor] = useState("");
-  const [temperature, setTemperature] = useState("");
-  const [stability, setStability] = useState([]);
-  const [otherTechniques, setOtherTechniques] = useState([]);
-  const [structureMaterial, setstructureMaterial] = useState("");
+  // Function to set form data into local storage
+  const SETitem = (e, setVariable, variable) => {
+    const formDetails = JSON.parse(localStorage.getItem('form_details')) || {};
+    formDetails[id] = formDetails[id] || {};
+    formDetails[id][variable] = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    localStorage.setItem('form_details', JSON.stringify(formDetails));
+    setVariable(e.target.type === 'checkbox' ? e.target.checked : e.target.value);
+  };
 
+  // Function to get form data from local storage
+  const GETitem = (def, variable) => {
+    if (typeof window !== 'undefined' && localStorage.getItem('form_details')) {
+      const formDetails = JSON.parse(localStorage.getItem('form_details'));
+      if (formDetails[id] && formDetails[id][variable]) {
+        return formDetails[id][variable];
+      }
+    }
+    return def;
+  };
+
+  // State variables for form inputs
+  const [crystalInfo, setCrystalInfo] = useState(() => GETitem('', 'crystalInfo'));
+  const [color, setColor] = useState(() => GETitem('', 'color'));
+  const [temperature, setTemperature] = useState(() => GETitem('', 'temperature'));
+  const [stability, setStability] = useState({
+    stable: GETitem(null, 'stable'),
+    'air-sensitive': GETitem(null, 'air-sensitive'),
+    'moisture-sensitive': GETitem(null, 'moisture-sensitive'),
+  });
+  const [otherTechniques, setOtherTechniques] = useState({
+    IR: GETitem(null, 'IR'),
+    NMR: GETitem(null, 'NMR'),
+    'Mass Spectrum': GETitem(null, 'Mass Spectrum'),
+  });
+  const [structureMaterial, setStructureMaterial] = useState(() => GETitem('', 'structureMaterial'));
+
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission, e.g., send data to server
-    console.log("Form submitted:", {
+    console.log('Form submitted:', {
       crystalInfo,
       color,
       temperature,
       stability,
       otherTechniques,
+      structureMaterial,
     });
   };
 
+  // Handle change in stability checkboxes
   const handleStabilityChange = (selectedStability) => {
-    if (stability.includes(selectedStability)) {
-      setStability(stability.filter((item) => item !== selectedStability));
-    } else {
-      setStability([...stability, selectedStability]);
-    }
+    const updatedStability = { ...stability };
+    updatedStability[selectedStability] = !updatedStability[selectedStability];
+    setStability(updatedStability);
+    SETitem(
+      { target: { checked: !stability[selectedStability] } },
+      () => {},
+      selectedStability
+    );
   };
 
+  // Handle change in other techniques checkboxes
   const handleTechniquesChange = (selectedTechnique) => {
-    if (otherTechniques.includes(selectedTechnique)) {
-      setOtherTechniques(
-        otherTechniques.filter((item) => item !== selectedTechnique)
-      );
-    } else {
-      setOtherTechniques([...otherTechniques, selectedTechnique]);
-    }
+    const updatedTechniques = otherTechniques.includes(selectedTechnique)
+      ? otherTechniques.filter((item) => item !== selectedTechnique)
+      : [...otherTechniques, selectedTechnique];
+    setOtherTechniques(updatedTechniques);
+    SETitem(
+      { target: { checked: updatedTechniques.includes(selectedTechnique) } },
+      () => {},
+      'otherTechniques'
+    );
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 ">
-      <h2 className="text-3xl font-bold mb-4  max-w-md mx-auto">
+    <div className="container mx-auto px-4 py-8">
+      <h2 className="text-3xl font-bold mb-4 max-w-md mx-auto">
         Single Crystal X-ray Diffraction Facility Form
       </h2>
       <form onSubmit={handleSubmit} className="max-w-md mx-auto">
         <div className="mb-4">
-          <label
-            htmlFor="crystalInfo"
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
+          <label htmlFor="crystalInfo" className="block text-gray-700 text-sm font-bold mb-2">
             Crystal Information
           </label>
           <input
             type="text"
             id="crystalInfo"
             value={crystalInfo}
-            onChange={(e) => setCrystalInfo(e.target.value)}
+            onChange={(e) => SETitem(e, setCrystalInfo, 'crystalInfo')}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter crystal information..."
             required
           />
         </div>
         <div className="mb-4">
-          <label
-            htmlFor="color"
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
+          <label htmlFor="color" className="block text-gray-700 text-sm font-bold mb-2">
             Color
           </label>
           <input
             type="text"
             id="color"
             value={color}
-            onChange={(e) => setColor(e.target.value)}
+            onChange={(e) => SETitem(e, setColor, 'color')}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter crystal color..."
             required
           />
         </div>
         <div className="mb-4">
-          <label
-            htmlFor="temperature"
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
+          <label htmlFor="temperature" className="block text-gray-700 text-sm font-bold mb-2">
             Temperature
           </label>
           <input
             type="text"
             id="temperature"
             value={temperature}
-            onChange={(e) => setTemperature(e.target.value)}
+            onChange={(e) => SETitem(e, setTemperature, 'temperature')}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter temperature..."
             required
           />
         </div>
         <div className="mb-4">
-          <p className="block text-gray-700 text-sm font-bold mb-2">
-            Stability
-          </p>
+          <p className="block text-gray-700 text-sm font-bold mb-2">Stability</p>
           <label className="inline-flex items-center">
             <input
               type="checkbox"
-              value="stable"
-              checked={stability.includes("stable")}
-              onChange={() => handleStabilityChange("stable")}
+              checked={stability.stable}
+              onChange={(e) => SETitem(e, setStability, 'stable')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Stable</span>
@@ -113,9 +141,8 @@ const SingleCrystalXRayForm = () => {
           <label className="inline-flex items-center ml-6">
             <input
               type="checkbox"
-              value="air-sensitive"
-              checked={stability.includes("air-sensitive")}
-              onChange={() => handleStabilityChange("air-sensitive")}
+              checked={stability['air-sensitive']}
+              onChange={() => SETitem(e, setStability, 'air-sensitive')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Air-Sensitive</span>
@@ -123,9 +150,8 @@ const SingleCrystalXRayForm = () => {
           <label className="inline-flex items-center ml-6">
             <input
               type="checkbox"
-              value="moisture-sensitive"
-              checked={stability.includes("moisture-sensitive")}
-              onChange={() => handleStabilityChange("moisture-sensitive")}
+              checked={stability['moisture-sensitive']}
+              onChange={() => SETitem(e, setStability, 'moisture-sensitive')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Moisture-Sensitive</span>
@@ -139,8 +165,8 @@ const SingleCrystalXRayForm = () => {
             <input
               type="checkbox"
               value="IR"
-              checked={otherTechniques.includes("IR")}
-              onChange={() => handleTechniquesChange("IR")}
+              checked={otherTechniques.includes('IR')}
+              onChange={() => SETitem(e, setOtherTechniques, 'IR')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">IR</span>
@@ -149,8 +175,8 @@ const SingleCrystalXRayForm = () => {
             <input
               type="checkbox"
               value="NMR"
-              checked={otherTechniques.includes("NMR")}
-              onChange={() => handleTechniquesChange("NMR")}
+              checked={otherTechniques.includes('NMR')}
+              onChange={() => SETitem(e, setOtherTechniques, 'NMR')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">NMR</span>
@@ -159,29 +185,26 @@ const SingleCrystalXRayForm = () => {
             <input
               type="checkbox"
               value="Mass Spectrum"
-              checked={otherTechniques.includes("Mass Spectrum")}
-              onChange={() => handleTechniquesChange("Mass Spectrum")}
+              checked={otherTechniques.includes('Mass Spectrum')}
+              onChange={() => SETitem(e, setOtherTechniques, 'mass Spectrum')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Mass Spectrum</span>
           </label>
-          <div className="mb-4 mt-4">
-            <label
-              htmlFor="crystalInfo"
-              className="block text-gray-700 text-sm font-bold mb-2"
-            >
-              Starting Materials and Solvent Information
-            </label>
-            <input
-              type="text"
-              id="crystalInfo"
-              value={structureMaterial}
-              onChange={(e) => setstructureMaterial(e.target.value)}
-              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="Enter starting material and solvent Information"
-              required
-            />
-          </div>
+        </div>
+        <div className="mb-4 mt-4">
+          <label htmlFor="structureMaterial" className="block text-gray-700 text-sm font-bold mb-2">
+            Starting Materials and Solvent Information
+          </label>
+          <input
+            type="text"
+            id="structureMaterial"
+            value={structureMaterial}
+            onChange={(e) => SETitem(e, setStructureMaterial, 'structureMaterial')}
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Enter starting material and solvent Information"
+            required
+          />
         </div>
         <div className="flex items-center justify-center mt-6">
           <button

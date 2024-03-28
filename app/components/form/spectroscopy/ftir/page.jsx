@@ -1,20 +1,39 @@
 "use client";
 import React, { useState } from "react";
 
+const id = 8;
+
 const FTIRForm = () => {
-  const [solubility, setSolubility] = useState("");
-  const [hazards, setHazards] = useState("");
-  const [calibrationConcentration, setCalibrationConcentration] = useState("");
-  const [molecularFormula, setMolecularFormula] = useState("");
-  const [molecularWeight, setMolecularWeight] = useState("");
-  const [excitationWavelength, setExcitationWavelength] = useState("");
-  const [rangeOfScan, setRangeOfScan] = useState("");
-  const [specialRequest, setSpecialRequest] = useState("");
-  const [analysisOptions, setAnalysisOptions] = useState([]);
+  const SETitem = (e, setVariable, variable) => {
+    const formDetails = JSON.parse(localStorage.getItem("form_details")) || {};
+    formDetails[id] = formDetails[id] || {};
+    formDetails[id][variable] = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    localStorage.setItem("form_details", JSON.stringify(formDetails));
+    setVariable(e.target.type === "checkbox" ? e.target.checked : e.target.value);
+  };
+
+  const GETitem = (def, variable) => {
+    if (typeof window !== "undefined" && localStorage.getItem("form_details")) {
+      const formDetails = JSON.parse(localStorage.getItem("form_details"));
+      if (formDetails[id] && formDetails[id][variable]) {
+        return formDetails[id][variable];
+      }
+    }
+    return def;
+  };
+
+  const [solubility, setSolubility] = useState(() => GETitem("", "solubility"));
+  const [hazards, setHazards] = useState(() => GETitem("", "hazards"));
+  const [calibrationConcentration, setCalibrationConcentration] = useState(() => GETitem("", "calibrationConcentration"));
+  const [molecularFormula, setMolecularFormula] = useState(() => GETitem("", "molecularFormula"));
+  const [molecularWeight, setMolecularWeight] = useState(() => GETitem("", "molecularWeight"));
+  const [excitationWavelength, setExcitationWavelength] = useState(() => GETitem("", "excitationWavelength"));
+  const [rangeOfScan, setRangeOfScan] = useState(() => GETitem("", "rangeOfScan"));
+  const [specialRequest, setSpecialRequest] = useState(() => GETitem("", "specialRequest"));
+  const [analysisOptions, setAnalysisOptions] = useState(() => GETitem([], "analysisOptions"));
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission (send data to server)
     console.log("Form Data:", {
       solubility,
       hazards,
@@ -43,139 +62,128 @@ const FTIRForm = () => {
       </h2>
       <form onSubmit={handleSubmit} className="max-w-md mx-auto">
         <div className="grid grid-cols-2 gap-8">
+          {/* Solubility */}
           <div className="mb-4">
-            <label
-              for="solubility"
-              className="block text-gray-700 text-sm font-bold mb-2"
-            >
+            <label htmlFor="solubility" className="block text-gray-700 text-sm font-bold mb-2">
               Solubility
             </label>
             <textarea
               id="solubility"
               value={solubility}
-              onChange={(e) => setSolubility(e.target.value)}
+              onChange={(e) => SETitem(e, setSolubility, "solubility")}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Specify solvent"
               required
             ></textarea>
           </div>
 
+          {/* Hazards */}
           <div className="mb-4">
-            <label
-              for="hazards"
-              className="block text-gray-700 text-sm font-bold mb-2"
-            >
+            <label htmlFor="hazards" className="block text-gray-700 text-sm font-bold mb-2">
               Hazards
             </label>
             <textarea
               id="hazards"
               value={hazards}
-              onChange={(e) => setHazards(e.target.value)}
+              onChange={(e) => SETitem(e, setHazards, "hazards")}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter hazard information..."
             ></textarea>
           </div>
+
+          {/* Calibration Concentration */}
           <div className="mb-4">
-            <label
-              for="calibrationConcentration"
-              className="block text-gray-700 text-sm font-bold mb-2"
-            >
+            <label htmlFor="calibrationConcentration" className="block text-gray-700 text-sm font-bold mb-2">
               Calibration Concentration
             </label>
             <textarea
               id="calibrationConcentration"
               value={calibrationConcentration}
-              onChange={(e) => setCalibrationConcentration(e.target.value)}
+              onChange={(e) => SETitem(e, setCalibrationConcentration, "calibrationConcentration")}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter Calibration Concentration..."
               required
             ></textarea>
           </div>
+
+          {/* Molecular Formula */}
           <div className="mb-4">
-            <label
-              for="molecularFormula"
-              className="block text-gray-700 text-sm font-bold mb-2"
-            >
+            <label htmlFor="molecularFormula" className="block text-gray-700 text-sm font-bold mb-2">
               Molecular Formula
             </label>
             <textarea
               id="molecularFormula"
               value={molecularFormula}
-              onChange={(e) => setMolecularFormula(e.target.value)}
+              onChange={(e) => SETitem(e, setMolecularFormula, "molecularFormula")}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter Molecular Formula..."
               required
             ></textarea>
           </div>
+
+          {/* Molecular Weight */}
           <div className="mb-4">
-            <label
-              for="molecularWeight"
-              className="block text-gray-700 text-sm font-bold mb-2"
-            >
+            <label htmlFor="molecularWeight" className="block text-gray-700 text-sm font-bold mb-2">
               Molecular Weight
             </label>
             <textarea
               id="molecularWeight"
               value={molecularWeight}
-              onChange={(e) => setMolecularWeight(e.target.value)}
+              onChange={(e) => SETitem(e, setMolecularWeight, "molecularWeight")}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter Molecular Weight..."
               required
             ></textarea>
           </div>
+
+          {/* Excitation Wavelength */}
           <div className="mb-4">
-            <label
-              for="excitationWavelength"
-              className="block text-gray-700 text-sm font-bold mb-2"
-            >
+            <label htmlFor="excitationWavelength" className="block text-gray-700 text-sm font-bold mb-2">
               Excitation Wavelength
             </label>
             <textarea
               id="excitationWavelength"
               value={excitationWavelength}
-              onChange={(e) => setExcitationWavelength(e.target.value)}
+              onChange={(e) => SETitem(e, setExcitationWavelength, "excitationWavelength")}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter Excitation Wavelength..."
               required
             ></textarea>
           </div>
+
+          {/* Range of Scan */}
           <div className="mb-4">
-            <label
-              for="rangeOfScan"
-              className="block text-gray-700 text-sm font-bold mb-2"
-            >
+            <label htmlFor="rangeOfScan" className="block text-gray-700 text-sm font-bold mb-2">
               Range Of Scan
             </label>
             <textarea
               id="rangeOfScan"
               value={rangeOfScan}
-              onChange={(e) => setRangeOfScan(e.target.value)}
+              onChange={(e) => SETitem(e, setRangeOfScan, "rangeOfScan")}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter range of scan..."
               required
             ></textarea>
           </div>
+
+          {/* Special Request */}
           <div className="mb-4">
-            <label
-              for="specialRequest"
-              className="block text-gray-700 text-sm font-bold mb-2"
-            >
+            <label htmlFor="specialRequest" className="block text-gray-700 text-sm font-bold mb-2">
               Special Request
             </label>
             <textarea
               id="specialRequest"
               value={specialRequest}
-              onChange={(e) => setSpecialRequest(e.target.value)}
+              onChange={(e) => SETitem(e, setSpecialRequest, "specialRequest")}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter special request..."
             ></textarea>
           </div>
         </div>
 
+        {/* Request Analysis */}
         <div className="mb-4">
-          <p className="block text-gray-700 text-sm font-bold mb-2">
-            Request Analysis
-          </p>
+          <p className="block text-gray-700 text-sm font-bold mb-2">Request Analysis</p>
           <label className="inline-flex items-center">
             <input
               type="checkbox"
@@ -208,6 +216,7 @@ const FTIRForm = () => {
           </label>
         </div>
 
+        {/* Submit Button */}
         <div className="flex items-center justify-center mt-6">
           <button
             type="submit"

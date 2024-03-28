@@ -1,18 +1,43 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import { Button } from '@nextui-org/react';
-import  Elemental_analyser from "../components/form/elemental_analysis/page"
-import BET from "../components/form/BET_surfaceAnalyser/page"
-import FTIRForm from "../components/form/spectroscopy/ftir/page"
+
+
+
 import HPLCForm from "../components/form/chromatography/hplc/page"
+import Elemental_analyser from "../components/form/elemental_analysis/page"
+import PLForm from "../components/form/microscopy/fe-sem/page"
+import FTIRForm from '../components/form/spectroscopy/ftir/page';
+import ChemicalDataForm from '../components/form/spectroscopy/nmr/page'
+import SFMForm from '../components/form/spectroscopy/sfm/page'
+import FluorescenceMicroscopyForm  from '../components/form/microscopy/clsm/page'
+import UVVisForm from '../components/form/spectroscopy/uv-vis/page'
+import UVVISNIRForm from '../components/form/spectroscopy/uv-vis-nir/page'
+import SETitem from '../components/form/chromatography/hplc/page'
+import PowderXRDForm from '../components/form/(X-ray)/X-ray3/page'
+import BET from '../components/form/BET_surfaceAnalyser/page'
+import SingleCrystalXRayForm from '../components/form/(X-ray)/X-ray/page'
+import XAFSForm from '../components/form/(X-ray)/X-ray2/page'
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
 const forms_instrument={
+  2:(<PowderXRDForm/>),
+  3:(<XAFSForm/>),
+  1:(<SingleCrystalXRayForm/>),
   25:(<BET/>),
-  12:(<Elemental_analyser/>),
+  20:(<SETitem/>),
+  13:(<UVVISNIRForm/>),
+  12:(<UVVisForm/>),
+  18:(<FluorescenceMicroscopyForm/>),
+  9:(<ChemicalDataForm/>),
+  14:(<SFMForm/>),
+  8:(<FTIRForm/>),
+  25:(<BET/>),
+  15:(<PLForm/>),
   13:( <FTIRForm/>),
   20:(<HPLCForm/>),
+  27:(<Elemental_analyser/>),
 }
 const FormComponent = () => {
   const router = useRouter();

@@ -1,29 +1,38 @@
-"use client"
 import React, { useState } from 'react';
 
+const id = 18;
+
 const FluorescenceMicroscopyForm = () => {
-  const [sampleType, setSampleType] = useState('');
-  const [numberOfSamples, setNumberOfSamples] = useState('');
-  const [visualized, setVisualized] = useState(false); 
-  const [antifadeReagent, setAntifadeReagent] = useState(false); 
-  const [fluorochromes, setFluorochromes] = useState('');
-  const [emissionWavelength, setEmissionWavelength] = useState('');
-  const [excitationWavelength, setExcitationWavelength] = useState('');
-  const [magnification, setMagnification] = useState('');
+  const SETitem = (e, setVariable, variable) => {
+    const formDetails = JSON.parse(localStorage.getItem("form_details")) || {};
+    formDetails[id] = formDetails[id] || {};
+    formDetails[id][variable] = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    localStorage.setItem("form_details", JSON.stringify(formDetails));
+    setVariable(e.target.type === "checkbox" ? e.target.checked : e.target.value);
+  };
+
+  const GETitem = (def, variable) => {
+    if (typeof window !== "undefined" && localStorage.getItem("form_details")) {
+      const formDetails = JSON.parse(localStorage.getItem("form_details"));
+      if (formDetails[id] && formDetails[id][variable]) {
+        return formDetails[id][variable];
+      }
+    }
+    return def;
+  };
+
+  const [sampleType, setSampleType] = useState(() => GETitem("", "sampleType"));
+  const [numberOfSamples, setNumberOfSamples] = useState(() => GETitem("", "numberOfSamples"));
+  const [visualized, setVisualized] = useState(() => GETitem(false, "visualized"));
+  const [antifadeReagent, setAntifadeReagent] = useState(() => GETitem(false, "antifadeReagent"));
+  const [fluorochromes, setFluorochromes] = useState(() => GETitem("", "fluorochromes"));
+  const [emissionWavelength, setEmissionWavelength] = useState(() => GETitem("", "emissionWavelength"));
+  const [excitationWavelength, setExcitationWavelength] = useState(() => GETitem("", "excitationWavelength"));
+  const [magnification, setMagnification] = useState(() => GETitem("", "magnification"));
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission (send data to server)
-    console.log('Form Data:', { 
-      sampleType, 
-      numberOfSamples,
-      visualized,
-      antifadeReagent,
-      fluorochromes,
-      emissionWavelength,
-      excitationWavelength,
-      magnification
-    }); 
+    console.log('Form Data:', { sampleType, numberOfSamples, visualized, antifadeReagent, fluorochromes, emissionWavelength, excitationWavelength, magnification });
   };
 
   return (
@@ -31,98 +40,114 @@ const FluorescenceMicroscopyForm = () => {
       <h2 className="text-3xl font-bold mb-4 text-center">Fluorescence Microscopy Request Form</h2>
       <form onSubmit={handleSubmit} className="max-w-md mx-auto">
         <div className="grid grid-cols-2 gap-8">
+          {/* Sample Type */}
           <div className="mb-4">
-            <label for="sampleType" className="block text-gray-700 text-sm font-bold mb-2">Sample Type</label>
+            <label htmlFor="sampleType" className="block text-gray-700 text-sm font-bold mb-2">Sample Type</label>
             <input 
               type="text"
               id="sampleType" 
               value={sampleType}
-              onChange={(e) => setSampleType(e.target.value)}
+              onChange={(e) => SETitem(e, setSampleType, "sampleType")}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
               placeholder="Enter sample type..." 
               required
             />
           </div>
 
+          {/* Number of Samples */}
           <div className="mb-4">
-            <label for="numberOfSamples" className="block text-gray-700 text-sm font-bold mb-2">Number of Samples</label>
+            <label htmlFor="numberOfSamples" className="block text-gray-700 text-sm font-bold mb-2">Number of Samples</label>
             <input 
               type="number" 
               id="numberOfSamples" 
               value={numberOfSamples}
-              onChange={(e) => setNumberOfSamples(e.target.value)}
+              onChange={(e) => SETitem(e, setNumberOfSamples, "numberOfSamples")}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
               placeholder="Enter number of samples..." 
               required
             />
           </div>
 
+          {/* Visualized in Fluorescence Microscope */}
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">Visualized in Fluorescence Microscope?</label>
             <div className="flex items-center">
-              <input type="radio" id="visualizedYes" name="visualized" value={true} checked={visualized === true} onChange={() => setVisualized(true)} className="form-radio h-5 w-5 text-gray-600" />
-              <label htmlFor="visualizedYes" className="ml-2">Yes</label>
-              <input type="radio" id="visualizedNo" name="visualized" value={false} checked={visualized === false} onChange={() => setVisualized(false)} className="form-radio h-5 w-5 text-gray-600 ml-4" />
-              <label htmlFor="visualizedNo" className="ml-2">No</label>
+              <input 
+                type="checkbox" 
+                id="visualized" 
+                checked={visualized}
+                onChange={(e) => SETitem(e, setVisualized, "visualized")}
+                className="form-checkbox h-5 w-5 text-gray-600" 
+              />
+              <label htmlFor="visualized" className="ml-2">Yes</label>
             </div>
           </div>
 
+          {/* Antifade Reagent Used */}
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">Antifade Reagent Used?</label>
             <div className="flex items-center">
-              <input type="radio" id="antifadeYes" name="antifade" value={true} checked={antifadeReagent === true} onChange={() => setAntifadeReagent(true)} className="form-radio h-5 w-5 text-gray-600" />
-              <label htmlFor="antifadeYes" className="ml-2">Yes</label>
-              <input type="radio" id="antifadeNo" name="antifade" value={false} checked={antifadeReagent === false} onChange={() => setAntifadeReagent(false)} className="form-radio h-5 w-5 text-gray-600 ml-4" />
-              <label htmlFor="antifadeNo" className="ml-2">No</label>
+              <input 
+                type="checkbox" 
+                id="antifadeReagent" 
+                checked={antifadeReagent}
+                onChange={(e) => SETitem(e, setAntifadeReagent, "antifadeReagent")}
+                className="form-checkbox h-5 w-5 text-gray-600" 
+              />
+              <label htmlFor="antifadeReagent" className="ml-2">Yes</label>
             </div>
           </div>
 
+          {/* Fluorochrome(s) */}
           <div className="mb-4">
-            <label for="fluorochromes" className="block text-gray-700 text-sm font-bold mb-2">Fluorochrome(s)</label>
+            <label htmlFor="fluorochromes" className="block text-gray-700 text-sm font-bold mb-2">Fluorochrome(s)</label>
             <input
               type="text" 
               id="fluorochromes" 
               value={fluorochromes}
-              onChange={(e) => setFluorochromes(e.target.value)}
+              onChange={(e) => SETitem(e, setFluorochromes, "fluorochromes")}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
               placeholder="Enter fluorochromes..." 
               required
             />
           </div>
 
+          {/* Emission Wavelength */}
           <div className="mb-4">
-            <label for="emissionWavelength" className="block text-gray-700 text-sm font-bold mb-2">Emission Wavelength</label>
+            <label htmlFor="emissionWavelength" className="block text-gray-700 text-sm font-bold mb-2">Emission Wavelength</label>
             <input 
               type="text"
               id="emissionWavelength" 
               value={emissionWavelength}
-              onChange={(e) => setEmissionWavelength(e.target.value)}
+              onChange={(e) => SETitem(e, setEmissionWavelength, "emissionWavelength")}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
               placeholder="Enter emission wavelength..." 
               required
             />
           </div>
 
+          {/* Excitation Wavelength */}
           <div className="mb-4">
-            <label for="excitationWavelength" className="block text-gray-700 text-sm font-bold mb-2">Excitation Wavelength</label>
+            <label htmlFor="excitationWavelength" className="block text-gray-700 text-sm font-bold mb-2">Excitation Wavelength</label>
             <input 
               type="text"
               id="excitationWavelength" 
               value={excitationWavelength}
-              onChange={(e) => setExcitationWavelength(e.target.value)}
+              onChange={(e) => SETitem(e, setExcitationWavelength, "excitationWavelength")}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
               placeholder="Enter excitation wavelength..." 
               required
             />
           </div>
 
+          {/* Magnification */}
           <div className="mb-4">
-            <label for="magnification" className="block text-gray-700 text-sm font-bold mb-2">Magnification</label>
+            <label htmlFor="magnification" className="block text-gray-700 text-sm font-bold mb-2">Magnification</label>
             <input 
               type="text"
               id="magnification" 
               value={magnification}
-              onChange={(e) => setMagnification(e.target.value)}
+              onChange={(e) => SETitem(e, setMagnification, "magnification")}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
               placeholder="Enter magnification..." 
               required
@@ -130,6 +155,7 @@ const FluorescenceMicroscopyForm = () => {
           </div> 
         </div>
 
+        {/* Submit Button */}
         <div className="flex items-center justify-center mt-6">
           <button type="submit" className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
         </div>
@@ -138,4 +164,4 @@ const FluorescenceMicroscopyForm = () => {
   );
 };
 
-export default FluorescenceMicroscopyForm; 
+export default FluorescenceMicroscopyForm;
