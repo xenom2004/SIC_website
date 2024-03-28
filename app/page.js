@@ -45,7 +45,7 @@ export default function Home() {
           <h2 className="text-lg font-bold mb-2">Internal User</h2>
           <p className="text-lg text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
           <Link href="/undergraduate-programs" passHref>
-            <a className="text-blue-500 hover:underline mt-4">Explore</a>
+            <div className="text-blue-500 hover:underline mt-4">Explore</div>
           </Link>
         </div>
         {/* Graduate programs */}
@@ -54,7 +54,7 @@ export default function Home() {
           <h2 className="text-lg font-bold mb-2">External Institution</h2>
           <p className="text-lg text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
           <Link href="/graduate-programs" passHref>
-            <a className="text-blue-500 hover:underline mt-4">Explore</a>
+            <div className="text-blue-500 hover:underline mt-4">Explore</div>
           </Link>
         </div>
         {/* Professional and Continuing Education */}
@@ -63,7 +63,7 @@ export default function Home() {
           <h2 className="text-lg font-bold mb-2">Company</h2>
           <p className="text-lg text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
           <Link href="/professional-education" passHref>
-            <a className="text-blue-500 hover:underline mt-4">Explore</a>
+            <div className="text-blue-500 hover:underline mt-4">Explore</div>
           </Link>
         </div>
       </div>
