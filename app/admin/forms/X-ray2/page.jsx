@@ -1,26 +1,5 @@
-"use client";
-import React, { useState } from "react";
-
-const XAFSForm = () => {
-  const [measurementType, setMeasurementType] = useState("");
-  const [caution, setCaution] = useState("");
-  const [numberOfSamples, setNumberOfSamples] = useState("");
-  const [sampleNature, setSampleNature] = useState("");
-  const [mdsSheet, setMdsSheet] = useState("");
-  const [specialPrecautions, setSpecialPrecautions] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission, e.g., send data to server
-    console.log("Form submitted:", {
-      measurementType,
-      caution,
-      numberOfSamples,
-      sampleNature,
-      mdsSheet,
-      specialPrecautions,
-    });
-  };
+const id=3;
+const XAFSForm = (prop) => {
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -36,8 +15,8 @@ const XAFSForm = () => {
             <input
               type="radio"
               value="XANES"
-              checked={measurementType === "XANES"}
-              onChange={() => setMeasurementType("XANES")}
+              checked={prop.prop.measurementType === "XANES"}
+              readOnly={true}
               className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">XANES</span>
@@ -46,8 +25,8 @@ const XAFSForm = () => {
             <input
               type="radio"
               value="EXAFS"
-              checked={measurementType === "EXAFS"}
-              onChange={() => setMeasurementType("EXAFS")}
+              checked={prop.prop.measurementType === "EXAFS"}
+              readOnly={true}
               className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">EXAFS</span>
@@ -56,8 +35,8 @@ const XAFSForm = () => {
             <input
               type="radio"
               value="Both"
-              checked={measurementType === "Both"}
-              onChange={() => setMeasurementType("Both")}
+              checked={prop.prop.measurementType === "Both"}
+              readOnly={true}
               className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Both</span>
@@ -72,8 +51,8 @@ const XAFSForm = () => {
           </label>
           <textarea
             id="caution"
-            value={caution}
-            onChange={(e) => setCaution(e.target.value)}
+            value={prop.prop.caution}
+            readOnly={true}
             rows="3"
             className="resize-none appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter caution..."
@@ -90,8 +69,8 @@ const XAFSForm = () => {
           <input
             type="number"
             id="numberOfSamples"
-            value={numberOfSamples}
-            onChange={(e) => setNumberOfSamples(e.target.value)}
+            value={prop.prop.numberOfSamples}
+            readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter number of samples..."
             required
@@ -105,8 +84,8 @@ const XAFSForm = () => {
             <input
               type="radio"
               value="Hazardous"
-              checked={sampleNature === "Hazardous"}
-              onChange={() => setSampleNature("Hazardous")}
+              checked={prop.prop.sampleNature === "Hazardous"}
+              readOnly={true}
               className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Hazardous</span>
@@ -115,8 +94,8 @@ const XAFSForm = () => {
             <input
               type="radio"
               value="Hygroscopic"
-              checked={sampleNature === "Hygroscopic"}
-              onChange={() => setSampleNature("Hygroscopic")}
+              checked={prop.prop.sampleNature === "Hygroscopic"}
+              readOnly={true}
               className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Hygroscopic</span>
@@ -125,8 +104,8 @@ const XAFSForm = () => {
             <input
               type="radio"
               value="Oxidises in air"
-              checked={sampleNature === "Oxidises in air"}
-              onChange={() => setSampleNature("Oxidises in air")}
+              checked={prop.prop.sampleNature === "Oxidises in air"}
+              readOnly={true}
               className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Oxidises in air</span>
@@ -135,8 +114,8 @@ const XAFSForm = () => {
             <input
               type="radio"
               value="None of these"
-              checked={sampleNature === "None of these"}
-              onChange={() => setSampleNature("None of these")}
+              checked={prop.prop.sampleNature === "None of these"}
+              readOnly={true}
               className=" form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">None of these</span>
@@ -150,8 +129,8 @@ const XAFSForm = () => {
             <input
               type="radio"
               value="Attached"
-              checked={mdsSheet === "Attached"}
-              onChange={() => setMdsSheet("Attached")}
+              checked={prop.prop.mdsSheet === "Attached"}
+              readOnly={true}
               className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Attached</span>
@@ -160,8 +139,8 @@ const XAFSForm = () => {
             <input
               type="radio"
               value="Non-attached"
-              checked={mdsSheet === "Non-attached"}
-              onChange={() => setMdsSheet("Non-attached")}
+              checked={prop.prop.mdsSheet === "Non-attached"}
+              readOnly={true}
               className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Non-attached</span>
@@ -176,8 +155,8 @@ const XAFSForm = () => {
           </label>
           <textarea
             id="specialPrecautions"
-            value={specialPrecautions}
-            onChange={(e) => setSpecialPrecautions(e.target.value)}
+            value={sprop.prop.pecialPrecautions}
+            readOnly={true}
             rows="3"
             className="resize-none appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter special precautions..."

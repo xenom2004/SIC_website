@@ -1,54 +1,20 @@
-"use client"
-import React, { useState } from 'react';
+const id=11;
 
-const PLForm = () => {
+const PLForm = (prop) => {
 
-  const [natureOfSample, setNatureOfSample] = useState('');
-  const [noOfSamples, setNoOfSamples]=useState('');
-  const [conductive, setConductive] = useState({
-    conductive:false,
-    nonconductive:false
-  });
-  const [description,setDescription]=useState({
-    SEM:false,
-    EDX:false,
-    WDX:false
-  }
-  )
-  const [expectedElements,setExpectedElements]=useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission (send data to server)
-    console.log('Form Data:', { natureOfSample, noOfSamples, conductive, description,expectedElements });
-  };
-
-  const handleConductiveChange=(option)=>{
-    setConductive({
-        ...conductive,
-        [option]:!conductive[option],
-    });
-  };
-
-  const handleDescriptionChange=(option)=>{
-    setDescription({
-        ...description,
-        [option]:!description[option],
-    });
-  };
 
   return (
     <div className="container mx-auto px-4 py-8">
       <h2 className="mx-auto text-3xl font-bold mb-4">Photo-luminescence (Field Emission Scanning Electron Microscope) Form</h2>
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+      <form  className="max-w-md mx-auto">
       <div className="mb-4">
           <label htmlFor="natureOfSample" className="block text-gray-700 text-sm font-bold mb-2">
             Nature of Sample
           </label>
           <textarea
             id="natureOfSample"
-            value={natureOfSample}
-            onChange={(e) => setNatureOfSample(e.target.value)}
+            value={prop.prop.natureOfSample}
+            readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Kindly intimate if toxic"
             required
@@ -60,8 +26,8 @@ const PLForm = () => {
           </label>
           <textarea
             id="noOfSamples"
-            value={noOfSamples}
-            onChange={(e) => setNoOfSamples(e.target.value)}
+            value={prop.prop.noOfSamples}
+            readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="No of sample"
             required
@@ -75,8 +41,8 @@ const PLForm = () => {
             <input
               type="checkbox"
               value="Conductive"
-              checked={conductive.conductive}
-              onChange={() => handleConductiveChange('conductive')}
+              checked={prop.prop.conductive.conductive}
+              readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Conductive</span>
@@ -85,8 +51,8 @@ const PLForm = () => {
             <input
               type="checkbox"
               value="nonconductive"
-              checked={conductive.nonconductive}
-              onChange={() => handleConductiveChange('nonconductive')}
+              checked={prop.prop.conductive.nonconductive}
+              readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Non-conductive</span>
@@ -100,8 +66,8 @@ const PLForm = () => {
             <input
               type="checkbox"
               value="SEM"
-              checked={description.SEM}
-              onChange={() => handleDescriptionChange('SEM')}
+              checked={prop.prop.description.SEM}
+              readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">SEM</span>
@@ -110,8 +76,8 @@ const PLForm = () => {
             <input
               type="checkbox"
               value="EDM"
-              checked={description.EDM}
-              onChange={() => handleDescriptionChange('EDM')}
+              checked={prop.prop.description.EDM}
+              readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">EDM</span>
@@ -120,8 +86,8 @@ const PLForm = () => {
             <input
               type="checkbox"
               value="WDX"
-              checked={description.WDX}
-              onChange={() => handleDescriptionChange('WDX')}
+              checked={prop.prop.description.WDX}
+              readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">WDX</span>
@@ -134,8 +100,8 @@ const PLForm = () => {
           </label>
           <textarea
             id="expectedElements"
-            value={expectedElements}
-            onChange={(e) => setExpectedElements(e.target.value)}
+            value={prop.prop.expectedElements}
+            readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter..."
             required

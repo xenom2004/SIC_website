@@ -1,47 +1,15 @@
-"use client";
-import React, { useState } from "react";
+const id=8;
 
-const FTIRForm = () => {
-  const [solubility, setSolubility] = useState("");
-  const [hazards, setHazards] = useState("");
-  const [calibrationConcentration, setCalibrationConcentration] = useState("");
-  const [molecularFormula, setMolecularFormula] = useState("");
-  const [molecularWeight, setMolecularWeight] = useState("");
-  const [excitationWavelength, setExcitationWavelength] = useState("");
-  const [rangeOfScan, setRangeOfScan] = useState("");
-  const [specialRequest, setSpecialRequest] = useState("");
-  const [analysisOptions, setAnalysisOptions] = useState([]);
+const FTIRForm = (prop) => {
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission (send data to server)
-    console.log("Form Data:", {
-      solubility,
-      hazards,
-      calibrationConcentration,
-      molecularFormula,
-      molecularWeight,
-      excitationWavelength,
-      rangeOfScan,
-      specialRequest,
-      analysisOptions,
-    });
-  };
 
-  const handleAnalysisChange = (option) => {
-    if (analysisOptions.includes(option)) {
-      setAnalysisOptions(analysisOptions.filter((item) => item !== option));
-    } else {
-      setAnalysisOptions([...analysisOptions, option]);
-    }
-  };
 
   return (
     <div className="container mx-auto px-4 py-8">
       <h2 className="text-3xl font-bold mb-4 text-center">
         Additional Analysis Request Form
       </h2>
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+      <form className="max-w-md mx-auto">
         <div className="grid grid-cols-2 gap-8">
           <div className="mb-4">
             <label
@@ -52,8 +20,8 @@ const FTIRForm = () => {
             </label>
             <textarea
               id="solubility"
-              value={solubility}
-              onChange={(e) => setSolubility(e.target.value)}
+              value={prop.prop.solubility}
+              readOnly={true}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Specify solvent"
               required
@@ -69,8 +37,8 @@ const FTIRForm = () => {
             </label>
             <textarea
               id="hazards"
-              value={hazards}
-              onChange={(e) => setHazards(e.target.value)}
+              value={prop.prop.hazards}
+              readOnly={true}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter hazard information..."
             ></textarea>
@@ -84,8 +52,8 @@ const FTIRForm = () => {
             </label>
             <textarea
               id="calibrationConcentration"
-              value={calibrationConcentration}
-              onChange={(e) => setCalibrationConcentration(e.target.value)}
+              value={prop.prop.calibrationConcentration}
+              readOnly={true}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter Calibration Concentration..."
               required
@@ -100,8 +68,8 @@ const FTIRForm = () => {
             </label>
             <textarea
               id="molecularFormula"
-              value={molecularFormula}
-              onChange={(e) => setMolecularFormula(e.target.value)}
+              value={prop.prop.molecularFormula}
+              readOnly={true}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter Molecular Formula..."
               required
@@ -116,8 +84,8 @@ const FTIRForm = () => {
             </label>
             <textarea
               id="molecularWeight"
-              value={molecularWeight}
-              onChange={(e) => setMolecularWeight(e.target.value)}
+              value={prop.prop.molecularWeight}
+              readOnly={true}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter Molecular Weight..."
               required
@@ -132,8 +100,8 @@ const FTIRForm = () => {
             </label>
             <textarea
               id="excitationWavelength"
-              value={excitationWavelength}
-              onChange={(e) => setExcitationWavelength(e.target.value)}
+              value={prop.prop.excitationWavelength}
+              readOnly={true}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter Excitation Wavelength..."
               required
@@ -148,8 +116,8 @@ const FTIRForm = () => {
             </label>
             <textarea
               id="rangeOfScan"
-              value={rangeOfScan}
-              onChange={(e) => setRangeOfScan(e.target.value)}
+              value={prop.prop.rangeOfScan}
+              readOnly={true}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter range of scan..."
               required
@@ -164,8 +132,8 @@ const FTIRForm = () => {
             </label>
             <textarea
               id="specialRequest"
-              value={specialRequest}
-              onChange={(e) => setSpecialRequest(e.target.value)}
+              value={prop.prop.specialRequest}
+              readOnly={true}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter special request..."
             ></textarea>
@@ -180,8 +148,8 @@ const FTIRForm = () => {
             <input
               type="checkbox"
               value="Solid"
-              checked={analysisOptions.includes("Solid")}
-              onChange={() => handleAnalysisChange("Solid")}
+              checked={prop.prop.analysisOptions.includes("Solid")}
+              readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Solid (KBr Pallet)</span>
@@ -190,8 +158,8 @@ const FTIRForm = () => {
             <input
               type="checkbox"
               value="Liquid"
-              checked={analysisOptions.includes("Liquid")}
-              onChange={() => handleAnalysisChange("Liquid")}
+              checked={prop.prop.analysisOptions.includes("Liquid")}
+              readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Liquid (Liquid Cells)</span>
@@ -200,8 +168,8 @@ const FTIRForm = () => {
             <input
               type="checkbox"
               value="ATR"
-              checked={analysisOptions.includes("ATR")}
-              onChange={() => handleAnalysisChange("ATR")}
+              checked={prop.prop.analysisOptions.includes("ATR")}
+              readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">ATR</span>

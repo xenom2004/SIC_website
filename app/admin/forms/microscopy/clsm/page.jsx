@@ -1,43 +1,20 @@
-"use client"
-import React, { useState } from 'react';
+const id=18;
 
-const FluorescenceMicroscopyForm = () => {
-  const [sampleType, setSampleType] = useState('');
-  const [numberOfSamples, setNumberOfSamples] = useState('');
-  const [visualized, setVisualized] = useState(false); 
-  const [antifadeReagent, setAntifadeReagent] = useState(false); 
-  const [fluorochromes, setFluorochromes] = useState('');
-  const [emissionWavelength, setEmissionWavelength] = useState('');
-  const [excitationWavelength, setExcitationWavelength] = useState('');
-  const [magnification, setMagnification] = useState('');
+const FluorescenceMicroscopyForm = (prop) => {
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission (send data to server)
-    console.log('Form Data:', { 
-      sampleType, 
-      numberOfSamples,
-      visualized,
-      antifadeReagent,
-      fluorochromes,
-      emissionWavelength,
-      excitationWavelength,
-      magnification
-    }); 
-  };
 
   return (
     <div className="container mx-auto px-4 py-8">
       <h2 className="text-3xl font-bold mb-4 text-center">Fluorescence Microscopy Request Form</h2>
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+      <form  className="max-w-md mx-auto">
         <div className="grid grid-cols-2 gap-8">
           <div className="mb-4">
             <label for="sampleType" className="block text-gray-700 text-sm font-bold mb-2">Sample Type</label>
             <input 
               type="text"
               id="sampleType" 
-              value={sampleType}
-              onChange={(e) => setSampleType(e.target.value)}
+              value={prop.propsampleType}
+              readOnly={true}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
               placeholder="Enter sample type..." 
               required
@@ -49,8 +26,8 @@ const FluorescenceMicroscopyForm = () => {
             <input 
               type="number" 
               id="numberOfSamples" 
-              value={numberOfSamples}
-              onChange={(e) => setNumberOfSamples(e.target.value)}
+              value={prop.prop.numberOfSamples}
+              readOnly={true}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
               placeholder="Enter number of samples..." 
               required
@@ -60,9 +37,9 @@ const FluorescenceMicroscopyForm = () => {
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">Visualized in Fluorescence Microscope?</label>
             <div className="flex items-center">
-              <input type="radio" id="visualizedYes" name="visualized" value={true} checked={visualized === true} onChange={() => setVisualized(true)} className="form-radio h-5 w-5 text-gray-600" />
+              <input type="radio" id="visualizedYes" name="visualized" value={true} checked={prop.prop.visualized === true} readOnly={true} className="form-radio h-5 w-5 text-gray-600" />
               <label htmlFor="visualizedYes" className="ml-2">Yes</label>
-              <input type="radio" id="visualizedNo" name="visualized" value={false} checked={visualized === false} onChange={() => setVisualized(false)} className="form-radio h-5 w-5 text-gray-600 ml-4" />
+              <input type="radio" id="visualizedNo" name="visualized" value={false} checked={prop.prop.visualized === false} readOnly={true} className="form-radio h-5 w-5 text-gray-600 ml-4" />
               <label htmlFor="visualizedNo" className="ml-2">No</label>
             </div>
           </div>
@@ -70,9 +47,11 @@ const FluorescenceMicroscopyForm = () => {
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">Antifade Reagent Used?</label>
             <div className="flex items-center">
-              <input type="radio" id="antifadeYes" name="antifade" value={true} checked={antifadeReagent === true} onChange={() => setAntifadeReagent(true)} className="form-radio h-5 w-5 text-gray-600" />
+              <input type="radio" id="antifadeYes" name="antifade" value={true} checked={prop.prop.antifadeReagent === true} readOnly={true}
+              className="form-radio h-5 w-5 text-gray-600" />
               <label htmlFor="antifadeYes" className="ml-2">Yes</label>
-              <input type="radio" id="antifadeNo" name="antifade" value={false} checked={antifadeReagent === false} onChange={() => setAntifadeReagent(false)} className="form-radio h-5 w-5 text-gray-600 ml-4" />
+              <input type="radio" id="antifadeNo" name="antifade" value={false} checked={prop.prop.antifadeReagent === false} readOnly={true}
+              className="form-radio h-5 w-5 text-gray-600 ml-4" />
               <label htmlFor="antifadeNo" className="ml-2">No</label>
             </div>
           </div>
@@ -82,8 +61,8 @@ const FluorescenceMicroscopyForm = () => {
             <input
               type="text" 
               id="fluorochromes" 
-              value={fluorochromes}
-              onChange={(e) => setFluorochromes(e.target.value)}
+              value={prop.prop.fluorochromes}
+              readOnly={true}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
               placeholder="Enter fluorochromes..." 
               required
@@ -95,8 +74,8 @@ const FluorescenceMicroscopyForm = () => {
             <input 
               type="text"
               id="emissionWavelength" 
-              value={emissionWavelength}
-              onChange={(e) => setEmissionWavelength(e.target.value)}
+              value={prop.prop.emissionWavelength}
+              readOnly={true}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
               placeholder="Enter emission wavelength..." 
               required
@@ -108,8 +87,8 @@ const FluorescenceMicroscopyForm = () => {
             <input 
               type="text"
               id="excitationWavelength" 
-              value={excitationWavelength}
-              onChange={(e) => setExcitationWavelength(e.target.value)}
+              value={prop.prop.excitationWavelength}
+              readOnly={true}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
               placeholder="Enter excitation wavelength..." 
               required
@@ -121,8 +100,8 @@ const FluorescenceMicroscopyForm = () => {
             <input 
               type="text"
               id="magnification" 
-              value={magnification}
-              onChange={(e) => setMagnification(e.target.value)}
+              value={prop.prop.magnification}
+              readOnly={true}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
               placeholder="Enter magnification..." 
               required
