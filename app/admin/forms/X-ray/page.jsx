@@ -1,43 +1,6 @@
-"use client";
-import React, { useState } from "react";
+const id=1;
 
-const SingleCrystalXRayForm = () => {
-  const [crystalInfo, setCrystalInfo] = useState("");
-  const [color, setColor] = useState("");
-  const [temperature, setTemperature] = useState("");
-  const [stability, setStability] = useState([]);
-  const [otherTechniques, setOtherTechniques] = useState([]);
-  const [structureMaterial, setstructureMaterial] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission, e.g., send data to server
-    console.log("Form submitted:", {
-      crystalInfo,
-      color,
-      temperature,
-      stability,
-      otherTechniques,
-    });
-  };
-
-  const handleStabilityChange = (selectedStability) => {
-    if (stability.includes(selectedStability)) {
-      setStability(stability.filter((item) => item !== selectedStability));
-    } else {
-      setStability([...stability, selectedStability]);
-    }
-  };
-
-  const handleTechniquesChange = (selectedTechnique) => {
-    if (otherTechniques.includes(selectedTechnique)) {
-      setOtherTechniques(
-        otherTechniques.filter((item) => item !== selectedTechnique)
-      );
-    } else {
-      setOtherTechniques([...otherTechniques, selectedTechnique]);
-    }
-  };
+const SingleCrystalXRayForm = (prop) => {
 
   return (
     <div className="container mx-auto px-4 py-8 ">
@@ -55,8 +18,8 @@ const SingleCrystalXRayForm = () => {
           <input
             type="text"
             id="crystalInfo"
-            value={crystalInfo}
-            onChange={(e) => setCrystalInfo(e.target.value)}
+            value={prop.prop.crystalInfo}
+            readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter crystal information..."
             required
@@ -72,8 +35,8 @@ const SingleCrystalXRayForm = () => {
           <input
             type="text"
             id="color"
-            value={color}
-            onChange={(e) => setColor(e.target.value)}
+            value={prop.prop.color}
+            readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter crystal color..."
             required
@@ -89,8 +52,8 @@ const SingleCrystalXRayForm = () => {
           <input
             type="text"
             id="temperature"
-            value={temperature}
-            onChange={(e) => setTemperature(e.target.value)}
+            value={prop.prop.temperature}
+            readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter temperature..."
             required
@@ -104,8 +67,7 @@ const SingleCrystalXRayForm = () => {
             <input
               type="checkbox"
               value="stable"
-              checked={stability.includes("stable")}
-              onChange={() => handleStabilityChange("stable")}
+              checked={prop.prop.stability.includes("stable")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Stable</span>
@@ -114,8 +76,7 @@ const SingleCrystalXRayForm = () => {
             <input
               type="checkbox"
               value="air-sensitive"
-              checked={stability.includes("air-sensitive")}
-              onChange={() => handleStabilityChange("air-sensitive")}
+              checked={prop.prop.stability.includes("air-sensitive")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Air-Sensitive</span>
@@ -124,8 +85,7 @@ const SingleCrystalXRayForm = () => {
             <input
               type="checkbox"
               value="moisture-sensitive"
-              checked={stability.includes("moisture-sensitive")}
-              onChange={() => handleStabilityChange("moisture-sensitive")}
+              checked={prop.prop.stability.includes("moisture-sensitive")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Moisture-Sensitive</span>
@@ -139,8 +99,7 @@ const SingleCrystalXRayForm = () => {
             <input
               type="checkbox"
               value="IR"
-              checked={otherTechniques.includes("IR")}
-              onChange={() => handleTechniquesChange("IR")}
+              checked={prop.prop.otherTechniques.includes("IR")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">IR</span>
@@ -149,8 +108,7 @@ const SingleCrystalXRayForm = () => {
             <input
               type="checkbox"
               value="NMR"
-              checked={otherTechniques.includes("NMR")}
-              onChange={() => handleTechniquesChange("NMR")}
+              checked={prop.prop.otherTechniques.includes("NMR")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">NMR</span>
@@ -159,8 +117,7 @@ const SingleCrystalXRayForm = () => {
             <input
               type="checkbox"
               value="Mass Spectrum"
-              checked={otherTechniques.includes("Mass Spectrum")}
-              onChange={() => handleTechniquesChange("Mass Spectrum")}
+              checked={prop.prop.otherTechniques.includes("Mass Spectrum")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Mass Spectrum</span>
@@ -175,8 +132,7 @@ const SingleCrystalXRayForm = () => {
             <input
               type="text"
               id="crystalInfo"
-              value={structureMaterial}
-              onChange={(e) => setstructureMaterial(e.target.value)}
+              value={prop.prop.structureMaterial}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter starting material and solvent Information"
               required

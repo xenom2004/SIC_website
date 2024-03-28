@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 
-const PLForm = () => {
+const FESEMForm = () => {
 
   const [natureOfSample, setNatureOfSample] = useState('');
   const [noOfSamples, setNoOfSamples]=useState('');
@@ -157,4 +157,4 @@ const PLForm = () => {
   );
 };
 
-export default PLForm;
+export default FESEMForm;

@@ -5,7 +5,7 @@ const UVVISNIRForm =()=>{
     const [noOfSamples, setNoOfSamples]=useState('');
     const [wavelengthRange, setWavelengthRange]=useState('');
     const [specialExperiment, setSpecialExperiment]=useState('');
-}
+
 
 const handleSubmit=(e)=>{
     e.preventDefault();
@@ -57,5 +57,6 @@ return (
       </form>
     </div>
 );
+};
 
 export default UVVISNIRForm;
