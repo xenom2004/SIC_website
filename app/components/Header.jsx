@@ -70,7 +70,7 @@ const Header = () => {
         <div className="flex items-center">
           {session && (
             <Link href="/profile">
-              <button className="text-sm font-semibold px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 mr-4">
+              <button className="text-sm font-semibold px-4 py-2   bg-blue-850   text-white  mr-4">
                 Profile
               </button>
             </Link>
