@@ -18,22 +18,22 @@ import SingleCrystalXRayForm from '../forms/X-ray/page'
 import XAFSForm from '../forms/X-ray2/page'
 
 const forms_instrument={
-    2:(<PowderXRDForm/>),
-    3:(<XAFSForm/>),
-    1:(<SingleCrystalXRayForm/>),
-    25:(<BET/>),
-    20:(<SETitem/>),
-    13:(<UVVISNIRForm/>),
-    12:(<UVVisForm/>),
-    18:(<FluorescenceMicroscopyForm/>),
-    9:(<ChemicalDataForm/>),
-    14:(<SFMForm/>),
-    8:(<FTIRForm/>),
-    25:(<BET/>),
-    15:(<PLForm/>),
-    13:( <FTIRForm/>),
-    20:(<HPLCForm/>),
-    27:(<Elemental_analyser/>),
+    2: (prop)=>{(<PowderXRDForm prop={prop}/>)},
+    3: (prop)=>{(<XAFSForm prop={prop}/>)},
+    1: (prop)=>{(<SingleCrystalXRayForm/>)},
+    25:(prop)=>{ (<BET prop={prop}/>)},
+    20:(prop)=>{ (<SETitem prop={prop}/>)},
+    13:(prop)=>{ (<UVVISNIRForm prop={prop}/>)},
+    12:(prop)=>{ (<UVVisForm prop={prop}/>)},
+    18:(prop)=>{ (<FluorescenceMicroscopyForm prop={prop}/>)},
+    9: (prop)=>{( <ChemicalDataForm prop={prop}/>)},
+    14:(prop)=>{ (<SFMForm prop={prop}/>)},
+    8: (prop)=>{(<FTIRForm prop={prop}/>)},
+    25:(prop)=>{ (<BET prop={prop}/>)},
+    15:(prop)=>{ (<PLForm prop={prop}/>)},
+    13:(prop)=>{ ( <FTIRForm prop={prop}/>)},
+    20:(prop)=>{ (<HPLCForm prop={prop}/>)},
+    27:(prop)=>{ (<Elemental_analyser prop={prop}/>)},
   }
 
 const OrderDetails = ({ params }) => {
