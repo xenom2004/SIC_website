@@ -1,13 +1,14 @@
 const id=1;
 
 const SingleCrystalXRayForm = (prop) => {
+  {console.log(prop,"serty")}
 
   return (
     <div className="container mx-auto px-4 py-8 ">
       <h2 className="text-3xl font-bold mb-4  max-w-md mx-auto">
         Single Crystal X-ray Diffraction Facility Form
       </h2>
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+      <form  className="max-w-md mx-auto">
         <div className="mb-4">
           <label
             htmlFor="crystalInfo"
@@ -18,7 +19,7 @@ const SingleCrystalXRayForm = (prop) => {
           <input
             type="text"
             id="crystalInfo"
-            value={prop.prop.crystalInfo}
+            value={prop.prop?.crystalInfo}
             readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter crystal information..."
@@ -67,7 +68,7 @@ const SingleCrystalXRayForm = (prop) => {
             <input
               type="checkbox"
               value="stable"
-              checked={prop.prop.stability.includes("stable")}
+              checked={prop.prop.stability_stable}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Stable</span>
@@ -76,7 +77,7 @@ const SingleCrystalXRayForm = (prop) => {
             <input
               type="checkbox"
               value="air-sensitive"
-              checked={prop.prop.stability.includes("air-sensitive")}
+              checked={prop.prop.stability_air_sensitive}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Air-Sensitive</span>
@@ -85,7 +86,7 @@ const SingleCrystalXRayForm = (prop) => {
             <input
               type="checkbox"
               value="moisture-sensitive"
-              checked={prop.prop.stability.includes("moisture-sensitive")}
+              checked={prop.prop.stability_moisture_sensitive}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Moisture-Sensitive</span>
@@ -99,7 +100,7 @@ const SingleCrystalXRayForm = (prop) => {
             <input
               type="checkbox"
               value="IR"
-              checked={prop.prop.otherTechniques.includes("IR")}
+              checked={prop.prop.IR}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">IR</span>
@@ -108,7 +109,7 @@ const SingleCrystalXRayForm = (prop) => {
             <input
               type="checkbox"
               value="NMR"
-              checked={prop.prop.otherTechniques.includes("NMR")}
+              checked={prop.prop.NMR}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">NMR</span>
@@ -117,7 +118,7 @@ const SingleCrystalXRayForm = (prop) => {
             <input
               type="checkbox"
               value="Mass Spectrum"
-              checked={prop.prop.otherTechniques.includes("Mass Spectrum")}
+              checked={prop.prop.Mass_spectrum}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Mass Spectrum</span>
@@ -140,12 +141,7 @@ const SingleCrystalXRayForm = (prop) => {
           </div>
         </div>
         <div className="flex items-center justify-center mt-6">
-          <button
-            type="submit"
-            className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Submit
-          </button>
+          
         </div>
       </form>
     </div>

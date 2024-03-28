@@ -40,7 +40,9 @@ export default function Footer() {
               </li>
               <li>
                 <a href="#" className="text-gray-400 hover:text-white">
-                  Site Map
+                <div>
+                <iframe width="520" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" id="gmap_canvas" src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=sic-A%20Nationa%20Facility%20simrol+(SIC%20IIT%20Indore)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe> <a href='https://www.free-counters.org/'>https://www.free-counters.org</a> <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=cc4343392ebcb8ceedb6e2970cc9c36628798024'></script>
+                </div>
                 </a>
               </li>
             </nav>
@@ -103,9 +105,11 @@ export default function Footer() {
                   d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
                 ></path>
                 <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                
               </svg>
             </a>
           </span>
+          
         </div>
       </div>
     </footer>
