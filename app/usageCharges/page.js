@@ -11,6 +11,7 @@ import Link from 'next/link';
 
 import { Elemental_analyser} from "../components/form/elemental_analysis/page"
 
+
 const Row=({instrument,selectedInstruments,setSelectedInstruments,handleQuantityChange,handleInstrumentChange,current_charge})=>{
 
 
@@ -55,6 +56,7 @@ const Row=({instrument,selectedInstruments,setSelectedInstruments,handleQuantity
 
 }
 const ChargeCalculator = () => {
+  const [profile,setprofile]=useState(false);
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(true); 
@@ -148,6 +150,8 @@ const ChargeCalculator = () => {
   const gst_total=(val,percent)=>{
     return gst(val,percent)+val;
   }
+
+
 
 
   const handlePayNowClick = () => {
@@ -311,76 +315,141 @@ const ChargeCalculator = () => {
         <h2 className="text-3xl font-bold mb-4">Total Charges:</h2>
         <p className="text-xl font-semibold">₹{totalcharge}</p>
       </div>
-      {!session ? <>
-        <Button onPress={onOpen} color='success'>Pay Now</Button>
-      <Modal 
-        backdrop="opaque" 
-        isOpen={isOpen} 
-        onOpenChange={onOpenChange}
-        motionProps={{
-          variants: {
-            enter: {
-              y: 0,
-              opacity: 1,
-              transition: {
-                duration: 0.3,
-                ease: "easeOut",
-              },
-            },
-            exit: {
-              y: -20,
-              opacity: 0,
-              transition: {
-                duration: 0.2,
-                ease: "easeIn",
-              },
-            },
-          }
-        }}
-      >
-        <ModalContent>
-          {(onClose) => (
+      <div>
+      {!session ? (
+        <>
+          <Button onPress={onOpen} color='success'>Pay Now</Button>
+          <Modal
+            backdrop="opaque"
+            isOpen={isOpen}
+            onOpenChange={onOpenChange}
+            motionProps={{
+              variants: {
+                enter: {
+                  y: 0,
+                  opacity: 1,
+                  transition: {
+                    duration: 0.3,
+                    ease: "easeOut",
+                  },
+                },
+                exit: {
+                  y: -20,
+                  opacity: 0,
+                  transition: {
+                    duration: 0.2,
+                    ease: "easeIn",
+                  },
+                },
+              }
+            }}
+          >
+            <ModalContent>
+              {(onClose) => (
+                <>
+                  <ModalHeader className="flex flex-col gap-1">Proceed Further</ModalHeader>
+                  <ModalBody>
+                    <p>
+                      To smoothen the process of SIC, we have incorporated many new changes in the website.
+                    </p>
+                    <p>
+                      You need to Login to proceed.
+                    </p>
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button color="danger" variant="light" onPress={onClose}>
+                      Close
+                    </Button>
+                    <Link href="/login">
+                      <Button color="primary" onPress={onClose}>
+                        Log In
+                      </Button>
+                    </Link>
+                  </ModalFooter>
+                </>
+              )}
+            </ModalContent>
+          </Modal>
+        </>
+      ) : (
+        <div>
+          {!profile ? (
             <>
-              <ModalHeader className="flex flex-col gap-1">Proceed Furthur</ModalHeader>
-              <ModalBody>
-                <p> 
-                  To smoothen the process of SIC ,we have encorporated many new changes in the website.
-                </p>
-                <p>
-                  You need to Login to proceed
-                </p>
-                
-              </ModalBody>
-              <ModalFooter>
-                <Button color="danger" variant="light" onPress={onClose}>
-                  Close
-                </Button>
-                <Link href="/login">
-                <Button color="primary" onPress={onClose}>
-                  Log In
-                </Button>
-                </Link>
-                
-              </ModalFooter>
+              <Button onPress={onOpen} color='success'>Pay Now</Button>
+              <Modal
+                backdrop="opaque"
+                isOpen={isOpen}
+                onOpenChange={onOpenChange}
+                motionProps={{
+                  variants: {
+                    enter: {
+                      y: 0,
+                      opacity: 1,
+                      transition: {
+                        duration: 0.3,
+                        ease: "easeOut",
+                      },
+                    },
+                    exit: {
+                      y: -20,
+                      opacity: 0,
+                      transition: {
+                        duration: 0.2,
+                        ease: "easeIn",
+                      },
+                    },
+                  }
+                }}
+              >
+                <ModalContent>
+                  {(onClose) => (
+                    <>
+                      <ModalHeader className="flex flex-col gap-1">Complete Profile</ModalHeader>
+                      <ModalBody>
+                        <p>
+                          To smoothen the process of SIC, we have incorporated many new changes in the website.
+                        </p>
+                        <p>
+                          You need to complete the profile to proceed.
+                        </p>
+                        <p>
+                          It helps to speed up the process.
+                        </p>
+                      </ModalBody>
+                      <ModalFooter>
+                        <Button color="danger" variant="light" onPress={onClose}>
+                          Close
+                        </Button>
+                        <Link href="/profile">
+                          <Button color="primary" onPress={onClose}>
+                            Profile
+                          </Button>
+                        </Link>
+                      </ModalFooter>
+                    </>
+                  )}
+                </ModalContent>
+              </Modal>
+            </>
+          ) : (
+            <>
+            <button 
+        className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        onClick={handlePayNowClick}
+      >
+        Pay Now
+      </button>
+              {formDataExists ? (
+                <button onClick={handleContinueFilling} className='ml-4 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'>Continue Filling</button>
+              ) : (
+                <></>
+              )}
             </>
           )}
-        </ModalContent>
-      </Modal>
-      </>: <div>
-       
-       <button 
-         className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-         onClick={handlePayNowClick}
-       >
-         Pay Now
-       </button>
-       {formDataExists ? (
-         <button onClick={handleContinueFilling} className='ml-4 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'>Continue Filling</button>
-       ) : (
-         <></>
-       )}
-       </div>}
-     
+        </div>
+      )}
+    </div>
+      
      
     </div>
   );
