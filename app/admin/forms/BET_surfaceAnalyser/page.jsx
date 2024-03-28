@@ -1,36 +1,5 @@
-"use client";
-import React, { useEffect, useState } from "react";
-
-const BET = () => {
-
-  const [sampleNature, setSampleNature] = useState(typeof window !== 'undefined' && localStorage.getItem("sampleNature")? localStorage.getItem("sampleNature"):null);
-
-  const [sampleType,setsampleType]= useState(typeof window !== 'undefined' && localStorage.getItem("sampleType")? localStorage.getItem("sampleType"):null);
-  const [temperature,settemperature]= useState(typeof window !== 'undefined' && localStorage.getItem("sampletemperature")? localStorage.getItem("sampletemperature"):null);
-  const [Rate,setRate]= useState(typeof window !== 'undefined' && localStorage.getItem("sampleRate")? localStorage.getItem("sampleRate"):null);
-  const [Soaktime,setSoaktime]= useState(typeof window !== 'undefined' && localStorage.getItem("sampleSoaktime")? localStorage.getItem("sampleSoaktime"):null);
-  const [desc,setdesc]= useState(typeof window !== 'undefined' && localStorage.getItem("sampledesc")? localStorage.getItem("sampledesc"):null);
-  const formData = {
-    sampleNature,
-    sampleType,
-    temperature,
-    Rate,
-    Soaktime,
-    desc,
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission, e.g., send data to server
-    console.log("Form submitted:", {
-      sampleNature,
-       sampleType,
-      Soaktime,
-      temperature,
-      Rate,
-      desc,
-      
-    });
-  };
+const id=25;
+const BET = (prop) => {
 
   
 
@@ -39,7 +8,7 @@ const BET = () => {
       <h2 className="text-3xl font-bold mb-4  max-w-md mx-auto">
         BET Surface Analyser
       </h2>
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+      <form  className="max-w-md mx-auto">
 
       <p className="block text-gray-700 text-sm font-bold mb-2">
             Sample Type
@@ -48,9 +17,8 @@ const BET = () => {
             <input
               type="radio"
               value="Powder"
-              checked={sampleType === "Powder"}
-              onChange={() => (
-                localStorage.setItem('sampleType', "Powder"),setsampleType("Powder"))}
+              checked={prop.prop.sampleType === "Powder"}
+              readOnly={true}
               className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Powder</span>
@@ -59,10 +27,8 @@ const BET = () => {
             <input
               type="radio"
               value="Pellet"
-              checked={sampleType === "Pellet"}
-              onChange={() => (
-                localStorage.setItem('sampleType', "Pellet"),
-                setsampleType("Pellet"))}
+              checked={prop.prop.sampleType === "Pellet"}
+              readOnly={true}
               className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Pellet</span>
@@ -76,11 +42,8 @@ const BET = () => {
             <input
               type="radio"
               value="Hazardous"
-              checked={sampleNature === "Hazardous"}
-              onChange={() => (
-                localStorage.setItem('sampleNature',"Hazardous"),
-                setSampleNature("Hazardous")
-              )}
+              checked={prop.prop.sampleNature === "Hazardous"}
+              readOnly={true}
               className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Hazardous</span>
@@ -89,11 +52,8 @@ const BET = () => {
             <input
               type="radio"
               value="Non-Hazardous"
-              checked={sampleNature === "Non-Hazardous"}
-              onChange={() => (
-                localStorage.setItem('sampleNature', "Non-Hazardous"),
-                setSampleNature("Non-Hazardous")
-              )}
+              checked={prop.prop.sampleNature === "Non-Hazardous"}
+              readOnly={true}
               className="form-radio h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Non-Hazardous</span>
@@ -110,8 +70,8 @@ const BET = () => {
           </label>
           <textarea
             id="specialPrecautions"
-            value={temperature}
-            onChange={(e) =>(localStorage.setItem('sampletemperature',e.target.value), settemperature(e.target.value))}
+            value={prop.prop.temperature}
+            readOnly={true}
             rows="1"
             className="resize-none appearance-none border rounded w-full  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter temperature"
@@ -128,8 +88,8 @@ const BET = () => {
           </label>
           <textarea
             id="specialPrecautions"
-            value={Rate}
-            onChange={(e) => (localStorage.setItem('sampleRate',e.target.value),setRate(e.target.value))}
+            value={prop.prop.Rate}
+            readOnly={true}
             rows="1"
             className="resize-none appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter Rate"
@@ -146,8 +106,8 @@ const BET = () => {
           </label>
           <textarea
             id="specialPrecautions"
-            value={Soaktime}
-            onChange={(e) => (localStorage.setItem('sampleSoaktime',e.target.value),setSoaktime(e.target.value))}
+            value={prop.prop.Soaktime}
+            readOnly={true}
             rows="1"
             className="resize-none appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter Soak Time"
@@ -165,8 +125,8 @@ const BET = () => {
           </label>
           <textarea
             id="specialPrecautions"
-            value={desc}
-            onChange={(e) =>(localStorage.setItem('sampledesc',e.target.value), setdesc(e.target.value))}
+            value={prop.prop.desc}
+            readOnly={true}
             rows="4"
             className="resize-none appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter desc "

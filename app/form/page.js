@@ -39,6 +39,7 @@ const forms_instrument={
   20:(<HPLCForm/>),
   27:(<Elemental_analyser/>),
 }
+
 const FormComponent = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
@@ -78,20 +79,44 @@ const FormComponent = () => {
 
   }, [selectedInstruments]);
 
-
+  const add_number=(obj,key,selectedInstruments)=>{
+    // console.log("lol",selectedInstruments);
+    selectedInstruments.forEach(ele=>{
+      if(ele["id"]==key){
+        obj["quantity"]=ele.quantity;
+      }
+    })
+   return obj;
+  
+  }
+    
+   
   const send= async (e) => {
     e.preventDefault();
 
     // Extract form data
     const mysession = session.user; // assuming 'usersession' is the key in localStorage
-    const formData = localStorage.getItem('form_details');
-    console.log("HE")
+    const formData = JSON.parse(localStorage.getItem('form_details'));
+    const new_form_data={}
+    console.log(formData,"initial")
+
+    for (let key in formData) {
+      if (formData.hasOwnProperty(key)) {
+        console.log(key, formData[key],"o");
+        new_form_data[key]=add_number(formData["20"],"20",JSON.parse(localStorage.getItem("selectedInstruments")));
+         
+      }
+  }
+  // console.log(new_form_data,"final")
+    // const new_form_data=add_number(formData["20"],"20",JSON.parse(localStorage.getItem("selectedInstruments")));
+    
+    
      // assuming 'form_details' is the key in localStorage
      const final_data = JSON.stringify({
       "usersession": mysession,
-      "formData": formData
+      "formData": JSON.stringify(new_form_data)
     });
-    console.log("HE2")
+   
 
     try {
       // Send POST request to server

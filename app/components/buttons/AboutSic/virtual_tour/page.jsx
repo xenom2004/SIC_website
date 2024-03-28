@@ -12,9 +12,8 @@ const Page = () => {
           <iframe
             className="absolute inset-0 w-full h-full rounded-lg"
             src="https://www.youtube.com/embed/IDo-YS_Bq-w?si=ColSx1-n_tDKwv99"
-            frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         </div>
       </div>

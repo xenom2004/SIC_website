@@ -5,7 +5,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import Home from "./buttons/Home/Home";
 import Instruments from "./buttons/Instruments/Instruments";
-import About from "./buttons/AboutSic/page"
+import About from "./buttons/AboutSic/page";
 
 const Header = () => {
   const { data: session, status } = useSession();
@@ -21,7 +21,7 @@ const Header = () => {
   // Render loading spinner while session is being fetched
   if (status === "loading") {
     return (
-      <header className="text-gray-100 bg-gradient-to-r from-blue-700 to-indigo-800 body-font shadow-md fixed w-full z-50 top-0">
+      <header className="text-gray-100 bg-gradient-to-r from-blue-600 to-indigo-800 body-font shadow-md fixed w-full z-50 top-0">
         {" "}
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-between">
           <div className="flex items-center text-white">
@@ -34,7 +34,7 @@ const Header = () => {
   }
 
   return (
-    <header className="text-gray-100 bg-gradient-to-r from-blue-700 to-indigo-800 body-font shadow-md fixed w-full z-50 top-0">
+    <header className="text-gray-100 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-800 body-font shadow-md fixed w-full z-50 top-0">
       {" "}
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-between">
         <Link href="/" className="flex items-center text-white mb-4 md:mb-0">
@@ -48,21 +48,30 @@ const Header = () => {
           </span>
         </Link>
         <nav className="md:ml-auto flex flex-wrap items-center text-base">
-          <Link href="/" className="mr-5 hover:text-white">
+          <Link
+            href="/"
+            className="mr-5 font-semibold text-white  hover:text-white"
+          >
             Home
           </Link>
-          <div className="mr-5 hover:text-white">
+          <div className="mr-5 font-semibold hover:text-white">
             <Instruments />
           </div>
-          <div className="mr-5 hover:text-white">
-          <About/>
+          <div className="mr-5 font-semibold hover:text-white">
+            <About />
           </div>
-          
-          <Link href="/usageCharges" className="mr-5 hover:text-white">
+
+          <Link
+            href="/usageCharges"
+            className="mr-5  text-white font-semibold hover:text-white"
+          >
             Usage Charges
           </Link>
           {session && (
-            <Link href="/user" className="mr-5 hover:text-white">
+            <Link
+              href="/user"
+              className="mr-5  font-semibold text-white  hover:text-white"
+            >
               Orders
             </Link>
           )}
@@ -70,7 +79,7 @@ const Header = () => {
         <div className="flex items-center">
           {session && (
             <Link href="/profile">
-              <button className="text-sm font-semibold px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 mr-4">
+              <button className=" font-semibold px-4 py-2   bg-blue-850   text-white  mr-4">
                 Profile
               </button>
             </Link>

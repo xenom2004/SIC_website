@@ -3,9 +3,33 @@
 import BET from "../order/page";
 import HPLCForm from "../forms/chromatography/hplc/page";
 import { useSession } from 'next-auth/react';// Needed for fetching form details from the session
+import XAFSForm from "../forms/X-ray2/page";
+import SingleCrystalXRayForm from "../forms/X-ray/page";
+import Elemental_analyser from "../forms/elemental_analysis/page";
+import FluorescenceMicroscopyForm from "../forms/microscopy/clsm/page";
+import FTIRForm from "../../components/form/spectroscopy/ftir/page";
+import ChemicalDataForm from "../forms/spectroscopy/nmr/page";
+import PLForm from "../forms/microscopy/fe-sem/page"
+import SFMForm from "../forms/spectroscopy/sfm/page";
+import UVVisForm from "../forms/spectroscopy/uv-vis/page";
+import UVVISNIRForm from "../forms/spectroscopy/uv-vis-nir/page";
+import FESEMForm from "../forms/microscopy/fe-sem/page";
+
+
 const forms_instrument = {
-  25: <BET />,
+  1: (props)=><SingleCrystalXRayForm prop={props}/>,
+  3: (props)=><XAFSForm prop={props}/>,
+  7: (props)=><ChemicalDataForm prop={props}/>,
+  8: (props)=><FTIRForm prop={props}/>,
+  11:(props)=><PLForm prop={props}/>,
+  12: (props)=><UVVisForm prop={props}/>,
+  13: (props)=><UVVISNIRForm prop={props}/>,
+  14:(props)=><SFMForm prop={props}/>,
+  15: (props)=><FESEMForm prop={props}/>,
+  18:(props)=><FluorescenceMicroscopyForm prop={props}/>,
+  25: (props) => <BET prop={props}/>,
   20: (props) => <HPLCForm prop={props} />,
+  27:(props)=><Elemental_analyser prop={props}/>,
 };
 
 async function getData(session) {
