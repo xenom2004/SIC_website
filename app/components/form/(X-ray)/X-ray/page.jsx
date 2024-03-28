@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 
-const id = 'singleCrystalXRayForm';
+const id = 1;
 
 const SingleCrystalXRayForm = () => {
   // Function to set form data into local storage
@@ -28,16 +28,23 @@ const SingleCrystalXRayForm = () => {
   const [crystalInfo, setCrystalInfo] = useState(() => GETitem('', 'crystalInfo'));
   const [color, setColor] = useState(() => GETitem('', 'color'));
   const [temperature, setTemperature] = useState(() => GETitem('', 'temperature'));
-  const [stability, setStability] = useState({
-    stable: GETitem(null, 'stable'),
-    'air-sensitive': GETitem(null, 'air-sensitive'),
-    'moisture-sensitive': GETitem(null, 'moisture-sensitive'),
-  });
-  const [otherTechniques, setOtherTechniques] = useState({
-    IR: GETitem(null, 'IR'),
-    NMR: GETitem(null, 'NMR'),
-    'Mass Spectrum': GETitem(null, 'Mass Spectrum'),
-  });
+  // const [stability, setStability] = useState({
+  //   stable: GETitem(null, 'stable'),
+  //   'air-sensitive': GETitem(null, 'air-sensitive'),
+  //   'moisture-sensitive': GETitem(null, 'moisture-sensitive'),
+  // });
+  const [stability_stable,setstability_stable]=useState(GETitem(null, 'stability_stable'))
+  const [stability_air_sensitive,setstability_air_sensitive]=useState(GETitem(null, 'stability_air_sensitive'))
+  const [stability_moisture_sensitive,setstability_moisture_sensitive]=useState(GETitem(null, 'stability_moisture_sensitive'))
+
+  const [IR,setIR]=useState(GETitem(null, 'IR'));
+  const [NMR,setNMR]=useState(GETitem(null, 'NMR'));
+  const [Mass_spectrum,setMass_spectrum]=useState(GETitem(null, 'Mass_spectrum'));
+  // const [otherTechniques, setOtherTechniques] = useState({
+  //   IR: GETitem(null, 'IR'),
+  //   NMR: GETitem(null, 'NMR'),
+  //   'Mass Spectrum': GETitem(null, 'Mass Spectrum'),
+  // });
   const [structureMaterial, setStructureMaterial] = useState(() => GETitem('', 'structureMaterial'));
 
   // Handle form submission
@@ -132,8 +139,8 @@ const SingleCrystalXRayForm = () => {
           <label className="inline-flex items-center">
             <input
               type="checkbox"
-              checked={stability.stable}
-              onChange={(e) => SETitem(e, setStability, 'stable')}
+              checked={stability_stable}
+              onChange={(e) => SETitem(e, setstability_stable, 'stability_stable')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Stable</span>
@@ -141,8 +148,8 @@ const SingleCrystalXRayForm = () => {
           <label className="inline-flex items-center ml-6">
             <input
               type="checkbox"
-              checked={stability['air-sensitive']}
-              onChange={() => SETitem(e, setStability, 'air-sensitive')}
+              checked={stability_air_sensitive}
+              onChange={(e) => SETitem(e, setstability_air_sensitive, 'stability_air_sensitive')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Air-Sensitive</span>
@@ -150,8 +157,8 @@ const SingleCrystalXRayForm = () => {
           <label className="inline-flex items-center ml-6">
             <input
               type="checkbox"
-              checked={stability['moisture-sensitive']}
-              onChange={() => SETitem(e, setStability, 'moisture-sensitive')}
+              checked={stability_moisture_sensitive}
+              onChange={(e) => SETitem(e, setstability_moisture_sensitive, 'stability_moisture_sensitive')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Moisture-Sensitive</span>
@@ -165,8 +172,8 @@ const SingleCrystalXRayForm = () => {
             <input
               type="checkbox"
               value="IR"
-              checked={otherTechniques.includes('IR')}
-              onChange={() => SETitem(e, setOtherTechniques, 'IR')}
+              checked={IR}
+              onChange={(e) => SETitem(e, setIR, 'IR')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">IR</span>
@@ -175,8 +182,8 @@ const SingleCrystalXRayForm = () => {
             <input
               type="checkbox"
               value="NMR"
-              checked={otherTechniques.includes('NMR')}
-              onChange={() => SETitem(e, setOtherTechniques, 'NMR')}
+              checked={NMR}
+              onChange={(e) => SETitem(e,setNMR, 'NMR')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">NMR</span>
@@ -185,8 +192,8 @@ const SingleCrystalXRayForm = () => {
             <input
               type="checkbox"
               value="Mass Spectrum"
-              checked={otherTechniques.includes('Mass Spectrum')}
-              onChange={() => SETitem(e, setOtherTechniques, 'mass Spectrum')}
+              checked={Mass_spectrum}
+              onChange={(e) => SETitem(e, setMass_spectrum, 'Mass_Spectrum')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Mass Spectrum</span>
