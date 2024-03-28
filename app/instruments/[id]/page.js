@@ -1,5 +1,7 @@
 "use client"
 import React, { useState, useEffect } from "react";
+import {Spinner} from "@nextui-org/react";
+
 
 export default function Instrument({ params }) {
   const [instrument, setInstrument] = useState(null);
@@ -26,7 +28,7 @@ export default function Instrument({ params }) {
   }, [params.id]);
 
   if (loading) {
-    return <p className="h-screen flex items-center justify-center">Loading instrument...</p>;
+    return <div className="h-screen flex items-center justify-center"> <Spinner /></div>;
 
   }
 

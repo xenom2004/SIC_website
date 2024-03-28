@@ -4,14 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { useSession } from 'next-auth/react';
 // import React from "react";
-import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
+import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem} from "@nextui-org/react";
 import { useRouter } from 'next/navigation'
-
+import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure} from "@nextui-org/react";
+import Link from 'next/link';
 
 import { Elemental_analyser} from "../components/form/elemental_analysis/page"
 
 const Row=({instrument,selectedInstruments,setSelectedInstruments,handleQuantityChange,handleInstrumentChange,current_charge})=>{
-  
+
 
   return (
 
@@ -54,8 +55,10 @@ const Row=({instrument,selectedInstruments,setSelectedInstruments,handleQuantity
 
 }
 const ChargeCalculator = () => {
+  const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(true); 
+  const [isLoading2, setIsLoading2] = useState(true); 
   const { data: session, status } = useSession();
   const [instruments, setInstruments] = useState([]);
   const [selectedInstruments, setSelectedInstruments] = useState([]);
@@ -92,7 +95,7 @@ const ChargeCalculator = () => {
       setSelectedInstruments(JSON.parse(selectedInstrumentsData));
       setFormDataExists(true);
     }
-    setIsLoading(false);
+    setIsLoading2(false);
   }, []);
 
   const handleContinueFilling = () => {
@@ -170,7 +173,7 @@ const ChargeCalculator = () => {
   };
   
 
-  if(isLoading)
+  if(isLoading || isLoading2)
   {
     return (
 
@@ -308,19 +311,76 @@ const ChargeCalculator = () => {
         <h2 className="text-3xl font-bold mb-4">Total Charges:</h2>
         <p className="text-xl font-semibold">₹{totalcharge}</p>
       </div>
-      <div>
-      <button 
-        className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        onClick={handlePayNowClick}
+      {!session ? <>
+        <Button onPress={onOpen} color='success'>Pay Now</Button>
+      <Modal 
+        backdrop="opaque" 
+        isOpen={isOpen} 
+        onOpenChange={onOpenChange}
+        motionProps={{
+          variants: {
+            enter: {
+              y: 0,
+              opacity: 1,
+              transition: {
+                duration: 0.3,
+                ease: "easeOut",
+              },
+            },
+            exit: {
+              y: -20,
+              opacity: 0,
+              transition: {
+                duration: 0.2,
+                ease: "easeIn",
+              },
+            },
+          }
+        }}
       >
-        Pay Now
-      </button>
-      {formDataExists ? (
-        <button onClick={handleContinueFilling} className='ml-4 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'>Continue Filling</button>
-      ) : (
-        <></>
-      )}
-      </div>
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">Proceed Furthur</ModalHeader>
+              <ModalBody>
+                <p> 
+                  To smoothen the process of SIC ,we have encorporated many new changes in the website.
+                </p>
+                <p>
+                  You need to Login to proceed
+                </p>
+                
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="light" onPress={onClose}>
+                  Close
+                </Button>
+                <Link href="/login">
+                <Button color="primary" onPress={onClose}>
+                  Log In
+                </Button>
+                </Link>
+                
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+      </>: <div>
+       
+       <button 
+         className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+         onClick={handlePayNowClick}
+       >
+         Pay Now
+       </button>
+       {formDataExists ? (
+         <button onClick={handleContinueFilling} className='ml-4 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'>Continue Filling</button>
+       ) : (
+         <></>
+       )}
+       </div>}
+     
      
     </div>
   );
