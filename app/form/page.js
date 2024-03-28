@@ -35,7 +35,7 @@ const forms_instrument={
   8:(<FTIRForm/>),
   25:(<BET/>),
   15:(<PLForm/>),
-  13:( <FTIRForm/>),
+  
   20:(<HPLCForm/>),
   27:(<Elemental_analyser/>),
 }
@@ -81,6 +81,7 @@ const FormComponent = () => {
 
   const add_number=(obj,key,selectedInstruments)=>{
     // console.log("lol",selectedInstruments);
+    // console.log(obj,"lop",selectedInstruments)
     selectedInstruments.forEach(ele=>{
       if(ele["id"]==key){
         obj["quantity"]=ele.quantity;
@@ -98,12 +99,12 @@ const FormComponent = () => {
     const mysession = session.user; // assuming 'usersession' is the key in localStorage
     const formData = JSON.parse(localStorage.getItem('form_details'));
     const new_form_data={}
-    console.log(formData,"initial")
+    // console.log(formData,"initiadddl")
 
     for (let key in formData) {
       if (formData.hasOwnProperty(key)) {
-        console.log(key, formData[key],"o");
-        new_form_data[key]=add_number(formData["20"],"20",JSON.parse(localStorage.getItem("selectedInstruments")));
+        // console.log(key, formData[key],"o");
+        new_form_data[key]=add_number(formData[key],key,JSON.parse(localStorage.getItem("selectedInstruments")));
          
       }
   }

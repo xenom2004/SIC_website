@@ -367,7 +367,7 @@ const ChargeCalculator = () => {
         </>
       ) : (
         <div>
-          {!profile ? (
+          {false ? (
             <>
               <Button onPress={onOpen} color='success'>Pay Now</Button>
               <Modal
