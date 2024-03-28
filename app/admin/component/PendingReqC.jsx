@@ -1,5 +1,5 @@
 import React from "react";
-
+import Link from "next/link";
 const limit = (name) => {
   if (name.length > 20) {
     return name.slice(0, 20) + "...";
@@ -8,6 +8,8 @@ const limit = (name) => {
 };
 
 const PendingReqC = ({ req }) => {
+  const objectIdObject = req._id;
+  const hexString = objectIdObject.toString().match(/[a-fA-F0-9]{24}/)[0];
   return (
     <div>
       <div className="flex items-center bg-blue-300 rounded-xl flex-row w-full p-2 ">
@@ -30,7 +32,7 @@ const PendingReqC = ({ req }) => {
           {req.status}
         </button>
         <button className="mr-8 p-2 bg-black text-blue-300 sm:text-white lg:w-[200px] h-fit md:w-[100px] text-center rounded-xl">
-          View
+        <Link href={`admin/${hexString}?id=${hexString}`}>View</Link>
         </button>
       </div>
     </div>
@@ -38,3 +40,4 @@ const PendingReqC = ({ req }) => {
 };
 
 export default PendingReqC;
+

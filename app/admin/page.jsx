@@ -331,7 +331,7 @@ const admin = () => {
             <div className="bg-custompurple rounded-xl p-4 ml-2 flex flex-col w-full min-h-[400px] ">
               <div className="flex flex-row  ">
                 <p className="text-black grow  text-md">Pending request</p>
-                <App people={{ item: peoplereq }} />
+                {/* <App people={{ item: peoplereq }} /> */}
               </div>
               <div className="gap-y-2  flex flex-col rounded-xl bg-white p-4 w-full mt-4 overflow-y-auto max-h-[550px]  h-full">
                 {peoplereq.length > 0 ? (
