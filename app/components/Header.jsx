@@ -36,7 +36,7 @@ const Header = () => {
   return (
     <header className="text-gray-100 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-800 body-font shadow-md fixed w-full z-50 top-0">
       {" "}
-      <nav className=" bg-opacity-30 border-b border-blue-7np00">
+      <nav className=" bg-opacity-30 border-b border-blue-700">
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-between">
           <Link href="/" className="flex items-center text-white mb-4 md:mb-0">
             <img
