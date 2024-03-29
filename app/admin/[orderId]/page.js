@@ -18,22 +18,22 @@ import SingleCrystalXRayForm from '../forms/X-ray/page'
 import XAFSForm from '../forms/X-ray2/page'
 
 const forms_instrument={
-    2: (prop)=>{(<PowderXRDForm prop={prop}/>)},
-    3: (prop)=>{(<XAFSForm prop={prop}/>)},
-    1: (prop)=>{(<SingleCrystalXRayForm/>)},
-    25:(prop)=>{ (<BET prop={prop}/>)},
-    20:(prop)=>{ (<SETitem prop={prop}/>)},
-    13:(prop)=>{ (<UVVISNIRForm prop={prop}/>)},
-    12:(prop)=>{ (<UVVisForm prop={prop}/>)},
-    18:(prop)=>{ (<FluorescenceMicroscopyForm prop={prop}/>)},
-    9: (prop)=>{( <ChemicalDataForm prop={prop}/>)},
-    14:(prop)=>{ (<SFMForm prop={prop}/>)},
-    8: (prop)=>{(<FTIRForm prop={prop}/>)},
-    25:(prop)=>{ (<BET prop={prop}/>)},
-    15:(prop)=>{ (<PLForm prop={prop}/>)},
-    13:(prop)=>{ ( <FTIRForm prop={prop}/>)},
-    20:(prop)=>{ (<HPLCForm prop={prop}/>)},
-    27:(prop)=>{ (<Elemental_analyser prop={prop}/>)},
+    2: (prop)=>{return (<PowderXRDForm prop={prop}/>)},
+    3: (prop)=>{return (<XAFSForm prop={prop}/>)},
+    1: (prop)=>{{console.log(prop,"ser")}return (<SingleCrystalXRayForm prop={prop}/>)},
+    25:(prop)=>{return  (<BET prop={prop}/>)},
+    20:(prop)=>{return  (<SETitem prop={prop}/>)},
+    13:(prop)=>{return  (<UVVISNIRForm prop={prop}/>)},
+    12:(prop)=>{return  (<UVVisForm prop={prop}/>)},
+    18:(prop)=>{return  (<FluorescenceMicroscopyForm prop={prop}/>)},
+    9: (prop)=>{return ( <ChemicalDataForm prop={prop}/>)},
+    14:(prop)=>{return  (<SFMForm prop={prop}/>)},
+    8: (prop)=>{return (<FTIRForm prop={prop}/>)},
+    25:(prop)=>{return  (<BET prop={prop}/>)},
+    15:(prop)=>{return  (<PLForm prop={prop}/>)},
+    13:(prop)=>{return  ( <FTIRForm prop={prop}/>)},
+    20:(prop)=>{return  (<HPLCForm prop={prop}/>)},
+    27:(prop)=>{return  (<Elemental_analyser prop={prop}/>)},
   }
 
 const OrderDetails = ({ params }) => {
@@ -57,7 +57,7 @@ const OrderDetails = ({ params }) => {
                     throw new Error('Failed to fetch order details');
                 }
                 const data = await response.json();
-                console.log(data,"hiihygyug");
+                // console.log(data,"hiihygyug");
                 setOrder(data);
             } catch (error) {
                 console.error('Error fetching order details:', error);
@@ -81,10 +81,11 @@ const OrderDetails = ({ params }) => {
             <h1 className="text-2xl font-bold mb-4">{order.name}</h1>
             <div className="mb-4">
                 <h2 className="text-lg font-semibold mb-2">Form Details:</h2>
-                <p>{console.log(order.form_details,"hhuu",order)}
-                {/* {
-                    for()
-                } */}
+                <p>{console.log(order.form_details,"hhuu")}
+                {Object.keys(order.form_details).map((key) => {
+                        
+                        return forms_instrument[key](order.form_details[key]);
+                    })}
                 {/* <HPLCForm prop={order.form_details[20]}/> */}
                 </p>
             </div>
