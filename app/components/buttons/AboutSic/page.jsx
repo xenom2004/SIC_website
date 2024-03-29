@@ -24,7 +24,7 @@ const About = () => {
       onMouseEnter={handleDropdownOpen}
       onMouseLeave={handleDropdownClose}
     >
-      <Link href="/instruments">
+      <Link href="/components/buttons/AboutSic/virtual_tour">
         <div
           id="dropdownHoverButton"
           onClick={handleDropdownClose}

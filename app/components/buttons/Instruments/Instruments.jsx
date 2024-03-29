@@ -50,7 +50,7 @@ const Instruments = () => {
               href="#"
               className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
-              Dashboard
+              X-ray
             </a>
           </li>
           <li>
@@ -58,7 +58,7 @@ const Instruments = () => {
               href="#"
               className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
-              Settings
+              Microscopy
             </a>
           </li>
           <li>
@@ -66,7 +66,7 @@ const Instruments = () => {
               href="#"
               className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
-              Earnings
+              Spectroscopy
             </a>
           </li>
           <li>
@@ -74,7 +74,7 @@ const Instruments = () => {
               href="#"
               className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >
-              Sign out
+              Chromatography
             </a>
           </li>
         </ul>

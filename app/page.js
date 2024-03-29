@@ -1,9 +1,8 @@
 "use client"
 import { Link } from '@nextui-org/react';
 import React from 'react';
+import {Card, CardHeader, CardBody, Image} from "@nextui-org/react";
 
-
-// Import Swiper styles (adjust paths as needed)
 
 
 export default function Home() {
@@ -44,8 +43,8 @@ export default function Home() {
           <img src="https://cdn0.iconfinder.com/data/icons/colourful-education/250/bulb-512.png" alt="Bulb" className="h-16 w-16 mb-4" />
           <h2 className="text-lg font-bold mb-2">Internal User</h2>
           <p className="text-lg text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
-          <Link href="/undergraduate-programs" passHref>
-            <a className="text-blue-500 hover:underline mt-4">Explore</a>
+          <Link href="/undergraduate-programs" passHref className='text-blue-500 hover:underline mt-4'>
+           Explore
           </Link>
         </div>
         {/* Graduate programs */}
@@ -53,8 +52,8 @@ export default function Home() {
           <img src="https://cdn-icons-png.flaticon.com/512/6969/6969728.png" alt="Brain" className="h-16 w-16 mb-4" />
           <h2 className="text-lg font-bold mb-2">External Institution</h2>
           <p className="text-lg text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
-          <Link href="/graduate-programs" passHref>
-            <a className="text-blue-500 hover:underline mt-4">Explore</a>
+          <Link href="/graduate-programs" passHref className='text-blue-500 hover:underline mt-4'>
+            Explore
           </Link>
         </div>
         {/* Professional and Continuing Education */}
@@ -62,8 +61,8 @@ export default function Home() {
           <img src="https://png.pngtree.com/png-vector/20230105/ourmid/pngtree-book-icon-vector-image-png-image_6552370.png" alt="Book" className="h-16 w-16 mb-4" />
           <h2 className="text-lg font-bold mb-2">Company</h2>
           <p className="text-lg text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
-          <Link href="/professional-education" passHref>
-            <a className="text-blue-500 hover:underline mt-4">Explore</a>
+          <Link href="/professional-education" className='text-blue-500 hover:underline mt-4' passHref>
+            Explore
           </Link>
         </div>
       </div>
@@ -90,8 +89,7 @@ export default function Home() {
   </div>
 </div>
 {/* --------------------------------------------------------------------------------------------------------------------------------- */}
-
-     
+    
 
     {/* ------------------------------------------------------------------------------------------------------------------- */}
       </main>
