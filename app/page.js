@@ -3,6 +3,13 @@ import { Link } from '@nextui-org/react';
 import React from 'react';
 import {Card, CardHeader, CardBody, Image} from "@nextui-org/react";
 
+import { Roboto } from 'next/font/google'
+ 
+const roboto = Roboto({
+  weight: '300',
+  subsets: ['latin'],
+})
+ 
 
 
 export default function Home() {
@@ -36,11 +43,11 @@ export default function Home() {
         {/* ---------------------------------------------------------------------------------------------------------------------- */}
 
 
-        <div className="container mx-auto mt-28 mb-24">
+        <div className="container mx-auto mt-32 mb-24">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {/* Undergraduate programs */}
         <div className="bg-white p-8 rounded-lg flex flex-col items-center justify-center ">
-          <img src="https://cdn0.iconfinder.com/data/icons/colourful-education/250/bulb-512.png" alt="Bulb" className="h-16 w-16 mb-4" />
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREt5szKKfa8Y0c-o95V04ujCr8Nr7HlwaEyAjGC3l34A&s" alt="Bulb" className="h-16 w-16 mb-4" />
           <h2 className="text-lg font-bold mb-2">Internal User</h2>
           <p className="text-lg text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
           <Link href="/undergraduate-programs" passHref>
@@ -49,7 +56,7 @@ export default function Home() {
         </div>
         {/* Graduate programs */}
         <div className="bg-white p-8 rounded-lg flex flex-col items-center justify-center ">
-          <img src="https://cdn-icons-png.flaticon.com/512/6969/6969728.png" alt="Brain" className="h-16 w-16 mb-4" />
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFQGCJOieZHFjrklBjYpTc67eZX3LrxDAouUvzwY6POQ&s" alt="Brain" className="h-16 w-16 mb-4" />
           <h2 className="text-lg font-bold mb-2">External Institution</h2>
           <p className="text-lg text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
           <Link href="/graduate-programs" passHref>
@@ -58,7 +65,7 @@ export default function Home() {
         </div>
         {/* Professional and Continuing Education */}
         <div className="bg-white p-8 rounded-lg flex flex-col items-center justify-center ">
-          <img src="https://png.pngtree.com/png-vector/20230105/ourmid/pngtree-book-icon-vector-image-png-image_6552370.png" alt="Book" className="h-16 w-16 mb-4" />
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjKP4Njsdfof1uFgYQJAzpowEsCVgvdi_Fto_ZKmc7_TRZfOeEAQcASkc8xRtNR6oodZQ&usqp=CAU" alt="Book" className="h-16 w-16 mb-4" />
           <h2 className="text-lg font-bold mb-2">Company</h2>
           <p className="text-lg text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
           <Link href="/professional-education" passHref>
@@ -71,7 +78,7 @@ export default function Home() {
     {/* ----------------------------------------------------------------------------------------------------------------------------- */}
   
   
-    <div className="container mx-auto mt-10">
+    <div className="container mx-auto mt-32">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-0">
           {/* 3-part section for image */}
           <div className="col-span-1 sm:col-span-2 lg:col-span-2 p-8 flex items-center justify-center">
@@ -90,8 +97,61 @@ export default function Home() {
     </div>
 {/* --------------------------------------------------------------------------------------------------------------------------------- */}
     
+<div className="container mx-auto mt-32">
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4">
+    {/* X-ray */}
+    <div className="bg-white p-8 rounded-lg flex flex-col items-center justify-center ">
+      <h2 className="text-lg font-bold mb-2 text-lightSky">X-ray Instruments</h2>
+      <ul className="text-lg text-center">
+        <li>X-ray Diffractometer</li>
+        <li>X-ray Fluorescence Spectrometer</li>
+        <li>X-ray Photoelectron Spectroscopy (XPS)</li>
+      </ul>
+    </div>
+    {/* Microscopy */}
+    <div className="bg-white p-8 rounded-lg flex flex-col items-center justify-center ">
+      <h2 className="text-lg font-bold mb-2 text-lightSky">Microscopy Instruments</h2>
+      <ul className="text-lg text-center">
+        <li>Scanning Electron Microscope (SEM)</li>
+        <li>Transmission Electron Microscope (TEM)</li>
+        <li>Atomic Force Microscope (AFM)</li>
+      </ul>
+    </div>
+    {/* Spectroscopy */}
+    <div className="bg-white p-8 rounded-lg flex flex-col items-center justify-center ">
+      <h2 className="text-lg font-bold mb-2 text-lightSky">Spectroscopy Instruments</h2>
+      <ul className="text-lg text-center">
+        <li>UV-Vis Spectrophotometer</li>
+        <li>FTIR Spectrometer</li>
+        <li>NMR Spectrometer</li>
+      </ul>
+    </div>
+    {/* Chromatography */}
+    <div className="bg-white p-8 rounded-lg flex flex-col items-center justify-center ">
+      <h2 className="text-lg font-bold mb-2 text-lightSky">Chromatography Instruments</h2>
+      <ul className="text-lg text-center">
+        <li>Gas Chromatography (GC)</li>
+        <li>High-Performance Liquid Chromatography (HPLC)</li>
+        <li>Ion Chromatography (IC)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
 
     {/* ------------------------------------------------------------------------------------------------------------------- */}
+
+    <div className="bg-lightSky py-6 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center mt-32">
+      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-roboto-thin text-white mb-4">We have very high quality instruments</h2>
+      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-roboto-thin text-white mb-4">Want to use our instruments?</h2>
+      <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300">Click Here</button>
+    </div>
+
+
+
+    {/* ------------------------------------------------------------------------------------------------------------------ */}
       </main>
     </div>
   );

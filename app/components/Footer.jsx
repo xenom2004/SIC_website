@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <footer className="text-gray-300 bg-gray-800 body-font">
-      <div className="container px-6 py-12 mx-auto">
+    <footer className="text-gray-300 bg-gray-800 body-font mt-12">
+      <div className="container px-6 py-8 mx-auto">
         <div className="flex flex-wrap">
           <div className="lg:w-1/4 md:w-1/2 w-full">
             <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">
@@ -17,7 +17,7 @@ export default function Footer() {
             <p className="leading-relaxed">Email: sic@iiti.ac.in</p>
           </div>
           <div className="lg:w-1/4 md:w-1/2 w-full mt-4 lg:mt-0">
-            <nav className="list-none mb-10">
+            <nav className="list-none mb-6">
               <li>
                 <a href="#" className="text-gray-400 hover:text-white">
                   Contact us
@@ -55,7 +55,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="bg-gray-900">
-        <div className="container mx-auto py-6 px-5 flex flex-wrap flex-col sm:flex-row">
+        <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
           <p className="text-center sm:text-left text-gray-400 text-sm mb-2 sm:mb-0">
             © 2024 SIC - A National Facility of IIT Indore
           </p>

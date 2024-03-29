@@ -21,7 +21,7 @@ const Header = () => {
   // Render loading spinner while session is being fetched
   if (status === "loading") {
     return (
-      <header className="text-gray-100 bg-gradient-to-r from-blue-600 to-indigo-800 body-font shadow-md fixed w-full z-50 top-0">
+      <header className="text-gray-100 bg-lightSky body-font shadow-md fixed w-full z-50 top-0">
         {" "}
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-between">
           <div className="flex items-center text-white">
@@ -34,9 +34,9 @@ const Header = () => {
   }
 
   return (
-    <header className="text-gray-100 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-800 body-font shadow-md fixed w-full z-50 top-0">
+    <header className="text-gray-100  bg-lightSky  body-font shadow-md fixed w-full z-50 top-0">
       {" "}
-      <nav className=" bg-opacity-30 border-b border-blue-700">
+      <nav>
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-between">
           <Link href="/" className="flex items-center text-white mb-4 md:mb-0">
             <img
@@ -58,20 +58,20 @@ const Header = () => {
             <div className="mr-5 font-semibold hover:text-white">
               <Instruments />
             </div>
-            <div className="mr-5 font-semibold hover:text-white">
+            <div className="font-semibold px-4 py-2   bg-blue-850   text-white ">
               <About />
             </div>
 
             <Link
               href="/usageCharges"
-              className="mr-5  text-white font-semibold hover:text-white"
+              className="font-semibold px-4 py-2   bg-blue-850   text-white "
             >
               Usage Charges
             </Link>
             {session && (
               <Link
                 href="/user"
-                className="mr-5  font-semibold text-white  hover:text-white"
+                className="font-semibold px-4 py-2   bg-blue-850   text-white "
               >
                 Orders
               </Link>
@@ -80,7 +80,7 @@ const Header = () => {
           <div className="flex items-center">
             {session && (
               <Link href="/profile">
-                <button className=" font-semibold px-4 py-2   bg-blue-850   text-white  mr-4">
+                <button className=" font-semibold px-4 py-2   bg-blue-850   text-white ">
                   Profile
                 </button>
               </Link>
@@ -89,7 +89,7 @@ const Header = () => {
             {session && (
               <button
                 onClick={handleSignOut}
-                className="text-sm font-semibold px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition duration-300 ease-in-out transform hover:scale-105"
+                className=" font-semibold px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition duration-300 ease-in-out transform hover:scale-105"
               >
                 Logout
               </button>
@@ -98,7 +98,7 @@ const Header = () => {
             {!session && (
               <button
                 onClick={handleSignIn}
-                className="text-sm font-semibold px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 mr-4"
+                className=" font-semibold px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 mr-4"
               >
                 Login/Register
               </button>
