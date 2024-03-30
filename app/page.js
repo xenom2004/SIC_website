@@ -4,7 +4,6 @@ import React from 'react';
 import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
 import Statistics from './components/Statistics';
 import { Roboto } from 'next/font/google'
-
 const roboto = Roboto({
 	weight: '100',
 	subsets: ['latin'],
@@ -13,10 +12,16 @@ const roboto = Roboto({
 
 
 export default function Home() {
+	
+
+
 
   return (
-    <div className="flex flex-col min-h-screen mb-12">
-      <main className="flex-1 relative">
+	
+    <div className="flex flex-col min-h-screen ">
+		 
+      <main className="flex-1 relative mb-[-88.5px] ">
+	 
         <div className="h-screen flex items-center justify-center text-center relative">
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-current"></div>
           <img
@@ -49,7 +54,7 @@ export default function Home() {
 				{/* ---------------------------------------------------------------------------------------------------------------------- */}
 
 
-				<div className="container mx-auto mt-32 mb-24">
+				<div className="container  mt-32 mb-24 mx-auto">
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 						{/* Undergraduate programs */}
 						<div className="bg-white p-8 rounded-lg flex flex-col items-center justify-center ">
@@ -84,7 +89,7 @@ export default function Home() {
 				{/* ----------------------------------------------------------------------------------------------------------------------------- */}
 
 
-				<div className="container mx-auto mt-32">
+				<div className="container  mt-32 mx-auto">
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-0">
 						{/* 3-part section for image */}
 						<div className="col-span-1 sm:col-span-2 lg:col-span-2 p-8 flex items-center justify-center">
@@ -103,7 +108,7 @@ export default function Home() {
 				</div>
 				{/* --------------------------------------------------------------------------------------------------------------------------------- */}
 
-				<div className="container mx-auto mt-32">
+				<div className="container  mt-32 mx-auto">
 					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4">
 						{/* X-ray */}
 						<div className="bg-white p-8 rounded-lg flex flex-col items-center justify-center ">
@@ -148,34 +153,38 @@ export default function Home() {
 
 
 				{/* ------------------------------------------------------------------------------------------------------------------- */}
+				
+				
 				<div className="bg-lightSky py-16 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center mt-32">
-					<h2 className="text-2xl sm:text-3xl lg:text-4xl font-roboto-thin text-white mb-4">We have very high quality instruments</h2>
-					<h2 className="text-2xl sm:text-3xl lg:text-4xl font-roboto-thin text-white mb-4">Want to use our instruments?</h2>
+					<h2 className="text-2xl sm:text-3xl lg:text-4xl font-roboto-thin text-white mb-4">Explore Our Exceptional Instrumentation</h2>
+					<h2 className="text-2xl sm:text-3xl lg:text-4xl font-roboto-thin text-white mb-4">Interested in Utilizing Our Premium Instruments?</h2>
 					<Link href='/usageCharges'>
-						<button className="bg-lightSky text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 border border-white hover:bg-white hover:text-lightSky">Click Here</button>
+						<button className="bg-lightSky text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 border border-white hover:bg-white hover:text-lightSky">Learn More</button>
 					</Link>
 				</div>
 
 
 
 
+
 				{/* ------------------------------------------------------------------------------------------------------------------ */}
+				
 				<div className="container mx-auto mt-32">
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
 						{/* First Section */}
 						<div className="sm:col-span-2 lg:col-span-2 bg-lightSky text-white p-8 rounded-lg">
-							<h2 className="text-4xl ">We offer a training program for interns and freshers. Want to join our well-known training program?</h2>
+							<h2 className="text-4xl ">Discover Our Renowned Training Program for Interns and Fresh Graduates</h2>
 						</div>
 						{/* Second Section */}
 						<div className="sm:col-span-2 lg:col-span-4 bg-white text-black p-8 rounded-lg flex flex-col justify-between items-start"> {/* Change items-start */}
 							<div>
-								<h2 className="text-xl font-bold mb-4">Why Choose Us?</h2>
+								<h2 className="text-xl font-bold mb-4">Why Choose Our Program?</h2>
 								<p className="text-lg">
-									Our training programs are designed to equip you with the skills and knowledge needed to succeed in the field of instrumentation. With experienced instructors and state-of-the-art facilities, we provide a comprehensive learning experience tailored to your needs.
+									Our training programs are meticulously crafted to provide you with the essential skills and knowledge required to excel in the instrumentation field. Backed by seasoned instructors and cutting-edge facilities, we offer an immersive learning journey tailored to meet your specific career aspirations.
 								</p>
 							</div>
 							<button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4">
-								Learn More
+								Explore Further
 							</button>
 						</div>
 					</div>
@@ -185,10 +194,16 @@ export default function Home() {
 
 
 
+
 				{/* ---------------------------------------------------------------------------------------------------------------------- */}
 
+				
+				<Statistics />
+			
+				{/* ----------------------------------------------------------------------------------------------------------------- */}
 
-				{/* <Statistics /> */}
+
+				
 			</main>
 		</div>
 	);

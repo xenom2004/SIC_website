@@ -19,7 +19,7 @@ const Row=({instrument,selectedInstruments,setSelectedInstruments,handleQuantity
 
     <>
     
-    <tr className=" " key={instrument.id}>
+    <tr className="mx-auto " key={instrument.id}>
               <td className=" text-center hover:bg-slate-100 border px-4 py-2">{instrument.id}</td>
               <td className=" text-center hover:bg-slate-100 border px-4 py-2">{instrument.name}</td>
               <td className={` ${current_charge==="academic"?"table-cell":"hidden"} md:table-cell text-center hover:bg-slate-100 border px-4 py-2`}>{instrument.academic_charge}</td>

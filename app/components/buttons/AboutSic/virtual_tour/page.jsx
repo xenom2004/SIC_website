@@ -1,6 +1,6 @@
 const Page = () => {
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden mx-auto">
       <div className="h-12 text-2xl font-bold w-full flex justify-center items-center mt-40">
         Virtual Tour
       </div>

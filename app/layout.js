@@ -34,7 +34,9 @@ export default function RootLayout({ children }) {
           <div className="" style={{minHeight: '1000px'}}>
             {children}
           </div>
+          <div className="mt-0">
           <Footer/>
+          </div>
           </div>
         </Layout>
       </body>

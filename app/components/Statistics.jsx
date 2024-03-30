@@ -1,12 +1,12 @@
-import React, { useRef } from 'react';
-import CountUp from 'react-countup';
-import { useInView } from 'react-intersection-observer';
+import React, { useRef } from "react";
+import CountUp from "react-countup";
+import { useInView } from "react-intersection-observer";
 
 const Statistics = () => {
   const sectionRef = useRef();
   const [ref, inView] = useInView({
     triggerOnce: true,
-    rootMargin: '-50px 0px',
+    rootMargin: "-50px 0px",
   });
 
   return (
@@ -17,11 +17,20 @@ const Statistics = () => {
         backgroundImage: `url('https://sic.iiti.ac.in/wp-content/uploads/2022/08/cropped-Home-1-Copy.jpg')`,
       }}
     >
-      <div ref={ref} className="bg-gray-900   w-full h-[35vh] bg-opacity-50 p-8 rounded-lg flex  items-center">
+      <div
+        ref={ref}
+        className="bg-gray-900   w-full h-[43vh] bg-opacity-50 p-8 rounded-lg flex  items-center"
+      >
         <div className="grid w-full grid-cols-3">
           <div className="text-center text-white">
             <div className="text-5xl font-bold mb-2">
-              <CountUp start={inView ? 0 : null} end={100} duration={4} separator="," />+
+              <CountUp
+                start={inView ? 0 : null}
+                end={100}
+                duration={4}
+                separator=","
+              />
+              +
             </div>
             <div className="text-xl">USER</div>
           </div>
