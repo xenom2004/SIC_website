@@ -40,7 +40,7 @@ const Header = () => {
 
   return (
     <header className="text-gray-100 bg-lightSky body-font shadow-md fixed w-full z-50 top-0 mb-12">
-      <nav className="container px-6 py-4 mx-auto flex flex-wrap items-center justify-between">
+      <nav className="container px-6 py-4 mx-auto flex flex-wrap items-center justify-between ">
         <Link href="/" className="flex items-center mb-4 ">
           <img
             src="https://citc.iiti.ac.in/wp-content/uploads/2021/12/IITILogo.png"
