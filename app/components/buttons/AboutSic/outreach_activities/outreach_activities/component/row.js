@@ -13,7 +13,7 @@ const Row = (props) => {
         </div>
       </div>
       <div className="lg:w-1/2 sm:w-full p-2 flex flex-col justify-between">
-        <div className="w-full h-full bg-gray-800 rounded-lg shadow-md text-white text-center p-6">
+        <div className="w-full h-full hover:bg-lightSky rounded-lg shadow-md hover:text-white text-lightSky text-center p-6">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4">{props.date}</h2>
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4">{props.first}</h2>
           <p className="mt-2 text-sm sm:text-base">{props.second}</p>

@@ -59,28 +59,31 @@ export default function Home() {
 						{/* Undergraduate programs */}
 						<div className="bg-white p-8 rounded-lg flex flex-col items-center justify-center ">
 							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREt5szKKfa8Y0c-o95V04ujCr8Nr7HlwaEyAjGC3l34A&s" alt="Bulb" className="h-16 w-16 mb-4" />
-							<h2 className="text-lg font-bold mb-2">Internal User</h2>
-							<p className="text-lg text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
+							<h2 className="text-lg text-lightSky font-bold mb-2">Internal User</h2>
+							<p className="text-lg text-lightSky text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
 							<Link href="/undergraduate-programs" >
-								<div className="text-blue-500 hover:underline mt-4">Explore</div>
+							<button class="rounded-full hover:bg-lightSky  hover:text-white bg-white text-lightSky font-semibold py-2 px-4 mt-4 transition duration-300 ease-in-out">Explore</button>
+
 							</Link>
 						</div>
 						{/* Graduate programs */}
 						<div className="bg-white p-8 rounded-lg flex flex-col items-center justify-center ">
 							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFQGCJOieZHFjrklBjYpTc67eZX3LrxDAouUvzwY6POQ&s" alt="Brain" className="h-16 w-16 mb-4" />
-							<h2 className="text-lg font-bold mb-2">External Institution</h2>
-							<p className="text-lg text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
+							<h2 className="text-lg text-lightSky font-bold mb-2">External Institution</h2>
+							<p className="text-lg text-lightSky text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
 							<Link href="/graduate-programs">
-								<div className="text-blue-500 hover:underline mt-4">Explore</div>
+							<button class="rounded-full hover:bg-lightSky  hover:text-white bg-white text-lightSky  font-semibold py-2 px-4 mt-4 transition duration-300 ease-in-out">Explore</button>
+
 							</Link>
 						</div>
 						{/* Professional and Continuing Education */}
 						<div className="bg-white p-8 rounded-lg flex flex-col items-center justify-center ">
 							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjKP4Njsdfof1uFgYQJAzpowEsCVgvdi_Fto_ZKmc7_TRZfOeEAQcASkc8xRtNR6oodZQ&usqp=CAU" alt="Book" className="h-16 w-16 mb-4" />
-							<h2 className="text-lg font-bold mb-2">Company</h2>
-							<p className="text-lg text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
+							<h2 className="text-lg text-lightSky font-bold mb-2">Company</h2>
+							<p className="text-lg text-lightSky text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
 							<Link href="/professional-education">
-								<div className="text-blue-500 hover:underline mt-4">Explore</div>
+							<button class="rounded-full hover:bg-lightSky  hover:text-white bg-white text-lightSky  font-semibold py-2 px-4 mt-4 transition duration-300 ease-in-out">Explore</button>
+
 							</Link>
 						</div>
 					</div>
@@ -109,10 +112,10 @@ export default function Home() {
 				{/* --------------------------------------------------------------------------------------------------------------------------------- */}
 
 				<div className="container  mt-32 mx-auto">
-					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4">
+					<div className="grid grid-cols-1 text-lightSky sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4">
 						{/* X-ray */}
 						<div className="bg-white p-8 rounded-lg flex flex-col items-center justify-center ">
-							<h2 className="text-lg font-bold mb-2 text-lightSky">X-ray Instruments</h2>
+							<h2 className="text-xl font-bold mb-2 text-lightSky">X-ray Instruments</h2>
 							<ul className="text-lg text-center">
 								<li>X-ray Diffractometer</li>
 								<li>X-ray Fluorescence Spectrometer</li>
@@ -121,7 +124,7 @@ export default function Home() {
 						</div>
 						{/* Microscopy */}
 						<div className="bg-white p-8 rounded-lg flex flex-col items-center justify-center ">
-							<h2 className="text-lg font-bold mb-2 text-lightSky">Microscopy Instruments</h2>
+							<h2 className="text-xl font-bold mb-2 text-lightSky">Microscopy Instruments</h2>
 							<ul className="text-lg text-center">
 								<li>Scanning Electron Microscope (SEM)</li>
 								<li>Transmission Electron Microscope (TEM)</li>
@@ -130,7 +133,7 @@ export default function Home() {
 						</div>
 						{/* Spectroscopy */}
 						<div className="bg-white p-8 rounded-lg flex flex-col items-center justify-center ">
-							<h2 className="text-lg font-bold mb-2 text-lightSky">Spectroscopy Instruments</h2>
+							<h2 className="text-xl font-bold mb-2 text-lightSky">Spectroscopy Instruments</h2>
 							<ul className="text-lg text-center">
 								<li>UV-Vis Spectrophotometer</li>
 								<li>FTIR Spectrometer</li>
@@ -139,7 +142,7 @@ export default function Home() {
 						</div>
 						{/* Chromatography */}
 						<div className="bg-white p-8 rounded-lg flex flex-col items-center justify-center ">
-							<h2 className="text-lg font-bold mb-2 text-lightSky">Chromatography Instruments</h2>
+							<h2 className="text-xl font-bold mb-2 text-lightSky">Chromatography Instruments</h2>
 							<ul className="text-lg text-center">
 								<li>Gas Chromatography (GC)</li>
 								<li>High-Performance Liquid Chromatography (HPLC)</li>
