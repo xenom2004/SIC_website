@@ -113,33 +113,42 @@ const Header = () => {
             {/* Conditionally render dropdown content based on state */}
             {isDropdownOpen && (
               <div className="absolute top-full left-0 w-52 bg-gray-800 py-2 text-center">
-                <Link href="/" className="block px-8 py-2 text-white">
+                <Link
+                  onClick={toggleDropdown}
+                  href="/"
+                  className="block px-8 py-2 text-white"
+                >
                   Home
                 </Link>
                 <Instruments />
                 <About />
                 <Link
+                  onClick={toggleDropdown}
                   href="/usageCharges"
                   className="block px-8 py-2 text-white"
                 >
                   Usage Charges
                 </Link>
                 {session && (
-                  <Link href="/user" className="block px-8 py-2 text-white">
+                  <Link
+                    onClick={toggleDropdown}
+                    href="/user"
+                    className="block px-8 py-2 text-white"
+                  >
                     Orders
                   </Link>
                 )}
                 {session ? (
                   <Link
                     href="/profile"
-                    className="block px-8 text-center py-2 text-white"
+                    className="block   onClick={toggleDropdown} px-8 text-center py-2 text-white"
                   >
                     Profile
                   </Link>
                 ) : (
                   <button
                     onClick={handleSignIn}
-                    className="block px-20 py-2 text-center text-white"
+                    className="block px-20  onClick={toggleDropdown} py-2 text-center text-white"
                   >
                     Login/Register
                   </button>
@@ -147,7 +156,7 @@ const Header = () => {
                 {session && (
                   <button
                     onClick={handleSignOut}
-                    className="block px-20 py-2 text-center text-white"
+                    className="block  onClick={toggleDropdown} px-20 py-2 text-center text-white"
                   >
                     Logout
                   </button>
