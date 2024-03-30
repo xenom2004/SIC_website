@@ -68,7 +68,7 @@ export default function Home() {
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjKP4Njsdfof1uFgYQJAzpowEsCVgvdi_Fto_ZKmc7_TRZfOeEAQcASkc8xRtNR6oodZQ&usqp=CAU" alt="Book" className="h-16 w-16 mb-4" />
           <h2 className="text-lg font-bold mb-2">Company</h2>
           <p className="text-lg text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
-          <Link href="/professional-education" >
+          <Link href="/professional-education">
             <div className="text-blue-500 hover:underline mt-4">Explore</div>
           </Link>
         </div>
@@ -157,7 +157,7 @@ export default function Home() {
     <div className="container mx-auto mt-32">
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
     {/* First Section */}
-    <div className="sm:col-span-2 lg:col-span-2 bg-blue-500 text-white p-8 rounded-lg">
+    <div className="sm:col-span-2 lg:col-span-2 bg-lightSky text-white p-8 rounded-lg">
       <h2 className="text-4xl ">We offer a training program for interns and freshers. Want to join our well-known training program?</h2>
     </div>
     {/* Second Section */}
