@@ -48,13 +48,13 @@ export const LoginForm = () => {
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const input_style =
-    "form-control block w-full px-4 py-5 text-sm font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none";
-
   return (
-    <form onSubmit={onSubmit}>
+    <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+      <h1 className="text-xl font-bold text-gray-900 md:text-2xl text-gray-100 mx:auto">Sign in to your account
+      </h1>
+    <form className="space-y-4 md:space-y-6" onSubmit={onSubmit}>
       {error && (
-        <p className="text-center bg-red-300 py-4 mb-6 rounded">{error}</p>
+        <p className="text-center bg-red-300 py-2 mb-6 rounded">{error}</p>
       )}
       <div className="mb-6">
         <input
@@ -64,7 +64,7 @@ export const LoginForm = () => {
           value={formValues.username}
           onChange={handleChange}
           placeholder="Username"
-          className={`${input_style}`}
+          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         />
       </div>
       <div className="mb-6">
@@ -75,34 +75,35 @@ export const LoginForm = () => {
           value={formValues.password}
           onChange={handleChange}
           placeholder="Password"
-          className={`${input_style}`}
+          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         />
       </div>
       <button
         type="submit"
         style={{ backgroundColor: `${loading ? "#ccc" : "#3446eb"}` }}
-        className="inline-block px-7 py-4 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
+        className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
         disabled={loading}
       >
         {loading ? "loading..." : "Sign In"}
       </button>
 
-      <div className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
+      <div className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5 font-medium rounded-lg">
         <p className="text-center font-semibold mx-4 mb-0">OR</p>
       </div>
 
       <a
         className="px-7 py-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3"
-        style={{ backgroundColor: "#3b5998" }}
+        style={{ backgroundColor: "#3446EB" }}
         onClick={() => signIn("google", { callbackUrl })}
         role="button"
       >
         
         Continue with Google
       </a>
-      <div className="flex flex-row justify-center ">
-       Don't have an account? <span className="text-blue-500 pl-2" ><Link href="/register">Sign Up</Link ></span>
+      <div className="flex flex-row justify-center text-sm font-light text-gray-500 dark:text-gray-400 ">
+       Don't have an account?  <span className="font-medium text-primary-600 hover:underline dark:text-primary-500" ><Link href="/register">Sign Up</Link ></span>
       </div>
     </form>
+    </div>
   );
 };

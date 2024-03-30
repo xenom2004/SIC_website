@@ -86,6 +86,7 @@ export const options = {
             
             if (session?.user) {
                 session.user.token = token.uid;
+                session.user.isAdmin=token.isAdmin;
             }
             return session;
         },

@@ -28,8 +28,8 @@ const Header = () => {
   if (status === "loading") {
     return (
       <header className="text-gray-100 bg-lightSky body-font shadow-md fixed w-full z-50 top-0 mb-12">
-        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-between">
-          <div className="flex items-center text-white">
+        <div className="container px-6 py-4 mx-auto flex flex-wrap items-center justify-between">
+          <div className="flex items-center text-white mb-4">
             <div className="h-16 px-10 bg-white rounded-full animate-pulse"></div>
             <span className="text-xl font-bold ml-2 bg-white rounded-full animate-pulse w-40 h-6"></span>
           </div>
