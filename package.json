@@ -24,9 +24,12 @@
     "mongoose": "^8.2.1",
     "next": "^14.1.2",
     "next-auth": "^4.24.6",
+    "prettier": "^3.2.5",
     "razorpay": "^2.9.2",
     "react": "^18.2.0",
+    "react-countup": "^6.5.3",
     "react-dom": "^18.2.0",
+    "react-intersection-observer": "^9.8.1",
     "shortid": "^2.2.16",
     "styled-components": "^6.1.8",
     "swiper": "^11.1.0"
