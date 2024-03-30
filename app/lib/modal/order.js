@@ -7,7 +7,8 @@ const productSchema = new mongoose.Schema({
     form_details: {},
     status:String,
     price:mongoose.Types.Decimal128,
-    Date:Date
+    Date:Date,
+    comment:String,
   
 });
 
