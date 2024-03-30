@@ -5,7 +5,41 @@ import { useSession } from "next-auth/react";
 import { getSession } from "next-auth/react";
 import { Spinner } from "@nextui-org/react";
 import { Button } from "@nextui-org/react";
-const order = [
+import Link from "next/link";
+
+// const forms_instrument={
+//   2: (<PowderXRDForm/>),
+//   3: (<XAFSForm/>),
+//   1: (<SingleCrystalXRayForm/>),
+//   25:(<BET/>),
+//   20:(<SETitem/>),
+//   13:(<UVVISNIRForm/>),
+//   12:(<UVVisForm/>),
+//   18:(<FluorescenceMicroscopyForm/>),
+//   9: (<ChemicalDataForm/>),
+//   14:(<SFMForm/>),
+//   8: (<FTIRForm/>),
+  
+//   15:(<PLForm/>),
+//   20:(<HPLCForm/>),
+//   27:(<Elemental_analyser/>),
+// }
+const transformedForms = {
+  2: { "name": "PowderXRD", "price": 20 },
+  3: { "name": "XAFS", "price": 20 },
+  1: { "name": "SingleCrystalXRay", "price": 20 },
+  25: { "name": "BET", "price": 20 },
+  20: { "name": "SETitem", "price": 20 },
+  13: { "name": "UVVISNIR", "price": 20 },
+  12: { "name": "UVVis", "price": 20 },
+  18: { "name": "FluorescenceMicroscopy", "price": 20 },
+  9: { "name": "ChemicalData", "price": 20 },
+  14: { "name": "SFM", "price": 20 },
+  8: { "name": "FTIR", "price": 20 },
+  15: { "name": "PL", "price": 20 },
+  27: { "name": "Elemental_analyser", "price": 20 }
+};
+const gorder = [
   {
     id: 1,
     payment: 2000,
@@ -21,178 +55,16 @@ const order = [
       ],
     },
   },
-  {
-    id: 2,
-    payment: 2000,
-    date: "2022-02-01",
-    status: "Payment Incomplete",
-    details: {
-      order_no: 1,
-      order_date: "2022-02-01",
-      instruments: [
-        { name: "electron microscope", amount: "1" },
-        { name: "nh-200", amount: "20" },
-        { name: "positron microscope-200", amount: "2" },
-      ],
-    },
-  },
-  {
-    id: 3,
-    payment: 2000,
-    date: "2022-01-01",
-    status: "Pending",
-    details: {
-      order_no: 1,
-      order_date: "2022-01-01",
-      instruments: [
-        { name: "we-200", amount: "1" },
-        { name: "wenh-200", amount: "20" },
-        { name: "electron microscope-200", amount: "2" },
-      ],
-    },
-  },
-  {
-    id: 4,
-    payment: 2000,
-    date: "2022-02-01",
-    status: "Payment Incomplete",
-    details: {
-      order_no: 1,
-      order_date: "2022-02-01",
-      instruments: [
-        { name: "electron microscope", amount: "1" },
-        { name: "nh-200", amount: "20" },
-        { name: "positron microscope-200", amount: "2" },
-      ],
-    },
-  },
-  {
-    id: 5,
-    payment: 2000,
-    date: "2022-01-01",
-    status: "Pending",
-    details: {
-      order_no: 1,
-      order_date: "2022-01-01",
-      instruments: [
-        { name: "we-200", amount: "1" },
-        { name: "wenh-200", amount: "20" },
-        { name: "electron microscope-200", amount: "2" },
-      ],
-    },
-  },
-  {
-    id: 6,
-    payment: 2000,
-    date: "2022-02-01",
-    status: "Payment Incomplete",
-    details: {
-      order_no: 1,
-      order_date: "2022-02-01",
-      instruments: [
-        { name: "electron microscope", amount: "1" },
-        { name: "nh-200", amount: "20" },
-        { name: "positron microscope-200", amount: "2" },
-      ],
-    },
-  },
-  {
-    id: 7,
-    payment: 2000,
-    date: "2022-01-01",
-    status: "Pending",
-    details: {
-      order_no: 1,
-      order_date: "2022-01-01",
-      instruments: [
-        { name: "we-200", amount: "1" },
-        { name: "wenh-200", amount: "20" },
-        { name: "electron microscope-200", amount: "2" },
-      ],
-    },
-  },
-  {
-    id: 8,
-    payment: 2000,
-    date: "2022-02-01",
-    status: "Payment Incomplete",
-    details: {
-      order_no: 1,
-      order_date: "2022-02-01",
-      instruments: [
-        { name: "electron microscope", amount: "1" },
-        { name: "nh-200", amount: "20" },
-        { name: "positron microscope-200", amount: "2" },
-      ],
-    },
-  },
-  {
-    id: 9,
-    payment: 2000,
-    date: "2022-01-01",
-    status: "Pending",
-    details: {
-      order_no: 1,
-      order_date: "2022-01-01",
-      instruments: [
-        { name: "we-200", amount: "1" },
-        { name: "wenh-200", amount: "20" },
-        { name: "electron microscope-200", amount: "2" },
-      ],
-    },
-  },
-  {
-    id: 10,
-    payment: 2000,
-    date: "2022-02-01",
-    status: "Payment Incomplete",
-    details: {
-      order_no: 1,
-      order_date: "2022-02-01",
-      instruments: [
-        { name: "electron microscope", amount: "1" },
-        { name: "nh-200", amount: "20" },
-        { name: "positron microscope-200", amount: "2" },
-      ],
-    },
-  },
-  {
-    id: 11,
-    payment: 2000,
-    date: "2022-01-01",
-    status: "Pending",
-    details: {
-      order_no: 1,
-      order_date: "2022-01-01",
-      instruments: [
-        { name: "we-200", amount: "1" },
-        { name: "wenh-200", amount: "20" },
-        { name: "electron microscope-200", amount: "2" },
-      ],
-    },
-  },
-  {
-    id: 12,
-    payment: 2000,
-    date: "2022-02-01",
-    status: "Payment Incomplete",
-    details: {
-      order_no: 1,
-      order_date: "2022-02-01",
-      instruments: [
-        { name: "electron microscope", amount: "1" },
-        { name: "nh-200", amount: "20" },
-        { name: "positron microscope-200", amount: "2" },
-      ],
-    },
-  },
-];
+]
 export function Order_card(order) {
+  
+  console.log(order.order,"my or"
+  );
   return (
     <>
       <div
         onClick={() => {
-          order.setselected(order.order.id);
+          order.setselected(order.order._id);
           order.setorder_details(order.order);
         }}
         className={` rounded-xl border-1 flex flex-row px-2 mx-2 items-center  content-cenetr ${
@@ -200,11 +72,11 @@ export function Order_card(order) {
         }`}
       >
         <div className="flex flex-col grow p-2">
-          <h1 className="text-xl font-bold">Order Id: {order.order.id}</h1>
-          <h1 className="text-lg">Payment: {order.order.payment}</h1>
+          <h1 className="text-xl font-bold">Order Id: {order.order._id}</h1>
+          <h1 className="text-lg">Payment: {order.order.price.$numberDecimal}</h1>
         </div>
         <div className="px-4 ">{order.order.status}</div>
-        <div className="px-4 flex align-center">{order.order.date}</div>
+        <div className="px-4 flex align-center">{order.order.Date.substring(0,10)}</div>
       </div>
     </>
   );
@@ -213,6 +85,35 @@ export default function Page() {
   const { data: session, status } = useSession();
   const [order_details, setorder_details] = useState(null);
   const [selected, setselected] = useState(null);
+  const [order,setgetorder]=useState([]);
+  useEffect(() => {
+    if(status=="authenticated"){
+      
+    
+      const data=fetch(`api/User/${session.user.name}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        // Add any other headers if required, like authorization token, etc.
+      },
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json(); // Parse the JSON from the response
+    })
+    .then(data => {
+      // Handle the data received from the server
+      // console.log(data); 
+      setgetorder(data.details);
+      // console.log(order,"here")// For example, log the user details to the console
+    })
+    .catch(error => {
+      // Handle any errors that occurred during the fetch
+      console.error('There was a problem with the fetch operation:', error);
+    });}
+  },[session])
   //   console.log(session,"session")
   const router = useRouter();
 
@@ -249,9 +150,11 @@ export default function Page() {
 
           <div className="mx-2 bg-slate-200 flex flex-col align-center m-8 p-4 justify-center items-center rounded-xl  h-full w-full min h-[200px] bg-blue-200">
             <i class="fa-solid fa-cart-shopping fa-7xl fa-5x p-2 mb-2 "></i>
+            <Link href="/usageCharges">
             <Button className="w-full bg-blue-700 text-white ">
+             
               Place Order
-            </Button>
+            </Button></Link>
           </div>
         </div>
         <div className="flex flex-col w-full h-full rounded-xl min-h-screen   ">
@@ -267,10 +170,10 @@ export default function Page() {
               {order.length > 0 ? (
                 order.map((ord) => (
                   <Order_card
-                    key={ord.id}
+                    key={ord._id}
                     st={setselected}
                     order={ord}
-                    state={selected === ord.id ? true : false}
+                    state={selected === ord._id ? true : false}
                     setselected={setselected}
                     setorder_details={setorder_details}
                   />
@@ -284,7 +187,7 @@ export default function Page() {
             </div>
             <div className="flex flex-col bg-white h-full  rounded-xl w-full lg:w-[30%] ">
               {/* Order Details:{order_details.} */}
-              {console.log(order_details)}
+              {console.log(order_details,"uiu")}
 
               {order_details ? (
                 <div className="m-2 p-2 lg:min-h-screen overflow-y-auto h-full lg:max-h-screen">
@@ -309,31 +212,37 @@ export default function Page() {
                       <span className="sm:text-lg text-sm font-bold mr-1">
                         Order Id:
                       </span>
-                      {order_details.id}
+                      {order_details._id}
                     </p>
                     <p>
                       <span className="sm:text-lg text-sm font-bold mr-1">
                         Order Date:{" "}
                       </span>
-                      {order_details.date}
+                      {order_details.Date.substring(0,10)}
                     </p>
                   </div>
                   <div className="flex flex-col sm:text-sm text-sm ">
                     <div className="flex flex-row font-bold ">
                       <p className="grow">Instruments</p>
                       <p>amount</p>
-                    </div>
-                    {order_details.details.instruments.map((inst) => (
+                    </div>{console.log(order_details.form_details,"hii")}
+                    {/* {order_details.form_details.map((inst) => (
                       <div className="flex flex-row  ">
                         <p className="grow truncate ">{inst.name}</p>
                         <p className="text-wrap">{inst.amount}</p>
                       </div>
-                    ))}
+                    ))} */}
+                    {Object.keys(order_details.form_details).map(key => (
+                            <div key={key} className="flex flex-row">
+                              <p className="grow truncate">{transformedForms[key].name}</p>
+                              <p className="text-wrap">{transformedForms[key].price}</p>
+                            </div>
+                          ))}
                     <p className="mt-12">
                       <span className="text-sm sm:text-lg font-bold mr-1 ">
                         Total Payment
                       </span>
-                      {order_details.payment}
+                      {order_details.price.$numberDecimal}
                     </p>
                   </div>
                   <div className="flex justify-center items-center  h-full">
