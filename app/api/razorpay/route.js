@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import Razorpay from "razorpay";
+const Razorpay = require('razorpay');
 // import shortid from "shortid";
 
 const instance = new Razorpay({

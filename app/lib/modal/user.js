@@ -7,6 +7,7 @@ const productSchema = new mongoose.Schema({
     password: String,
     email:String,
     loginType:String,
+    isAdmin:String,
     order: [{}]
 });
 
