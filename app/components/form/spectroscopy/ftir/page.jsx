@@ -1,15 +1,20 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const id = 8;
 
 const FTIRForm = () => {
+  const [checkboxState, setCheckboxState] = useState(() => {
+    const savedCheckboxState = JSON.parse(localStorage.getItem("checkboxState")) || {};
+    return savedCheckboxState;
+  });
+
   const SETitem = (e, setVariable, variable) => {
     const formDetails = JSON.parse(localStorage.getItem("form_details")) || {};
     formDetails[id] = formDetails[id] || {};
-    formDetails[id][variable] = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    formDetails[id][variable] = e.target.value;
     localStorage.setItem("form_details", JSON.stringify(formDetails));
-    setVariable(e.target.type === "checkbox" ? e.target.checked : e.target.value);
+    setVariable(e.target.value);
   };
 
   const GETitem = (def, variable) => {
@@ -30,7 +35,6 @@ const FTIRForm = () => {
   const [excitationWavelength, setExcitationWavelength] = useState(() => GETitem("", "excitationWavelength"));
   const [rangeOfScan, setRangeOfScan] = useState(() => GETitem("", "rangeOfScan"));
   const [specialRequest, setSpecialRequest] = useState(() => GETitem("", "specialRequest"));
-  const [analysisOptions, setAnalysisOptions] = useState(() => GETitem([], "analysisOptions"));
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,17 +47,22 @@ const FTIRForm = () => {
       excitationWavelength,
       rangeOfScan,
       specialRequest,
-      analysisOptions,
+      checkboxState,
     });
   };
 
-  const handleAnalysisChange = (option) => {
-    if (analysisOptions.includes(option)) {
-      setAnalysisOptions(analysisOptions.filter((item) => item !== option));
-    } else {
-      setAnalysisOptions([...analysisOptions, option]);
-    }
+  const handleCheckboxChange = (option) => {
+    setCheckboxState((prevState) => {
+      const updatedCheckboxState = { ...prevState, [option]: !prevState[option] };
+      localStorage.setItem("checkboxState", JSON.stringify(updatedCheckboxState));
+      return updatedCheckboxState;
+    });
   };
+
+  useEffect(() => {
+    const savedCheckboxState = JSON.parse(localStorage.getItem("checkboxState")) || {};
+    setCheckboxState(savedCheckboxState);
+  }, []);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -188,8 +197,8 @@ const FTIRForm = () => {
             <input
               type="checkbox"
               value="Solid"
-              checked={analysisOptions.includes("Solid")}
-              onChange={() => handleAnalysisChange("Solid")}
+              checked={checkboxState["Solid"] || false}
+              onChange={() => handleCheckboxChange("Solid")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Solid (KBr Pallet)</span>
@@ -198,8 +207,8 @@ const FTIRForm = () => {
             <input
               type="checkbox"
               value="Liquid"
-              checked={analysisOptions.includes("Liquid")}
-              onChange={() => handleAnalysisChange("Liquid")}
+              checked={checkboxState["Liquid"] || false}
+              onChange={() => handleCheckboxChange("Liquid")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Liquid (Liquid Cells)</span>
@@ -208,8 +217,8 @@ const FTIRForm = () => {
             <input
               type="checkbox"
               value="ATR"
-              checked={analysisOptions.includes("ATR")}
-              onChange={() => handleAnalysisChange("ATR")}
+              checked={checkboxState["ATR"] || false}
+              onChange={() => handleCheckboxChange("ATR")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">ATR</span>
@@ -217,14 +226,7 @@ const FTIRForm = () => {
         </div>
 
         {/* Submit Button */}
-        <div className="flex items-center justify-center mt-6">
-          <button
-            type="submit"
-            className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Submit
-          </button>
-        </div>
+        
       </form>
     </div>
   );

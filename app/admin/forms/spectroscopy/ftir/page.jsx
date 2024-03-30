@@ -145,45 +145,41 @@ const FTIRForm = (prop) => {
             Request Analysis
           </p>
           <label className="inline-flex items-center">
-            <input
-              type="checkbox"
-              value="Solid"
-              checked={prop.prop.analysisOptions.includes("Solid")}
-              readOnly={true}
-              className="form-checkbox h-5 w-5 text-gray-600"
-            />
-            <span className="ml-2">Solid (KBr Pallet)</span>
-          </label>
-          <label className="inline-flex items-center ml-6">
-            <input
-              type="checkbox"
-              value="Liquid"
-              checked={prop.prop.analysisOptions.includes("Liquid")}
-              readOnly={true}
-              className="form-checkbox h-5 w-5 text-gray-600"
-            />
-            <span className="ml-2">Liquid (Liquid Cells)</span>
-          </label>
-          <label className="inline-flex items-center ml-6">
-            <input
-              type="checkbox"
-              value="ATR"
-              checked={prop.prop.analysisOptions.includes("ATR")}
-              readOnly={true}
-              className="form-checkbox h-5 w-5 text-gray-600"
-            />
-            <span className="ml-2">ATR</span>
-          </label>
+  <input
+    type="checkbox"
+    value="Solid"
+    checked={(prop.prop.checkboxState && prop.prop.checkboxState["Solid"]) || false}
+    readOnly={true}
+    className="form-checkbox h-5 w-5 text-gray-600"
+  />
+  <span className="ml-2">Solid (KBr Pallet)</span>
+</label>
+
+<label className="inline-flex items-center ml-6">
+  <input
+    type="checkbox"
+    value="Liquid"
+    checked={(prop.prop.checkboxState && prop.prop.checkboxState["Liquid"]) || false}
+    readOnly={true}
+    className="form-checkbox h-5 w-5 text-gray-600"
+  />
+  <span className="ml-2">Liquid (Liquid Cells)</span>
+</label>
+
+<label className="inline-flex items-center ml-6">
+  <input
+    type="checkbox"
+    value="ATR"
+    checked={(prop.prop.checkboxState && prop.prop.checkboxState["ATR"]) || false}
+    readOnly={true}
+    className="form-checkbox h-5 w-5 text-gray-600"
+  />
+  <span className="ml-2">ATR</span>
+</label>
+
         </div>
 
-        <div className="flex items-center justify-center mt-6">
-          <button
-            type="submit"
-            className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Submit
-          </button>
-        </div>
+        
       </form>
     </div>
   );

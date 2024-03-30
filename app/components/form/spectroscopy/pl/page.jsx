@@ -1,9 +1,9 @@
-"use client"
-import React, { useState } from 'react';
+"use client";
+import React, { useState, useEffect } from 'react';
 
 const id = 11; // Unique ID for this form
 
-const PLForm = () => {
+const PL = () => {
   const SETitem = (e, setVariable, variable) => {
     const formDetails = JSON.parse(localStorage.getItem('form_details')) || {};
     formDetails[id] = formDetails[id] || {};
@@ -24,34 +24,31 @@ const PLForm = () => {
 
   const [natureOfSample, setNatureOfSample] = useState(() => GETitem('', 'natureOfSample'));
   const [noOfSamples, setNoOfSamples] = useState(() => GETitem('', 'noOfSamples'));
-  const [conductive, setConductive] = useState(() => ({
-    conductive: false,
-    nonconductive: false,
-  }));
-  const [description, setDescription] = useState(() => ({
-    SEM: false,
-    EDM: false,
-    WDX: false,
-  }));
+  const [isConductive, setIsConductive] = useState(() => GETitem(false, 'isConductive'));
+  const [isNonConductive, setIsNonConductive] = useState(() => GETitem(false, 'isNonConductive'));
+  const [SEM, setSEM] = useState(() => GETitem(false, 'SEM'));
+  const [EDM, setEDM] = useState(() => GETitem(false, 'EDM'));
+  const [WDX, setWDX] = useState(() => GETitem(false, 'WDX'));
   const [expectedElements, setExpectedElements] = useState(() => GETitem('', 'expectedElements'));
+
+  useEffect(() => {
+    localStorage.setItem('form_details', JSON.stringify({
+      [id]: {
+        natureOfSample,
+        noOfSamples,
+        isConductive,
+        isNonConductive,
+        SEM,
+        EDM,
+        WDX,
+        expectedElements
+      }
+    }));
+  }, [natureOfSample, noOfSamples, isConductive, isNonConductive, SEM, EDM, WDX, expectedElements]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form Data:', { natureOfSample, noOfSamples, conductive, description, expectedElements });
-  };
-
-  const handleConductiveChange = (option) => {
-    setConductive({
-      ...conductive,
-      [option]: !conductive[option],
-    });
-  };
-
-  const handleDescriptionChange = (option) => {
-    setDescription({
-      ...description,
-      [option]: !description[option],
-    });
+    console.log('Form Data:', { natureOfSample, noOfSamples, isConductive, isNonConductive, SEM, EDM, WDX, expectedElements });
   };
 
   return (
@@ -65,7 +62,7 @@ const PLForm = () => {
           <textarea
             id="natureOfSample"
             value={natureOfSample}
-            onChange={(e) => SETitem(e, setNatureOfSample, 'natureOfSample')}
+            onChange={(e) => setNatureOfSample(e.target.value)}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Kindly intimate if toxic"
             required
@@ -78,7 +75,7 @@ const PLForm = () => {
           <textarea
             id="noOfSamples"
             value={noOfSamples}
-            onChange={(e) => SETitem(e, setNoOfSamples, 'noOfSamples')}
+            onChange={(e) => setNoOfSamples(e.target.value)}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="No of sample"
             required
@@ -90,9 +87,8 @@ const PLForm = () => {
           <label className="inline-flex items-center">
             <input
               type="checkbox"
-              value="Conductive"
-              checked={conductive.conductive}
-              onChange={() => handleConductiveChange('conductive')}
+              checked={isConductive}
+              onChange={() => setIsConductive(!isConductive)}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Conductive</span>
@@ -100,9 +96,8 @@ const PLForm = () => {
           <label className="inline-flex items-center ml-6">
             <input
               type="checkbox"
-              value="nonconductive"
-              checked={conductive.nonconductive}
-              onChange={() => handleConductiveChange('nonconductive')}
+              checked={isNonConductive}
+              onChange={() => setIsNonConductive(!isNonConductive)}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Non-conductive</span>
@@ -115,9 +110,8 @@ const PLForm = () => {
           <label className="inline-flex items-center">
             <input
               type="checkbox"
-              value="SEM"
-              checked={description.SEM}
-              onChange={() => handleDescriptionChange('SEM')}
+              checked={SEM}
+              onChange={() => setSEM(!SEM)}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">SEM</span>
@@ -125,9 +119,8 @@ const PLForm = () => {
           <label className="inline-flex items-center ml-2">
             <input
               type="checkbox"
-              value="EDM"
-              checked={description.EDM}
-              onChange={() => handleDescriptionChange('EDM')}
+              checked={EDM}
+              onChange={() => setEDM(!EDM)}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">EDM</span>
@@ -135,9 +128,8 @@ const PLForm = () => {
           <label className="inline-flex items-center ml-2">
             <input
               type="checkbox"
-              value="WDX"
-              checked={description.WDX}
-              onChange={() => handleDescriptionChange('WDX')}
+              checked={WDX}
+              onChange={() => setWDX(!WDX)}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">WDX</span>
@@ -151,7 +143,7 @@ const PLForm = () => {
           <textarea
             id="expectedElements"
             value={expectedElements}
-            onChange={(e) => SETitem(e, setExpectedElements, 'expectedElements')}
+            onChange={(e) => setExpectedElements(e.target.value)}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter..."
             required
@@ -171,4 +163,4 @@ const PLForm = () => {
   );
 };
 
-export default PLForm;
+export default PL;

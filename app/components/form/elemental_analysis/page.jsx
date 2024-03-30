@@ -75,7 +75,7 @@ const GETitem=(def,variable)=>{
             className="block text-gray-700 text-sm font-bold mb-2"
           >
             Crystal Information
-            <h1>{crystalInfo}</h1>
+           
           </label>
           <input
             type="text"
