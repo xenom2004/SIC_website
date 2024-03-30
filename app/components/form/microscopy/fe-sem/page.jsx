@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
-const id=27;
-const FESEMForm = () => {
+const id=15;
+const PLForm = () => {
   const SETitem=(e,setvariable,variable)=>{
     var formDetails = JSON.parse(localStorage.getItem("form_details")) || {};
     formDetails[id] = formDetails[id] || {};
@@ -121,6 +121,7 @@ const GETitem=(def,variable)=>{
             <input
               type="checkbox"
               value="SEM"
+              disabled={true}
               checked={description.SEM}
               onChange={(e) => SETitem(e,setDescription,"SEM")}
               className="form-checkbox h-5 w-5 text-gray-600"
@@ -131,6 +132,7 @@ const GETitem=(def,variable)=>{
             <input
               type="checkbox"
               value="EDM"
+              disabled={true}
               checked={description.EDM}
               onChange={(e) => SETitem(e,setDescription,"EDM")}
               className="form-checkbox h-5 w-5 text-gray-600"
@@ -141,6 +143,7 @@ const GETitem=(def,variable)=>{
             <input
               type="checkbox"
               value="WDX"
+              disabled={true}
               checked={description.WDX}
               onChange={(e) => SETitem(e,setDescription,"WDX")}
               className="form-checkbox h-5 w-5 text-gray-600"
@@ -178,4 +181,4 @@ const GETitem=(def,variable)=>{
   );
 };
 
-export default FESEMForm;
+export default PLForm;

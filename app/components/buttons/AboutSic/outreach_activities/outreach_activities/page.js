@@ -142,49 +142,37 @@ const Page = () => {
     dots[newIndex - 1].classList.remove('bg-green-600');
     dots[newIndex - 1].classList.add('bg-yellow-500');
   }
+
   return (
-    <>
-      <div>
+    <div className="container mx-auto px-4">
       <h1 className="my-4 text-center text-4xl">Outreach Activities For School and College Students</h1>
-    <h2 className="mb-10 text-center text-xl">@IIT Indore</h2>
-    <h4 className="mb-10 text-center text-xl">To create awareness of recent developments in Science and Technology and the applications of sophisticated instruments in basic and applied research.</h4>
+      <h2 className="mb-10 text-center text-xl">@IIT Indore</h2>
+      <h4 className="mb-10 text-center text-xl">To create awareness of recent developments in Science and Technology and the applications of sophisticated instruments in basic and applied research.</h4>
 
-   
-    <div className="relative w-[600px] mx-auto">
-    {
-            fact.map((item) => (
-                <Row1 key={item.id} image={item.image} />
+      <div className="relative w-full max-w-[600px] mx-auto">
+        {fact.map((item) => (
+          <Row1 key={item.id} image={item.image} />
+        ))}
+      </div>
+      <br/>
 
-            ))
-          }
-    </div>
-    <br/>
+      <a className="absolute left-0 top-1/2 p-4 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 mt-24 cursor-pointer" onClick={() => moveSlide(-1)}>❮</a>
+      <a className="absolute right-0 top-1/2 p-4 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 mt-24 cursor-pointer" onClick={() => moveSlide(1)}>❯</a>
 
-    
-    <a className="absolute left-0 top-1/2 p-4 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 mt-24  cursor-pointer"
-        onClick={() => moveSlide(-1)}>❮</a>
-
-   
-    <a className="absolute right-0 top-1/2 p-4 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500  mt-24  cursor-pointer"
-        onClick={() => moveSlide(1)}>❯</a>
-
-    <div className="flex justify-center items-center space-x-5">
-        <div className="dot w-4 h-4 rounded-full cursor-pointer" onClick={() => currentSlide(1)}></div>
-        <div className="dot w-4 h-4 rounded-full cursor-pointer" onClick={() => currentSlide(1)}></div>
-    </div>
-
-    </div>
-      <div className="container px-10 py-8 mx-auto items-center">
-        <div className="flex flex-wrap">
-          {
-            aboug.map((item) => (
-                <Row key={item.id} date={item.date} first={item.first} second={item.second} third={item.third} image={item.image} />
-            ))
-          }
-        </div>
+      <div className="flex justify-center items-center space-x-5">
+        {[...Array(fact.length)].map((_, index) => (
+          <div key={index} className={`dot w-4 h-4 rounded-full cursor-pointer ${slideIndex === index + 1 ? 'bg-yellow-500' : 'bg-green-600'}`} onClick={() => currentSlide(index + 1)}></div>
+        ))}
       </div>
 
-    </>
+      <div className="container  px-4 py-8 mx-auto items-center">
+        <div className="flex  flex-wrap">
+          {aboug.map((item) => (
+            <Row key={item.id} date={item.date} first={item.first} second={item.second} third={item.third} image={item.image} />
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
 

@@ -1,9 +1,9 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const id = 7;
 
-const ChemicalDataForm = () => {
+const NMR = () => {
   const SETitem = (e, setVariable, variable) => {
     const formDetails = JSON.parse(localStorage.getItem('form_details')) || {};
     formDetails[id] = formDetails[id] || {};
@@ -23,25 +23,54 @@ const ChemicalDataForm = () => {
   };
 
   const [amount, setAmount] = useState(() => GETitem('', 'amount'));
-  const [solubility, setSolubility] = useState(() => ({
-    D2O: false,
-    CD3COCH3: false,
-    MeOD: false,
-    Other: false,
-  }));
+  const [D2O, setD2O] = useState(() => GETitem(false, 'D2O'));
+  const [CD3COCH3, setCD3COCH3] = useState(() => GETitem(false, 'CD3COCH3'));
+  const [MeOD, setMeOD] = useState(() => GETitem(false, 'MeOD'));
+  const [Other, setOther] = useState(() => GETitem(false, 'Other'));
   const [molecularFormula, setMolecularFormula] = useState(() => GETitem('', 'molecularFormula'));
   const [molecularStructure, setMolecularStructure] = useState(() => GETitem('', 'molecularStructure'));
 
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setD2O(GETitem(false, 'D2O'));
+      setCD3COCH3(GETitem(false, 'CD3COCH3'));
+      setMeOD(GETitem(false, 'MeOD'));
+      setOther(GETitem(false, 'Other'));
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form Data:', { amount, solubility, molecularFormula, molecularStructure });
+    console.log('Form Data:', { amount, D2O, CD3COCH3, MeOD, Other, molecularFormula, molecularStructure });
   };
 
   const handleSolubilityChange = (solvent) => {
-    setSolubility({
-      ...solubility,
-      [solvent]: !solubility[solvent],
-    });
+    switch (solvent) {
+      case 'D2O':
+        setD2O(prev => !prev);
+        SETitem({ target: { type: 'checkbox', checked: !D2O } }, setD2O, 'D2O');
+        break;
+      case 'CD3COCH3':
+        setCD3COCH3(prev => !prev);
+        SETitem({ target: { type: 'checkbox', checked: !CD3COCH3 } }, setCD3COCH3, 'CD3COCH3');
+        break;
+      case 'MeOD':
+        setMeOD(prev => !prev);
+        SETitem({ target: { type: 'checkbox', checked: !MeOD } }, setMeOD, 'MeOD');
+        break;
+      case 'Other':
+        setOther(prev => !prev);
+        SETitem({ target: { type: 'checkbox', checked: !Other } }, setOther, 'Other');
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -68,8 +97,8 @@ const ChemicalDataForm = () => {
           <label className="inline-flex items-center">
             <input
               type="checkbox"
-              value="D2O"
-              checked={solubility.D2O}
+              disabled={true}
+              checked={D2O}
               onChange={() => handleSolubilityChange('D2O')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -78,8 +107,8 @@ const ChemicalDataForm = () => {
           <label className="inline-flex items-center ml-6">
             <input
               type="checkbox"
-              value="CD3COCH3"
-              checked={solubility.CD3COCH3}
+              disabled={true}
+              checked={CD3COCH3}
               onChange={() => handleSolubilityChange('CD3COCH3')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -88,8 +117,8 @@ const ChemicalDataForm = () => {
           <label className="inline-flex items-center ml-6">
             <input
               type="checkbox"
-              value="MeOD"
-              checked={solubility.MeOD}
+              checked={MeOD}
+              disabled={true}
               onChange={() => handleSolubilityChange('MeOD')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -98,8 +127,8 @@ const ChemicalDataForm = () => {
           <label className="inline-flex items-center ml-6">
             <input
               type="checkbox"
-              value="Other"
-              checked={solubility.Other}
+              checked={Other}
+              disabled={true}
               onChange={() => handleSolubilityChange('Other')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -148,4 +177,4 @@ const ChemicalDataForm = () => {
   );
 };
 
-export default ChemicalDataForm;
+export default NMR;

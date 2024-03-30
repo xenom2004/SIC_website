@@ -86,6 +86,7 @@ const SingleCrystalXRayForm = (prop) => {
             <input
               type="checkbox"
               value="moisture-sensitive"
+              disabled={true}
               checked={prop.prop.stability_moisture_sensitive}
               className="form-checkbox h-5 w-5 text-gray-600"
             />

@@ -1,19 +1,18 @@
-"use client";
+"use client"
 import React, { useState } from "react";
-const id = 3;
-const XAFSForm = () => {
-   // Unique identifier for the form data
 
+
+
+const id = 3;
+
+const XAFSForm = () => {
   // Function to set form data into local storage
   const SETitem = (e, setVariable, variable) => {
     const formDetails = JSON.parse(localStorage.getItem("form_details")) || {};
     formDetails[id] = formDetails[id] || {};
-    formDetails[id][variable] =
-      e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    formDetails[id][variable] = e.target.type === "checkbox" ? e.target.checked : e.target.value;
     localStorage.setItem("form_details", JSON.stringify(formDetails));
-    setVariable(
-      e.target.type === "checkbox" ? e.target.checked : e.target.value
-    );
+    setVariable(e.target.type === "checkbox" ? e.target.checked : e.target.value);
   };
 
   // Function to get form data from local storage
@@ -28,29 +27,34 @@ const XAFSForm = () => {
   };
 
   // State variables for form inputs
-  const [measurementType, setMeasurementType] = useState(
-    GETitem("", "measurementType")
-  );
+  const [measurementTypeXANES, setMeasurementTypeXANES] = useState(GETitem(false, "measurementTypeXANES"));
+  const [measurementTypeEXAFS, setMeasurementTypeEXAFS] = useState(GETitem(false, "measurementTypeEXAFS"));
+  const [measurementTypeBoth, setMeasurementTypeBoth] = useState(GETitem(false, "measurementTypeBoth"));
   const [caution, setCaution] = useState(GETitem("", "caution"));
-  const [numberOfSamples, setNumberOfSamples] = useState(
-    GETitem("", "numberOfSamples")
-  );
-  const [sampleNature, setSampleNature] = useState(GETitem("", "sampleNature"));
-  const [mdsSheet, setMdsSheet] = useState(GETitem("", "mdsSheet"));
-  const [specialPrecautions, setSpecialPrecautions] = useState(
-    GETitem("", "specialPrecautions")
-  );
+  const [numberOfSamples, setNumberOfSamples] = useState(GETitem("", "numberOfSamples"));
+  const [sampleNatureHazardous, setSampleNatureHazardous] = useState(GETitem(false, "sampleNatureHazardous"));
+  const [sampleNatureHygroscopic, setSampleNatureHygroscopic] = useState(GETitem(false, "sampleNatureHygroscopic"));
+  const [sampleNatureOxidises, setSampleNatureOxidises] = useState(GETitem(false, "sampleNatureOxidises"));
+  const [sampleNatureNone, setSampleNatureNone] = useState(GETitem(false, "sampleNatureNone"));
+  const [mdsSheetAttached, setMdsSheetAttached] = useState(GETitem(false, "mdsSheetAttached"));
+  const [mdsSheetNonAttached, setMdsSheetNonAttached] = useState(GETitem(false, "mdsSheetNonAttached"));
+  const [specialPrecautions, setSpecialPrecautions] = useState(GETitem("", "specialPrecautions"));
 
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission, e.g., send data to server
     console.log("Form submitted:", {
-      measurementType,
+      measurementTypeXANES,
+      measurementTypeEXAFS,
+      measurementTypeBoth,
       caution,
       numberOfSamples,
-      sampleNature,
-      mdsSheet,
+      sampleNatureHazardous,
+      sampleNatureHygroscopic,
+      sampleNatureOxidises,
+      sampleNatureNone,
+      mdsSheetAttached,
+      mdsSheetNonAttached,
       specialPrecautions,
     });
   };
@@ -67,37 +71,31 @@ const XAFSForm = () => {
           </p>
           <label className="inline-flex items-center">
             <input
-              type="radio"
-              value="XANES"
-              checked={measurementType === "XANES"}
-              onChange={(e) =>
-                SETitem(e, setMeasurementType, "measurementType")
-              }
-              className="form-radio h-5 w-5 text-gray-600"
+              type="checkbox"
+              disabled={true}
+              checked={measurementTypeXANES}
+              onChange={(e) => SETitem(e, setMeasurementTypeXANES, "measurementTypeXANES")}
+              className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">XANES</span>
           </label>
           <label className="inline-flex items-center ml-6">
             <input
-              type="radio"
-              value="EXAFS"
-              checked={measurementType === "EXAFS"}
-              onChange={(e) =>
-                SETitem(e, setMeasurementType, "measurementType")
-              }
-              className="form-radio h-5 w-5 text-gray-600"
+              type="checkbox"
+              disabled={true}
+              checked={measurementTypeEXAFS}
+              onChange={(e) => SETitem(e, setMeasurementTypeEXAFS, "measurementTypeEXAFS")}
+              className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">EXAFS</span>
           </label>
           <label className="inline-flex items-center ml-6">
             <input
-              type="radio"
-              value="Both"
-              checked={measurementType === "Both"}
-              onChange={(e) =>
-                SETitem(e, setMeasurementType, "measurementType")
-              }
-              className="form-radio h-5 w-5 text-gray-600"
+              type="checkbox"
+              disabled={true}
+              checked={measurementTypeBoth}
+              onChange={(e) => SETitem(e, setMeasurementTypeBoth, "measurementTypeBoth")}
+              className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Both</span>
           </label>
@@ -142,41 +140,41 @@ const XAFSForm = () => {
           </p>
           <label className="inline-flex items-center">
             <input
-              type="radio"
-              value="Hazardous"
-              checked={sampleNature === "Hazardous"}
-              onChange={() => SETitem(e, setSampleNature, "sampleNature")}
-              className="form-radio h-5 w-5 text-gray-600"
+              type="checkbox"
+              disabled={true}
+              checked={sampleNatureHazardous}
+              onChange={(e) => SETitem(e, setSampleNatureHazardous, "sampleNatureHazardous")}
+              className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Hazardous</span>
           </label>
           <label className="inline-flex items-center ml-6">
             <input
-              type="radio"
-              value="Hygroscopic"
-              checked={sampleNature === "Hygroscopic"}
-              onChange={(e) => SETitem(e, setSampleNature, "sampleNature")}
-              className="form-radio h-5 w-5 text-gray-600"
+              type="checkbox"
+              disabled={true}
+              checked={sampleNatureHygroscopic}
+              onChange={(e) => SETitem(e, setSampleNatureHygroscopic, "sampleNatureHygroscopic")}
+              className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Hygroscopic</span>
           </label>
           <label className="inline-flex items-center ml-6">
             <input
-              type="radio"
-              value="Oxidises in air"
-              checked={sampleNature === "Oxidises in air"}
-              onChange={(e) => SETitem(e, setSampleNature, "sampleNature")}
-              className="form-radio h-5 w-5 text-gray-600"
+              type="checkbox"
+              checked={sampleNatureOxidises}
+              disabled={true}
+              onChange={(e) => SETitem(e, setSampleNatureOxidises, "sampleNatureOxidises")}
+              className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Oxidises in air</span>
           </label>
           <label className="inline-flex items-center ml">
             <input
-              type="radio"
-              value="None of these"
-              checked={sampleNature === "None of these"}
-              onChange={(e) => SETitem(e, setSampleNature, "sampleNature")}
-              className="form-radio h-5 w-5 text-gray-600"
+              type="checkbox"
+              checked={sampleNatureNone}
+              disabled={true}
+              onChange={(e) => SETitem(e, setSampleNatureNone, "sampleNatureNone")}
+              className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">None of these</span>
           </label>
@@ -187,21 +185,21 @@ const XAFSForm = () => {
           </p>
           <label className="inline-flex items-center">
             <input
-              type="radio"
-              value="Attached"
-              checked={mdsSheet === "Attached"}
-              onChange={(e) => SETitem(e, setMdsSheet, "mdsSheet")}
-              className="form-radio h-5 w-5 text-gray-600"
+              type="checkbox"
+              disabled={true}
+              checked={mdsSheetAttached}
+              onChange={(e) => SETitem(e, setMdsSheetAttached, "mdsSheetAttached")}
+              className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Attached</span>
           </label>
           <label className="inline-flex items-center ml-6">
             <input
-              type="radio"
-              value="Non-attached"
-              checked={mdsSheet === "Non-attached"}
-              onChange={(e) => SETitem(e, setMdsSheet, "mdsSheet")}
-              className="form-radio h-5 w-5 text-gray-600"
+              type="checkbox"
+              disabled={true}
+              checked={mdsSheetNonAttached}
+              onChange={(e) => SETitem(e, setMdsSheetNonAttached, "mdsSheetNonAttached")}
+              className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Non-attached</span>
           </label>
@@ -216,9 +214,7 @@ const XAFSForm = () => {
           <textarea
             id="specialPrecautions"
             value={specialPrecautions}
-            onChange={(e) =>
-              SETitem(e, setSpecialPrecautions, "specialPrecautions")
-            }
+            onChange={(e) => SETitem(e, setSpecialPrecautions, "specialPrecautions")}
             rows="3"
             className="resize-none appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter special precautions..."
