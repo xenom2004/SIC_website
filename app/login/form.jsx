@@ -50,7 +50,7 @@ export const LoginForm = () => {
 
   return (
     <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-      <h1 classname="text-xl font-bold text-gray-900 md:text-2xl text-white">Sign in to your account
+      <h1 className="text-xl font-bold text-gray-900 md:text-2xl text-gray-100 mx:auto">Sign in to your account
       </h1>
     <form className="space-y-4 md:space-y-6" onSubmit={onSubmit}>
       {error && (
