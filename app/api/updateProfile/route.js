@@ -8,7 +8,7 @@ export  async function POST(req, res) {
     console.log(data,"on server");
     await mongoose.connect(connection.connection);
     const filter = { "name":data.name}; // specify the filter to match the document you want to update
-    const update = { $push: { cover_image: data.cover_image, image: data.image, loginType: data.loginType,gst_number: data.gst_number,
+    const update = { $set: { profileName: data.profileName,cover_image: data.cover_image, image: data.image, loginType: data.loginType,gst_number: data.gst_number,
         institute: data.institute,phone: data.phone,supervisorName: data.supervisorName,supervisorEmail: data.supervisorEmail,
     Designation: data.Designation,studentDesignation: data.studentDesignation,email: data.email} }; // specify the update operation
     const options = { new: true }; // optional: returns the modified document instead of the original

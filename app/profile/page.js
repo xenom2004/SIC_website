@@ -15,7 +15,8 @@ const ProfilePage = () => {
   const [cover_image,setcover_image]=useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [profileData, setProfileData] = useState({
-    name: 'John Doe',
+
+    profileName:"name",
     phone: '123-456-7890',
     institute: 'XYZ University',
     email: 'john.doe@example.com',
@@ -47,10 +48,25 @@ const handleImageChange = (e,setfunc) => {
     
    
   };
+ useEffect(() => {
+  if(status==="authenticated"){
+   async function getData() {
+    const response = await fetch('/api/Userdetail/'+session.user.name);
+    const data = await response.json();
+    console.log(data,"on use")
+    setProfileData(data.details);
+    setImage(data.details.image);
+    setcover_image(data.details.cover_image);}
+
+    getData();}
+   
+ },[session]);   
 
   const handlesave=async ()=>{
     const data={
       ...profileData,
+      "name":session.user.name,
+      
       "loginType": loginType,
       "cover_image": cover_image,
       "image": image,
@@ -67,7 +83,8 @@ const handleImageChange = (e,setfunc) => {
     if (!response.ok) {
       throw new Error('Failed to fetch');
     }
-  
+    
+    alert("sucess")
     return response.json();
     
   }
@@ -150,7 +167,7 @@ const handleImageChange = (e,setfunc) => {
   }
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-screen mt-48 mb-48">{console.log(session)}
       {/* {user_details!==null && console.log(user_details)} */}
 
     <div className="w-full max-w-xl mx-auto p-6 bg-white shadow-md rounded-lg">
@@ -163,7 +180,15 @@ const handleImageChange = (e,setfunc) => {
 
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name:</label>
 
-          <input type="text" id="name" name="name" value={profileData.name} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+          <input type="text" id="name" name="name" value={session.user.name}  disabled={true} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+
+        </div>
+
+        <div className="mb-4">
+
+          <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Profile Name</label>
+
+          <input type="text" id="phone" name="profileName" value={profileData.profileName} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
 
         </div>
 
