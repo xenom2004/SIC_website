@@ -55,12 +55,15 @@ const Header = () => {
         {/* Navigation links for large screens */}
         <div className=" md:flex items-center space-x-4">
           <div className="hidden md:flex items-center space-x-4">
-            <Link href="/" className="font-semibold hover:text-white mr-4">
+            <Link
+              href="/"
+              className="font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
+            >
               Home
             </Link>
             <Link
               href="/usageCharges"
-              className="font-semibold hover:text-white mr-4"
+              className="font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
             >
               Usage Charges
             </Link>
@@ -73,7 +76,7 @@ const Header = () => {
             {session && (
               <Link
                 href="/user"
-                className="font-semibold hover:text-white mr-4"
+                className="font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
               >
                 Orders
               </Link>

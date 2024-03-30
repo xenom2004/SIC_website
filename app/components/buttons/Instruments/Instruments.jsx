@@ -27,7 +27,7 @@ const Instruments = () => {
         <div
           id="dropdownHoverButton"
           onClick={handleDropdownClose}
-          className="font-semibold px-4 py-2   bg-blue-850   text-white  "
+          className="font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 "
         >
           Instruments
         </div>
@@ -77,8 +77,6 @@ const Instruments = () => {
               Chromatography
             </a>
           </li>
-
-          
         </ul>
       </div>
     </div>
