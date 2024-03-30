@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 const id = 3;
 const XAFSForm = () => {
-  const id = "xafsForm"; // Unique identifier for the form data
+   // Unique identifier for the form data
 
   // Function to set form data into local storage
   const SETitem = (e, setVariable, variable) => {
