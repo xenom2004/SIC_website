@@ -21,21 +21,21 @@ const Statistics = () => {
         <div className="grid w-full grid-cols-3">
           <div className="text-center text-white">
             <div className="text-5xl font-bold mb-2">
-              <CountUp start={inView ? 0 : null} end={10000} duration={2} separator="," />+
+              <CountUp start={inView ? 0 : null} end={100} duration={4} separator="," />+
             </div>
-            <div className="text-xl">STUDENTS</div>
+            <div className="text-xl">USER</div>
           </div>
           <div className="text-center text-white mx-8">
             <div className="text-5xl font-bold mb-2">
-              <CountUp start={inView ? 0 : null} end={600} duration={2} />+
+              <CountUp start={inView ? 0 : null} end={60} duration={4} />+
             </div>
             <div className="text-xl">FACULTY</div>
           </div>
           <div className="text-center text-white">
             <div className="text-5xl font-bold mb-2">
-              <CountUp start={inView ? 0 : null} end={700} duration={2} />+
+              <CountUp start={inView ? 0 : null} end={70} duration={4} />+
             </div>
-            <div className="text-xl">STAFF</div>
+            <div className="text-xl"> STUDENTS</div>
           </div>
         </div>
       </div>
