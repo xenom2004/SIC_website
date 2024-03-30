@@ -1,8 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 
-const id = 14; // Unique ID for this form
-
+const id = 14; 
 const SFMForm = () => {
   const SETitem = (e, setVariable, variable) => {
     const formDetails = JSON.parse(localStorage.getItem('form_details')) || {};
