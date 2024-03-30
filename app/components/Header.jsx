@@ -9,10 +9,12 @@ const Header = () => {
   const { data: session, status } = useSession();
 
   const handleSignIn = () => {
+    setIsDropdownOpen(!isDropdownOpen);
     signIn();
   };
 
   const handleSignOut = () => {
+    setIsDropdownOpen(!isDropdownOpen);
     signOut();
   };
 
@@ -109,7 +111,7 @@ const Header = () => {
           <div className="md:hidden relative">
             <button
               onClick={toggleDropdown}
-              className="font-semibold px-4 py-2 bg-gray-800 text-white hover:bg-gray-900 transition duration-300 ease-in-out transform hover:scale-105"
+              className="font-semibold px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
             >
               Menu
             </button>
@@ -119,16 +121,20 @@ const Header = () => {
                 <Link
                   onClick={toggleDropdown}
                   href="/"
-                  className="block px-8 py-2 text-white"
+                  className="block px-8 font-semibold  py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
                 >
                   Home
                 </Link>
-                <Instruments />
-                <About />
+                <div onClick={toggleDropdown}>
+                  <Instruments />
+                </div>
+                <div onClick={toggleDropdown}>
+                  <About />
+                </div>
                 <Link
                   onClick={toggleDropdown}
                   href="/usageCharges"
-                  className="block px-8 py-2 text-white"
+                  className="block px-8 font-semibold  py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
                 >
                   Usage Charges
                 </Link>
@@ -136,7 +142,7 @@ const Header = () => {
                   <Link
                     onClick={toggleDropdown}
                     href="/user"
-                    className="block px-8 py-2 text-white"
+                    className="block px-8 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
                   >
                     Orders
                   </Link>
@@ -144,14 +150,15 @@ const Header = () => {
                 {session ? (
                   <Link
                     href="/profile"
-                    className="block   onClick={toggleDropdown} px-8 text-center py-2 text-white"
+                    onClick={toggleDropdown}
+                    className="block   px-8 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
                   >
                     Profile
                   </Link>
                 ) : (
                   <button
                     onClick={handleSignIn}
-                    className="block px-20  onClick={toggleDropdown} py-2 text-center text-white"
+                    className="block px-20  font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
                   >
                     Login/Register
                   </button>
@@ -159,7 +166,7 @@ const Header = () => {
                 {session && (
                   <button
                     onClick={handleSignOut}
-                    className="block  onClick={toggleDropdown} px-20 py-2 text-center text-white"
+                    className="block   px-20 font-semibold  py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
                   >
                     Logout
                   </button>
