@@ -50,7 +50,7 @@ export default function Home() {
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREt5szKKfa8Y0c-o95V04ujCr8Nr7HlwaEyAjGC3l34A&s" alt="Bulb" className="h-16 w-16 mb-4" />
           <h2 className="text-lg font-bold mb-2">Internal User</h2>
           <p className="text-lg text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
-          <Link href="/undergraduate-programs" passHref>
+          <Link href="/undergraduate-programs" >
             <div className="text-blue-500 hover:underline mt-4">Explore</div>
           </Link>
         </div>
@@ -59,7 +59,7 @@ export default function Home() {
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFQGCJOieZHFjrklBjYpTc67eZX3LrxDAouUvzwY6POQ&s" alt="Brain" className="h-16 w-16 mb-4" />
           <h2 className="text-lg font-bold mb-2">External Institution</h2>
           <p className="text-lg text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
-          <Link href="/graduate-programs" passHref>
+          <Link href="/graduate-programs">
             <div className="text-blue-500 hover:underline mt-4">Explore</div>
           </Link>
         </div>
@@ -68,7 +68,7 @@ export default function Home() {
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjKP4Njsdfof1uFgYQJAzpowEsCVgvdi_Fto_ZKmc7_TRZfOeEAQcASkc8xRtNR6oodZQ&usqp=CAU" alt="Book" className="h-16 w-16 mb-4" />
           <h2 className="text-lg font-bold mb-2">Company</h2>
           <p className="text-lg text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
-          <Link href="/professional-education" passHref>
+          <Link href="/professional-education" >
             <div className="text-blue-500 hover:underline mt-4">Explore</div>
           </Link>
         </div>
