@@ -29,7 +29,7 @@ const Header = () => {
   // Render loading spinner while session is being fetched
   if (status === "loading") {
     return (
-      <header className="text-gray-100 bg-lightSky body-font shadow-md fixed w-full z-50 top-0 mb-12">
+      <header className="fixed  text-gray-100 bg-lightSky body-font shadow-md w-full z-50 top-0 mb-12">
         <div className="container px-6 py-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="flex items-center text-white mb-4">
             <div className="h-16 px-10 bg-white rounded-full animate-pulse"></div>
