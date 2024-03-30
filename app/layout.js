@@ -28,8 +28,10 @@ export default function RootLayout({ children }) {
       <body className="font-bodyFont w-full bg-main-bg text-darkText">
         <Layout>
           <div className="flex flex-col gap-y-4">
+            <div className="">
           <Header />
-          <div className=" mt-48 md:mt-24 mx" style={{minHeight: '1000px'}}>
+          </div>
+          <div className="" style={{minHeight: '1000px'}}>
             {children}
           </div>
           <Footer/>

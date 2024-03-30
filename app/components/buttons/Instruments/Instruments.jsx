@@ -27,7 +27,7 @@ const Instruments = () => {
         <div
           id="dropdownHoverButton"
           onClick={handleDropdownClose}
-          className="font-semibold px-4 py-2   bg-blue-850   text-white  mr-4"
+          className="font-semibold px-4 py-2   bg-blue-850   text-white  "
         >
           Instruments
         </div>
@@ -39,7 +39,7 @@ const Instruments = () => {
         ref={dropdownRef}
         className={`absolute top-full left-0 ${
           isDropdownOpen ? "block" : "hidden"
-        } z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}
+        } z-10 bg-white divide-y invisible lg:visible divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}
       >
         <ul
           className="py-2 text-sm text-gray-700 dark:text-gray-200"
