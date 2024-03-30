@@ -41,9 +41,13 @@ export default function Footer() {
             </nav>
           </div>
           <div className="lg:w-1/2 md:w-1/2 w-full mt-4 lg:mt-0">
-            <div className="relative" style={{ paddingBottom: "75%" }}>
+            <div className="relative" style={{ height: "320px" }}>
+              {" "}
+              {/* Adjusted height here */}
               <iframe
-                className="absolute inset-0 w-full h-full"
+                width="100%"
+                height="100%"
+                className="absolute inset-0"
                 id="gmap_canvas"
                 src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=sic-A%20Nationa%20Facility%20simrol+(SIC%20IIT%20Indore)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
               ></iframe>
