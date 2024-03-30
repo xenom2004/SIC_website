@@ -7,6 +7,16 @@ const productSchema = new mongoose.Schema({
     password: String,
     email:String,
     loginType:String,
+    phone:String,
+    supervisorName:String,
+    supervisorEmail:String,
+    supervisorDesignation:String,
+    studentDesignation:String,
+    Designation:String,
+    gst_number:String,
+    institute:String,
+    cover_image: String,
+    image:String,
     isAdmin:String,
     order: [{}]
 });
