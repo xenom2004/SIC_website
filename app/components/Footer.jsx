@@ -44,9 +44,6 @@ export default function Footer() {
             <div className="relative" style={{ paddingBottom: "75%" }}>
               <iframe
                 className="absolute inset-0 w-full h-full"
-                frameborder="0"
-                marginheight="0"
-                marginwidth="0"
                 id="gmap_canvas"
                 src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=sic-A%20Nationa%20Facility%20simrol+(SIC%20IIT%20Indore)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
               ></iframe>
