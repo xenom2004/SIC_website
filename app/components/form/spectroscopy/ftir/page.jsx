@@ -197,6 +197,7 @@ const FTIRForm = () => {
             <input
               type="checkbox"
               value="Solid"
+              disabled={true}
               checked={checkboxState["Solid"] || false}
               onChange={() => handleCheckboxChange("Solid")}
               className="form-checkbox h-5 w-5 text-gray-600"
@@ -207,6 +208,7 @@ const FTIRForm = () => {
             <input
               type="checkbox"
               value="Liquid"
+              disabled={true}
               checked={checkboxState["Liquid"] || false}
               onChange={() => handleCheckboxChange("Liquid")}
               className="form-checkbox h-5 w-5 text-gray-600"
@@ -217,6 +219,7 @@ const FTIRForm = () => {
             <input
               type="checkbox"
               value="ATR"
+              disabled={true}
               checked={checkboxState["ATR"] || false}
               onChange={() => handleCheckboxChange("ATR")}
               className="form-checkbox h-5 w-5 text-gray-600"
