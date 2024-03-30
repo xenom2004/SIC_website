@@ -29,13 +29,15 @@ const transformedForms = {
   3: { "name": "XAFS", "price": 20 },
   1: { "name": "SingleCrystalXRay", "price": 20 },
   25: { "name": "BET", "price": 20 },
-  20: { "name": "SETitem", "price": 20 },
+  
   13: { "name": "UVVISNIR", "price": 20 },
   12: { "name": "UVVis", "price": 20 },
   18: { "name": "FluorescenceMicroscopy", "price": 20 },
   9: { "name": "ChemicalData", "price": 20 },
   14: { "name": "SFM", "price": 20 },
   8: { "name": "FTIR", "price": 20 },
+  20: { "name": "HPLC", "price": 20 },
+
   15: { "name": "PL", "price": 20 },
   27: { "name": "Elemental_analyser", "price": 20 }
 };
