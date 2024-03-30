@@ -27,7 +27,7 @@ const Header = () => {
   // Render loading spinner while session is being fetched
   if (status === "loading") {
     return (
-      <header className="text-gray-100 bg-lightSky body-font shadow-md fixed w-full z-50 top-0">
+      <header className="text-gray-100 bg-lightSky body-font shadow-md fixed w-full z-50 top-0 mb-12">
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-between">
           <div className="flex items-center text-white">
             <div className="h-16 px-10 bg-white rounded-full animate-pulse"></div>
@@ -40,7 +40,7 @@ const Header = () => {
 
   return (
     <header className="text-gray-100 bg-lightSky body-font shadow-md fixed w-full z-50 top-0 mb-12">
-      <nav className="container px-6 py-4 mx-auto flex flex-wrap items-center justify-between">
+      <nav className="container px-6 py-4 mx-auto flex flex-wrap items-center justify-between ">
         <Link href="/" className="flex items-center mb-4 ">
           <img
             src="https://citc.iiti.ac.in/wp-content/uploads/2021/12/IITILogo.png"

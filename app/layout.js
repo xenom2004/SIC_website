@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
       <body className="font-bodyFont w-full bg-main-bg text-darkText">
         <Layout>
           <div className="flex flex-col gap-y-4">
-            <div className="">
+            <div className="mb-32 md:mb-24 lg:mb-24 xl:mb-24">
           <Header />
           </div>
           <div className="" style={{minHeight: '1000px'}}>
