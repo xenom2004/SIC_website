@@ -261,9 +261,11 @@ export default function Page() {
                   </div>}
                   {order_details.status == "Payment Incomplete" && (
                     <div className="flex flex-row items-center">
+                      <Link href={`/user_payment/${order_details._id}?id=${order_details._id}`}>
                       <Button className="w-full px-4 m-4 bg-blue-700 text-white">
+                        
                         Proceed to payment
-                      </Button>
+                      </Button></Link>
                     </div>
                   )}
                 </div>

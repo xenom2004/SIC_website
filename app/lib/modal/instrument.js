@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 // create user collection here.
 const productModel=new mongoose.Schema({
+    id: String,
     name: String,
     image: String,
     info: String,
