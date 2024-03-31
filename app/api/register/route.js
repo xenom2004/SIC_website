@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req, res) {
     const data = await req.json();
-    console.log(data, "dataaa");
+    // console.log(data, "dataaa");
 
     if (!data.username || !data.password) {
         return NextResponse.json({ "status": "error", "message": "Username and password are required" });
@@ -26,7 +26,7 @@ export async function POST(req, res) {
         // Create a new user with the hashed password
         const newUser = await User.create({"profileName": data.username,  "name": data.username, "password": hashedPassword, "order": data.order, "loginType": "cred" });
 
-        console.log(newUser, "created user", data);
+        // console.log(newUser, "created user", data);
 
         return NextResponse.json({ "status": "success" });
     } catch (error) {
