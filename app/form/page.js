@@ -28,7 +28,7 @@ const forms_instrument={
   3:(<XAFSForm/>),
   1:(<SingleCrystalXRayForm/>),
   25:(<BET/>),
-  
+ 
   13:(<UVVISNIRForm/>),
   12:(<UVVisForm/>),
   18:(<FluorescenceMicroscopyForm/>),
