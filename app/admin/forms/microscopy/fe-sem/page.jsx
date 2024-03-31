@@ -41,7 +41,7 @@ const FESEMForm = (prop) => {
             <input
               type="checkbox"
               value="Conductive"
-              checked={prop.prop.conductive.conductive}
+              checked={prop.prop.conductive}
               readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -51,7 +51,7 @@ const FESEMForm = (prop) => {
             <input
               type="checkbox"
               value="nonconductive"
-              checked={prop.prop.conductive.nonconductive}
+              checked={prop.prop.nonconductive}
               readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -66,7 +66,7 @@ const FESEMForm = (prop) => {
             <input
               type="checkbox"
               value="SEM"
-              checked={prop.prop.description.SEM}
+              checked={prop.prop.SEM}
               readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -76,7 +76,7 @@ const FESEMForm = (prop) => {
             <input
               type="checkbox"
               value="EDM"
-              checked={prop.prop.description.EDM}
+              checked={prop.prop.EDM}
               readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -86,7 +86,7 @@ const FESEMForm = (prop) => {
             <input
               type="checkbox"
               value="WDX"
-              checked={prop.prop.description.WDX}
+              checked={prop.prop.WDX}
               readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />

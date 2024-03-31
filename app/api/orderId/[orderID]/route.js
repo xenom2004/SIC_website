@@ -21,7 +21,7 @@ export async function GET(req,{params}) {
   await mongoose.connect(connection.connection)
   const ordergot=await Order.findById(params.orderID);
   // const o=await Order.find({"name":"ab"});
-  // console.log(ordergot);
+  console.log(ordergot);
   // await mongoose.connection.close();
 
 

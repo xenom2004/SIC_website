@@ -7,7 +7,7 @@ export async function GET(req, res) {
     const val = await mongoose.connect(connection.connection);
     // console.log(connection);
     try {
-        const activeOrders = await Order.find({ status: 'Pending' });
+        const activeOrders = await Order.find({ status: { $in: ['Pending', 'Payment Incomplete','Payment Complete'] } });
 
         // console.log(activeOrders)
         return NextResponse.json(activeOrders);

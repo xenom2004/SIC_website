@@ -1,7 +1,7 @@
 const id=25;
 const BET = (prop) => {
 
-  
+  console.log(prop.prop,"admin")
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -70,7 +70,7 @@ const BET = (prop) => {
           </label>
           <textarea
             id="specialPrecautions"
-            value={prop.prop.temperature}
+            value={prop.prop.sampleTemperature}
             readOnly={true}
             rows="1"
             className="resize-none appearance-none border rounded w-full  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -88,7 +88,7 @@ const BET = (prop) => {
           </label>
           <textarea
             id="specialPrecautions"
-            value={prop.prop.Rate}
+            value={prop.prop.sampleRate}
             readOnly={true}
             rows="1"
             className="resize-none appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -106,7 +106,7 @@ const BET = (prop) => {
           </label>
           <textarea
             id="specialPrecautions"
-            value={prop.prop.Soaktime}
+            value={prop.prop.sampleSoakTime}
             readOnly={true}
             rows="1"
             className="resize-none appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -125,7 +125,7 @@ const BET = (prop) => {
           </label>
           <textarea
             id="specialPrecautions"
-            value={prop.prop.desc}
+            value={prop.prop.sampleDesc}
             readOnly={true}
             rows="4"
             className="resize-none appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"

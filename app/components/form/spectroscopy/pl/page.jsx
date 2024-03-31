@@ -31,20 +31,7 @@ const PL = () => {
   const [WDX, setWDX] = useState(() => GETitem(false, 'WDX'));
   const [expectedElements, setExpectedElements] = useState(() => GETitem('', 'expectedElements'));
 
-  useEffect(() => {
-    localStorage.setItem('form_details', JSON.stringify({
-      [id]: {
-        natureOfSample,
-        noOfSamples,
-        isConductive,
-        isNonConductive,
-        SEM,
-        EDM,
-        WDX,
-        expectedElements
-      }
-    }));
-  }, [natureOfSample, noOfSamples, isConductive, isNonConductive, SEM, EDM, WDX, expectedElements]);
+ 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -62,7 +49,7 @@ const PL = () => {
           <textarea
             id="natureOfSample"
             value={natureOfSample}
-            onChange={(e) => setNatureOfSample(e.target.value)}
+            onChange={(e) => SETitem(e, setNatureOfSample, 'natureOfSample')}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Kindly intimate if toxic"
             required
@@ -75,7 +62,7 @@ const PL = () => {
           <textarea
             id="noOfSamples"
             value={noOfSamples}
-            onChange={(e) => setNoOfSamples(e.target.value)}
+            onChange={(e) => SETitem(e, setNoOfSamples, 'noOfSamples')}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="No of sample"
             required
@@ -87,9 +74,9 @@ const PL = () => {
           <label className="inline-flex items-center">
             <input
               type="checkbox"
-              disabled={true}
+              // disabled={true}
               checked={isConductive}
-              onChange={() => setIsConductive(!isConductive)}
+              onChange={(e)=>SETitem(e, setIsConductive, 'isConductive')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Conductive</span>
@@ -97,9 +84,9 @@ const PL = () => {
           <label className="inline-flex items-center ml-6">
             <input
               type="checkbox"
-              disabled={true}
+              // disabled={true}
               checked={isNonConductive}
-              onChange={() => setIsNonConductive(!isNonConductive)}
+              onChange={(e) => SETitem(e, setIsNonConductive, 'isNonConductive')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Non-conductive</span>
@@ -113,8 +100,8 @@ const PL = () => {
             <input
               type="checkbox"
               checked={SEM}
-              disabled={true}
-              onChange={() => setSEM(!SEM)}
+              // disabled={true}
+              onChange={(e)=>SETitem(e, setSEM, 'SEM')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">SEM</span>
@@ -123,8 +110,8 @@ const PL = () => {
             <input
               type="checkbox"
               checked={EDM}
-              disabled={true}
-              onChange={() => setEDM(!EDM)}
+              // disabled={true}
+              onChange={(e) => SETitem(e, setEDM, 'EDM')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">EDM</span>
@@ -133,8 +120,8 @@ const PL = () => {
             <input
               type="checkbox"
               checked={WDX}
-              disabled={true}
-              onChange={() => setWDX(!WDX)}
+              // disabled={true}
+              onChange={(e) => SETitem(e, setWDX, 'WDX')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">WDX</span>
@@ -148,7 +135,7 @@ const PL = () => {
           <textarea
             id="expectedElements"
             value={expectedElements}
-            onChange={(e) => setExpectedElements(e.target.value)}
+            onChange={(e) => SETitem(e, setExpectedElements, 'expectedElements')}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter..."
             required

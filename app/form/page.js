@@ -8,8 +8,8 @@ import HPLCForm from "../components/form/chromatography/hplc/page"
 import Elemental_analyser from "../components/form/elemental_analysis/page"
 import PLForm from "../components/form/microscopy/fe-sem/page"
 import FTIRForm from '../components/form/spectroscopy/ftir/page';
-import ChemicalDataForm from '../components/form/spectroscopy/nmr/page'
-import NRM from '../components/form/spectroscopy/nmr/page'
+import ChemicalDataForm from '../components/form/spectroscopy/tcspc/page'
+import NMR from '../components/form/spectroscopy/nmr/page'
 import SFMForm from '../components/form/spectroscopy/sfm/page'
 import FluorescenceMicroscopyForm  from '../components/form/microscopy/clsm/page'
 import UVVisForm from '../components/form/spectroscopy/uv-vis/page'
@@ -38,7 +38,7 @@ const forms_instrument={
   25:(<BET/>),
   15:(<PLForm/>),
    11:(<PL/>),
-   7:(<NRM/>),
+   7:(<NMR/>),
   20:(<HPLCForm/>),
   27:(<Elemental_analyser/>),
 }
@@ -101,6 +101,7 @@ const FormComponent = () => {
     // Extract form data
     const mysession = session.user; // assuming 'usersession' is the key in localStorage
     const formData = JSON.parse(localStorage.getItem('form_details'));
+    console.log(formData,"form")
     const new_form_data={}
     // console.log(formData,"initiadddl")
 
@@ -114,12 +115,13 @@ const FormComponent = () => {
   // console.log(new_form_data,"final")
     // const new_form_data=add_number(formData["20"],"20",JSON.parse(localStorage.getItem("selectedInstruments")));
     
-    
+    console.log(new_form_data,"jiji")
      // assuming 'form_details' is the key in localStorage
      const final_data = JSON.stringify({
       "usersession": mysession,
       "formData": JSON.stringify(new_form_data)
     });
+    console.log(final_data,"final")
    
 
     try {

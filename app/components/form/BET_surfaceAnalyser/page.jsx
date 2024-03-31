@@ -47,7 +47,7 @@ const BET = () => {
             type="radio"
             value="Powder"
             checked={sampleType === "Powder"}
-            onChange={() => SETitem({ target: { value: "Powder", type: "radio" }}, setSampleType, "sampleType")}
+            onChange={(e) => SETitem(e, setSampleType, "sampleType")}
             className="form-radio h-5 w-5 text-gray-600"
           />
           <span className="ml-2">Powder</span>
@@ -57,7 +57,7 @@ const BET = () => {
             type="radio"
             value="Pellet"
             checked={sampleType === "Pellet"}
-            onChange={() => SETitem({ target: { value: "Pellet", type: "radio" }}, setSampleType, "sampleType")}
+            onChange={(e) => SETitem(e, setSampleType, "sampleType")}
             className="form-radio h-5 w-5 text-gray-600"
           />
           <span className="ml-2">Pellet</span>
@@ -69,7 +69,7 @@ const BET = () => {
             type="radio"
             value="Hazardous"
             checked={sampleNature === "Hazardous"}
-            onChange={() => SETitem({ target: { value: "Hazardous", type: "radio" }}, setSampleNature, "sampleNature")}
+            onChange={(e) => SETitem(e, setSampleNature, "sampleNature")}
             className="form-radio h-5 w-5 text-gray-600"
           />
           <span className="ml-2">Hazardous</span>
@@ -79,7 +79,7 @@ const BET = () => {
             type="radio"
             value="Non-Hazardous"
             checked={sampleNature === "Non-Hazardous"}
-            onChange={() => SETitem({ target: { value: "Non-Hazardous", type: "radio" }}, setSampleNature, "sampleNature")}
+            onChange={(e) => SETitem(e, setSampleNature, "sampleNature")}
             className="form-radio h-5 w-5 text-gray-600"
           />
           <span className="ml-2">Non-Hazardous</span>

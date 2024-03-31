@@ -144,6 +144,7 @@ const admin = () => {
                 console.log(data,"my res");
 
                 setpeoplereq(data);
+                console.log(data);
             } catch (err) {
                 console.error(err);
                 setError('Failed to fetch orders');
@@ -222,7 +223,7 @@ const admin = () => {
       <div className="bg-black bg-opacity-25 h-[1000px] md:[800px]  lg:h-fit md:p-8 md:m-8 m-2 p-2 rounded-xl">
         <div className="flex flex-col md:flex-row w-full md:h-full h-fit  z-10">
           <div className="bg-white  flex flex-row md:flex-col h-fit md:h-full md:min-h-screen min-w-[20%]">
-            <h1 className=" hidden md:flex px-2 items-center h-12 flex flex-row hover:border-blue-300 border-2 hover:bg-blue-100 text-xl text-blue-700">
+            <h1 className=" hidden md:flex px-2 items-center h-12 flex flex-row hover:border-blue-300 border-2  text-xl text-blue-700">
               <i
                 className="fa-brands fa-hive fa-3xl "
                 style={{ color: "black" }}

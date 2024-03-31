@@ -21,7 +21,7 @@ const PendingReqC = ({ req }) => {
           ></img>
           <div className="flex flex-col pl-8">
             <h1 className="text-black font-bold text-xs items-center">
-              External
+              {req.loginType}
             </h1>
             <h1 className="text-black lg:text-3xl md:text-2xl sm:text-xl items-center">
               {limit(req.name)}
@@ -31,9 +31,11 @@ const PendingReqC = ({ req }) => {
         <button className="mr-8 p-2 bg-black text-white h-fit  lg:w-[200px] md:w-[100px]  text-center rounded-xl">
           {req.status}
         </button>
+        <Link href={`admin/${hexString}?id=${hexString}`}>
+
         <button className="mr-8 p-2 bg-black text-blue-300 sm:text-white lg:w-[200px] h-fit md:w-[100px] text-center rounded-xl">
-        <Link href={`admin/${hexString}?id=${hexString}`}>View</Link>
-        </button>
+          View
+        </button></Link>
       </div>
     </div>
   );
