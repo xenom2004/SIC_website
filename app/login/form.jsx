@@ -49,9 +49,10 @@ export const LoginForm = () => {
   };
 
   return (
-    <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-      <h1 className="text-xl font-bold text-gray-900 md:text-2xl text-gray-100 mx:auto">Sign in to your account
-      </h1>
+    <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+    <div className="flex justify-center items-center"> 
+      <h1 className="text-xl font-bold text-gray-900 md:text-2xl text-gray-100">Log In to your account</h1>
+    </div>
     <form className="space-y-4 md:space-y-6" onSubmit={onSubmit}>
       {error && (
         <p className="text-center bg-red-300 py-2 mb-6 rounded">{error}</p>
@@ -84,7 +85,7 @@ export const LoginForm = () => {
         className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
         disabled={loading}
       >
-        {loading ? "loading..." : "Sign In"}
+        {loading ? "loading..." : "Log In"}
       </button>
 
       <div className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5 font-medium rounded-lg">
@@ -93,15 +94,15 @@ export const LoginForm = () => {
 
       <a
         className="px-7 py-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3"
-        style={{ backgroundColor: "#3446EB" }}
+        style={{ backgroundColor: "#E04622" }}
         onClick={() => signIn("google", { callbackUrl })}
         role="button"
       >
-        
+        <i className="fab fa-google mr-2"></i> 
         Continue with Google
       </a>
       <div className="flex flex-row justify-center text-sm font-light text-gray-500 dark:text-gray-400 ">
-       Don't have an account?  <span className="font-medium text-primary-600 hover:underline dark:text-primary-500" ><Link href="/register">Sign Up</Link ></span>
+       Don't have an account?  <span className="font-medium text-primary-600 hover:underline dark:text-primary-500" ><Link href="/register">Register</Link ></span>
       </div>
     </form>
     </div>
