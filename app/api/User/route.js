@@ -4,7 +4,26 @@ import instrument  from "../../lib/modal/instrument"
 import { NextResponse } from "next/server"
 import User from "../../lib/modal/user"
 import Order from "../../lib/modal/order"
-
+const gst=parseFloat(process.env.GST);
+const find_cost=(inst,order_form,type)=>{
+    // console.log(order_form,"llllllllllllll");
+    let ty="academic_charge";
+    if(type=="Commercial"){
+      ty="commercial_charge";
+  
+    }
+    let amt=0;
+    for(let i=0;i<inst.length;i++){
+  
+      if(order_form[inst[i].id]!=undefined){
+      amt=amt+order_form[inst[i].id].quantity*inst[i][ty]*(1+gst);}
+    }
+  
+    return amt;
+    
+  
+  
+  }
 
 
 
@@ -14,12 +33,15 @@ export async function POST(req,res){
     
     // console.log(data);
     const forms=JSON.parse(data.formData);
+    await mongoose.connect(connection.connection);
+    const Userdetails=await User.find({"name":data.usersession.name});
+    const inst=await instrument.find(); 
     // const new_data={id:id,forms:JSON.parse(data.formData)};
     const new_order={"name":data.usersession.name ,
-        loginType:"Academic",
+        loginType:Userdetails[0].loginType,
         form_details: forms,
         status:"Pending",
-        price:200,
+        price:find_cost(inst,forms,Userdetails[0].loginType),
         Date:new Date(),
     }
     // console.log(new_order);

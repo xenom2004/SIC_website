@@ -132,9 +132,15 @@ const OrderDetails = () => {
         if(res?.message=="success")
         {
             console.log("Here")
-            const update=await fetch(`api/orderId/${order1._id}/update"`, {
-                method:"PUT",
+            const update=await fetch(`http://localhost:3000/api/orderId/update`, {
+                method:"POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Add any other headers you need
+                  },
+                body: JSON.stringify({id:order1._id}),
             });
+            // console.log(update,"update")
         //   router.push("/paymentSuccess?paymentid="+response.razorpay_payment_id)
         alert("successful payment done");
         router.push("/user");
@@ -184,12 +190,13 @@ const OrderDetails = () => {
           })}
         </p>
       </div>
-      
-      {(state==="Payment Incomplete") && (<>
-        <div>
+      <div>
         <h2 className="text-lg font-semibold mb-2">Status:</h2>
         <p>{order.status}</p>
       </div>
+      
+      {(state==="Payment Incomplete") && (<>
+        
         
       <div className="flex justify-center mt-4">
         <button onClick={handlepaymnent} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mr-2">confirm Payment</button>

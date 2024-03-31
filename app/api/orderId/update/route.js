@@ -1,31 +1,23 @@
 import mongoose from "mongoose";
-import connection from "../../../../lib/db"
-import Order  from "../../../../lib/modal/order"
+import connection from "../../../lib/db"
+import Order  from "../../../lib/modal/order"
 import { NextResponse } from "next/server"
 
-const order = [
-  {
-    "name":"siddhesh",
-    "formDetails":"hi",
-    "status":"active"
-  },
+
+export async function POST(req) {
 
   
-];
-
-export async function PUT(req,{params}) {
-
-  console.log(params)
-  const data=params;
-  console.log(data);
+  const data=await req.json();
+  console.log(data,"l");
   await mongoose.connect(connection.connection)
-  const ordergot=await Order.findById(params.orderID);
-  // const o=await Order.find({"name":"ab"});
-  // console.log(ordergot);
-  // await mongoose.connection.close();
+  const filter = { "_id":data.id}; // specify the filter to match the document you want to update
+  const update = { $set: {status:"Payment Complete"}}; // specify the update operation
+  const options = { new: true }; // optional: returns the modified document instead of the original
+  const updatedDocument = await Order.findOneAndUpdate(filter, update, options);
 
 
-  return Response.json(ordergot);
+
+  return Response.json({status:"success"});
 }
 
 // export async function POST(req,{params}) {

@@ -76,11 +76,11 @@ export async function GET(req,{params}) {
             productId: 'P100'
         }
     };
-    console.log(options.receipt,"my receipt")
+    // console.log(options.receipt,"my receipt")
     // console.log("here",process.env.RAZORPAY_API_KEY,process.env.RAZORPAY_APT_SECRET)
     try{
       const order = await instance.orders.create(options);
-      console.log(order,"Orders")
+      // console.log(order,"Orders")
       return NextResponse.json({ msg: "success", order });
     }
     catch(err){
