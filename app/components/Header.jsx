@@ -4,9 +4,39 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import Instruments from "./buttons/Instruments/Instruments";
 import About from "./buttons/AboutSic/page";
+import { Switch } from "@nextui-org/react";
 
 const Header = () => {
   const { data: session, status } = useSession();
+  const [checked, setChecked] = useState(true);
+  const [language, setLanguage] = useState("english");
+  const [first, Usefirst] = useState("1");
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedLanguage = localStorage.getItem("language");
+      if (storedLanguage) {
+        localStorage.removeItem("language");
+        localStorage.setItem("language", "english");
+      } else {
+        // If language is not stored, set default language to English and store in localStorage
+        setChecked(true);
+        localStorage.setItem("language", "english");
+      }
+    } else {
+      localStorage.setItem("language", "english");
+    }
+  }, [first]);
+  useEffect(() => {
+    // Update language preference based on switch state
+    setLanguage(checked ? "english" : "hindi");
+    checked
+      ? localStorage.setItem("language", "english")
+      : localStorage.setItem("language", "hindi");
+  }, [checked]);
+
+  const handleChange = () => {
+    setChecked(!checked); // Toggle switch state
+  };
 
   const handleSignIn = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -50,61 +80,133 @@ const Header = () => {
             alt="Company Logo"
           />
           <span className="text-xl font-bold">
-            Sophisticated Instrumentation Center
+            {language === "english" ? (
+              "Sophisticated Instrumentation Center"
+            ) : (
+              <span style={{ fontWeight: "bold", fontSize: "1.2em" }}>
+                विशिष्ट उपकरण केंद्र
+              </span>
+            )}
           </span>
         </Link>
-
         {/* Navigation links for large screens */}
         <div className=" md:flex items-center space-x-4">
           <div className="hidden md:flex items-center space-x-4">
             <Link
               href="/"
-              className="font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
+              className={`font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
+              style={
+                language === "hindi"
+                  ? { fontWeight: "bold", fontSize: "1.2em", lineHeight: "1.5" }
+                  : {}
+              }
             >
-              Home
+              {language === "english" ? "Home" : "होम"}
             </Link>
+
+            {/* Usage Charges Link */}
             <Link
               href="/usageCharges"
-              className="font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
+              className={`font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
+              style={
+                language === "hindi"
+                  ? { fontWeight: "bold", fontSize: "1.2em", lineHeight: "1.5" }
+                  : {}
+              }
             >
-              Usage Charges
+              {language === "english" ? "Usage Charges" : "उपयोग शुल्क"}
             </Link>
+
+            {/* Instruments */}
             <span className="mr-4">
-              <Instruments />
+              <Instruments language={language} />
             </span>
+
+            {/* About */}
             <span className="mr-4">
-              <About />
+              <About language={language} />
             </span>
+
+            {/* Orders */}
             {session && (
               <Link
                 href="/user"
-                className="font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
+                className={`font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
+                style={
+                  language === "hindi"
+                    ? {
+                        fontWeight: "bold",
+                        fontSize: "1.2em",
+                        lineHeight: "1.5",
+                      }
+                    : {}
+                }
               >
-                Orders
+                {language === "english" ? "Orders" : "आदेश"}
               </Link>
             )}
+
+            {/* Profile or Sign In/Register */}
             {session ? (
               <Link href="/profile">
-                <button className="font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105">
-                  Profile
+                <button
+                  className={`font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
+                  style={
+                    language === "hindi"
+                      ? {
+                          fontWeight: "bold",
+                          fontSize: "1.2em",
+                          lineHeight: "1.5",
+                        }
+                      : {}
+                  }
+                >
+                  {language === "english" ? "Profile" : "प्रोफ़ाइल"}
                 </button>
               </Link>
             ) : (
               <button
                 onClick={handleSignIn}
-                className="font-semibold px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
+                className={`font-semibold px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
+                style={
+                  language === "hindi"
+                    ? {
+                        fontWeight: "bold",
+                        fontSize: "1.2em",
+                        lineHeight: "1.5",
+                      }
+                    : {}
+                }
               >
-                Login/Register
+                {language === "english" ? "Login/Register" : "लॉगिन/रजिस्टर"}
               </button>
             )}
+
+            {/* Logout */}
             {session && (
               <button
                 onClick={handleSignOut}
-                className="font-semibold px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition duration-300 ease-in-out transform hover:scale-105"
+                className={`font-semibold px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
+                style={
+                  language === "hindi"
+                    ? {
+                        fontWeight: "bold",
+                        fontSize: "1.2em",
+                        lineHeight: "1.5",
+                      }
+                    : {}
+                }
               >
-                Logout
+                {language === "english" ? "Logout" : "लॉग आउट"}
               </button>
             )}
+            <span className="px-4 hidden">
+              <Switch
+                checked={checked}
+                onChange={handleChange}
+                inputProps={{ "aria-label": "controlled" }}
+              ></Switch>
+            </span>
           </div>
 
           {/* Responsive dropdown menu for small screens */}
