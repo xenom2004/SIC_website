@@ -152,9 +152,7 @@ const HPLCForm = () => {
           </div>
         </div>
         
-        <div className="flex items-center justify-center mt-6">
-          <button type="submit" className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
-        </div>
+       
       </form>
     </div>
   );

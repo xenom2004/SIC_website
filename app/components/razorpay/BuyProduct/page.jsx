@@ -30,11 +30,11 @@ const BuyProduct = () => {
         if (response.length==0) return <Loading/>;
         console.log(response);
 
-        const data = await  fetch("http://localhost:3000/api/paymentverify", {
+        const data = await  fetch("http://localhost:3000/api/paymentVerify", {
           method: "POST",
-          // headers: {
-          //   // Authorization: 'YOUR_AUTH_HERE'
-          // },
+          headers: {
+            Authorization: 'YOUR_AUTH_HERE'
+          },
           body: JSON.stringify({
             razorpay_payment_id: response.razorpay_payment_id,
             razorpay_order_id: response.razorpay_order_id,
@@ -53,7 +53,7 @@ const BuyProduct = () => {
 
 
           console.log("redirected.......")
-          router.push("/paymentsuccess?paymentid="+response.razorpay_payment_id)
+          router.push("/paymentSuccess?paymentid="+response.razorpay_payment_id)
 
         }
 

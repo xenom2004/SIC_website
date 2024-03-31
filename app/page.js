@@ -92,23 +92,40 @@ export default function Home() {
 				{/* ----------------------------------------------------------------------------------------------------------------------------- */}
 
 
-				<div className="container  mt-32 mx-auto">
-					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-0">
-						{/* 3-part section for image */}
-						<div className="col-span-1 sm:col-span-2 lg:col-span-2 p-8 flex items-center justify-center">
-							{/* Add your image here */}
-							<img src="https://sic.iiti.ac.in/wp-content/uploads/2022/08/cropped-IMG_20220323_150022-1.jpg" alt="Image" className="h-full w-full object-cover" />
-						</div>
-						{/* 2-part section for info */}
-						<div className="col-span-1 sm:col-span-2 lg:col-span-3 bg-lightSky p-8 text-white rounded-lg flex flex-col items-center justify-center ">
-							{/* Add your info here */}
-							<h2 className="text-3xl font-bold mb-2">Facilities</h2>
-							<p className="text-lg text-center">
-								After being established in 2009, IIT Indore took decisive initiatives to excel in the area of research and development. Among the various measures taken at that time, establishing the Sophisticated Instrumentation Center (SIC) was crucial to cutting-edge research in different departments. The significant role of SIC in the tremendous growth of the research atmosphere in IITI is palpable, with each publication coming out of research communities with the required instrumental support from SIC. IITI now stands as one of the leaders among all IITs in research output. Furthermore, with limited research facilities in central India, it is already catering to the needs of many educational institutes and industries in and around central India and lighting the curiosity towards the scientific world.
-							</p>
-						</div>
+				<div className="container mt-32 mx-auto">
+				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+					{/* 3-part section for image */}
+					<div className="col-span-1 sm:col-span-2 lg:col-span-2 p-0 flex items-center justify-center">
+					{/* Add your image here */}
+					<img
+						src="https://sic.iiti.ac.in/wp-content/uploads/2022/08/cropped-IMG_20220323_150022-1.jpg"
+						alt="Image"
+						className="h-full w-full object-cover rounded-lg"
+						style={{ margin: 0 }} // Set margin to 0
+					/>
+					</div>
+					{/* 2-part section for info */}
+					<div className="col-span-1 sm:col-span-2 lg:col-span-3 bg-lightSky p-8 text-white rounded-lg flex flex-col items-center justify-center">
+					{/* Add your info here */}
+					<h2 className="text-3xl font-bold mb-2">Facilities</h2>
+					<p className="text-lg text-center">
+						After being established in 2009, IIT Indore took decisive initiatives
+						to excel in the area of research and development. Among the various
+						measures taken at that time, establishing the Sophisticated
+						Instrumentation Center (SIC) was crucial to cutting-edge research in
+						different departments. The significant role of SIC in the tremendous
+						growth of the research atmosphere in IITI is palpable, with each
+						publication coming out of research communities with the required
+						instrumental support from SIC. IITI now stands as one of the leaders
+						among all IITs in research output. Furthermore, with limited research
+						facilities in central India, it is already catering to the needs of
+						many educational institutes and industries in and around central India
+						and lighting the curiosity towards the scientific world.
+					</p>
 					</div>
 				</div>
+				</div>;
+
 				{/* --------------------------------------------------------------------------------------------------------------------------------- */}
 
 				<div className="container mt-32 mx-auto">
@@ -178,15 +195,9 @@ export default function Home() {
 				
 				<div className="container mx-auto mt-32">
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
-						{/* First Section */}
-				
-						<div className="sm:col-span-2 lg:col-span-2 bg-lightSky text-white p-8 rounded-lg flex flex-col items-center justify-center"> 
-						{/* Add items-center */}
-						
-						<h2 className="text-4xl mb-8">Discover Our Renowned Training Program for Interns and Fresh Graduates</h2>
-						</div>
 						{/* Second Section */}
-						<div className="sm:col-span-2 lg:col-span-4 bg-white text-black p-8 rounded-lg flex flex-col justify-between items-start"> {/* Change items-start */}
+						<div className="sm:col-span-2 lg:col-span-4 bg-white text-black p-8 rounded-lg flex flex-col justify-between items-start" style={{ order: "2" }}>
+						{/* Change items-start */}
 						<div>
 							<h2 className="text-xl font-bold mb-4">Why Choose Our Program?</h2>
 							<p className="text-lg">
@@ -197,8 +208,14 @@ export default function Home() {
 							Explore Further
 						</button>
 						</div>
+						{/* First Section */}
+						<div className="sm:col-span-2 lg:col-span-2 bg-lightSky text-white p-8 rounded-lg flex flex-col items-center justify-center" style={{ order: "1" }}>
+						{/* Add items-center */}
+						<h2 className="text-4xl mb-8">Discover Our Renowned Training Program for Interns and Fresh Graduates</h2>
+						</div>
 					</div>
-					</div>
+					</div>;
+
 
 
 
@@ -214,6 +231,9 @@ export default function Home() {
 				{/* ----------------------------------------------------------------------------------------------------------------- */}
 
 
+				
+
+               {/* ------------------------------------------------------------------------------------------------------------------- */}
 				
 			</main>
 		</div>

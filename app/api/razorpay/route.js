@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 const Razorpay = require('razorpay');
-// import shortid from "shortid";
+import shortid from "shortid";
 
 const instance = new Razorpay({
     key_id: process.env.RAZORPAY_API_KEY,
@@ -16,7 +16,7 @@ export async function GET() {
     const options = {
         amount: (amount).toString(),
         currency,
-        // receipt: shortid.generate(),
+        receipt: shortid.generate(),
         payment_capture,
         notes: {
             // These notes will be added to your transaction. So you can search it within their dashboard.
@@ -26,11 +26,17 @@ export async function GET() {
             productId: 'P100'
         }
     };
-    console.log("here",process.env.RAZORPAY_API_KEY,process.env.RAZORPAY_APT_SECRET)
+    // console.log("here",process.env.RAZORPAY_API_KEY,process.env.RAZORPAY_APT_SECRET)
+    try{
+      const order = await instance.orders.create(options);
+      console.log(order,"Orders")
+      return NextResponse.json({ msg: "success", order });
+    }
+    catch(err){
+      return NextResponse.json({ msg: "failure",err });
+    }
+   
 
-   const order = await instance.orders.create(options);
-   console.log(order,"Orders")
-  return NextResponse.json({ msg: "success",order });
 }
 
 
