@@ -1,11 +1,11 @@
-const id=7;
+const id=9;
 
-const NMR = (prop) => {
+const ChemicalDataForm = (prop) => {
 
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h2 className="mx-auto text-3xl font-bold mb-4 text-center">NMR Form</h2>
+      <h2 className="mx-auto text-3xl font-bold mb-4 text-center">Time-Correlated Single Photon Counting (TCSPC)</h2>
       <form  className="max-w-md mx-auto">
       <div className="mb-4">
           <label htmlFor="amount" className="block text-gray-700 text-sm font-bold mb-2">
@@ -103,4 +103,4 @@ const NMR = (prop) => {
   );
 };
 
-export default NMR;
+export default ChemicalDataForm;

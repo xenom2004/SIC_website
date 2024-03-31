@@ -10,28 +10,61 @@ import SFMForm from '../../admin/forms/spectroscopy/sfm/page';
 import FluorescenceMicroscopyForm from '../../admin/forms/microscopy/clsm/page';
 import UVVisForm from '../../admin/forms/spectroscopy/uv-vis/page';
 import UVVISNIRForm from '../../admin/forms/spectroscopy/uv-vis-nir/page';
-import SETitem from '../../admin/forms/chromatography/hplc/page';
+// import SETitem from '../../admin/forms/chromatography/hplc/page';
 import PowderXRDForm from '../../admin/forms/X-ray3/page';
 import BET from '../../admin/forms/BET_surfaceAnalyser/page';
 import SingleCrystalXRayForm from '../../admin/forms/X-ray/page';
 import XAFSForm from '../../admin/forms/X-ray2/page';
+import NMR from '../../admin/forms/spectroscopy/nmr/page';
+import FESEMForm from '../../admin/forms/microscopy/fe-sem/page';
+
 import { useRouter } from 'next/navigation';
 // import BuyProduct from "../../components/razorpay/BuyProduct"
+// const forms_instrument = {
+//   2: (prop) => { return (<PowderXRDForm prop={prop} />) },
+//   3: (prop) => { return (<XAFSForm prop={prop} />) },
+//   1: (prop) => { return (<SingleCrystalXRayForm prop={prop} />) },
+//   25: (prop) => { return (<BET prop={prop} />) },
+//   20: (prop) => { return (<SETitem prop={prop} />) },
+//   13: (prop) => { return (<UVVISNIRForm prop={prop} />) },
+//   12: (prop) => { return (<UVVisForm prop={prop} />) },
+//   18: (prop) => { return (<FluorescenceMicroscopyForm prop={prop} />) },
+//   9: (prop) => { return (<ChemicalDataForm prop={prop} />) },
+//   14: (prop) => { return (<SFMForm prop={prop} />) },
+//   8: (prop) => { return (<FTIRForm prop={prop} />) },
+//   15: (prop) => { return (<PLForm prop={prop} />) },
+//   27: (prop) => { return (<Elemental_analyser prop={prop} />) },
+// };
 const forms_instrument = {
-  2: (prop) => { return (<PowderXRDForm prop={prop} />) },
-  3: (prop) => { return (<XAFSForm prop={prop} />) },
-  1: (prop) => { return (<SingleCrystalXRayForm prop={prop} />) },
-  25: (prop) => { return (<BET prop={prop} />) },
-  20: (prop) => { return (<SETitem prop={prop} />) },
-  13: (prop) => { return (<UVVISNIRForm prop={prop} />) },
-  12: (prop) => { return (<UVVisForm prop={prop} />) },
-  18: (prop) => { return (<FluorescenceMicroscopyForm prop={prop} />) },
-  9: (prop) => { return (<ChemicalDataForm prop={prop} />) },
-  14: (prop) => { return (<SFMForm prop={prop} />) },
-  8: (prop) => { return (<FTIRForm prop={prop} />) },
-  15: (prop) => { return (<PLForm prop={prop} />) },
-  27: (prop) => { return (<Elemental_analyser prop={prop} />) },
-};
+    1: (prop) => { return (<SingleCrystalXRayForm prop={prop} />) },
+    2: (prop) => { return (<PowderXRDForm prop={prop} />) },
+    3: (prop) => { return (<XAFSForm prop={prop} />) },
+    4: (prop) => { return (<div>No Form Available</div>) },
+    5: (prop) => { return (<div>No Form Available</div>) },
+    6: (prop) => { return (<div>No Form Available</div>) },
+    7: (prop) => { return (<NMR prop={prop} />) },
+    8: (prop) => { return (<FTIRForm prop={prop} />) },
+    9: (prop) => { return (<ChemicalDataForm prop={prop} />) },
+    10: (prop) => { return (<div>No Form Available</div>) },
+    11: (prop) => { return (<div>No Form Available</div>) },
+    12: (prop) => { return (<UVVisForm prop={prop} />) },
+    13: (prop) => { return (<UVVISNIRForm prop={prop} />) },
+    14: (prop) => { return (<SFMForm prop={prop} />) },
+    15: (prop) => { return (<FESEMForm prop={prop} />) },
+    16: (prop) => { return (<div>No Form Available</div>) },
+    17: (prop) => { return (<div>No Form Available</div>) },
+    18: (prop) => { return (<FluorescenceMicroscopyForm prop={prop} />) },
+    19: (prop) => { return (<div>No Form Available</div>) },
+    20: (prop) => { return (<HPLCForm prop={prop} />) },
+    21: (prop) => { return (<div>No Form Available</div>) },
+    22: (prop) => { return (<div>No Form Available</div>) },
+    23: (prop) => { return (<div>No Form Available</div>) },
+    24: (prop) => { return (<div>No Form Available</div>) },
+    25: (prop) => { return (<BET prop={prop} />) },
+    26: (prop) => { return (<div>No Form Available</div>) },
+    27: (prop) => { return (<Elemental_analyser prop={prop} />) },
+    28: (prop) => { return (<div>No Form Available</div>) },
+  };
 
 const OrderDetails = () => {
   const [order, setOrder] = useState(null);

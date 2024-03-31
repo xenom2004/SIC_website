@@ -23,7 +23,7 @@ const Row=({instrument,selectedInstruments,setSelectedInstruments,handleQuantity
               <td className=" text-center hover:bg-slate-100 border px-4 py-2">{instrument.id}</td>
               <td className=" text-center hover:bg-slate-100 border px-4 py-2">{instrument.name}</td>
               <td className={` ${current_charge==="academic"?"table-cell":"hidden"} md:table-cell text-center hover:bg-slate-100 border px-4 py-2`}>{instrument.academic_charge}</td>
-              <td className={` ${current_charge==="commercial"?"table-cell":"hidden"} md:table-cell text-center hover:bg-slate-100 border px-4 py-2`}>{instrument.commertial_charge}</td>
+              <td className={` ${current_charge==="commercial"?"table-cell":"hidden"} md:table-cell text-center hover:bg-slate-100 border px-4 py-2`}>{instrument.commercial_charge}</td>
               <td className={` ${current_charge==="charge"?"table-cell":"hidden"} md:table-cell text-center hover:bg-slate-100 border px-4 py-2`}>{instrument.charge}</td>
               <td className=" text-center hover:bg-slate-100 border px-4 py-2 flex items-center">
                 <button

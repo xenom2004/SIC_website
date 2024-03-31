@@ -24,23 +24,54 @@ import Link from "next/link";
 //   20:(<HPLCForm/>),
 //   27:(<Elemental_analyser/>),
 // }
+// const transformedForms = {
+//   2: { name: "PowderXRD", price: 20 },
+//   3: { name: "XAFS", price: 20 },
+//   1: { name: "SingleCrystalXRay", price: 20 },
+//   25: { name: "BET", price: 20 },
+
+//   13: { name: "UVVISNIR", price: 20 },
+//   12: { name: "UVVis", price: 20 },
+//   18: { name: "FluorescenceMicroscopy", price: 20 },
+//   9: { name: "ChemicalData", price: 20 },
+//   14: { name: "SFM", price: 20 },
+//   8: { name: "FTIR", price: 20 },
+//   20: { name: "HPLC", price: 20 },
+
+//   15: { name: "PL", price: 20 },
+//   27: { name: "Elemental_analyser", price: 20 },
+// };
 const transformedForms = {
+  1: { name: "SingleCrystalXRay", price: 20 },
   2: { name: "PowderXRD", price: 20 },
   3: { name: "XAFS", price: 20 },
-  1: { name: "SingleCrystalXRay", price: 20 },
-  25: { name: "BET", price: 20 },
-
-  13: { name: "UVVISNIR", price: 20 },
-  12: { name: "UVVis", price: 20 },
-  18: { name: "FluorescenceMicroscopy", price: 20 },
-  9: { name: "ChemicalData", price: 20 },
-  14: { name: "SFM", price: 20 },
+  4: { name: "NoFormAvailable", price: 20 },
+  5: { name: "NoFormAvailable", price: 20 },
+  6: { name: "NoFormAvailable", price: 20 },
+  7: { name: "NMR", price: 20 },
   8: { name: "FTIR", price: 20 },
-  20: { name: "HPLC", price: 20 },
-
+  9: { name: "ChemicalData", price: 20 },
+  10: { name: "NoFormAvailable", price: 20 },
+  11: { name: "NoFormAvailable", price: 20 },
+  12: { name: "UVVis", price: 20 },
+  13: { name: "UVVISNIR", price: 20 },
+  14: { name: "SFM", price: 20 },
   15: { name: "PL", price: 20 },
+  16: { name: "NoFormAvailable", price: 20 },
+  17: { name: "NoFormAvailable", price: 20 },
+  18: { name: "FluorescenceMicroscopy", price: 20 },
+  19: { name: "NoFormAvailable", price: 20 },
+  20: { name: "HPLC", price: 20 },
+  21: { name: "NoFormAvailable", price: 20 },
+  22: { name: "NoFormAvailable", price: 20 },
+  23: { name: "NoFormAvailable", price: 20 },
+  24: { name: "NoFormAvailable", price: 20 },
+  25: { name: "BET", price: 20 },
+  26: { name: "NoFormAvailable", price: 20 },
   27: { name: "Elemental_analyser", price: 20 },
+  28: { name: "NoFormAvailable", price: 20 },
 };
+
 const gorder = [
   {
     id: 1,
