@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
-
+import { AddAPhotoSharp } from '@mui/icons-material';
 
 
 const ProfilePage = () => {
@@ -287,11 +287,13 @@ const handleImageChange = (e,setfunc) => {
           <input type="text" id="supervisorEmail" name="Designation" value={profileData.Designation} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
 
         </div>
+    
+
 
 
         <div className={`mb-4 `}>
 
-          <label htmlFor="supervisorEmail" className="block text-sm font-medium text-gray-700">Upload Profile Image </label>
+          <label htmlFor="supervisorEmail" className="block text-sm font-medium text-gray-700">Upload Profile Image    <AddAPhotoSharp/> </label>
           <input type="file" name="profile_image" disabled={!isEditing} onChange={(e)=>{handleImageChange(e,setImage)}}  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" ></input>
         </div>
         {image && (
@@ -331,6 +333,7 @@ const handleImageChange = (e,setfunc) => {
       </form>
 
     </div>
+   
 
     </div>
   );
