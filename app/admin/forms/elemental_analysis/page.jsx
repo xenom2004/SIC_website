@@ -105,7 +105,8 @@ const Elemental_analyser = (prop) => {
             <input
               type="checkbox"
               value="stable"
-              checked={prop.prop.stability.includes("stable")}
+              checked={(prop.prop.stability && prop.prop.stability["stable"])||false}
+             
               readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -115,7 +116,8 @@ const Elemental_analyser = (prop) => {
             <input
               type="checkbox"
               value="air-sensitive"
-              checked={prop.prop.stability.includes("air-sensitive")}
+            
+              checked={(prop.prop.stability && prop.prop.stability["air-sensitive"])||false}
               readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -125,7 +127,8 @@ const Elemental_analyser = (prop) => {
             <input
               type="checkbox"
               value="moisture-sensitive"
-              checked={prop.prop.stability.includes("moisture-sensitive")}
+              checked={(prop.prop.stability && prop.prop.stability["moisture-sensitive"])||false}
+             
               readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />

@@ -6,7 +6,7 @@ const XAFSForm = (prop) => {
       <h2 className="text-3xl font-bold mb-4  max-w-md mx-auto">
         XAFS Facility Form
       </h2>
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+      <form  className="max-w-md mx-auto">
         <div className="mb-4">
           <p className="block text-gray-700 text-sm font-bold mb-2">
             Measurement Type
@@ -155,7 +155,7 @@ const XAFSForm = (prop) => {
           </label>
           <textarea
             id="specialPrecautions"
-            value={sprop.prop.pecialPrecautions}
+            value={prop.prop.pecialPrecautions}
             readOnly={true}
             rows="3"
             className="resize-none appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
