@@ -19,7 +19,8 @@ module.exports = {
       colors:{
         "customblue":"#004392",
         "custompurple":"#BCCCF5",
-        "lightSky": '#003153'
+        "lightSky": '#003153',
+        "lightSky2":"#38598b",
       }
     },
 

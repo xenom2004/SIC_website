@@ -9,14 +9,15 @@ let id=0;
 
 export async function GET(req,{params}) {
 
-    console.log(req.headers,"header")
+    // console.log(req.headers,"header")
     const data=params;
-    console.log(data);
+    // console.log(data.username);
     await mongoose.connect(connection.connection)
     const user=await User.find({"name":data.username});
+    // console.log(user)
     // await mongoose.connection.close();
   
 
-    return Response.json({status:"success",details:user});
+    return Response.json({status:"success",details:user[0]});
 }
 

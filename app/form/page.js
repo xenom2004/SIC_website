@@ -14,7 +14,7 @@ import SFMForm from '../components/form/spectroscopy/sfm/page'
 import FluorescenceMicroscopyForm  from '../components/form/microscopy/clsm/page'
 import UVVisForm from '../components/form/spectroscopy/uv-vis/page'
 import UVVISNIRForm from '../components/form/spectroscopy/uv-vis-nir/page'
-import SETitem from '../components/form/chromatography/hplc/page'
+
 import PowderXRDForm from '../components/form/(X-ray)/X-ray3/page'
 import BET from '../components/form/BET_surfaceAnalyser/page'
 import SingleCrystalXRayForm from '../components/form/(X-ray)/X-ray/page'
@@ -28,7 +28,7 @@ const forms_instrument={
   3:(<XAFSForm/>),
   1:(<SingleCrystalXRayForm/>),
   25:(<BET/>),
-  20:(<SETitem/>),
+  
   13:(<UVVISNIRForm/>),
   12:(<UVVisForm/>),
   18:(<FluorescenceMicroscopyForm/>),

@@ -97,6 +97,7 @@ const NMR = () => {
           <label className="inline-flex items-center">
             <input
               type="checkbox"
+              disabled={true}
               checked={D2O}
               onChange={() => handleSolubilityChange('D2O')}
               className="form-checkbox h-5 w-5 text-gray-600"
@@ -106,6 +107,7 @@ const NMR = () => {
           <label className="inline-flex items-center ml-6">
             <input
               type="checkbox"
+              disabled={true}
               checked={CD3COCH3}
               onChange={() => handleSolubilityChange('CD3COCH3')}
               className="form-checkbox h-5 w-5 text-gray-600"
@@ -116,6 +118,7 @@ const NMR = () => {
             <input
               type="checkbox"
               checked={MeOD}
+              disabled={true}
               onChange={() => handleSolubilityChange('MeOD')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -125,6 +128,7 @@ const NMR = () => {
             <input
               type="checkbox"
               checked={Other}
+              disabled={true}
               onChange={() => handleSolubilityChange('Other')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />

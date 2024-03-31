@@ -87,6 +87,7 @@ const PL = () => {
           <label className="inline-flex items-center">
             <input
               type="checkbox"
+              disabled={true}
               checked={isConductive}
               onChange={() => setIsConductive(!isConductive)}
               className="form-checkbox h-5 w-5 text-gray-600"
@@ -96,6 +97,7 @@ const PL = () => {
           <label className="inline-flex items-center ml-6">
             <input
               type="checkbox"
+              disabled={true}
               checked={isNonConductive}
               onChange={() => setIsNonConductive(!isNonConductive)}
               className="form-checkbox h-5 w-5 text-gray-600"
@@ -111,6 +113,7 @@ const PL = () => {
             <input
               type="checkbox"
               checked={SEM}
+              disabled={true}
               onChange={() => setSEM(!SEM)}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -120,6 +123,7 @@ const PL = () => {
             <input
               type="checkbox"
               checked={EDM}
+              disabled={true}
               onChange={() => setEDM(!EDM)}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -129,6 +133,7 @@ const PL = () => {
             <input
               type="checkbox"
               checked={WDX}
+              disabled={true}
               onChange={() => setWDX(!WDX)}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
