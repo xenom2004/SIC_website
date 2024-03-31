@@ -228,10 +228,10 @@ const Header = () => {
                   Home
                 </Link>
                 <div onClick={toggleDropdown}>
-                  <Instruments />
+                  <Instruments language={language} />
                 </div>
                 <div onClick={toggleDropdown}>
-                  <About />
+                  <About language={language} />
                 </div>
                 <Link
                   onClick={toggleDropdown}
