@@ -73,7 +73,7 @@ const InstrumentList = () => {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl text-lightSky font-bold mb-8">Instruments</h1>
       {loading ? (
-        <div className="flex items-center justify-center">
+        <div className="h-screen flex items-center justify-center fixed top-0 left-0 right-0 bottom-0 bg-white z-50">
           <Spinner />
         </div>
       ) : (
