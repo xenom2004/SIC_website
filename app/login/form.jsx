@@ -94,11 +94,11 @@ export const LoginForm = () => {
 
       <a
         className="px-7 py-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3"
-        style={{ backgroundColor: "#3446EB" }}
+        style={{ backgroundColor: "#E04622" }}
         onClick={() => signIn("google", { callbackUrl })}
         role="button"
       >
-        
+        <i className="fab fa-google mr-2"></i> 
         Continue with Google
       </a>
       <div className="flex flex-row justify-center text-sm font-light text-gray-500 dark:text-gray-400 ">

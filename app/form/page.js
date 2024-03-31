@@ -169,24 +169,32 @@ const FormComponent = () => {
 
 
   return (
-    <div className="container">
-      <h2 className='text-2xl text-center font-bold p-4'>Selected Instruments:</h2>
-      <div className='grid grid-cols-1 lg:grid-cols-2 p-x-4 '>
-        {/* <><BET/></> */}
-      {selectedInstruments.map((instrument, index) => {
-        return (forms_instrument[instrument.id]);
-   
-})}
-
-
+    <div className="container mx-auto md:py-20 py-10">
+      <div className='mx-auto'>
+        <h2 className='text-2xl text-center font-bold p-4 mx-auto'>Selected Instruments:</h2>
       </div>
-      <div className='text-center text-4xl font-bold '>
+
+      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 justify-center'>
+        {selectedInstruments.map((instrument, index) => {
+          return (
+            <div key={index} className="p-4">
+              {forms_instrument[instrument.id]}
+            </div>
+          );
+        })}
+      </div>
+
+      <div className='text-center text-4xl font-bold mt-8'>
         Total charge: {totalcharge}
       </div>
+
       <div className='flex justify-center mt-4'>
-      <Button onClick={send} className='text-center px-auto text-2xl hover:bg-green-500 justify-center flex  '>Send for verification</Button></div>
-      
+        <Button onClick={send} className='text-center px-auto text-2xl hover:bg-green-500 justify-center flex'>
+          Send for verification
+        </Button>
+      </div>
     </div>
+
   );
 };
 
