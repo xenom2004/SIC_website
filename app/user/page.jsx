@@ -255,6 +255,10 @@ export default function Page() {
                   <div className="flex justify-center items-center  h-full">
                     {order_details.status}
                   </div>
+                  {(order_details.comment!=null)&& 
+                  <div className="flex justify-center items-center text-red-500  h-full">
+                    <span className="text-black font-bold ">Note:</span> {order_details.comment}
+                  </div>}
                   {order_details.status == "Payment Incomplete" && (
                     <div className="flex flex-row items-center">
                       <Button className="w-full px-4 m-4 bg-blue-700 text-white">

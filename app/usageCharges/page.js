@@ -261,7 +261,7 @@ const ChargeCalculator = () => {
                             </tbody>
                         </table>
       <div className='px-2 '>                  
-      <h2 className="text-3xl font-bold mb-4 text-center pt-4">Select Instruments:</h2>
+      <h2 className="text-3xl font-bold mb-4 text-lightSky text-center pt-4">Select Instruments:</h2>
       <table className=" table-auto w-full border-collapse">
         <thead>
           <tr className='bg-gray-100'>
@@ -306,8 +306,8 @@ const ChargeCalculator = () => {
       </table>
       </div>
       <div className="mt-8">
-        <h2 className="text-3xl font-bold mb-4">Total Charges:</h2>
-        <p className="text-xl font-semibold">₹{totalcharge}</p>
+        <h2 className="text-3xl text-lightSky font-bold mb-4">Total Charges:</h2>
+        <p className="text-xl px-20 font-semibold mb-4">₹{totalcharge}</p>
       </div>
       <div>
       {!session ? (

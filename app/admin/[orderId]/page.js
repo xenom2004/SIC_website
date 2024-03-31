@@ -39,7 +39,9 @@ const OrderDetails = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const orderID = searchParams.get('id');
-
+  const [state,setstate]=useState("");
+  const [display,setdisplay]=useState(true);
+  
   useEffect(() => {
     const fetchOrder = async () => {
       try {
@@ -54,6 +56,8 @@ const OrderDetails = () => {
         }
         const data = await response.json();
         setOrder(data);
+        console.log(data.status)
+        setstate(data.status)
       } catch (error) {
         console.error('Error fetching order details:', error);
       }
@@ -62,21 +66,59 @@ const OrderDetails = () => {
     fetchOrder();
   }, [orderID]);
 
-  const handleAccept = () => {
-    // Handle accept logic
-  };
+  
 
-  const handleReject = () => {
+  const handleReject = async () => {
     // Handle reject logic
+    const data={"status":"Rejected","comment":comment}
+    const isReady = window.confirm("Are you sure you want to submit?");
+    if(isReady){
+      setstate("Rejected");
+      console.log(data);
+      const res=await fetch(`/api/orderId/${orderID}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+        
+      })
+      if (!res.ok) {
+        throw new Error('Failed to fetch order details');
+      }
+      alert("success")
+
+    }
+    else{
+      setstate("Pending");
+
+    }
   };
 
-  const handleSubmitComment = () => {
-    // Handle comment submission
-    console.log("Comment submitted:", comment);
-    // Add the comment to the submittedComments array
-    setSubmittedComments([...submittedComments, comment]);
-    // Reset comment state after submission
-    setComment("");
+  const handleAccept = async () => {
+    const data={"status":"Payment Incomplete","comment":comment}
+    const isReady = window.confirm("Are you sure you want to submit?");
+    if(isReady){
+      setstate("Payment Incomplete");
+   
+      const res=await fetch(`/api/orderId/${orderID}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+        
+      })
+      if (!res.ok) {
+        throw new Error('Failed to fetch order details');
+      }
+      alert("success")
+
+    }
+    else{
+      setstate("Pending");
+
+    }
   };
 
   if (!order) {
@@ -89,33 +131,44 @@ const OrderDetails = () => {
       <div className="mb-4">
         <h2 className="text-lg font-semibold mb-2">Form Details:</h2>
         <p>
+          {/* {console.log(order,"kio")} */}
           {Object.keys(order.form_details).map((key) => {
             return forms_instrument[key](order.form_details[key]);
           })}
         </p>
       </div>
-      <div>
+      
+      {(state==="Pending") && (<>
+        <div>
         <h2 className="text-lg font-semibold mb-2">Status:</h2>
         <p>{order.status}</p>
       </div>
-      <div className="mt-4">
+        <div className="mt-4">
         <label htmlFor="comments" className="block text-lg font-semibold mb-2">Comments:</label>
-        <textarea id="comments" value={comment} onChange={(e) => setComment(e.target.value)} className="w-full h-24 border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
+        <textarea id="comments" value={comment} onChange={(e) => setComment(e.target.value)} className="w-full h-24 border-gray-300  hover:border-slate-100  rounded-md focus:ring-blue-500 focus:border-blue-500" />
       </div>
       <div className="flex justify-center mt-4">
         <button onClick={handleAccept} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mr-2">Accept</button>
         <button onClick={handleReject} className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Reject</button>
-        <button onClick={handleSubmitComment} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded ml-2">Submit Comment</button>
+        
       </div>
-      {/* Display submitted comments */}
-      <div className="mt-4">
-        <h2 className="text-lg font-semibold mb-2">Submitted Comments:</h2>
-        <ul>
-          {submittedComments.map((comment, index) => (
-            <li key={index}>{comment}</li>
-          ))}
-        </ul>
-      </div>
+      </>
+
+      )}
+      {
+        (state==="Payment Incomplete"||state==="Payment Completed"||state==="Rejected") && (
+          <>
+          <div>
+            <h2 className="text-lg font-semibold mb-2">Status:</h2>
+            <p>{order.status}</p>
+          </div>
+          
+          </>
+        )
+      }
+      
+      
+      
     </div>
   );
 };

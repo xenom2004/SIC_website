@@ -24,6 +24,9 @@ import {
 } from "@nextui-org/react";
 
 import { Textarea } from "@nextui-org/react";
+import { useSession } from "next-auth/react";
+
+
 
 const InstrumentCard = ({ instrument }) => {
   // {console.log(instrument)}
@@ -211,6 +214,9 @@ const admin = () => {
     // fetchRequest();
   }, []);
 
+  // const {data:session}=useSession();
+  // console.log(session)
+  // if(session && session.user.isAdmin==="admin"){
   return (
     <div className="bg-blue-100 h-fit  w-full">
       <div className="bg-black bg-opacity-25 h-[1000px] md:[800px]  lg:h-fit md:p-8 md:m-8 m-2 p-2 rounded-xl">
@@ -433,6 +439,10 @@ const admin = () => {
       </div>
     </div>
   );
+                          // }
+                          // else{
+                          //   return <div>"fu"</div>
+                          // }
 };
 
 export default admin;

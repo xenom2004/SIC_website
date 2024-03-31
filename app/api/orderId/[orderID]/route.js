@@ -28,6 +28,24 @@ export async function GET(req,{params}) {
   return Response.json(ordergot);
 }
 
+export async function POST(req,{params}) {
+
+  
+  const data=await req.json();
+  // console.log(data);
+  await mongoose.connect(connection.connection)
+  const filter = { "_id":params.orderID}; // specify the filter to match the document you want to update
+  const update = { $set: {status:data.status,comment:data.comment}}; // specify the update operation
+  const options = { new: true }; // optional: returns the modified document instead of the original
+  const updatedDocument = await Order.findOneAndUpdate(filter, update, options);
+  // console.log(updatedDocument,"Updated");
+
+
+  return Response.json({status:"success"});
+}
+
+
+
 
   
   // export async function GET() {
