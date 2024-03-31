@@ -29,13 +29,13 @@ const Statistics = () => {
       ref={sectionRef}
       className="bg-cover bg-bottom flex items-center justify-center mt-32 relative"
       style={{
-        backgroundImage: `url('http://people.iiti.ac.in/~xray/SMM%20Group.jpg')`,
+        backgroundImage: `url('https://sic.iiti.ac.in/wp-content/uploads/2022/08/cropped-Home-1-Copy.jpg')`,
         backgroundPosition: backgroundPosition,
       }}
     >
       <div
         ref={ref}
-        className="bg-gray-900 w-full h-[35vh] bg-opacity-50 p-8 rounded-lg flex items-center"
+        className="bg-gray-900 w-full sm:h-[43vh] lg:h-[43vh] md:h-[43vh] bg-opacity-50 p-8 rounded-lg flex items-center"
       >
         <div className="grid w-full grid-cols-3">
           <div className="text-center text-white">
