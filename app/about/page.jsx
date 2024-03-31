@@ -65,6 +65,9 @@ export default function Page() {
     
 
 <>
+
+<p class="text-center text-lightSky  py-8 px-auto text-5xl font-bold ">About SIC  </p>
+
   <div className=" mx-28 py-10 text-xl w-15/3 pr-8">
     <p className=" font-bold text-blue-700 mb-4">
       The Sophisticated instrumentation center (SIC) was established in
@@ -81,7 +84,7 @@ export default function Page() {
   </div>
   <main className="container mx-32 my-8 px-4">
     <section className="mb-2">
-      <h2 className="px-auto  text-lightSky  text-3xl font-bold ">Our Mission</h2>
+      <h2 className="px-auto  text-lightSky  text-2xl font-bold ">Our Mission</h2>
       <div className="px-auto flex items-center">
         <div className="w-2/3 pr-8">
           <p className="mb-0">
@@ -100,7 +103,7 @@ export default function Page() {
       </div>
     </section>
     <section className="mb-2">
-      <h2 className="px-auto text-lightSky  text-3xl font-bold ">Our vision</h2>
+      <h2 className="px-auto text-lightSky  text-2xl font-bold ">Our vision</h2>
       <div className="px-auto flex items-center">
         <div className="w-2/3 pr-8">
           <p className="mb-0">
@@ -119,7 +122,7 @@ export default function Page() {
     </section>
     <section>
       <div className=" py-4">
-        <h2 className="text-3xl text-red-700 font-bold mb-1">
+        <h2 className="text-2xl text-lightSky font-bold mb-1">
           SIC is constantly working on its mission:
         </h2>
         <p className="mb-4"></p>
@@ -138,7 +141,7 @@ export default function Page() {
     </section>
     <section>
       <div className="py-10">
-        <h2 className="  text-3xl text-red-700 font-bold mb-1">
+        <h2 className="  text-2xl text-lightSky font-bold mb-1">
           The instruments at SIC are mainly focused on the following research
           areas:
         </h2>
@@ -158,7 +161,7 @@ export default function Page() {
     </section>
     <section>
       <div className="py-8">
-        <h2 className="  text-3xl text-red-700 font-bold mb-1">Function:</h2>
+        <h2 className="  text-2xl text-lightSky font-bold mb-1">Function:</h2>
         <p className="mb-4"></p>
         <li>
           SIC has been operating with 32 instruments funded by the institute
@@ -187,7 +190,7 @@ export default function Page() {
     </section>
     <section>
       <div className="py-10">
-        <h2 className="  text-3xl text-red-700 font-bold mb-1">
+        <h2 className="  text-2xl text-lightSky font-bold mb-1">
           SIC Progress and evolution so far:
         </h2>
         <p className="mb-4"></p>
