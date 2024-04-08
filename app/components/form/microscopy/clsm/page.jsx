@@ -76,7 +76,7 @@ const FluorescenceMicroscopyForm = () => {
               <input 
                 type="checkbox" 
                 id="visualized" 
-                disabled={true}
+                
                 checked={visualized}
                 onChange={(e) => SETitem(e, setVisualized, "visualized")}
                 className="form-checkbox h-5 w-5 text-gray-600" 
@@ -91,7 +91,7 @@ const FluorescenceMicroscopyForm = () => {
             <div className="flex items-center">
               <input 
                 type="checkbox" 
-                disabled={true}
+                
                 id="antifadeReagent" 
                 checked={antifadeReagent}
                 onChange={(e) => SETitem(e, setAntifadeReagent, "antifadeReagent")}

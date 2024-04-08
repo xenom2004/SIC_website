@@ -1,13 +1,46 @@
 "use client"
 import React, { useState, useEffect } from "react";
 import {Spinner} from "@nextui-org/react";
-
+import { useSession } from 'next-auth/react';
+import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
 
 export default function Instrument({ params }) {
   const [instrument, setInstrument] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { data: session, status } =useSession();
+  const [instrument_status,setinstrument_status]=useState("available");
+  const updatestatus=async (key)=>{
+    var result = confirm("Are you sure you want update?");
+if (result) {
+  try{
+    const response=await fetch("/api/instruments/update",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({
+        instrument:instrument,
+        updatedstatus:key
+      })
+    })
+    console.log("lop",response)
+    const res=await response.json()
+    if(res.status==="success"){
+      setinstrument_status(key);
 
+      alert("successfully updated instrumnets status");
+    }
+    else{
+      alert("Failure in instrument update");
+    }
+    
+  }catch(error){
+    console.log(error);
+  }
+    
+} 
+  }
   useEffect(() => {
     const fetchInstrument = async () => {
       try {
@@ -17,6 +50,7 @@ export default function Instrument({ params }) {
         }
         const data = await response.json();
         setInstrument(data[params.id - 1]);
+        setinstrument_status(data[params.id - 1].status);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -41,6 +75,10 @@ export default function Instrument({ params }) {
   if (!instrument) {
     return <p>Instrument not found</p>;
   }
+  if(status==="loading"){
+    return <div className="h-screen flex items-center justify-center fixed top-0 left-0 right-0 bottom-0 bg-white z-50">Loading</div>
+  }
+  console.log(session,"lop")
 
   return (
     <section className="text-gray-600 body-font mx-auto ">
@@ -59,6 +97,37 @@ export default function Instrument({ params }) {
           <button className="inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded-full text-lg">
             Cost Calculator
           </button>
+          {session.user.isAdmin==="admin" && (<>
+           <div className="ml-4">
+          <Dropdown >
+          <DropdownTrigger>
+            <Button 
+            className="inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded-full text-lg" 
+            radius='full'
+             
+            >
+             {instrument_status!==null ? instrument_status : "working"}
+            </Button>
+          </DropdownTrigger>
+          <DropdownMenu 
+            onAction={(key) => {updatestatus(key)}}
+            aria-label="Single selection example"
+            variant="flat"
+            disallowEmptySelection
+            selectionMode="single"
+            
+          >
+            <DropdownItem key="working">working</DropdownItem>
+            <DropdownItem key="unavailable">unavailable</DropdownItem>
+           
+          </DropdownMenu>
+        </Dropdown>
+        </div>
+
+        </>
+          )
+
+          }
         </div>
       </div>
       <div className="border rounded-md p-8 shadow-md mb-6 flex flex-col">

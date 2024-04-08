@@ -140,7 +140,7 @@ const SingleCrystalXRayForm = () => {
             <input
               type="checkbox"
               checked={stability_stable}
-              disabled={true}
+              
               onChange={(e) => SETitem(e, setstability_stable, 'stability_stable')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -149,7 +149,7 @@ const SingleCrystalXRayForm = () => {
           <label className="inline-flex items-center ml-6">
             <input
               type="checkbox"
-              disabled={true}
+              
               checked={stability_air_sensitive}
               onChange={(e) => SETitem(e, setstability_air_sensitive, 'stability_air_sensitive')}
               className="form-checkbox h-5 w-5 text-gray-600"
@@ -159,7 +159,7 @@ const SingleCrystalXRayForm = () => {
           <label className="inline-flex items-center ml-6">
             <input
               type="checkbox"
-              disabled={true}
+              
               checked={stability_moisture_sensitive}
               onChange={(e) => SETitem(e, setstability_moisture_sensitive, 'stability_moisture_sensitive')}
               className="form-checkbox h-5 w-5 text-gray-600"
@@ -175,7 +175,7 @@ const SingleCrystalXRayForm = () => {
             <input
               type="checkbox"
               value="IR"
-              disabled={true}
+              
               checked={IR}
               onChange={(e) => SETitem(e, setIR, 'IR')}
               className="form-checkbox h-5 w-5 text-gray-600"
@@ -186,7 +186,7 @@ const SingleCrystalXRayForm = () => {
             <input
               type="checkbox"
               value="NMR"
-              disabled={true}
+              
               checked={NMR}
               onChange={(e) => SETitem(e,setNMR, 'NMR')}
               className="form-checkbox h-5 w-5 text-gray-600"
@@ -197,7 +197,7 @@ const SingleCrystalXRayForm = () => {
             <input
               type="checkbox"
               value="Mass Spectrum"
-              disabled={true}
+              
               checked={Mass_spectrum}
               onChange={(e) => SETitem(e, setMass_spectrum, 'Mass_Spectrum')}
               className="form-checkbox h-5 w-5 text-gray-600"

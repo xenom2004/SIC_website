@@ -72,7 +72,7 @@ const XAFSForm = () => {
           <label className="inline-flex items-center">
             <input
               type="checkbox"
-              disabled={true}
+              
               checked={measurementTypeXANES}
               onChange={(e) => SETitem(e, setMeasurementTypeXANES, "measurementTypeXANES")}
               className="form-checkbox h-5 w-5 text-gray-600"
@@ -82,7 +82,7 @@ const XAFSForm = () => {
           <label className="inline-flex items-center ml-6">
             <input
               type="checkbox"
-              disabled={true}
+              
               checked={measurementTypeEXAFS}
               onChange={(e) => SETitem(e, setMeasurementTypeEXAFS, "measurementTypeEXAFS")}
               className="form-checkbox h-5 w-5 text-gray-600"
@@ -92,7 +92,7 @@ const XAFSForm = () => {
           <label className="inline-flex items-center ml-6">
             <input
               type="checkbox"
-              disabled={true}
+              
               checked={measurementTypeBoth}
               onChange={(e) => SETitem(e, setMeasurementTypeBoth, "measurementTypeBoth")}
               className="form-checkbox h-5 w-5 text-gray-600"
@@ -141,7 +141,7 @@ const XAFSForm = () => {
           <label className="inline-flex items-center">
             <input
               type="checkbox"
-              disabled={true}
+              
               checked={sampleNatureHazardous}
               onChange={(e) => SETitem(e, setSampleNatureHazardous, "sampleNatureHazardous")}
               className="form-checkbox h-5 w-5 text-gray-600"
@@ -151,7 +151,7 @@ const XAFSForm = () => {
           <label className="inline-flex items-center ml-6">
             <input
               type="checkbox"
-              disabled={true}
+              
               checked={sampleNatureHygroscopic}
               onChange={(e) => SETitem(e, setSampleNatureHygroscopic, "sampleNatureHygroscopic")}
               className="form-checkbox h-5 w-5 text-gray-600"
@@ -162,7 +162,7 @@ const XAFSForm = () => {
             <input
               type="checkbox"
               checked={sampleNatureOxidises}
-              disabled={true}
+              
               onChange={(e) => SETitem(e, setSampleNatureOxidises, "sampleNatureOxidises")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -172,7 +172,7 @@ const XAFSForm = () => {
             <input
               type="checkbox"
               checked={sampleNatureNone}
-              disabled={true}
+              
               onChange={(e) => SETitem(e, setSampleNatureNone, "sampleNatureNone")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -186,7 +186,7 @@ const XAFSForm = () => {
           <label className="inline-flex items-center">
             <input
               type="checkbox"
-              disabled={true}
+              
               checked={mdsSheetAttached}
               onChange={(e) => SETitem(e, setMdsSheetAttached, "mdsSheetAttached")}
               className="form-checkbox h-5 w-5 text-gray-600"
@@ -196,7 +196,7 @@ const XAFSForm = () => {
           <label className="inline-flex items-center ml-6">
             <input
               type="checkbox"
-              disabled={true}
+              
               checked={mdsSheetNonAttached}
               onChange={(e) => SETitem(e, setMdsSheetNonAttached, "mdsSheetNonAttached")}
               className="form-checkbox h-5 w-5 text-gray-600"

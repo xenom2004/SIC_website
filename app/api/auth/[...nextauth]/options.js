@@ -63,15 +63,22 @@ export const options = {
     callbacks: {
         session: async ({ session, token, user }) => {
             // console.log(session,"session","user");
-            // console.log(session,"My session",token,user);
+            // console.log(session,"My session",token);
             const connect = await mongoose.connect(connection.connection);
 
             try {
                 // Find user by username
-                const user = await User.findOne({ email: session.user.email });
+                // console.log(session.user,"rn")
+                // console.log(session.user.email,"email")
+                const user = await User.findOne({ 'name': session.user.name });
+                // console.log(session.user.email,"email2")
+                if(user){
+                    // console.log(user,"dbguygey")
+                    token.isAdmin=user.isAdmin;
+                }
 
                 if (!user) {
-                    const r=await User.create({profileName:session.user.name,name:session.user.email,email:session.user.email,loginType:"google_auth"});
+                    const r=await User.create({profileName:session.user.name,name:session.user.email,email:session.user.email,"isAdmin":"notadmin"});
                     // console.log(r,"Add")
                 }
                 // If credentials are valid, return user

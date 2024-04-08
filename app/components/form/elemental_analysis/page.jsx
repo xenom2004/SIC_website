@@ -162,7 +162,7 @@ const GETitem=(def,variable)=>{
           <label className="inline-flex items-center">
             <input
               type="checkbox"
-              disabled={true}
+              
               value="stable"
               checked={stability.includes("stable")}
               onChange={(e) => SETitem(e,setStability,"stability")}
@@ -173,7 +173,7 @@ const GETitem=(def,variable)=>{
           <label className="inline-flex items-center ml-6">
             <input
               type="checkbox" 
-              disabled={true}
+              
               value="air-sensitive"
               checked={stability.includes("air-sensitive")}
               onChange={(e) => SETitem(e,setStability,"stability")}
@@ -184,7 +184,7 @@ const GETitem=(def,variable)=>{
           <label className="inline-flex items-center ml-6">
             <input
               type="checkbox"
-              disabled={true}
+              
               value="moisture-sensitive"
               checked={stability.includes("moisture-sensitive")}
               onChange={(e) => SETitem(e,setStability,"stability")}
