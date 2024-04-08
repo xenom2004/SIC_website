@@ -1,3 +1,30 @@
+<!-- -----------------------------------------------User------------------------------------------------------------- -->
+
+
+Steps to follow to run the SIC Website:
+1) open folder SIC_WEBSITE.
+2) type " npm i" in terminal.
+3) type " npm run dev " in terminal.
+4) go to " localhost:3000 "
+5) register an account and login.
+6) Go through intruments and check availability.
+7) Go to Usage Charges to calculate total cost and place order.
+8) After clicking "Pay Now" fill the forms of corresponding instruments.
+9) Select "Send for verification".
+10) Wait for admin to approve your order.
+11) After approval, go for payment. 
+12) Transaction complete.
+13) Send sample to SIC.
+
+For Admin access:
+1) login as username:"jio", password:"jio".
+2) go to "localhost:3000/admin"
+3) view orders and accept/reject them.
+
+
+<!-- -----------------------------------------------Developers(github)------------------------------------------------------------- -->
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
