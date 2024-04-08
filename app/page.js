@@ -38,7 +38,7 @@ export default function Home() {
                 Here you can transform your inspiration into impact.
               </h2>
               <div className="flex justify-center md:justify-start">
-                <Link href="./components/buttons/AboutSic/virtual_tour">
+                <Link href="./about">
                   <button
                     type="button"
                     className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
