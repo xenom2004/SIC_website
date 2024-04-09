@@ -27,7 +27,7 @@ const Statistics = () => {
   return (
     <div
       ref={sectionRef}
-      className="bg-cover bg-bottom flex items-center justify-center mt-32 relative"
+      className="bg-cover bg-bottom  flex items-center justify-center mt-32 relative"
       style={{
         backgroundImage: `url('https://sic.iiti.ac.in/wp-content/uploads/2022/08/cropped-Home-1-Copy.jpg')`,
         backgroundPosition: backgroundPosition,
