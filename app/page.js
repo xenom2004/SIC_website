@@ -18,7 +18,7 @@ export default function Home() {
 
   return (
 	
-    <div className="flex flex-col min-h-screen ">
+    <div className="flex flex-col min-h-screen mt-[-100px] ">
 		 
       <main className="flex-1 relative mb-[-88.5px] ">
 	 

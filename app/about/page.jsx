@@ -1,13 +1,11 @@
 export default function Page() {
   return (
     <div className="bg-gray-100 text-gray-800 font-body">
-      <header className="bg-white shadow-md">
-        <div className="container mx-auto py-6 px-4 md:px-8">
-          <h1 className="text-3xl font-bold text-center text-blue-700">
-            About SIC
-          </h1>
-        </div>
-      </header>
+      <div className="container mx-auto py-6 px-4 md:px-8">
+        <h1 className="text-3xl font-bold text-center text-blue-700">
+          About SIC
+        </h1>
+      </div>
 
       <main className="container mx-auto my-12 px-4 md:px-8">
         <section className="mb-12">
