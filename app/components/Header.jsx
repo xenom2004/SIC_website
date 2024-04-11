@@ -200,7 +200,7 @@ const Header = () => {
                 {language === "english" ? "Logout" : "लॉग आउट"}
               </button>
             )}
-            <span className="px-4 hidden">
+            <span className="px-4">
               <Switch
                 checked={checked}
                 onChange={handleChange}

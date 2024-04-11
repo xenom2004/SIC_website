@@ -107,8 +107,8 @@ export default function Home() {
 					{/* 2-part section for info */}
 					<div className="col-span-1 sm:col-span-2 lg:col-span-3 bg-lightSky p-8 text-white rounded-lg flex flex-col items-center justify-center">
 					{/* Add your info here */}
-					<h2 className="text-3xl font-bold mb-2">Facilities</h2>
-					<p className="text-lg text-center">
+					<h2 className="text-3xl font-bold mb-2 ">Facilities</h2>
+					<p className="text-lg text-justify">
 						After being established in 2009, IIT Indore took decisive initiatives
 						to excel in the area of research and development. Among the various
 						measures taken at that time, establishing the Sophisticated

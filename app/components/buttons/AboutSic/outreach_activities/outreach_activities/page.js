@@ -167,8 +167,9 @@ const Page = () => {
 
       <div className="container  px-4 py-8 mx-auto items-center">
         <div className="flex  flex-wrap">
-          {aboug.map((item) => (
-            <Row key={item.id} date={item.date} first={item.first} second={item.second} third={item.third} image={item.image} />
+          {aboug.map((item) => (<>
+            {/* {console.log(item.id)} */}
+            <Row key={item.id} dis={item.id} date={item.date} first={item.first} second={item.second} third={item.third} image={item.image} /></>
           ))}
         </div>
       </div>
