@@ -1,12 +1,32 @@
+"use client";
+import { useState } from "react";
 export default function Footer() {
+  const [language, setLanguage] = useState(() => {
+    if (typeof window !== "undefined" && localStorage.getItem("language")) {
+      // If localStorage is available and 'language' item is set
+      var language = localStorage.getItem("language");
+      // Do something with the 'language' variable
+      console.log("Language stored in localStorage:", language);
+      return language;
+    } else {
+      console.log(
+        "Language not stored in localStorage or localStorage not available."
+      );
+      return "english";
+      // If localStorage is not available or 'language' item is not set
+    }
+  });
   return (
     <footer className="text-gray-300 bg-gray-800 body-font mt-0">
       <div className="container px-6 py-8 mx-auto">
         <div className="flex flex-wrap">
           <div className="lg:w-1/4 md:w-1/2 w-full">
-            <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">
-              Sophisticated Instrumentation Center – A National Facility
-            </h2>
+            <div className="title-font font-medium text-white tracking-widest text-sm mb-3">
+              {/* Sophisticated Instrumentation Center – A National Facility */}
+              {language === "english"
+                ? "Sophisticated Instrumentation Center"
+                : " विशिष्ट उपकरण केंद्र"}
+            </div>
             <p className="leading-relaxed">
               Indian Institute of Technology Indore
             </p>

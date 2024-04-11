@@ -11,7 +11,7 @@ const ProfilePage = () => {
   const { data: session, status } =useSession();
   const router = useRouter();
   const [user_details,setuser_details]=useState(null);
-  const [image,setImage]=useState("");
+  const [image,setImage]=useState(null);
   const [cover_image,setcover_image]=useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [profileData, setProfileData] = useState({
