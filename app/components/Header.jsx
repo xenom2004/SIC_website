@@ -72,8 +72,8 @@ const Header = () => {
 
   return (
     <header className="text-gray-100 bg-lightSky body-font shadow-md fixed w-full z-50 top-0 mb-12">
-      <nav className="container px-6 py-4 mx-auto flex flex-wrap items-center justify-between ">
-        <Link href="/" className="flex items-center mb-4 ">
+      <nav className="container px-4 md:px-6 py-4 mx-auto flex items-center justify-between">
+        <Link href="/" className="flex items-center">
           <img
             src="https://citc.iiti.ac.in/wp-content/uploads/2021/12/IITILogo.png"
             className="h-16 px-10"
@@ -89,48 +89,67 @@ const Header = () => {
             )}
           </span>
         </Link>
-        {/* Navigation links for large screens */}
-        <div className=" md:flex items-center space-x-4">
-          <div className="hidden md:flex items-center space-x-4">
+
+        {/* Navigation links for large and extra-large screens */}
+        <div className="hidden md:flex items-center space-x-4">
+          <Link
+            href="/"
+            className={`font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
+            style={
+              language === "hindi"
+                ? { fontWeight: "bold", fontSize: "1.2em", lineHeight: "1.5" }
+                : {}
+            }
+          >
+            {language === "english" ? "Home" : "होम"}
+          </Link>
+
+          {/* Usage Charges Link */}
+          <Link
+            href="/usageCharges"
+            className={`font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
+            style={
+              language === "hindi"
+                ? { fontWeight: "bold", fontSize: "1.2em", lineHeight: "1.5" }
+                : {}
+            }
+          >
+            {language === "english" ? "Usage Charges" : "उपयोग शुल्क"}
+          </Link>
+
+          {/* Instruments */}
+          <div className="mr-4">
+            <Instruments language={language} />
+          </div>
+
+          {/* About */}
+          <div className="mr-4">
+            <About language={language} />
+          </div>
+
+          {/* Orders */}
+          {session && (
             <Link
-              href="/"
+              href="/user"
               className={`font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
               style={
                 language === "hindi"
-                  ? { fontWeight: "bold", fontSize: "1.2em", lineHeight: "1.5" }
+                  ? {
+                      fontWeight: "bold",
+                      fontSize: "1.2em",
+                      lineHeight: "1.5",
+                    }
                   : {}
               }
             >
-              {language === "english" ? "Home" : "होम"}
+              {language === "english" ? "Orders" : "आदेश"}
             </Link>
+          )}
 
-            {/* Usage Charges Link */}
-            <Link
-              href="/usageCharges"
-              className={`font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
-              style={
-                language === "hindi"
-                  ? { fontWeight: "bold", fontSize: "1.2em", lineHeight: "1.5" }
-                  : {}
-              }
-            >
-              {language === "english" ? "Usage Charges" : "उपयोग शुल्क"}
-            </Link>
-
-            {/* Instruments */}
-            <span className="mr-4">
-              <Instruments language={language} />
-            </span>
-
-            {/* About */}
-            <span className="mr-4">
-              <About language={language} />
-            </span>
-
-            {/* Orders */}
-            {session && (
-              <Link
-                href="/user"
+          {/* Profile or Sign In/Register */}
+          {session ? (
+            <Link href="/profile">
+              <button
                 className={`font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
                 style={
                   language === "hindi"
@@ -142,140 +161,121 @@ const Header = () => {
                     : {}
                 }
               >
-                {language === "english" ? "Orders" : "आदेश"}
-              </Link>
-            )}
-
-            {/* Profile or Sign In/Register */}
-            {session ? (
-              <Link href="/profile">
-                <button
-                  className={`font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
-                  style={
-                    language === "hindi"
-                      ? {
-                          fontWeight: "bold",
-                          fontSize: "1.2em",
-                          lineHeight: "1.5",
-                        }
-                      : {}
-                  }
-                >
-                  {language === "english" ? "Profile" : "प्रोफ़ाइल"}
-                </button>
-              </Link>
-            ) : (
-              <button
-                onClick={handleSignIn}
-                className={`font-semibold px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
-                style={
-                  language === "hindi"
-                    ? {
-                        fontWeight: "bold",
-                        fontSize: "1.2em",
-                        lineHeight: "1.5",
-                      }
-                    : {}
-                }
-              >
-                {language === "english" ? "Login/Register" : "लॉगिन/रजिस्टर"}
+                {language === "english" ? "Profile" : "प्रोफ़ाइल"}
               </button>
-            )}
-
-            {/* Logout */}
-            {session && (
-              <button
-                onClick={handleSignOut}
-                className={`font-semibold px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
-                style={
-                  language === "hindi"
-                    ? {
-                        fontWeight: "bold",
-                        fontSize: "1.2em",
-                        lineHeight: "1.5",
-                      }
-                    : {}
-                }
-              >
-                {language === "english" ? "Logout" : "लॉग आउट"}
-              </button>
-            )}
-            <span className="px-4">
-              <Switch
-                checked={checked}
-                onChange={handleChange}
-                inputProps={{ "aria-label": "controlled" }}
-              ></Switch>
-            </span>
-          </div>
-
-          {/* Responsive dropdown menu for small screens */}
-          <div className="md:hidden relative">
+            </Link>
+          ) : (
             <button
-              onClick={toggleDropdown}
-              className="font-semibold px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
+              onClick={handleSignIn}
+              className={`font-semibold px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
+              style={
+                language === "hindi"
+                  ? {
+                      fontWeight: "bold",
+                      fontSize: "1.2em",
+                      lineHeight: "1.5",
+                    }
+                  : {}
+              }
             >
-              Menu
+              {language === "english" ? "Login/Register" : "लॉगिन/रजिस्टर"}
             </button>
-            {/* Conditionally render dropdown content based on state */}
-            {isDropdownOpen && (
-              <div className="absolute top-full left-0 w-52 bg-gray-800 py-2 text-center">
-                <Link
-                  onClick={toggleDropdown}
-                  href="/"
-                  className="block px-8 font-semibold  py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
-                >
-                  Home
-                </Link>
-                <div onClick={toggleDropdown}>
-                  <Instruments language={language} />
-                </div>
-                <div onClick={toggleDropdown}>
-                  <About language={language} />
-                </div>
-                <Link
-                  onClick={toggleDropdown}
-                  href="/usageCharges"
-                  className="block px-8 font-semibold  py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
-                >
-                  Usage Charges
-                </Link>
-                {session && (
-                  <Link
-                    onClick={toggleDropdown}
-                    href="/user"
-                    className="block px-8 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
-                  >
-                    Orders
-                  </Link>
-                )}
-                {session ? (
-                  <Link
-                    href="/profile"
-                    onClick={toggleDropdown}
-                    className="block   px-8 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
-                  >
-                    Profile
-                  </Link>
-                ) : (
-                  <button
-                    onClick={handleSignIn}
-                    className="block px-20  font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
-                  >
-                    Login/Register
-                  </button>
-                )}
-                {session && (
-                  <button
-                    onClick={handleSignOut}
-                    className="block   px-20 font-semibold  py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
-                  >
-                    Logout
-                  </button>
-                )}
+          )}
+
+          {/* Logout */}
+          {session && (
+            <button
+              onClick={handleSignOut}
+              className={`font-semibold px-4 py-2 rounded-md bg-red-500 text-white hover:bg-red-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
+              style={
+                language === "hindi"
+                  ? {
+                      fontWeight: "bold",
+                      fontSize: "1.2em",
+                      lineHeight: "1.5",
+                    }
+                  : {}
+              }
+            >
+              {language === "english" ? "Logout" : "लॉग आउट"}
+            </button>
+          )}
+
+          <span className="px-4 hidden">
+            <Switch
+              checked={checked}
+              onChange={handleChange}
+              inputProps={{ "aria-label": "controlled" }}
+            ></Switch>
+          </span>
+        </div>
+
+        {/* Responsive dropdown menu for small and medium screens */}
+        <div className="flex lg:hidden relative justify-end">
+          <button
+            onClick={toggleDropdown}
+            className="font-semibold px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
+          >
+            Menu
+          </button>
+          {/* Conditionally render dropdown content based on state */}
+          {isDropdownOpen && (
+            <div className="absolute top-full right-0 w-52 bg-gray-800 py-2 text-center">
+              <Link
+                onClick={toggleDropdown}
+                href="/"
+                className="block px-8 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
+              >
+                Home
+              </Link>
+              <div onClick={toggleDropdown}>
+                <Instruments language={language} />
               </div>
-            )}
-          </div>
+              <div onClick={toggleDropdown}>
+                <About language={language} />
+              </div>
+              <Link
+                onClick={toggleDropdown}
+                href="/usageCharges"
+                className="block px-8 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
+              >
+                Usage Charges
+              </Link>
+              {session && (
+                <Link
+                  onClick={toggleDropdown}
+                  href="/user"
+                  className="block px-8 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
+                >
+                  Orders
+                </Link>
+              )}
+              {session ? (
+                <Link
+                  href="/profile"
+                  onClick={toggleDropdown}
+                  className="block px-8 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
+                >
+                  Profile
+                </Link>
+              ) : (
+                <button
+                  onClick={handleSignIn}
+                  className="block px-20 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
+                >
+                  Login/Register
+                </button>
+              )}
+              {session && (
+                <button
+                  onClick={handleSignOut}
+                  className="block px-20 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
+                >
+                  Logout
+                </button>
+              )}
+            </div>
+          )}
         </div>
       </nav>
     </header>

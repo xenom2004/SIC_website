@@ -1,76 +1,76 @@
 export default function Page() {
   return (
-    <>
-      <p class="text-center text-lightSky mx-auto py-8 px-auto text-5xl font-bold ">
-        About SIC{" "}
-      </p>
-      <div className="container px-auto mx-auto">
-        <div className="px-auto mx-auto py-10 text-xl w-15/3 ">
-          <p className=" font-bold text-blue-700 mb-4">
-            The Sophisticated instrumentation center (SIC) was established in
+    <div className="bg-gray-100 text-gray-800 font-body">
+      <div className="container mx-auto py-6 px-4 md:px-8">
+        <h1 className="text-3xl font-bold text-center text-blue-700">
+          About SIC
+        </h1>
+      </div>
+
+      <main className="container mx-auto my-12 px-4 md:px-8">
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-blue-700 mb-4">
+            The Sophisticated Instrumentation Center (SIC)
+          </h2>
+          <p className="text-lg">
+            The Sophisticated Instrumentation Center (SIC) was established in
             September 2011 with institute funding to expedite the research
             program at IIT Indore. SIC has now emerged as one of the first such
             centers in the country, providing extensive analytical instrument
             support to the users of the research fraternity across the country.
-            A major advantage of SIC is its accessibility to the students within{" "}
-            <br />
+            A major advantage of SIC is its accessibility to the students within
             the institute as well as to other institutes and industries. A very
             healthy ratio of students to the time availability on instruments
-            and <br />
-            the quick analysis of external samples makes it a very useful
+            and the quick analysis of external samples makes it a very useful
             facility.
           </p>
-        </div>
-      </div>
-      <main className="container mx-auto my-8 px-4">
-        <section className="mb-2">
-          <h2 className="px-auto  text-lightSky  text-2xl font-bold ">
-            Our Mission
-          </h2>
-          <div className="px-auto flex items-center">
-            <div className="w-2/3 pr-8">
-              <p className="mb-0">
+        </section>
+        <section className="mb-12 flex flex-col md:flex-row items-center">
+          <section className="mb-12 flex flex-col md:flex-row items-center">
+            <div className="md:w-1/2 pr-8">
+              <h2 className="text-2xl font-bold text-blue-700 mb-4">
+                Our Mission
+              </h2>
+              <p className="text-lg mb-0">
                 Providing data recording facilities and expertise in different
                 state-of-the-art instruments, all under one section to
                 facilitate high-quality data analysis to academia and
-                industries..
+                industries.
               </p>
             </div>
-            <div className=" w-1/6">
+            <div className="md:w-1/2">
               <img
                 src="https://sic.iiti.ac.in/wp-content/uploads/2022/08/png-clipart-mission-statement-vision-statement-business-marketing-mission-company-logo-innovation-thumbnail-2.png"
-                alt="Team photo"
+                alt="Mission Statement"
                 className="rounded-lg"
               />
             </div>
-          </div>
-        </section>
-        <section className="mb-2">
-          <h2 className="px-auto text-lightSky  text-2xl font-bold ">
-            Our vision
-          </h2>
-          <div className="px-auto flex items-center">
-            <div className="w-2/3 pr-8">
-              <p className="mb-0">
+          </section>
+
+          <section className="mb-12 flex flex-col md:flex-row items-center">
+            <div className="md:w-1/2 pr-8">
+              <h2 className="text-2xl font-bold text-blue-700 mb-4">
+                Our Vision
+              </h2>
+              <p className="text-lg mb-0">
                 To be amongst the top analytical instrument laboratories in the
-                world in terms of cost, efficiency, and range of services..
+                world in terms of cost, efficiency, and range of services.
               </p>
             </div>
-            <div className=" w-1/6">
+            <div className="md:w-1/2">
               <img
                 src="https://sic.iiti.ac.in/wp-content/uploads/2022/08/download-3.png"
-                alt="Team photo"
+                alt="Vision Statement"
                 className="rounded-lg"
               />
             </div>
-          </div>
+          </section>
         </section>
-        <section>
-          <div className=" py-4">
-            <h2 className="text-2xl text-lightSky font-bold mb-1">
-              SIC is constantly working on its mission:
-            </h2>
-            <p className="mb-4"></p>
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-blue-700 mb-4">
+            SIC's Mission and Goals
+          </h2>
+          <ul className="list-disc pl-6 text-lg">
             <li>
               To support and foster the research enterprise in all branches of
               science and engineering at the Indian Institute of Technology
@@ -79,47 +79,42 @@ export default function Page() {
             <li>
               To foster growth and competitiveness of the local industries by
               providing services in the identified gaps to make Indian
-              industrial products <br /> as per global standards..
-              <p />
+              industrial products as per global standards.
             </li>
-          </div>
+          </ul>
         </section>
-        <section>
-          <div className="py-10">
-            <h2 className="  text-2xl text-lightSky font-bold mb-1">
-              The instruments at SIC are mainly focused on the following
-              research areas:
-            </h2>
-            <p className="mb-4"></p>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-blue-700 mb-4">
+            Research Areas
+          </h2>
+          <ul className="list-disc pl-6 text-lg">
             <li>
               Fundamental Research in Inorganic Chemistry, Organic Chemistry,
-              Organometallic Chemistry .
+              Organometallic Chemistry
             </li>
             <li>Various aspects of Material Science</li>
             <li>Bio-Science and Engineering, including work on biosensors</li>
-            <li>Surface Science and Engineering, and</li>
-            <li>
-              Condensed Matter Physics.
-              <p />
-            </li>
-          </div>
+            <li>Surface Science and Engineering</li>
+            <li>Condensed Matter Physics</li>
+          </ul>
         </section>
-        <section>
-          <div className="py-8">
-            <h2 className="  text-2xl text-lightSky font-bold mb-1">
-              Function:
-            </h2>
-            <p className="mb-4"></p>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-blue-700 mb-4">
+            SIC's Functions
+          </h2>
+          <ul className="list-disc pl-6 text-lg">
             <li>
               SIC has been operating with 32 instruments funded by the institute
               exclusively and recording data for all departments of the
-              institute .
+              institute.
             </li>
             <li>
               SIC is continuously supporting academic programs including Ph.D.,
-              Masters &amp; Bachelor of technology. students by giving hands-on{" "}
-              <br /> training with the instruments by providing them the
-              opportunity to analyze their own samples.
+              Masters & Bachelor of technology. students by giving hands-on
+              training with the instruments by providing them the opportunity to
+              analyze their own samples.
             </li>
             <li>
               SIC so far supported various projects funded by external agencies
@@ -128,24 +123,20 @@ export default function Page() {
             <li>
               The center has been supporting various industrial organizations
               across India to develop their bestselling products using SIC
-              sample <br /> testing facility.
+              sample testing facility.
             </li>
-            <li>
-              Condensed Matter Physics.
-              <p />
-            </li>
-          </div>
+          </ul>
         </section>
-        <section>
-          <div className="py-10">
-            <h2 className="  text-2xl text-lightSky font-bold mb-1">
-              SIC Progress and evolution so far:
-            </h2>
-            <p className="mb-4"></p>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-blue-700 mb-4">
+            SIC's Progress and Evolution
+          </h2>
+          <ul className="list-disc pl-6 text-lg">
             <li>
               In the year 2011, the facility started functioning in our
-              2-satellite temporary campuses viz., IET &amp; PACL campus with a
-              total of 18 <br /> instruments.
+              2-satellite temporary campuses viz., IET & PACL campus with a
+              total of 18 instruments.
             </li>
             <li>
               Since 2013, 8 more high-end instruments were added to facilitate
@@ -157,13 +148,12 @@ export default function Page() {
             </li>
             <li>
               With the gradual addition of more instruments, the facility is now
-              working with a total 35 instruments and planning to expand <br />{" "}
-              this number in near future.
-              <p />
+              working with a total 35 instruments and planning to expand this
+              number in the near future.
             </li>
-          </div>
+          </ul>
         </section>
       </main>
-    </>
+    </div>
   );
 }
