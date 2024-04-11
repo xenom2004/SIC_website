@@ -5,7 +5,7 @@ import User from "../../lib/modal/user"
 
 export  async function POST(req, res) {
   const  data  = await req.json();
-    console.log(data,"on server");
+    // console.log(data,"on server");
     await mongoose.connect(connection.connection);
     const filter = { "name":data.name}; // specify the filter to match the document you want to update
     const update = { $set: { profileName: data.profileName,cover_image: data.cover_image, image: data.image, loginType: data.loginType,gst_number: data.gst_number,
@@ -13,7 +13,7 @@ export  async function POST(req, res) {
     Designation: data.Designation,studentDesignation: data.studentDesignation,email: data.email} }; // specify the update operation
     const options = { new: true }; // optional: returns the modified document instead of the original
     const updatedDocument = await User.findOneAndUpdate(filter, update, options);
-    console.log(updatedDocument,"Updated");
+    // console.log(updatedDocument,"Updated");
 
   
   
