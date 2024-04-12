@@ -6,7 +6,7 @@ import { getSession } from "next-auth/react";
 import { Spinner } from "@nextui-org/react";
 import { Button } from "@nextui-org/react";
 import Link from "next/link";
-
+import Order_card from "./Order";
 // const forms_instrument={
 //   2: (<PowderXRDForm/>),
 //   3: (<XAFSForm/>),
@@ -89,32 +89,7 @@ const gorder = [
     },
   },
 ];
-export function Order_card(order) {
-  return (
-    <>
-      <div
-        onClick={() => {
-          order.setselected(order.order._id);
-          order.setorder_details(order.order);
-        }}
-        className={`hover:bg-lightSky2 hover:text-white rounded-xl border-1 flex flex-row px-2 mx-2 items-center  content-cenetr ${
-          order.state === true ? "shadow-xl" : ""
-        }`}
-      >
-        <div className="flex flex-col grow p-2">
-          <h1 className="text-xl font-bold">Order Id: {order.order._id}</h1>
-          <h1 className="text-lg">
-            Payment: {order.order.price.$numberDecimal}
-          </h1>
-        </div>
-        <div className="px-4 ">{order.order.status}</div>
-        <div className="px-4 flex align-center">
-          {order.order.Date.substring(0, 10)}
-        </div>
-      </div>
-    </>
-  );
-}
+
 export default function Page() {
   const { data: session, status } = useSession();
   const [order_details, setorder_details] = useState(null);
@@ -286,17 +261,21 @@ export default function Page() {
                   <div className="flex justify-center items-center  h-full">
                     {order_details.status}
                   </div>
-                  {(order_details.comment!=null)&& 
-                  <div className="flex justify-center items-center text-red-500  h-full">
-                    <span className="text-black font-bold ">Note:</span> {order_details.comment}
-                  </div>}
+                  {order_details.comment != null && (
+                    <div className="flex justify-center items-center text-red-500  h-full">
+                      <span className="text-black font-bold ">Note:</span>{" "}
+                      {order_details.comment}
+                    </div>
+                  )}
                   {order_details.status == "Payment Incomplete" && (
                     <div className="flex flex-row items-center">
-                      <Link href={`/user_payment/${order_details._id}?id=${order_details._id}`}>
-                      <Button className="w-full px-4 m-4 bg-blue-700 text-white">
-                        
-                        Proceed to payment
-                      </Button></Link>
+                      <Link
+                        href={`/user_payment/${order_details._id}?id=${order_details._id}`}
+                      >
+                        <Button className="w-full px-4 m-4 bg-blue-700 text-white">
+                          Proceed to payment
+                        </Button>
+                      </Link>
                     </div>
                   )}
                 </div>

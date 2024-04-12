@@ -1,10 +1,11 @@
+"use client";
 import React, { useState, useRef } from "react";
 import Link from "next/link";
 
-const About = ({ language }) => {
+const About = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
-
+  const [language, uselanguage] = useState("english");
   const handleDropdownOpen = () => {
     setIsDropdownOpen(true);
   };
