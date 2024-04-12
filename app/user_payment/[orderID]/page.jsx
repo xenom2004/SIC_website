@@ -19,6 +19,7 @@ import NMR from '../../admin/forms/spectroscopy/nmr/page';
 import FESEMForm from '../../admin/forms/microscopy/fe-sem/page';
 
 import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 // import BuyProduct from "../../components/razorpay/BuyProduct"
 // const forms_instrument = {
 //   2: (prop) => { return (<PowderXRDForm prop={prop} />) },
@@ -76,6 +77,9 @@ const OrderDetails = () => {
   const orderID = searchParams.get('id');
   const [state,setstate]=useState("");
   const [display,setdisplay]=useState(true);
+  const { data: session, status } = useSession();
+
+  
   const router=useRouter();
  
   
@@ -137,21 +141,21 @@ const OrderDetails = () => {
     console.log(key);
     // Make API call to the serverless API
     try{
-    const data = await fetch(`http://localhost:3000/api/razorpay/${order1._id}`);
+    const data = await fetch(`/api/razorpay/${order1._id}`);
     console.log(data,"data here")
     const { order } = await data.json();
-    console.log(order.id,"id");
+    console.log(order1,"ifhiuhfgouied");
     const options = {
       key: key,
-      name: "debasish",
+      name: "SIC",
       currency: order.currency,
       amount: order.amount,
       order_id: order.id,
-      description: "Understanding RazorPay Integration",
+      description: "RazorPay Payment",
       handler: async function (response) {
         if (response.length==0) return <Loading/>;
         console.log(response);
-        const data = await  fetch("http://localhost:3000/api/paymentVerify", {
+        const data = await  fetch("/api/paymentVerify", {
           method: "POST",
           
           body: JSON.stringify({
@@ -165,13 +169,14 @@ const OrderDetails = () => {
         if(res?.message=="success")
         {
             console.log("Here")
-            const update=await fetch(`http://localhost:3000/api/orderId/update`, {
+            const update=await fetch(`/api/orderId/update`, {
                 method:"POST",
                 headers: {
                     'Content-Type': 'application/json',
+                    
                     // Add any other headers you need
                   },
-                body: JSON.stringify({id:order1._id}),
+                body: JSON.stringify({id:order1._id,"accessToken":session.accessToken,"name":session.user.name}),
             });
             // console.log(update,"update")
         //   router.push("/paymentSuccess?paymentid="+response.razorpay_payment_id)

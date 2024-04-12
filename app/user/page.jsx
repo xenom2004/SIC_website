@@ -126,6 +126,7 @@ export default function Page() {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          "session":session.accessToken,
           // Add any other headers if required, like authorization token, etc.
         },
       })
