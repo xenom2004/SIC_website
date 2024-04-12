@@ -260,6 +260,11 @@ const ChargeCalculator = () => {
                                 
                             </tbody>
                         </table>
+
+                        <div>
+      <Link href="/SIC - Fee Structure.pdf" locale="false">Click Here for detailed fee structure </Link>
+    </div> 
+
       <div className='px-2 '>                  
       <h2 className="text-3xl font-bold mb-4 text-lightSky text-center pt-4">Select Instruments:</h2>
       <table className=" table-auto w-full border-collapse">
@@ -444,7 +449,7 @@ const ChargeCalculator = () => {
       )}
     </div>
       
-     
+
     </div>
   );
 };
