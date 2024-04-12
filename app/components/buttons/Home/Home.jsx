@@ -1,4 +1,5 @@
-  import React, { useState, useRef } from "react";
+"use client";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
 
 const Home = () => {
