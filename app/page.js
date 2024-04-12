@@ -9,14 +9,8 @@ const roboto = Roboto({
 	subsets: ['latin'],
 })
 
-
-
 export default function Home() {
-	
-
-
-
-  return (
+	  return (
 	
     <div className="flex flex-col min-h-screen mt-[-100px] ">
 		 

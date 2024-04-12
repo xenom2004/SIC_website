@@ -5,37 +5,77 @@ import Link from "next/link";
 import Instruments from "./buttons/Instruments/Instruments";
 import About from "./buttons/AboutSic/page";
 import { Switch } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
   const { data: session, status } = useSession();
   const [checked, setChecked] = useState(true);
-  const [language, setLanguage] = useState("english");
-  const [first, Usefirst] = useState("1");
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const storedLanguage = localStorage.getItem("language");
-      if (storedLanguage) {
-        localStorage.removeItem("language");
-        localStorage.setItem("language", "english");
-      } else {
-        // If language is not stored, set default language to English and store in localStorage
-        setChecked(true);
-        localStorage.setItem("language", "english");
-      }
+  const router = useRouter();
+  const [language, setLanguage] = useState(() => {
+    if (typeof window !== "undefined" && localStorage.getItem("language")) {
+      // If localStorage is available and 'language' item is set
+      var language = localStorage.getItem("language");
+      // Do something with the 'language' variable
+      // console.log("Language stored in localStorage:", language);
+
+      return language;
     } else {
-      localStorage.setItem("language", "english");
+      // console.log(
+      //   "Language not stored in localStorage or localStorage not available."
+      // );
+      return "english";
+      // If localStorage is not available or 'language' item is not set
     }
-  }, [first]);
-  useEffect(() => {
-    // Update language preference based on switch state
-    setLanguage(checked ? "english" : "hindi");
-    checked
-      ? localStorage.setItem("language", "english")
-      : localStorage.setItem("language", "hindi");
-  }, [checked]);
+  });
+  const [first, Usefirst] = useState("1");
+  const [lang, setlang] = useState();
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     const storedLanguage = localStorage.getItem("language");
+  //     if (storedLanguage) {
+  //       localStorage.removeItem("language");
+  //       localStorage.setItem("language", "english");
+  //     } else {
+  //       // If language is not stored, set default language to English and store in localStorage
+  //       setChecked(true);
+  //       localStorage.setItem("language", "english");
+  //     }
+  //   } else {
+  //     localStorage.setItem("language", "english");
+  //   }
+  // }, [localStorage.getItem("language")]);
+  // useEffect(() => {
+  //   // Update language preference based on switch state
+  //   setLanguage(checked ? "english" : "hindi");
+  //   checked
+  //     ? localStorage.setItem("language", "english")
+  //     : localStorage.setItem("language", "hindi");
+  // }, [checked]);
 
   const handleChange = () => {
-    setChecked(!checked); // Toggle switch state
+    setChecked(!checked);
+    let langi = null;
+    console.log(localStorage.getItem("language"));
+    if (localStorage.getItem("language") != null) {
+      localStorage.setItem("language", language);
+      langi = language;
+    } else {
+      langi = localStorage.getItem("language");
+    }
+
+    if (langi === "english") {
+      setLanguage("hindi");
+      localStorage.setItem("language", "hindi");
+      router.push("/");
+      console.log("here in my");
+    } else {
+      setLanguage("english");
+      localStorage.setItem("language", "english");
+
+      router.push("/");
+    }
+    // Toggle switch state
+    window.location.reload();
   };
 
   const handleSignIn = () => {
@@ -201,7 +241,7 @@ const Header = () => {
             </button>
           )}
 
-          <span className="px-4 hidden">
+          <span className="px-4">
             <Switch
               checked={checked}
               onChange={handleChange}
