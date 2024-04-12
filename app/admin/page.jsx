@@ -314,7 +314,7 @@ const admin = () => {
                 className="fa-solid fa-calculator fa-3xl "
                 style={{ color: "black" }}
               ></i>{" "}
-              <button className="ml-4 justify-center">Cost</button>
+              <button className="ml-4 justify-center"><Link href="/SIC - Fee Structure.pdf" locale="false">Cost</Link></button>
             </h1>
             <h1
               onClick={() => setstate("request")}
