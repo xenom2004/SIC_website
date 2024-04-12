@@ -10,7 +10,20 @@ import { AddAPhotoSharp } from '@mui/icons-material';
 const ProfilePage = () => {
   const { data: session, status } =useSession();
   const router = useRouter();
-  const [user_details,setuser_details]=useState(null);
+  const [user_details,setuser_details]=useState({
+
+    profileName:"name",
+    phone: '123-456-7890',
+    institute: 'XYZ University',
+    email: 'john.doe@example.com',
+    supervisorName: 'Dr. Jane Smith',
+    supervisorEmail: 'jane.smith@example.com',
+    studentDesignation: 'Research Assistant',
+    Designation:"manager",
+    gst_number:"1234567890",
+    
+
+  });
   const [image,setImage]=useState(null);
   const [cover_image,setcover_image]=useState(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -48,19 +61,7 @@ const handleImageChange = (e,setfunc) => {
     
    
   };
- useEffect(() => {
-  if(status==="authenticated"){
-   async function getData() {
-    const response = await fetch('/api/Userdetail/'+session.user.name);
-    const data = await response.json();
-    console.log(data,"on use")
-    setProfileData(data.details);
-    setImage(data.details.image);
-    setcover_image(data.details.cover_image);}
-
-    getData();}
-   
- },[session]);   
+  
 
   const handlesave=async ()=>{
     const data={
@@ -71,7 +72,7 @@ const handleImageChange = (e,setfunc) => {
       "cover_image": cover_image,
       "image": image,
     }
-    console.log(data,"on my data");
+    // console.log(data,"on my data");
     const response = await fetch('/api/updateProfile', {
       method: 'POST',
       headers: {
@@ -118,7 +119,7 @@ const handleImageChange = (e,setfunc) => {
         return {}
       }
       else{
-        console.log(session)
+        // console.log(session)
      
 
       const timestamp = Date.now();
@@ -127,7 +128,8 @@ const handleImageChange = (e,setfunc) => {
         headers: {
           'Content-Type': 'application/json',
           'Cache-Control': 'no-cache', 
-          'sessionyuyuy':session.user.name,
+          
+          'session':session.accessToken
         },
        
       })
@@ -138,9 +140,20 @@ const handleImageChange = (e,setfunc) => {
         // This will activate the closest `error.js` Error Boundary
         throw new Error('Failed to fetch data')
       }
+      
       const data = await res.json();
-      // console.log(data);
-      setuser_details(data.details[0]);
+      // console.log(data,"kio")
+      if(data.status=="success"){
+        console.log("jijii",data.details)
+        setuser_details(data.details);
+        setProfileData(data.details);
+        setImage(data.details.image);
+        setcover_image(data.details.cover_image);
+        
+      }
+      // console.log(user_details,"on user details");
+      // console.log(profileData,"on profile data");
+      
       // console.log(data[0],"on data")
      
       return {}}
@@ -167,7 +180,7 @@ const handleImageChange = (e,setfunc) => {
   }
 
   return (
-    <div className="flex justify-center items-center h-screen mt-48 mb-48">{console.log(session)}
+    <div className="flex justify-center items-center h-screen mt-48 mb-48">
       {/* {user_details!==null && console.log(user_details)} */}
 
     <div className="w-full max-w-xl mx-auto p-6 bg-white shadow-md rounded-lg">
@@ -188,7 +201,7 @@ const handleImageChange = (e,setfunc) => {
 
           <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Profile Name</label>
 
-          <input type="text" id="phone" name="profileName" value={profileData.profileName} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+          <input type="text" id="phone" name="profileName" value={profileData?.profileName} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
 
         </div>
 
@@ -196,7 +209,7 @@ const handleImageChange = (e,setfunc) => {
 
           <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone:</label>
 
-          <input type="text" id="phone" name="phone" value={profileData.phone} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+          <input type="text" id="phone" name="phone" value={profileData?.phone} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
 
         </div>
 
@@ -204,7 +217,7 @@ const handleImageChange = (e,setfunc) => {
 
           <label htmlFor="institute" className="block text-sm font-medium text-gray-700">Institute:</label>
 
-          <input type="text" id="institute" name="institute" value={profileData.institute} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+          <input type="text" id="institute" name="institute" value={profileData?.institute} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
 
         </div>
 
@@ -212,7 +225,7 @@ const handleImageChange = (e,setfunc) => {
 
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email:</label>
 
-          <input type="email" id="email" name="email" value={profileData.email} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+          <input type="email" id="email" name="email" value={profileData?.email} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
 
         </div>
 
@@ -220,7 +233,7 @@ const handleImageChange = (e,setfunc) => {
 
           <label  className="block text-sm font-medium text-gray-700">Gst number</label>
 
-          <input type="text" id="email" name="gst_number" value={profileData.gst_number} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+          <input type="text" id="email" name="gst_number" value={profileData?.gst_number} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
 
         </div>
 
@@ -257,7 +270,7 @@ const handleImageChange = (e,setfunc) => {
 
           <label htmlFor="supervisorName"  className="block text-sm font-medium text-gray-700">Supervisor Name:</label>
 
-          <input type="text" id="supervisorName" name="supervisorName" value={profileData.supervisorName} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+          <input type="text" id="supervisorName" name="supervisorName" value={profileData?.supervisorName} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
 
         </div>
 
@@ -265,7 +278,7 @@ const handleImageChange = (e,setfunc) => {
 
           <label htmlFor="supervisorEmail" className="block text-sm font-medium text-gray-700">Supervisor Email:</label>
 
-          <input type="email" id="supervisorEmail" name="supervisorEmail" value={profileData.supervisorEmail} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+          <input type="email" id="supervisorEmail" name="supervisorEmail" value={profileData?.supervisorEmail} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
 
         </div>
 
@@ -273,7 +286,7 @@ const handleImageChange = (e,setfunc) => {
 
           <label htmlFor="studentDesignation" className="block text-sm font-medium text-gray-700">Student Designation:</label>
 
-          <input type="text" id="studentDesignation" name="studentDesignation" value={profileData.studentDesignation} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+          <input type="text" id="studentDesignation" name="studentDesignation" value={profileData?.studentDesignation} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
 
         </div>
 
@@ -284,7 +297,7 @@ const handleImageChange = (e,setfunc) => {
 
           <label htmlFor="supervisorEmail" className="block text-sm font-medium text-gray-700">Designation</label>
 
-          <input type="text" id="supervisorEmail" name="Designation" value={profileData.Designation} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+          <input type="text" id="supervisorEmail" name="Designation" value={profileData?.Designation} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
 
         </div>
     
