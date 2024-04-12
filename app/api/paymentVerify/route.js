@@ -4,18 +4,30 @@ import mongoose from "mongoose";
 import crypto from "crypto";
 import Payment from "../../lib/modal/Payment"
 import connection from "../../lib/db";
+import { jwtDecode } from "jwt-decode";
 // import Razorpay from "razorpay";
 
 
 export async function POST(req,res) {
+  // console.log("popo")
   await mongoose.connect(connection.connection);
+ 
   //  connection.log(req.json, "jdhdsfjkghsdjfghsdjghs");
-    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature ,sessionname,token} =
   await req.json();
+  let decoded=null;
+  if(token!=null){
+    // console.log("1")
+      decoded = jwtDecode(token);
+  }
+
+  if(decoded && decoded.username===sessionname){
+    
+  
   //  const body = razorpay_order_id + "|" + razorpay_payment_id;
 
 // console.log("sjdkfhsdjkfhsdjkfhskdf", body)
-   console.log(razorpay_order_id, razorpay_payment_id, razorpay_signature)
+  //  console.log(razorpay_order_id, razorpay_payment_id, razorpay_signature,"UIEGIUEGFYUI")
 
   const expectedSignature = crypto
     .createHmac('sha256', process.env.RAZORPAY_APT_SECRET)
@@ -26,7 +38,7 @@ export async function POST(req,res) {
 
 const isAuthentic = expectedSignature === razorpay_signature;
 
-console.log("payment verification is here",isAuthentic)
+// console.log("payment verification is here",isAuthentic)
  if (isAuthentic) {
   try{
       // console.log(Payment)
@@ -54,6 +66,11 @@ console.log("payment verification is here",isAuthentic)
         status: 400,
       })
 
+}}
+else{
+  return NextResponse.json({
+    message: "fail"
+  })
 }
 
 

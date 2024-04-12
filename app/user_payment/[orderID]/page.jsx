@@ -141,10 +141,10 @@ const OrderDetails = () => {
     console.log(key);
     // Make API call to the serverless API
     try{
-    const data = await fetch(`/api/razorpay/${order1._id}`);
+    const data = await fetch(`/api/razorpay/${order1._id}/${session.accessToken}`);
     console.log(data,"data here")
     const { order } = await data.json();
-    console.log(order1,"ifhiuhfgouied");
+    console.log(order,"ifhiuhfgouied");
     const options = {
       key: key,
       name: "SIC",
@@ -162,6 +162,8 @@ const OrderDetails = () => {
             razorpay_payment_id: response.razorpay_payment_id,
             razorpay_order_id: response.razorpay_order_id,
             razorpay_signature: response.razorpay_signature,
+            sessionname:session.user.name,
+            token:session.accessToken,
            
           }),
         });
