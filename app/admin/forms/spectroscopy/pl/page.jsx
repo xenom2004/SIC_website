@@ -13,7 +13,7 @@ const PLForm = (prop) => {
           </label>
           <textarea
             id="natureOfSample"
-            value={prop.prop.natureOfSample}
+            value={prop.prop?.natureOfSample}
             readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Kindly intimate if toxic"
@@ -26,7 +26,7 @@ const PLForm = (prop) => {
           </label>
           <textarea
             id="noOfSamples"
-            value={prop.prop.noOfSamples}
+            value={prop.prop?.noOfSamples}
             readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="No of sample"
@@ -41,7 +41,7 @@ const PLForm = (prop) => {
             <input
               type="checkbox"
               value="Conductive"
-              checked={prop.prop.isConductive}
+              checked={prop.prop?.isConductive}
               readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -51,7 +51,7 @@ const PLForm = (prop) => {
             <input
               type="checkbox"
               value="nonconductive"
-              checked={prop.prop.nonconductive}
+              checked={prop.prop?.nonconductive}
               readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -66,7 +66,7 @@ const PLForm = (prop) => {
             <input
               type="checkbox"
               value="SEM"
-              checked={prop.prop.SEM}
+              checked={prop.prop?.SEM}
               readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -76,7 +76,7 @@ const PLForm = (prop) => {
             <input
               type="checkbox"
               value="EDM"
-              checked={prop.prop.EDM}
+              checked={prop.prop?.EDM}
               readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -86,7 +86,7 @@ const PLForm = (prop) => {
             <input
               type="checkbox"
               value="WDX"
-              checked={prop.prop.WDX}
+              checked={prop.prop?.WDX}
               readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -100,7 +100,7 @@ const PLForm = (prop) => {
           </label>
           <textarea
             id="expectedElements"
-            value={prop.prop.expectedElements}
+            value={prop.prop?.expectedElements}
             readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter..."

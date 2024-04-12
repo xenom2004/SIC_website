@@ -36,7 +36,7 @@ const SingleCrystalXRayForm = (prop) => {
           <input
             type="text"
             id="color"
-            value={prop.prop.color}
+            value={prop.prop?.color}
             readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter crystal color..."
@@ -53,7 +53,7 @@ const SingleCrystalXRayForm = (prop) => {
           <input
             type="text"
             id="temperature"
-            value={prop.prop.temperature}
+            value={prop.prop?.temperature}
             readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter temperature..."
@@ -68,7 +68,7 @@ const SingleCrystalXRayForm = (prop) => {
             <input
               type="checkbox"
               value="stable"
-              checked={prop.prop.stability_stable}
+              checked={prop.prop?.stability_stable}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Stable</span>
@@ -77,7 +77,7 @@ const SingleCrystalXRayForm = (prop) => {
             <input
               type="checkbox"
               value="air-sensitive"
-              checked={prop.prop.stability_air_sensitive}
+              checked={prop.prop?.stability_air_sensitive}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Air-Sensitive</span>
@@ -87,7 +87,7 @@ const SingleCrystalXRayForm = (prop) => {
               type="checkbox"
               value="moisture-sensitive"
               disabled={true}
-              checked={prop.prop.stability_moisture_sensitive}
+              checked={prop.prop?.stability_moisture_sensitive}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Moisture-Sensitive</span>
@@ -101,7 +101,7 @@ const SingleCrystalXRayForm = (prop) => {
             <input
               type="checkbox"
               value="IR"
-              checked={prop.prop.IR}
+              checked={prop.prop?.IR}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">IR</span>
@@ -110,7 +110,7 @@ const SingleCrystalXRayForm = (prop) => {
             <input
               type="checkbox"
               value="NMR"
-              checked={prop.prop.NMR}
+              checked={prop.prop?.NMR}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">NMR</span>
@@ -119,7 +119,7 @@ const SingleCrystalXRayForm = (prop) => {
             <input
               type="checkbox"
               value="Mass Spectrum"
-              checked={prop.prop.Mass_spectrum}
+              checked={prop.prop?.Mass_spectrum}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Mass Spectrum</span>
@@ -134,7 +134,7 @@ const SingleCrystalXRayForm = (prop) => {
             <input
               type="text"
               id="crystalInfo"
-              value={prop.prop.structureMaterial}
+              value={prop.prop?.structureMaterial}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter starting material and solvent Information"
               required

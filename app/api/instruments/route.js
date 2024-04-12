@@ -318,10 +318,14 @@ import instrument from "../../lib/modal/instrument";
 
 
 export async function GET() {
+    try{
     await mongoose.connect(connection.connection);
     const inst=await instrument.find();
     // console.log(inst,"op")
 
 
-    return Response.json(inst);
+    return Response.json(inst);}
+    catch{
+        return Response.json({"status":"fail"});
+    }
 }

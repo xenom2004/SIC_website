@@ -11,7 +11,7 @@ const SFMForm = (prop) => {
           <label for="solubility" className="block text-gray-700 text-sm font-bold mb-2">Solubility</label>
           <textarea 
             id="solubility" 
-            value={prop.prop.solubility}
+            value={prop.prop?.solubility}
             readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
             placeholder="Specify solvent" 
@@ -23,7 +23,7 @@ const SFMForm = (prop) => {
           <label for="hazards" className="block text-gray-700 text-sm font-bold mb-2">Hazards</label>
           <textarea 
             id="hazards" 
-            value={prop.prop.hazards}
+            value={prop.prop?.hazards}
             readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
             placeholder="Enter hazard information..." 
@@ -33,7 +33,7 @@ const SFMForm = (prop) => {
           <label for="calibrationConcentration" className="block text-gray-700 text-sm font-bold mb-2">Calibration Concentration</label>
           <textarea 
             id="calibrationConcentration" 
-            value={prop.prop.calibrationConcentration}
+            value={prop.prop?.calibrationConcentration}
             readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
             placeholder="Enter Calibration Concentration..." 
@@ -44,7 +44,7 @@ const SFMForm = (prop) => {
           <label for="molecularFormula" className="block text-gray-700 text-sm font-bold mb-2">Molecular Formula</label>
           <textarea 
             id="molecularFormula" 
-            value={prop.prop.molecularFormula}
+            value={prop.prop?.molecularFormula}
             readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
             placeholder="Enter Molecular Formula..." 
@@ -55,7 +55,7 @@ const SFMForm = (prop) => {
           <label for="molecularWeight" className="block text-gray-700 text-sm font-bold mb-2">Molecular Weight</label>
           <textarea 
             id="molecularWeight" 
-            value={prop.prop.molecularWeight}
+            value={prop.prop?.molecularWeight}
             readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
             placeholder="Enter Molecular Weight..." 
@@ -66,7 +66,7 @@ const SFMForm = (prop) => {
           <label for="excitationWavelength" className="block text-gray-700 text-sm font-bold mb-2">Excitation Wavelength</label>
           <textarea 
             id="excitationWavelength" 
-            value={prop.prop.excitationWavelength}
+            value={prop.prop?.excitationWavelength}
             readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
             placeholder="Enter Excitation Wavelength..." 
@@ -77,7 +77,7 @@ const SFMForm = (prop) => {
           <label for="rangeOfScan" className="block text-gray-700 text-sm font-bold mb-2">Range Of Scan</label>
           <textarea 
             id="rangeOfScan" 
-            value={prop.prop.rangeOfScan}
+            value={prop.prop?.rangeOfScan}
             readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
             placeholder="Enter range of scan..." 
@@ -88,7 +88,7 @@ const SFMForm = (prop) => {
           <label for="specialRequest" className="block text-gray-700 text-sm font-bold mb-2">Special Request</label>
           <textarea 
             id="specialRequest" 
-            value={prop.prop.specialRequest}
+            value={prop.prop?.specialRequest}
             readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
             placeholder="Enter special request..." 

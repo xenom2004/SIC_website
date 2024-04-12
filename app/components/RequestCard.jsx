@@ -1,5 +1,11 @@
 import React from "react";
-
+import Link from "next/link";
+const limit = (name) => {
+  if (name.length > 20) {
+    return name.slice(0, 20) + "...";
+  }
+  return name;
+};
 export default function RequestCard({ req }) {
   const objectIdObject = req._id;
   const hexString = objectIdObject.toString().match(/[a-fA-F0-9]{24}/)[0];

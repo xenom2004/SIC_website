@@ -13,7 +13,7 @@ const ChemicalDataForm = (prop) => {
           </label>
           <textarea
             id="amount"
-            value={prop.prop.amount}
+            value={prop.prop?.amount}
             readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter amount..."
@@ -28,7 +28,7 @@ const ChemicalDataForm = (prop) => {
             <input
               type="checkbox"
               value="D2O"
-              checked={prop.prop.D2O}
+              checked={prop.prop?.D2O}
               readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -39,7 +39,7 @@ const ChemicalDataForm = (prop) => {
             <input
               type="checkbox"
               value="CD3COCH3"
-              checked={prop.prop.CD3COCH3}
+              checked={prop.prop?.CD3COCH3}
               readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -49,7 +49,7 @@ const ChemicalDataForm = (prop) => {
             <input
               type="checkbox"
               value="MeOD"
-              checked={prop.prop.MeOD}
+              checked={prop.prop?.MeOD}
               readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -59,7 +59,7 @@ const ChemicalDataForm = (prop) => {
             <input
               type="checkbox"
               value="Other"
-              checked={prop.prop.Other}
+              checked={prop.prop?.Other}
               readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -74,7 +74,7 @@ const ChemicalDataForm = (prop) => {
           </label>
           <textarea
             id="molecularFormula"
-            value={prop.prop.molecularFormula}
+            value={prop.prop?.molecularFormula}
             readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter molecular formula..."
@@ -88,7 +88,7 @@ const ChemicalDataForm = (prop) => {
           </label>
           <textarea
             id="molecularStructure"
-            value={prop.prop.molecularStructure}
+            value={prop.prop?.molecularStructure}
             readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter molecular structure..."

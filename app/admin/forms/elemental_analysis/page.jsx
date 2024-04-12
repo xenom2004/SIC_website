@@ -19,7 +19,7 @@ const Elemental_analyser = (prop) => {
           <input
             type="text"
             id="crystalInfo"
-            value={prop.prop.crystalInfo}
+            value={prop.prop?.crystalInfo}
             readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Crystal crystallized from ..."
@@ -35,7 +35,7 @@ const Elemental_analyser = (prop) => {
           <input
             type="text"
             id="crystalInfo"
-            value={prop.prop.mw}
+            value={prop.prop?.mw}
             readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="molecular weight"
@@ -52,7 +52,7 @@ const Elemental_analyser = (prop) => {
           <input
             type="text"
             id="color"
-            value={prop.prop.MP}
+            value={prop.prop?.MP}
             readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter crystal melting point"
@@ -70,7 +70,7 @@ const Elemental_analyser = (prop) => {
           <input
             type="text"
             id="temperature"
-            value={prop.prop.BP}
+            value={prop.prop?.BP}
             readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter crystal boiling point"
@@ -86,7 +86,7 @@ const Elemental_analyser = (prop) => {
           <textarea
             type="text"
             id="temperature"
-            value={prop.prop.weight}
+            value={prop.prop?.weight}
             rows="4"
             readOnly={true}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -105,7 +105,7 @@ const Elemental_analyser = (prop) => {
             <input
               type="checkbox"
               value="stable"
-              checked={(prop.prop.stability && prop.prop.stability["stable"])||false}
+              checked={(prop.prop?.stability && prop.prop?.stability["stable"])||false}
              
               readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
@@ -117,7 +117,7 @@ const Elemental_analyser = (prop) => {
               type="checkbox"
               value="air-sensitive"
             
-              checked={(prop.prop.stability && prop.prop.stability["air-sensitive"])||false}
+              checked={(prop.prop?.stability && prop.prop?.stability["air-sensitive"])||false}
               readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
@@ -127,7 +127,7 @@ const Elemental_analyser = (prop) => {
             <input
               type="checkbox"
               value="moisture-sensitive"
-              checked={(prop.prop.stability && prop.prop.stability["moisture-sensitive"])||false}
+              checked={(prop.prop?.stability && prop.prop?.stability["moisture-sensitive"])||false}
              
               readOnly={true}
               className="form-checkbox h-5 w-5 text-gray-600"

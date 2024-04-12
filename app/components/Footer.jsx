@@ -6,12 +6,10 @@ export default function Footer() {
       // If localStorage is available and 'language' item is set
       var language = localStorage.getItem("language");
       // Do something with the 'language' variable
-      console.log("Language stored in localStorage:", language);
+      // console.log("Language stored in localStorage:", language);
       return language;
     } else {
-      console.log(
-        "Language not stored in localStorage or localStorage not available."
-      );
+      
       return "english";
       // If localStorage is not available or 'language' item is not set
     }

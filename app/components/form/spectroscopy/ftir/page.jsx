@@ -4,10 +4,7 @@ import React, { useState, useEffect } from "react";
 const id = 8;
 
 const FTIRForm = () => {
-  const [checkboxState, setCheckboxState] = useState(() => {
-    const savedCheckboxState = JSON.parse(localStorage.getItem("checkboxState")) || {};
-    return savedCheckboxState;
-  });
+  
 
   const SETitem = (e, setVariable, variable) => {
     const formDetails = JSON.parse(localStorage.getItem("form_details")) || {};
@@ -27,6 +24,11 @@ const FTIRForm = () => {
     return def;
   };
 
+  // const [checkboxState, setCheckboxState] = useState(() => {
+  //   const savedCheckboxState = JSON.parse(localStorage.getItem("checkboxState")) || {};
+  //   return savedCheckboxState;
+  // });
+  const [checkboxState, setCheckboxState] = useState(GETitem("", "checkboxState"));
   const [solubility, setSolubility] = useState(() => GETitem("", "solubility"));
   const [hazards, setHazards] = useState(() => GETitem("", "hazards"));
   const [calibrationConcentration, setCalibrationConcentration] = useState(() => GETitem("", "calibrationConcentration"));

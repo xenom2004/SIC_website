@@ -17,7 +17,7 @@ const BET = (prop) => {
             <input
               type="radio"
               value="Powder"
-              checked={prop.prop.sampleType === "Powder"}
+              checked={prop.prop?.sampleType === "Powder"}
               readOnly={true}
               className="form-radio h-5 w-5 text-gray-600"
             />
@@ -27,7 +27,7 @@ const BET = (prop) => {
             <input
               type="radio"
               value="Pellet"
-              checked={prop.prop.sampleType === "Pellet"}
+              checked={prop.prop?.sampleType === "Pellet"}
               readOnly={true}
               className="form-radio h-5 w-5 text-gray-600"
             />
@@ -42,7 +42,7 @@ const BET = (prop) => {
             <input
               type="radio"
               value="Hazardous"
-              checked={prop.prop.sampleNature === "Hazardous"}
+              checked={prop.prop?.sampleNature === "Hazardous"}
               readOnly={true}
               className="form-radio h-5 w-5 text-gray-600"
             />
@@ -52,7 +52,7 @@ const BET = (prop) => {
             <input
               type="radio"
               value="Non-Hazardous"
-              checked={prop.prop.sampleNature === "Non-Hazardous"}
+              checked={prop.prop?.sampleNature === "Non-Hazardous"}
               readOnly={true}
               className="form-radio h-5 w-5 text-gray-600"
             />
@@ -70,7 +70,7 @@ const BET = (prop) => {
           </label>
           <textarea
             id="specialPrecautions"
-            value={prop.prop.sampleTemperature}
+            value={prop.prop?.sampleTemperature}
             readOnly={true}
             rows="1"
             className="resize-none appearance-none border rounded w-full  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -88,7 +88,7 @@ const BET = (prop) => {
           </label>
           <textarea
             id="specialPrecautions"
-            value={prop.prop.sampleRate}
+            value={prop.prop?.sampleRate}
             readOnly={true}
             rows="1"
             className="resize-none appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -106,7 +106,7 @@ const BET = (prop) => {
           </label>
           <textarea
             id="specialPrecautions"
-            value={prop.prop.sampleSoakTime}
+            value={prop.prop?.sampleSoakTime}
             readOnly={true}
             rows="1"
             className="resize-none appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -125,7 +125,7 @@ const BET = (prop) => {
           </label>
           <textarea
             id="specialPrecautions"
-            value={prop.prop.sampleDesc}
+            value={prop.prop?.sampleDesc}
             readOnly={true}
             rows="4"
             className="resize-none appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"

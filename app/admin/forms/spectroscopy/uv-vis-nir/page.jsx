@@ -9,7 +9,7 @@ return (
         <label for="noOfSamples" className="block text-gray-700 text-sm font-bold mb-2">Solubility</label>
         <textarea 
           id="noOfSamples" 
-          value={prop.prop.noOfSamples}
+          value={prop.prop?.noOfSamples}
           readOnly={true}
           className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
           placeholder="No of Samples" 
@@ -21,7 +21,7 @@ return (
         <label for="wavelengthRange" className="block text-gray-700 text-sm font-bold mb-2">Wavelength Range</label>
         <textarea 
           id="wavelengthRange" 
-          value={prop.prop.wavelengthRange}
+          value={prop.prop?.wavelengthRange}
           readOnly={true}
           className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
           placeholder="min 200nm to max 3300nm" 
@@ -33,7 +33,7 @@ return (
         <label for="specialExperiment" className="block text-gray-700 text-sm font-bold mb-2">Special Experiment</label>
         <textarea 
           id="specialExperiment" 
-          value={prop.prop.specialExperiment}
+          value={prop.prop?.specialExperiment}
           readOnly={true}
           className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
           placeholder="if any" 

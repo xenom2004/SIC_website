@@ -20,7 +20,7 @@ const FTIRForm = (prop) => {
             </label>
             <textarea
               id="solubility"
-              value={prop.prop.solubility}
+              value={prop.prop?.solubility}
               readOnly={true}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Specify solvent"
@@ -37,7 +37,7 @@ const FTIRForm = (prop) => {
             </label>
             <textarea
               id="hazards"
-              value={prop.prop.hazards}
+              value={prop.prop?.hazards}
               readOnly={true}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter hazard information..."
@@ -52,7 +52,7 @@ const FTIRForm = (prop) => {
             </label>
             <textarea
               id="calibrationConcentration"
-              value={prop.prop.calibrationConcentration}
+              value={prop.prop?.calibrationConcentration}
               readOnly={true}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter Calibration Concentration..."
@@ -68,7 +68,7 @@ const FTIRForm = (prop) => {
             </label>
             <textarea
               id="molecularFormula"
-              value={prop.prop.molecularFormula}
+              value={prop.prop?.molecularFormula}
               readOnly={true}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter Molecular Formula..."
@@ -84,7 +84,7 @@ const FTIRForm = (prop) => {
             </label>
             <textarea
               id="molecularWeight"
-              value={prop.prop.molecularWeight}
+              value={prop.prop?.molecularWeight}
               readOnly={true}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter Molecular Weight..."
@@ -100,7 +100,7 @@ const FTIRForm = (prop) => {
             </label>
             <textarea
               id="excitationWavelength"
-              value={prop.prop.excitationWavelength}
+              value={prop.prop?.excitationWavelength}
               readOnly={true}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter Excitation Wavelength..."
@@ -116,7 +116,7 @@ const FTIRForm = (prop) => {
             </label>
             <textarea
               id="rangeOfScan"
-              value={prop.prop.rangeOfScan}
+              value={prop.prop?.rangeOfScan}
               readOnly={true}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter range of scan..."
@@ -132,7 +132,7 @@ const FTIRForm = (prop) => {
             </label>
             <textarea
               id="specialRequest"
-              value={prop.prop.specialRequest}
+              value={prop.prop?.specialRequest}
               readOnly={true}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter special request..."
@@ -148,7 +148,7 @@ const FTIRForm = (prop) => {
   <input
     type="checkbox"
     value="Solid"
-    checked={(prop.prop.checkboxState && prop.prop.checkboxState["Solid"]) || false}
+    checked={(prop.prop?.checkboxState && prop.prop?.checkboxState["Solid"]) || false}
     readOnly={true}
     className="form-checkbox h-5 w-5 text-gray-600"
   />
@@ -159,7 +159,7 @@ const FTIRForm = (prop) => {
   <input
     type="checkbox"
     value="Liquid"
-    checked={(prop.prop.checkboxState && prop.prop.checkboxState["Liquid"]) || false}
+    checked={(prop.prop?.checkboxState && prop.prop?.checkboxState["Liquid"]) || false}
     readOnly={true}
     className="form-checkbox h-5 w-5 text-gray-600"
   />
@@ -170,7 +170,7 @@ const FTIRForm = (prop) => {
   <input
     type="checkbox"
     value="ATR"
-    checked={(prop.prop.checkboxState && prop.prop.checkboxState["ATR"]) || false}
+    checked={(prop.prop?.checkboxState && prop.prop?.checkboxState["ATR"]) || false}
     readOnly={true}
     className="form-checkbox h-5 w-5 text-gray-600"
   />

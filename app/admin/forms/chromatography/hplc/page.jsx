@@ -16,7 +16,7 @@ const HPLCForm = (prop) => {
             <label for="solubility" className="block text-gray-700 text-sm font-bold mb-2">Solubility</label>
             <textarea 
               id="solubility" 
-              value={prop.prop.solubility}
+              value={prop.prop?.solubility}
               readOnly={true}
               // onChange={(e) => SETitem(e,setSolubility,"solubility")}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
@@ -30,7 +30,7 @@ const HPLCForm = (prop) => {
             <input 
               type="number" 
               id="numberOfComponents" 
-              value={prop.prop.numberOfComponents}
+              value={prop.prop?.numberOfComponents}
               readOnly={true}
               // onChange={(e) => SETitem(e,setNumberOfComponents,"numberOfComponents")}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
@@ -43,7 +43,7 @@ const HPLCForm = (prop) => {
             <label for="hazards" className="block text-gray-700 text-sm font-bold mb-2">Hazards</label>
             <textarea 
               id="hazards" 
-              value={prop.prop.hazards}
+              value={prop.prop?.hazards}
               readOnly={true}
               // onChange={(e) => SETitem(e,setHazards,"hazards")}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
@@ -57,7 +57,7 @@ const HPLCForm = (prop) => {
             <input 
               type="text" 
               id="absorptionWavelength" 
-              value={prop.prop.absorptionWavelength}
+              value={prop.prop?.absorptionWavelength}
               readOnly={true}
               // onChange={(e) => SETitem(e,setAbsorptionWavelength,"absorptionWavelength")}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
@@ -70,7 +70,7 @@ const HPLCForm = (prop) => {
             <label for="mobilePhase" className="block text-gray-700 text-sm font-bold mb-2">Mobile Phase</label>
             <textarea
               id="mobilePhase"
-              value={prop.prop.mobilePhase}
+              value={prop.prop?.mobilePhase}
               readOnly={true}
               // onChange={(e) => SETitem(e,setMobilePhase,"mobilePhase")}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
@@ -84,7 +84,7 @@ const HPLCForm = (prop) => {
             <input 
               type="text" 
               id="runTime" 
-              value={prop.prop.runTime}
+              value={prop.prop?.runTime}
               readOnly={true}
               // onChange={(e) => SETitem(e,setRunTime,"runTime")}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
@@ -96,9 +96,9 @@ const HPLCForm = (prop) => {
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">Isocratic or Gradient?</label>
             <div className="flex items-center">
-              <input type="radio" id="isocratic" readOnly={true}  name="flowType" value="isocratic" checked={prop.prop.flowType === 'isocratic'} className="form-radio h-5 w-5 text-gray-600" />
+              <input type="radio" id="isocratic" readOnly={true}  name="flowType" value="isocratic" checked={prop.prop?.flowType === 'isocratic'} className="form-radio h-5 w-5 text-gray-600" />
               <label htmlFor="isocratic" className="ml-2">Isocratic</label>
-              <input type="radio" id="gradient" name="flowType" value="gradient" readOnly={true}  checked={prop.prop.flowType === 'gradient'}  className="form-radio h-5 w-5 text-gray-600 ml-4" />
+              <input type="radio" id="gradient" name="flowType" value="gradient" readOnly={true}  checked={prop.prop?.flowType === 'gradient'}  className="form-radio h-5 w-5 text-gray-600 ml-4" />
               <label htmlFor="gradient" className="ml-2">Gradient</label>
             </div>
           </div>
@@ -107,7 +107,7 @@ const HPLCForm = (prop) => {
             <label for="structures" className="block text-gray-700 text-sm font-bold mb-2">Structures</label>
             <textarea 
               id="structures" 
-              value={prop.prop.structures}
+              value={prop.prop?.structures}
               readOnly={true}
               // onChange={(e) => SETitem(e,setStructures,"structures")}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 

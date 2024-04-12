@@ -13,6 +13,12 @@ const getStatusColor = (status) => {
       return 'text-gray-500';
   }
 };
+const limit = (name) => {
+  if (name.length > 20) {
+    return name.slice(0, 20) + "...";
+  }
+  return name;
+};
 const InstrumentCardComp = ({ instrument }) => {
     // {console.log(instrument)}
     return (
