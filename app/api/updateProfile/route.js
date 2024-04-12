@@ -2,9 +2,19 @@ import { NextResponse } from "next/server";
 import mongoose from "mongoose";
 import connection from "../../lib/db"
 import User from "../../lib/modal/user"
-
+import { jwtDecode } from "jwt-decode";
 export  async function POST(req, res) {
+ 
+  try{
   const  data  = await req.json();
+  
+  let decoded=null;
+
+  if(data.accessToken!=null){
+      decoded = jwtDecode(data.accessToken);
+      // console.log(decoded,"gewuiegf",data)
+  }
+  if(decoded && decoded.username===data.name){
     // console.log(data,"on server");
     await mongoose.connect(connection.connection);
     const filter = { "name":data.name}; // specify the filter to match the document you want to update
@@ -18,4 +28,14 @@ export  async function POST(req, res) {
   
   
     return NextResponse.json({result:data})
+
+
+  }
+  else{
+    return NextResponse.json({result:"fail"})
+  }}
+  catch(error){
+    // console.log(error,"error")
+    return NextResponse.json({result:"fail"})}
+    
   }
