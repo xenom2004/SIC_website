@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 import connection from "../../../lib/db";
 import User from "../../../lib/modal/user";
 import bcrypt from "bcrypt"; // Import bcrypt for password hashing
+import jwt from "jsonwebtoken";
 
 export const options = {
     providers: [
@@ -90,10 +91,15 @@ export const options = {
                 // await mongoose.connection.close();
             }
 
-            
+            // console.log(token,"tokens",session,"my ses")
             if (session?.user) {
                 session.user.token = token.uid;
                 session.user.isAdmin=token.isAdmin;
+                session.accessToken = jwt.sign(
+                    { username: session.user.name },
+                    "h5bh5y",
+                    { expiresIn: "1h" }
+                  );
             }
             return session;
         },
