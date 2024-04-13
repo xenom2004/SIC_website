@@ -54,7 +54,7 @@ export default function Home() {
 						<div className="bg-white p-8 rounded-lg flex flex-col items-center justify-center ">
 							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREt5szKKfa8Y0c-o95V04ujCr8Nr7HlwaEyAjGC3l34A&s" alt="Bulb" className="h-16 w-16 mb-4" />
 							<h2 className="text-lg text-lightSky font-bold mb-2">Internal User</h2>
-							<p className="text-lg text-lightSky text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
+							<p className="text-justify text-lg text-lightSky text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
 							<Link href="/undergraduate-programs" >
 							<button className="rounded-full hover:bg-lightSky  hover:text-white bg-white text-lightSky font-semibold py-2 px-4 mt-4 transition duration-300 ease-in-out">Explore</button>
 
@@ -64,7 +64,7 @@ export default function Home() {
 						<div className="bg-white p-8 rounded-lg flex flex-col items-center justify-center ">
 							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFQGCJOieZHFjrklBjYpTc67eZX3LrxDAouUvzwY6POQ&s" alt="Brain" className="h-16 w-16 mb-4" />
 							<h2 className="text-lg text-lightSky font-bold mb-2">External Institution</h2>
-							<p className="text-lg text-lightSky text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
+							<p className="text-justify text-lg text-lightSky text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
 							<Link href="/graduate-programs">
 							<button className="rounded-full hover:bg-lightSky  hover:text-white bg-white text-lightSky  font-semibold py-2 px-4 mt-4 transition duration-300 ease-in-out">Explore</button>
 
@@ -74,7 +74,7 @@ export default function Home() {
 						<div className="bg-white p-8 rounded-lg flex flex-col items-center justify-center ">
 							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjKP4Njsdfof1uFgYQJAzpowEsCVgvdi_Fto_ZKmc7_TRZfOeEAQcASkc8xRtNR6oodZQ&usqp=CAU" alt="Book" className="h-16 w-16 mb-4" />
 							<h2 className="text-lg text-lightSky font-bold mb-2">Company</h2>
-							<p className="text-lg text-lightSky text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
+							<p className="text-justify text-lg text-lightSky text-center">Welcome to our state-of-the-art Instrumentation Center, where precision meets innovation. As a leading provider of instrumentation services for external users, we pride ourselves on offering a diverse range of cutting-edge instruments tailored to meet your research and analytical needs.</p>
 							<Link href="/professional-education">
 							<button className="rounded-full hover:bg-lightSky  hover:text-white bg-white text-lightSky  font-semibold py-2 px-4 mt-4 transition duration-300 ease-in-out">Explore</button>
 

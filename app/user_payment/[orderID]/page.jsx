@@ -96,9 +96,9 @@ const OrderDetails = () => {
           throw new Error('Failed to fetch order details');
         }
         const data = await response.json();
-        setOrder(data);
-        console.log(data.status)
-        setstate(data.status)
+        setOrder(data.order);
+        console.log(data.order,"opoop")
+        setstate(data.order.status)
       } catch (error) {
         console.error('Error fetching order details:', error);
       }
@@ -224,9 +224,9 @@ const OrderDetails = () => {
       <div className="mb-4">
         <h2 className="text-lg font-semibold mb-2">Form Details:</h2>
         <p>
-          {/* {console.log(order,"kio")} */}
-          {Object.keys(order.form_details).map((key) => {
-            return forms_instrument[key](order.form_details[key]);
+          {console.log(order,"kio")}
+          {Object.keys(order?.form_details).map((key) => {
+            return forms_instrument[key](order?.form_details[key]);
           })}
         </p>
       </div>

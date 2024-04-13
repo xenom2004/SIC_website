@@ -252,7 +252,7 @@ const OrderDetails = () => {
         <h2 className="text-lg font-semibold mb-2">Form Details:</h2>
         <p>
           {/* {console.log(order,"kio")} */}
-          {Object.keys(order.form_details).map((key) => {
+          {Object?.keys(order.form_details).map((key) => {
             return forms_instrument[key](order.form_details[key]);
           })}
         </p>

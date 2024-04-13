@@ -130,6 +130,7 @@ const BET = () => {
             Preliminary characterization carried out on the sample submitted with brief description of results:
           </label>
           <textarea
+          
             id="desc"
             value={desc}
             onChange={(e) => SETitem(e, setDesc, "sampleDesc")}

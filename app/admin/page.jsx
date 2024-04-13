@@ -133,7 +133,10 @@ const admin = () => {
   // }, [session,state]);
 
   const refresh = async()=>{
+    console.log("1")
     const fetchData = async () => {
+      console.log("2")
+
       setIsLoading(true);
       setError(null);
 
@@ -156,6 +159,8 @@ const admin = () => {
       }
     };
     const fetchInstruments = async () => {
+      console.log("3")
+
       try {
         const response = await fetch("/api/instruments");
         if (!response.ok) {
