@@ -134,7 +134,7 @@ const OrderDetails = () => {
 
     }
   };
-
+// jdhudh
   const handleAccept = async () => {
     const data={"status":"Payment Incomplete","comment":comment}
     const isReady = window.confirm("Are you sure you want to submit?");
