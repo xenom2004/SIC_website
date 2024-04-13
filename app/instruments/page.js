@@ -27,7 +27,7 @@ const InstrumentCard = ({ instrument }) => {
   };
 
   return (
-    <div className="border rounded-md shadow-md mb-6 overflow-hidden">
+    <div className="border rounded-md shadow-md mb-6 overflow-hidden transition-transform duration-300 hover:scale-105">
       <Link href={`/instruments/${instrument.id}`}>
         <div className="w-full h-80 relative">
           <img
