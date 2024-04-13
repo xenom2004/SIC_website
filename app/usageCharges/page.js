@@ -8,8 +8,7 @@ import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem,Spinner} from "@ne
 import { useRouter } from 'next/navigation'
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure} from "@nextui-org/react";
 import Link from 'next/link';
-import { Tooltip } from 'react-tooltip';
-import 'react-tooltip/dist/react-tooltip.css';
+
 
 import { Elemental_analyser} from "../components/form/elemental_analysis/page"
 

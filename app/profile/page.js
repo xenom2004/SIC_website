@@ -12,15 +12,15 @@ const ProfilePage = () => {
   const router = useRouter();
   const [user_details,setuser_details]=useState({
 
-    profileName:"name",
-    phone: '123-456-7890',
-    institute: 'XYZ University',
-    email: 'john.doe@example.com',
-    supervisorName: 'Dr. Jane Smith',
-    supervisorEmail: 'jane.smith@example.com',
-    studentDesignation: 'Research Assistant',
-    Designation:"manager",
-    gst_number:"1234567890",
+    profileName:"",
+    phone: '',
+    institute: '',
+    email: '',
+    supervisorName: '',
+    supervisorEmail: '',
+    studentDesignation: '',
+    Designation:"",
+    gst_number:"",
     
 
   });
@@ -29,15 +29,15 @@ const ProfilePage = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [profileData, setProfileData] = useState({
 
-    profileName:"name",
-    phone: '123-456-7890',
-    institute: 'XYZ University',
-    email: 'john.doe@example.com',
-    supervisorName: 'Dr. Jane Smith',
-    supervisorEmail: 'jane.smith@example.com',
-    studentDesignation: 'Research Assistant',
-    Designation:"manager",
-    gst_number:"1234567890",
+    profileName:"",
+    phone: '',
+    institute: '',
+    email: '',
+    supervisorName: '',
+    supervisorEmail: '',
+    studentDesignation: '',
+    Designation:"",
+    gst_number:"",
     
 
   });

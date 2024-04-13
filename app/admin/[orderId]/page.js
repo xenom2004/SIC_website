@@ -114,7 +114,7 @@ const OrderDetails = () => {
     const isReady = window.confirm("Are you sure you want to submit?");
     if(isReady){
       setstate("Rejected");
-      console.log(data);
+      // console.log(data);
       const res=await fetch(`/api/orderId/${orderID}`, {
         method: 'POST',
         headers: {
@@ -203,6 +203,11 @@ const OrderDetails = () => {
         <h3 class="text-base font-medium mb-1">Phone Number:</h3>
         <p class="text-gray-600">{profileData?.phone}</p>
       </div>
+
+      <div class="mb-4">
+        <h3 class="text-base font-medium mb-1">Institute:</h3>
+        <p class="text-gray-600">{profileData?.institute}</p>
+      </div>
     </div>
 
     <div class="md:w-1/2 mt-4 md:mt-0">
@@ -246,7 +251,7 @@ const OrderDetails = () => {
       <div className="mb-4">
         <h2 className="text-lg font-semibold mb-2">Form Details:</h2>
         <p>
-          {console.log(order,"kio")}
+          {/* {console.log(order,"kio")} */}
           {Object.keys(order.form_details).map((key) => {
             return forms_instrument[key](order.form_details[key]);
           })}
