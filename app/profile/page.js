@@ -71,9 +71,10 @@ const handleImageChange = (e,setfunc) => {
       "loginType": loginType,
       "cover_image": cover_image,
       "image": image,
-      "accessToken":session.accessToken
+      "accessToken":session.accessToken,
+      
     }
-    // console.log(data,"on my data");
+    console.log(data,"on my data");
     const response = await fetch('/api/updateProfile', {
       method: 'POST',
       headers: {
@@ -95,6 +96,7 @@ const handleImageChange = (e,setfunc) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    // console.log(name,"y")
     setProfileData({
       ...profileData,
       [name]: value,

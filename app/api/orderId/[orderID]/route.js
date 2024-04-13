@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import connection from "../../../lib/db"
 import Order  from "../../../lib/modal/order"
 import { NextResponse } from "next/server"
+import User from "../../../lib/modal/user";
 
 const order = [
   {
@@ -20,12 +21,14 @@ export async function GET(req,{params}) {
   // console.log(data);
   await mongoose.connect(connection.connection)
   const ordergot=await Order.findById(params.orderID);
+  const userdetail=await User.find({"name":ordergot.name});
+
   // const o=await Order.find({"name":"ab"});
   console.log(ordergot);
   // await mongoose.connection.close();
 
 
-  return Response.json(ordergot);
+  return Response.json({order:ordergot,profiledata:userdetail});
 }
 
 export async function POST(req,{params}) {

@@ -78,6 +78,7 @@ const OrderDetails = () => {
   const orderID = searchParams.get('id');
   const [state,setstate]=useState("");
   const [display,setdisplay]=useState(true);
+  const [profileData,setprofileData]=useState(null);  
   
   useEffect(() => {
     const fetchOrder = async () => {
@@ -92,9 +93,11 @@ const OrderDetails = () => {
           throw new Error('Failed to fetch order details');
         }
         const data = await response.json();
-        setOrder(data);
-        console.log(data,"uioghjyb")
-        setstate(data.status)
+        setOrder(data.order);
+        setprofileData(data.profiledata[0]);
+
+        // console.log(data,"uioghjyb",profileData)
+        setstate(data.order.status)
       } catch (error) {
         console.error('Error fetching order details:', error);
       }
@@ -164,7 +167,82 @@ const OrderDetails = () => {
 
   return (
     <div className="w-full px-24 mx-auto bg-white shadow-lg p-4 rounded-md mt-8">
-      <h1 className="text-2xl font-bold mb-4">{order.name}</h1>
+      <div class="bg-white shadow-lg rounded-lg p-6 my-8">
+  <h1 class="text-2xl font-bold mb-4">{order.name}</h1>
+
+  <div class="flex flex-col md:flex-row md:items-start">
+    <div class="md:w-1/2 md:pr-8">
+      <h2 class="text-lg font-semibold mb-2">Profile Details:</h2>
+
+      <div class="mb-4">
+        <h3 class="text-base font-medium mb-1">Login Type:</h3>
+        <p class="text-gray-600">{profileData?.loginType}</p>
+      </div>
+
+      <div class="mb-4">
+        <h3 class="text-base font-medium mb-1">Name:</h3>
+        <p class="text-gray-600">{profileData?.name}</p>
+      </div>
+
+      <div class="mb-4">
+        <h3 class="text-base font-medium mb-1">Profile Name:</h3>
+        <p class="text-gray-600">{profileData?.profileName}</p>
+      </div>
+
+      <div class="mb-4">
+        <h3 class="text-base font-medium mb-1">GST Number:</h3>
+        <p class="text-gray-600">{profileData?.gst_number}</p>
+      </div>
+
+      <div class="mb-4">
+        <h3 class="text-base font-medium mb-1">Email:</h3>
+        <p class="text-gray-600">{profileData?.email}</p>
+      </div>
+
+      <div class="mb-4">
+        <h3 class="text-base font-medium mb-1">Phone Number:</h3>
+        <p class="text-gray-600">{profileData?.phone}</p>
+      </div>
+    </div>
+
+    <div class="md:w-1/2 mt-4 md:mt-0">
+      <img src={profileData?.cover_image} class="w-full rounded-lg shadow-lg" alt="Cover Image" />
+    </div>
+  </div>
+
+  {profileData.loginType === "academic" && (
+    <div class="mt-4">
+      <h2 class="text-lg font-semibold mb-2">Academic Details:</h2>
+
+      <div class="mb-4">
+        <h3 class="text-base font-medium mb-1">Supervisor Name:</h3>
+        <p class="text-gray-600">{profileData?.supervisorName}</p>
+      </div>
+
+      <div class="mb-4">
+        <h3 class="text-base font-medium mb-1">Supervisor Email:</h3>
+        <p class="text-gray-600">{profileData?.supervisorEmail}</p>
+      </div>
+
+      <div class="mb-4">
+        <h3 class="text-base font-medium mb-1">Student Designation:</h3>
+        <p class="text-gray-600">{profileData?.studentDesignation}</p>
+      </div>
+    </div>
+  )}
+
+  {profileData.loginType === "Commercial" && (
+    <div class="mt-4">
+      <h2 class="text-lg font-semibold mb-2">Commercial Details:</h2>
+
+      <div class="mb-4">
+        <h3 class="text-base font-medium mb-1">Designation:</h3>
+        <p class="text-gray-600">{profileData?.Designation}</p>
+      </div>
+    </div>
+  )}
+</div>
+
       <div className="mb-4">
         <h2 className="text-lg font-semibold mb-2">Form Details:</h2>
         <p>

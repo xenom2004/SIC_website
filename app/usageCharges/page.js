@@ -8,53 +8,69 @@ import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem,Spinner} from "@ne
 import { useRouter } from 'next/navigation'
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure} from "@nextui-org/react";
 import Link from 'next/link';
+import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css';
 
 import { Elemental_analyser} from "../components/form/elemental_analysis/page"
 
 
-const Row=({instrument,selectedInstruments,setSelectedInstruments,handleQuantityChange,handleInstrumentChange,current_charge})=>{
-
+const Row = ({ instrument, selectedInstruments, setSelectedInstruments, handleQuantityChange, handleInstrumentChange, current_charge }) => {
+  
 
   return (
-
     <>
-    
-    <tr className="mx-auto " key={instrument.id}>
-              <td className=" text-center hover:bg-slate-100 border px-4 py-2">{instrument.id}</td>
-              <td className=" text-center hover:bg-slate-100 border px-4 py-2">{instrument.name}</td>
-              <td className={` ${current_charge==="academic"?"table-cell":"hidden"} md:table-cell text-center hover:bg-slate-100 border px-4 py-2`}>{instrument.academic_charge}</td>
-              <td className={` ${current_charge==="commercial"?"table-cell":"hidden"} md:table-cell text-center hover:bg-slate-100 border px-4 py-2`}>{instrument.commercial_charge}</td>
-              <td className={` ${current_charge==="charge"?"table-cell":"hidden"} md:table-cell text-center hover:bg-slate-100 border px-4 py-2`}>{instrument.charge}</td>
-              <td className=" text-center hover:bg-slate-100 border px-4 py-2 flex items-center">
-                <button
-                  onClick={() => handleQuantityChange(instrument, (selectedInstruments.find(item => item.id === instrument.id)?.quantity || 1) - 1)}
-                  disabled={(selectedInstruments.find(item => item.id === instrument.id)?.quantity || 1) <= 1}
-                  className="mr-2"
-                >
-                  <FontAwesomeIcon icon={faMinus} />
-                </button>
-                <span className="w-12 text-center">
-                  {selectedInstruments.find(item => item.id === instrument.id)?.quantity || 1}
-                </span>
-                <button
-                  onClick={() => handleQuantityChange(instrument, (selectedInstruments.find(item => item.id === instrument.id)?.quantity || 1) + 1)}
-                  className="ml-2"
-                >
-                  <FontAwesomeIcon icon={faPlus} />
-                </button>
-              </td>
-              <td className="border px-4 py-2">
-                <input
-                  type="checkbox"
-                  checked={selectedInstruments.some((item) => item.id === instrument.id)}
-                  onChange={() => handleInstrumentChange(instrument)}
-                />
-              </td>
-            </tr>
-    </>
-  )
+      <tr className="mx-auto " key={instrument.id}>
+        <td className=" text-center hover:bg-slate-100 border px-4 py-2">{instrument.id}</td>
+        <td className=" text-center hover:bg-slate-100 border px-4 py-2">{instrument.name}</td>
+        <td className={` ${current_charge === "academic" ? "table-cell" : "hidden"} md:table-cell text-center hover:bg-slate-100 border px-4 py-2`}>
+          {instrument.academic_charge}
+        </td>
+        <td className={` ${current_charge === "commercial" ? "table-cell" : "hidden"} md:table-cell text-center hover:bg-slate-100 border px-4 py-2`}>
+          {instrument.commercial_charge}
+        </td>
+        <td className={` ${current_charge === "charge" ? "table-cell" : "hidden"} md:table-cell text-center hover:bg-slate-100 border px-4 py-2`}>
+          {instrument.charge}
+        </td>
+        <td className=" text-center hover:bg-slate-100 border px-4 py-2 flex items-center">
+          <button
+            onClick={() => handleQuantityChange(instrument, (selectedInstruments.find(item => item.id === instrument.id)?.quantity || 1) - 1)}
+            disabled={(selectedInstruments.find(item => item.id === instrument.id)?.quantity || 1) <= 1}
+            className="mr-2"
+          >
+            <FontAwesomeIcon icon={faMinus} />
+          </button>
+          <span className="w-12 text-center">
+            {selectedInstruments.find(item => item.id === instrument.id)?.quantity || 1}
+          </span>
+          <button
+            onClick={() => handleQuantityChange(instrument, (selectedInstruments.find(item => item.id === instrument.id)?.quantity || 1) + 1)}
+            className="ml-2"
+          >
+            <FontAwesomeIcon icon={faPlus} />
+          </button>
+        </td>
+        <td className="border px-4 py-2">
+          <div className="relative">
+            {instrument.status==="working" && <input
+              
+              type="checkbox"
+              checked={selectedInstruments.some((item) => item.id === instrument.id)}
+              onChange={() => handleInstrumentChange(instrument)}
+            /> }
 
-}
+            {instrument.status!=="working" && 
+                <div>
+                  NA
+                  </div>
+            }
+            
+            
+          </div>
+        </td>
+      </tr>
+    </>
+  );
+};
 const ChargeCalculator = () => {
   const [profile,setprofile]=useState(false);
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
@@ -79,6 +95,7 @@ const ChargeCalculator = () => {
           throw new Error(`Failed to fetch instruments: ${response.status}`);
         }
         const data = await response.json();
+
         setInstruments(data);
         setIsLoading(false);
       } catch (error) {
@@ -139,7 +156,7 @@ const ChargeCalculator = () => {
     // console.log("ll")
     settotalcharge(selectedInstruments.reduce((total, instrument) => total + (instrument.charge * instrument.quantity), 0));
     settotalAcademiccharge(selectedInstruments.reduce((total, instrument) => total + (instrument.academic_charge * instrument.quantity), 0));
-    settotalCommercialcharge(selectedInstruments.reduce((total, instrument) => total + (instrument.commertial_charge * instrument.quantity), 0));
+    settotalCommercialcharge(selectedInstruments.reduce((total, instrument) => total + (instrument.commercial_charge * instrument.quantity), 0));
    
     
   };
@@ -262,7 +279,7 @@ const ChargeCalculator = () => {
                         </table>
 
                         <div>
-      <Link href="/SIC - Fee Structure.pdf" locale="false">Click Here for detailed fee structure </Link>
+      <Link href="/SIC - Fee Structure.pdf" locale="false" className='text-blue-600 hover:underline'>Click Here for detailed fee structure </Link>
     </div> 
 
       <div className='px-2 '>                  
