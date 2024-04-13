@@ -3,7 +3,7 @@ const id=8;
 const FTIRForm = (prop) => {
 
 
-
+console.log(prop.prop,"lo")
   return (
     <div className="container mx-auto px-4 py-8">
       <h2 className="text-3xl font-bold mb-4 text-center">
@@ -148,7 +148,7 @@ const FTIRForm = (prop) => {
   <input
     type="checkbox"
     value="Solid"
-    checked={(prop.prop?.checkboxState && prop.prop?.checkboxState["Solid"]) || false}
+    checked={prop.prop?.solid}
     readOnly={true}
     className="form-checkbox h-5 w-5 text-gray-600"
   />
@@ -159,7 +159,7 @@ const FTIRForm = (prop) => {
   <input
     type="checkbox"
     value="Liquid"
-    checked={(prop.prop?.checkboxState && prop.prop?.checkboxState["Liquid"]) || false}
+    checked={prop.prop?.liquid}
     readOnly={true}
     className="form-checkbox h-5 w-5 text-gray-600"
   />
@@ -170,7 +170,7 @@ const FTIRForm = (prop) => {
   <input
     type="checkbox"
     value="ATR"
-    checked={(prop.prop?.checkboxState && prop.prop?.checkboxState["ATR"]) || false}
+    checked={prop.prop?.ATR}
     readOnly={true}
     className="form-checkbox h-5 w-5 text-gray-600"
   />

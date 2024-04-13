@@ -12,6 +12,13 @@ const Elemental_analyser = () => {
     setvariable(e.target.value)
 
 }
+const SETitem2 = (e, setVariable, variable) => {
+  const formDetails = JSON.parse(localStorage.getItem("form_details")) || {};
+  formDetails[id] = formDetails[id] || {};
+  formDetails[id][variable] = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+  localStorage.setItem("form_details", JSON.stringify(formDetails));
+  setVariable(e.target.type === "checkbox" ? e.target.checked : e.target.value);
+};
 const GETitem=(def,variable)=>{
 
   
@@ -27,12 +34,14 @@ const GETitem=(def,variable)=>{
 
 
   const [crystalInfo, setCrystalInfo] = useState(GETitem(null,"crystalInfo"));
-  const [stability, setStability] = useState([GETitem(null,"stability")]);
+  const [stability, setStability] = useState(GETitem(false,"stability"));
   const [BP, setBP] = useState(GETitem(null,"BP"));
   const [MP, setMP] = useState(GETitem(null,"MP"));
   const [mw, setmw] = useState(GETitem(null,"mw"));
   const [weight, setweight] = useState(GETitem(null,"weight"));
   const [store, setstore] = useState(GETitem(null,"store"));
+  const [AS,setAS]=useState(GETitem(false,"AS"));
+  const [MS,setMS]=useState(GETitem("","MS"));
   // Load data from localStorage when the component mounts
 
   
@@ -41,13 +50,7 @@ const GETitem=(def,variable)=>{
  
 
   // Function to handle stability changes
-  const handleStabilityChange = (selectedStability) => {
-    if (stability.includes(selectedStability)) {
-      setStability(stability.filter((item) => item !== selectedStability));
-    } else {
-      setStability([...stability, selectedStability]);
-    }
-  };
+  
 
   // Function to handle form submission
   // const handleSubmit = (e) => {
@@ -163,9 +166,9 @@ const GETitem=(def,variable)=>{
             <input
               type="checkbox"
               
-              value="stable"
-              checked={stability.includes("stable")}
-              onChange={(e) => SETitem(e,setStability,"stability")}
+              value="stability"
+              checked={stability}
+              onChange={(e) => SETitem2(e,setStability,"stability")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">light sensitive</span>
@@ -175,8 +178,8 @@ const GETitem=(def,variable)=>{
               type="checkbox" 
               
               value="air-sensitive"
-              checked={stability.includes("air-sensitive")}
-              onChange={(e) => SETitem(e,setStability,"stability")}
+              checked={AS}
+              onChange={(e) => SETitem2(e,setAS,"AS")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Air-Sensitive</span>
@@ -186,8 +189,8 @@ const GETitem=(def,variable)=>{
               type="checkbox"
               
               value="moisture-sensitive"
-              checked={stability.includes("moisture-sensitive")}
-              onChange={(e) => SETitem(e,setStability,"stability")}
+              checked={MS}
+              onChange={(e) => SETitem2(e,setMS,"MS")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Moisture-Sensitive</span>

@@ -1,7 +1,7 @@
 const id=1;
 
 const SingleCrystalXRayForm = (prop) => {
-  {console.log(prop,"serty")}
+  // {console.log(prop,"serty")}
 
   return (
     <div className="container mx-auto px-4 py-8 ">

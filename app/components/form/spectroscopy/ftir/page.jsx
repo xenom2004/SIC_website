@@ -14,6 +14,14 @@ const FTIRForm = () => {
     setVariable(e.target.value);
   };
 
+  const SETitem2 = (e, setVariable, variable) => {
+    const formDetails = JSON.parse(localStorage.getItem("form_details")) || {};
+    formDetails[id] = formDetails[id] || {};
+    formDetails[id][variable] = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    localStorage.setItem("form_details", JSON.stringify(formDetails));
+    setVariable(e.target.type === "checkbox" ? e.target.checked : e.target.value);
+  };
+
   const GETitem = (def, variable) => {
     if (typeof window !== "undefined" && localStorage.getItem("form_details")) {
       const formDetails = JSON.parse(localStorage.getItem("form_details"));
@@ -37,6 +45,9 @@ const FTIRForm = () => {
   const [excitationWavelength, setExcitationWavelength] = useState(() => GETitem("", "excitationWavelength"));
   const [rangeOfScan, setRangeOfScan] = useState(() => GETitem("", "rangeOfScan"));
   const [specialRequest, setSpecialRequest] = useState(() => GETitem("", "specialRequest"));
+  const [solid,setsolid]=useState(()=>GETitem("", "solid"));
+  const [liquid,setliquid]=useState(()=>GETitem("", "liquid"));
+  const [ATR,setATR]=useState(()=>GETitem("", "ATR"));
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -200,8 +211,8 @@ const FTIRForm = () => {
               type="checkbox"
               value="Solid"
               
-              checked={checkboxState["Solid"] || false}
-              onChange={() => handleCheckboxChange("Solid")}
+              checked={solid}
+              onChange={(e) => SETitem2(e, setsolid, "solid")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Solid (KBr Pallet)</span>
@@ -211,8 +222,8 @@ const FTIRForm = () => {
               type="checkbox"
               value="Liquid"
               
-              checked={checkboxState["Liquid"] || false}
-              onChange={() => handleCheckboxChange("Liquid")}
+              checked={liquid}
+              onChange={(e) => SETitem2(e, setliquid, "liquid")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Liquid (Liquid Cells)</span>
@@ -222,8 +233,8 @@ const FTIRForm = () => {
               type="checkbox"
               value="ATR"
               
-              checked={checkboxState["ATR"] || false}
-              onChange={() => handleCheckboxChange("ATR")}
+              checked={ATR}
+              onChange={(e) => SETitem2(e, setATR, "ATR")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">ATR</span>
