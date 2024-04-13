@@ -60,6 +60,7 @@ export const options = {
     ],
     pages: {
         signIn: "/login",
+        newUser:"/newUser",
     },
     callbacks: {
         session: async ({ session, token, user }) => {
