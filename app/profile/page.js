@@ -82,7 +82,7 @@ const ProfilePage = () => {
       throw new Error("Failed to fetch");
     }
 
-    alert("sucess");
+    alert("success");
     setLoader(0);
     return response.json();
   };
