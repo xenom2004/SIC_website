@@ -104,6 +104,7 @@ export default function Page() {
           "session":session.accessToken,
           // Add any other headers if required, like authorization token, etc.
         },
+        
       })
         .then((response) => {
           if (!response.ok) {

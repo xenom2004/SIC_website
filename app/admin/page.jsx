@@ -115,7 +115,7 @@ const admin = () => {
       setError(null);
 
       try {
-        const response = await fetch("/api/Pendingrequest");
+        const response = await fetch("/api/Pendingrequest", { cache: 'no-store' });
 
         if (!response.ok) {
           throw new Error("Failed to fetch orders");
@@ -145,7 +145,7 @@ const admin = () => {
       setError(null);
 
       try {
-        const response = await fetch("/api/Pendingrequest");
+        const response = await fetch("/api/Pendingrequest",{ cache: 'no-store' });
 
         if (!response.ok) {
           throw new Error("Failed to fetch orders");
@@ -166,7 +166,7 @@ const admin = () => {
       console.log("3")
 
       try {
-        const response = await fetch("/api/instruments");
+        const response = await fetch("/api/instruments",{ cache: 'no-store' });
         if (!response.ok) {
           throw new Error(`Failed to fetch instruments: ${response.status}`);
         }
@@ -226,7 +226,7 @@ const admin = () => {
     const fetchRequest = async () => {
       try {
         const timestamp = Date.now();
-        const response = await fetch(`/api/Pendingrequest?t=${timestamp}`);
+        const response = await fetch(`/api/Pendingrequest?t=${timestamp}`,{ cache: 'no-store' });
         if (!response.ok) {
           throw new Error(`Failed to fetch request: ${response.status}`);
         }
