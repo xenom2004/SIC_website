@@ -10,8 +10,10 @@ export default function Instrument({ params }) {
   const [error, setError] = useState(null);
   const { data: session, status } =useSession();
   const [instrument_status,setinstrument_status]=useState("available");
+  const [dataFetched, setDataFetched] = useState(false);
   const updatestatus=async (key)=>{
     var result = confirm("Are you sure you want update?");
+    setDataFetched(!dataFetched)
 if (result) {
   try{
     const response=await fetch("/api/instruments/update",{
@@ -59,7 +61,7 @@ if (result) {
     };
 
     fetchInstrument();
-  }, [params.id]);
+  }, [params.id, dataFetched]);
 
   if (loading) {
     return    <div className="h-screen flex items-center justify-center fixed top-0 left-0 right-0 bottom-0 bg-white z-50">
