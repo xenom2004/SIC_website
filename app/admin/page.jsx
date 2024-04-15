@@ -102,37 +102,41 @@ const admin = () => {
   // const [activeOrders, setActiveOrders] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  // useEffect(() => {
-  //   console.log(session, "sesiom");
-  // }, [session,state]);
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     setIsLoading(true);
-  //     setError(null);
+  useEffect(() => {
+    console.log(session, "sesiom");
+  }, [session, state]);
 
-  //     try {
-  //       const response = await fetch("/api/Pendingrequest");
+  useEffect(() => {
+    console.log("--------------------------------", state);
+  }, [state])
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      setError(null);
 
-  //       if (!response.ok) {
-  //         throw new Error("Failed to fetch orders");
-  //       }
-  //       const data = await response.json();
-  //       // console.log(data,"my res");
+      try {
+        const response = await fetch("/api/Pendingrequest");
 
-  //       setpeoplereq(data);
-  //       // console.log(data);
-  //     } catch (err) {
-  //       console.error(err);
-  //       setError("Failed to fetch orders");
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   };
+        if (!response.ok) {
+          throw new Error("Failed to fetch orders");
+        }
+        const data = await response.json();
+        // console.log(data,"my res");
 
-  //   fetchData();
-  // }, [session,state]);
+        setpeoplereq(data);
+        // console.log(data);
+      } catch (err) {
+        console.error(err);
+        setError("Failed to fetch orders");
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  const refresh = async()=>{
+    fetchData();
+  }, [session]);
+
+  const refresh = async () => {
     console.log("1")
     const fetchData = async () => {
       console.log("2")
@@ -206,36 +210,36 @@ const admin = () => {
     add_ins_button.current.click();
     console.log("successfullly");
   };
-  // useEffect(() => {
-  //   const fetchInstruments = async () => {
-  //     try {
-  //       const response = await fetch("/api/instruments");
-  //       if (!response.ok) {
-  //         throw new Error(`Failed to fetch instruments: ${response.status}`);
-  //       }
-  //       const data = await response.json();
-  //       setInstruments(data);
-  //     } catch (error) {
-  //       console.error("Error fetching instruments:", error);
-  //     }
-  //   };
-  //   const fetchRequest = async () => {
-  //     try {
-  //       const timestamp = Date.now();
-  //       const response = await fetch(`/api/Pendingrequest?t=${timestamp}`);
-  //       if (!response.ok) {
-  //         throw new Error(`Failed to fetch request: ${response.status}`);
-  //       }
-  //       const data = await response.json();
-  //       setpeoplereq(data);
-  //     } catch (error) {
-  //       console.error("Error fetching instruments:", error);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchInstruments = async () => {
+      try {
+        const response = await fetch("/api/instruments");
+        if (!response.ok) {
+          throw new Error(`Failed to fetch instruments: ${response.status}`);
+        }
+        const data = await response.json();
+        setInstruments(data);
+      } catch (error) {
+        console.error("Error fetching instruments:", error);
+      }
+    };
+    const fetchRequest = async () => {
+      try {
+        const timestamp = Date.now();
+        const response = await fetch(`/api/Pendingrequest?t=${timestamp}`);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch request: ${response.status}`);
+        }
+        const data = await response.json();
+        setpeoplereq(data);
+      } catch (error) {
+        console.error("Error fetching instruments:", error);
+      }
+    };
 
-  //   fetchInstruments();
-  //   // fetchRequest();
-  // }, [session,state]);
+    fetchInstruments();
+    // fetchRequest();
+  }, [session]);
   const calculate_totalPendingRequest = (peoplereq) => {
     let total = 0;
     for (let i = 0; i < peoplereq.length; i++) {
@@ -272,292 +276,291 @@ const admin = () => {
     }
   }
 
-  if (
-    session &&
-    session.user.isAdmin === "admin" &&
-    status === "authenticated"
-  ) {
-    return (
-      <div className="bg-blue-100 h-fit  w-full">
-        <div className="bg-black bg-opacity-25 h-[1000px] md:[800px]  lg:h-fit md:p-8 md:m-8 m-2 p-2 rounded-xl">
-          <div className="flex flex-col md:flex-row w-full md:h-full h-fit  z-10">
-            <div className="bg-white  flex flex-row md:flex-col h-fit md:h-full md:min-h-screen min-w-[20%]">
-              <h1 className=" hidden md:flex px-2 items-center h-12 flex flex-row hover:border-blue-300 border-2  text-xl text-blue-700">
-                <i
-                  className="fa-brands fa-hive fa-3xl "
-                  style={{ color: "black" }}
-                ></i>
-                <p className="ml-4 justify-center">DashBoard</p>
-              </h1>
-              <h1
-                onClick={() => setstate("stats")}
-                className={`${
-                  state === "stats" ? "bg-blue-200" : "bg-white"
-                } px-2 items-center h-12 flex flex-row hover:border-blue-300 border-2 hover:bg-blue-100 text-xl text-blue-700`}
-              >
-                <i
-                  className="fa-solid fa-chart-simple fa-3xl "
-                  style={{ color: "black" }}
-                ></i>{" "}
-                <button className="ml-4 justify-center">Stats</button>
-              </h1>
-              <h1
-                onClick={() => setstate("instruments")}
-                className={`px-2 ${
-                  state === "instruments" ? "bg-blue-200" : "bg-white"
-                } items-center h-12 flex flex-row hover:border-blue-300 border-2 hover:bg-blue-100 text-xl text-blue-700`}
-              >
-                <i
-                  className="fa-solid fa-fax fa-3xl "
-                  style={{ color: "black" }}
-                ></i>{" "}
-                <button className="ml-4 justify-center">Instruments</button>
-              </h1>
-              <h1
-                onClick={() => setstate("cost")}
-                className={`px-2 hidden ${
-                  state === "cost" ? "bg-blue-200" : "bg-white"
-                }  items-center h-12 sm:flex sm:flex-row hover:border-blue-300 border-2 hover:bg-blue-100 text-xl text-blue-700`}
-              >
-                <i
-                  className="fa-solid fa-calculator fa-3xl "
-                  style={{ color: "black" }}
-                ></i>{" "}
-                <button className="ml-4 justify-center">
-                  <Link href="/SIC - Fee Structure.pdf" locale="false">
-                    Cost
-                  </Link>
-                </button>
-              </h1>
-              <h1
-                onClick={() => setstate("request")}
-                className={`px-2 ${
-                  state === "request" ? "bg-blue-200" : "bg-white"
-                }  items-center h-12 flex flex-row hover:border-blue-300 border-2 hover:bg-blue-100 text-xl text-blue-700`}
-              >
-                <i
-                  className="fa-solid fa-person-circle-question fa-3xl "
-                  style={{ color: "black" }}
-                ></i>{" "}
-                <button className="ml-4 justify-center">Pending Request</button>
-              </h1>
 
-              <h1
-                onClick={refresh}
-                className={`px-2 ${
-                  state === "request" ? "bg-blue-200" : "bg-white"
-                }  items-center h-12 flex flex-row hover:border-blue-300 border-2 hover:bg-blue-100 text-xl text-blue-700`}
-              >
-                <i
-                  className="fa-solid fa-person-circle-question fa-3xl "
-                  style={{ color: "black" }}
-                ></i>{" "}
-                <button className="ml-4 justify-center">Refresh</button>
-              </h1>
-              
-            </div>
-
-            {state === "stats" && (
-              <div className="ml-2 lg:grid flex-col flex    lg:grid-cols-2 gap-4 w-full h-screen">
-                <div className="bg-custompurple rounded-xl p-4 gap-y-2 flex flex-col w-full min-h-[400px] ">
-                  <div className="flex flex-row  ">
-                    <p className="text-black grow  text-md">Pending request</p>
-                    {/* <App people={{ item: peoplereq }} /> */}
-                    <input
-                      className="rounded-lg p-2"
-                      type="text"
-                      value={reqfilter}
-                      onChange={handleChangereq}
-                      placeholder="search by name"
-                    />
-                  </div>
-                  <div className="gap-y-2  flex flex-col rounded-xl bg-white p-4 w-full max-h-[350px] overflow-y-auto  h-full">
-                    {filteredDatareq.length > 0 ? (
-                      filteredDatareq.map((req) => (
-                        <RequestCard key={req.id} req={req} />
-                      ))
-                    ) : (
-                      <p className=" flex items-center justify-center h-full w-full ">
-                        Loading requests..
-                      </p>
-                    )}
-                  </div>
-                </div>
-
-                <div className="bg-custompurple rounded-xl p-4 gap-y-2 flex flex-col w-full min-h-[400px]">
-                  <div className="flex flex-row  ">
-                    <p className="text-black grow  text-md">Check Instruents</p>
-                    {/* <App people={{ item: instruments }} /> */}
-                    <input
-                      className="rounded-lg p-2"
-                      type="text"
-                      value={filter}
-                      onChange={handleChangefilter}
-                      placeholder="search by name"
-                    />
-                  </div>
-                  <div className="gap-y-2 flex flex-col rounded-xl bg-white p-4 w-full max-h-[350px] overflow-y-auto  h-full">
-                    {filteredData.length > 0 ? (
-                      filteredData.map((req) => (
-                        <InstrumentCard key={req.id} instrument={req} />
-                      ))
-                    ) : (
-                      <p className=" flex items-center justify-center h-full w-full ">
-                        Loading instruments..
-                      </p>
-                    )}
-                  </div>
-                </div>
-
-                <div className=" bg-custompurple items-center justify-center flex col-span-2 w-full h-full">
-                  <div className="flex flex-row items-center gap-x-8 justify-center">
-                    <div className="flex flex-col bg-slate-300 rounded-xl  p-4">
-                      <h1 className="test-green-600 text-center">
-                        Payment completed
-                      </h1>
-                      {console.log(peoplereq, "lopllp")}
-                      <h1 className="text-5xl font-bold text-center">
-                        {calculate_totalCompletedRequest(peoplereq)}
-                      </h1>
-                    </div>
-                    <div className="flex  bg-slate-300 rounded-xl p-4 flex-col">
-                      <h1 className="test-black  text-center">
-                        Pending Request
-                      </h1>
-                      <h1 className="text-5xl font-bold text-center">
-                        {calculate_totalPendingRequest(peoplereq)}
-                      </h1>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-            {state === "request" && (
-              <div className="bg-custompurple rounded-xl p-4 ml-2 flex flex-col w-full min-h-[400px] ">
-                <div className="flex flex-row  ">
-                  <p className="text-black grow  text-md">Pending request</p>
-                  {/* <App people={{ item: peoplereq }} /> */}
-                  <input
-                    className="rounded-lg p-2"
-                    type="text"
-                    value={reqfilter}
-                    onChange={handleChangereq}
-                    placeholder="search by name"
-                  />
-                </div>
-                <div className="gap-y-2  flex flex-col rounded-xl bg-white p-4 w-full mt-4 overflow-y-auto max-h-[550px]  h-full">
-                  {filteredDatareq.length > 0 ? (
-                    filteredDatareq.map((req) => (
-                      <PendingReqC key={req.id} req={req} />
-                    ))
-                  ) : (
-                    <p className=" flex items-center justify-center h-full w-full ">
-                      Loading requests..
-                    </p>
-                  )}
-                </div>
-
-                {/* <PendingReqC /> */}
-              </div>
-            )}
-            {state === "instruments" && (
-              <div className="bg-custompurple rounded-xl  p-4 ml-2 flex flex-col w-full min-h-[600px] ">
-                <div className="flex flex-row  ">
-                  <p className="text-black grow  text-md">Check Instruents</p>
-                  <input
-                    className="rounded-lg p-2"
-                    type="text"
-                    value={filter}
-                    onChange={handleChangefilter}
-                    placeholder="search by name"
-                  />
-                </div>
-                <div className="gap-y-2 mt-2 flex flex-col rounded-xl bg-white p-4 w-full max-h-[500px] overflow-y-auto  h-full">
-                  {filteredData.length > 0 ? (
-                    filteredData.map((req) => (
-                      <InstrumentCardComp key={req.id} instrument={req} />
-                    ))
-                  ) : (
-                    <p className=" flex items-center justify-center h-full w-full ">
-                      Loading instruments..
-                    </p>
-                  )}
-                </div>
-
-                <>
-                  <Button className="h-[80px] my-4" onPress={onOpen}>
-                    Add Instruments
-                  </Button>
-                  <Modal
-                    isOpen={isOpen}
-                    onOpenChange={onOpenChange}
-                    isDismissable={false}
-                    isKeyboardDismissDisabled={true}
+  return (
+    <>
+      {session &&
+        session.user.isAdmin === "admin" &&
+        status === "authenticated" &&
+        <>
+          <div className="bg-blue-100 h-fit  w-full">
+            <div className="bg-black bg-opacity-25 h-[1000px] md:[800px]  lg:h-fit md:p-8 md:m-8 m-2 p-2 rounded-xl">
+              <div className="flex flex-col md:flex-row w-full md:h-full h-fit  z-10">
+                <div className="bg-white  flex flex-row md:flex-col h-fit md:h-full md:min-h-screen min-w-[20%]">
+                  <h1 className=" hidden md:flex px-2 items-center h-12 flex flex-row hover:border-blue-300 border-2  text-xl text-blue-700">
+                    <i
+                      className="fa-brands fa-hive fa-3xl "
+                      style={{ color: "black" }}
+                    ></i>
+                    <p className="ml-4 justify-center">DashBoard</p>
+                  </h1>
+                  <h1
+                    onClick={() => setstate("stats")}
+                    className={`${state === "stats" ? "bg-blue-200" : "bg-white"
+                      } px-2 items-center h-12 flex flex-row hover:border-blue-300 border-2 hover:bg-blue-100 text-xl text-blue-700`}
                   >
-                    <ModalContent>
-                      {(onClose) => (
-                        <>
-                          <ModalHeader className="flex flex-col gap-1">
-                            Modal Title
-                          </ModalHeader>
-                          <ModalBody>
-                            <Textarea
-                              label="name"
-                              placeholder="Enter instrument name"
-                              className="max-w-xs"
-                              onChange={(e) => setnew_inst_name(e.target.value)}
-                            />
-                            <Textarea
-                              label="Description"
-                              placeholder="Enter your description"
-                              className="max-w-xs"
-                              onChange={(e) => setnew_inst_desc(e.target.value)}
-                            />
-                            <Textarea
-                              label="image"
-                              placeholder="Enter instrument image_link"
-                              className="max-w-xs"
-                              onChange={(e) =>
-                                setnew_inst_imagelink(e.target.value)
-                              }
-                            />
-                          </ModalBody>
-                          <ModalFooter>
-                            <Button
-                              color="danger"
-                              variant="light"
-                              onPress={onClose}
-                            >
-                              Close
-                            </Button>
-                            <Button color="primary" onPress={AddInstrument}>
-                              ADD
-                            </Button>
-                            <Button
-                              ref={add_ins_button}
-                              className=" hidden"
-                              color="primary"
-                              onPress={onClose}
-                            >
-                              Action
-                            </Button>
-                          </ModalFooter>
-                        </>
+                    <i
+                      className="fa-solid fa-chart-simple fa-3xl "
+                      style={{ color: "black" }}
+                    ></i>{" "}
+                    <button className="ml-4 justify-center">Stats</button>
+                  </h1>
+                  <h1
+                    onClick={() => setstate("instruments")}
+                    className={`px-2 ${state === "instruments" ? "bg-blue-200" : "bg-white"
+                      } items-center h-12 flex flex-row hover:border-blue-300 border-2 hover:bg-blue-100 text-xl text-blue-700`}
+                  >
+                    <i
+                      className="fa-solid fa-fax fa-3xl "
+                      style={{ color: "black" }}
+                    ></i>{" "}
+                    <button className="ml-4 justify-center">Instruments</button>
+                  </h1>
+                  <h1
+                    onClick={() => setstate("cost")}
+                    className={`px-2 hidden ${state === "cost" ? "bg-blue-200" : "bg-white"
+                      }  items-center h-12 sm:flex sm:flex-row hover:border-blue-300 border-2 hover:bg-blue-100 text-xl text-blue-700`}
+                  >
+                    <i
+                      className="fa-solid fa-calculator fa-3xl "
+                      style={{ color: "black" }}
+                    ></i>{" "}
+                    <button className="ml-4 justify-center">
+                      <Link href="/SIC - Fee Structure.pdf" locale="false">
+                        Cost
+                      </Link>
+                    </button>
+                  </h1>
+                  <h1
+                    onClick={() => setstate("request")}
+                    className={`px-2 ${state === "request" ? "bg-blue-200" : "bg-white"
+                      }  items-center h-12 flex flex-row hover:border-blue-300 border-2 hover:bg-blue-100 text-xl text-blue-700`}
+                  >
+                    <i
+                      className="fa-solid fa-person-circle-question fa-3xl "
+                      style={{ color: "black" }}
+                    ></i>{" "}
+                    <button className="ml-4 justify-center">Pending Request</button>
+                  </h1>
+
+                  <h1
+                    onClick={refresh}
+                    className={`px-2 ${state === "request" ? "bg-blue-200" : "bg-white"
+                      }  items-center h-12 flex flex-row hover:border-blue-300 border-2 hover:bg-blue-100 text-xl text-blue-700`}
+                  >
+                    <i
+                      className="fa-solid fa-person-circle-question fa-3xl "
+                      style={{ color: "black" }}
+                    ></i>{" "}
+                    <button className="ml-4 justify-center">Refresh</button>
+                  </h1>
+
+                </div>
+
+                {state === "stats" && (
+                  <div className="ml-2 lg:grid flex-col flex    lg:grid-cols-2 gap-4 w-full h-screen">
+                    <div className="bg-custompurple rounded-xl p-4 gap-y-2 flex flex-col w-full min-h-[400px] ">
+                      <div className="flex flex-row  ">
+                        <p className="text-black grow  text-md">Pending request</p>
+                        {/* <App people={{ item: peoplereq }} /> */}
+                        <input
+                          className="rounded-lg p-2"
+                          type="text"
+                          value={reqfilter}
+                          onChange={handleChangereq}
+                          placeholder="search by name"
+                        />
+                      </div>
+                      <div className="gap-y-2  flex flex-col rounded-xl bg-white p-4 w-full max-h-[350px] overflow-y-auto  h-full">
+                        {filteredDatareq.length > 0 ? (
+                          filteredDatareq.map((req) => (
+                            <RequestCard key={req.id} req={req} />
+                          ))
+                        ) : (
+                          <p className=" flex items-center justify-center h-full w-full ">
+                            Loading requests..
+                          </p>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="bg-custompurple rounded-xl p-4 gap-y-2 flex flex-col w-full min-h-[400px]">
+                      <div className="flex flex-row  ">
+                        <p className="text-black grow  text-md">Check Instruents</p>
+                        {/* <App people={{ item: instruments }} /> */}
+                        <input
+                          className="rounded-lg p-2"
+                          type="text"
+                          value={filter}
+                          onChange={handleChangefilter}
+                          placeholder="search by name"
+                        />
+                      </div>
+                      <div className="gap-y-2 flex flex-col rounded-xl bg-white p-4 w-full max-h-[350px] overflow-y-auto  h-full">
+                        {filteredData.length > 0 ? (
+                          filteredData.map((req) => (
+                            <InstrumentCard key={req.id} instrument={req} />
+                          ))
+                        ) : (
+                          <p className=" flex items-center justify-center h-full w-full ">
+                            Loading instruments..
+                          </p>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className=" bg-custompurple items-center justify-center flex col-span-2 w-full h-full">
+                      <div className="flex flex-row items-center gap-x-8 justify-center">
+                        <div className="flex flex-col bg-slate-300 rounded-xl  p-4">
+                          <h1 className="test-green-600 text-center">
+                            Payment completed
+                          </h1>
+                          {console.log(peoplereq, "lopllp")}
+                          <h1 className="text-5xl font-bold text-center">
+                            {calculate_totalCompletedRequest(peoplereq)}
+                          </h1>
+                        </div>
+                        <div className="flex  bg-slate-300 rounded-xl p-4 flex-col">
+                          <h1 className="test-black  text-center">
+                            Pending Request
+                          </h1>
+                          <h1 className="text-5xl font-bold text-center">
+                            {calculate_totalPendingRequest(peoplereq)}
+                          </h1>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                {state === "request" && (
+                  <div className="bg-custompurple rounded-xl p-4 ml-2 flex flex-col w-full min-h-[400px] ">
+                    <div className="flex flex-row  ">
+                      <p className="text-black grow  text-md">Pending request</p>
+                      {/* <App people={{ item: peoplereq }} /> */}
+                      <input
+                        className="rounded-lg p-2"
+                        type="text"
+                        value={reqfilter}
+                        onChange={handleChangereq}
+                        placeholder="search by name"
+                      />
+                    </div>
+                    <div className="gap-y-2  flex flex-col rounded-xl bg-white p-4 w-full mt-4 overflow-y-auto max-h-[550px]  h-full">
+                      {filteredDatareq.length > 0 ? (
+                        filteredDatareq.map((req) => (
+                          <PendingReqC key={req.id} req={req} />
+                        ))
+                      ) : (
+                        <p className=" flex items-center justify-center h-full w-full ">
+                          Loading requests..
+                        </p>
                       )}
-                    </ModalContent>
-                  </Modal>
-                </>
+                    </div>
+
+                    {/* <PendingReqC /> */}
+                  </div>
+                )}
+                {state === "instruments" && (
+                  <div className="bg-custompurple rounded-xl  p-4 ml-2 flex flex-col w-full min-h-[600px] ">
+                    <div className="flex flex-row  ">
+                      <p className="text-black grow  text-md">Check Instruents</p>
+                      <input
+                        className="rounded-lg p-2"
+                        type="text"
+                        value={filter}
+                        onChange={handleChangefilter}
+                        placeholder="search by name"
+                      />
+                    </div>
+                    <div className="gap-y-2 mt-2 flex flex-col rounded-xl bg-white p-4 w-full max-h-[500px] overflow-y-auto  h-full">
+                      {filteredData.length > 0 ? (
+                        filteredData.map((req) => (
+                          <InstrumentCardComp key={req.id} instrument={req} />
+                        ))
+                      ) : (
+                        <p className=" flex items-center justify-center h-full w-full ">
+                          Loading instruments..
+                        </p>
+                      )}
+                    </div>
+
+                    <>
+                      <Button className="h-[80px] my-4" onPress={onOpen}>
+                        Add Instruments
+                      </Button>
+                      <Modal
+                        isOpen={isOpen}
+                        onOpenChange={onOpenChange}
+                        isDismissable={false}
+                        isKeyboardDismissDisabled={true}
+                      >
+                        <ModalContent>
+                          {(onClose) => (
+                            <>
+                              <ModalHeader className="flex flex-col gap-1">
+                                Modal Title
+                              </ModalHeader>
+                              <ModalBody>
+                                <Textarea
+                                  label="name"
+                                  placeholder="Enter instrument name"
+                                  className="max-w-xs"
+                                  onChange={(e) => setnew_inst_name(e.target.value)}
+                                />
+                                <Textarea
+                                  label="Description"
+                                  placeholder="Enter your description"
+                                  className="max-w-xs"
+                                  onChange={(e) => setnew_inst_desc(e.target.value)}
+                                />
+                                <Textarea
+                                  label="image"
+                                  placeholder="Enter instrument image_link"
+                                  className="max-w-xs"
+                                  onChange={(e) =>
+                                    setnew_inst_imagelink(e.target.value)
+                                  }
+                                />
+                              </ModalBody>
+                              <ModalFooter>
+                                <Button
+                                  color="danger"
+                                  variant="light"
+                                  onPress={onClose}
+                                >
+                                  Close
+                                </Button>
+                                <Button color="primary" onPress={AddInstrument}>
+                                  ADD
+                                </Button>
+                                <Button
+                                  ref={add_ins_button}
+                                  className=" hidden"
+                                  color="primary"
+                                  onPress={onClose}
+                                >
+                                  Action
+                                </Button>
+                              </ModalFooter>
+                            </>
+                          )}
+                        </ModalContent>
+                      </Modal>
+                    </>
+                  </div>
+                )}
               </div>
-            )}
+            </div>
           </div>
-        </div>
-      </div>
-    );
-  }
+        </>}
+    </>
+
+
+  );
+}
   // }
   // else{
   //   return <div>"fu"</div>
   // }
-};
 
 export default admin;
