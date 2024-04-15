@@ -148,6 +148,7 @@ const FormComponent = () => {
       // Check if request was successful
       if (response.ok) {
         console.log("Form submitted successfully");
+        setLoader(0);
         alert("form submitted successfully");
 
         // You can handle success actions here, e.g., redirect user to another page
@@ -161,7 +162,6 @@ const FormComponent = () => {
       // Handle network errors or other exceptions
       // You can display an error message to the user
     }
-    setLoader(0);
   };
 
   const gst = (val, percent) => {
