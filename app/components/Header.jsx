@@ -141,10 +141,11 @@ const Header = () => {
                 : {}
             }
           >
-            {language === "english" ? "Home" : "होम"}
+            <button>{language === "english" ? "Home" : "होम"}</button>
           </Link>
 
           {/* Usage Charges Link */}
+
           <Link
             href="/usageCharges"
             className={`font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
@@ -154,7 +155,9 @@ const Header = () => {
                 : {}
             }
           >
-            {language === "english" ? "Usage Charges" : "उपयोग शुल्क"}
+            <button>
+              {language === "english" ? "Usage Charges" : "उपयोग शुल्क"}
+            </button>
           </Link>
 
           {/* Instruments */}
@@ -182,13 +185,16 @@ const Header = () => {
                   : {}
               }
             >
-              {language === "english" ? "Orders" : "आदेश"}
+              {" "}
+              <button>{language === "english" ? "Orders" : "आदेश"}</button>
             </Link>
           )}
 
           {/* Profile or Sign In/Register */}
           {session ? (
-            <Link href={session?.user?.isAdmin==="admin" ? "/admin" : "/profile"}>
+            <Link
+              href={session?.user?.isAdmin === "admin" ? "/admin" : "/profile"}
+            >
               <button
                 className={`font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
                 style={
@@ -266,20 +272,22 @@ const Header = () => {
                 href="/"
                 className="block px-8 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
               >
-                Home
+                <button>Home</button>
               </Link>
+
               <div onClick={toggleDropdown}>
                 <Instruments language={language} />
               </div>
               <div onClick={toggleDropdown}>
                 <About language={language} />
               </div>
+
               <Link
                 onClick={toggleDropdown}
                 href="/usageCharges"
                 className="block px-8 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
               >
-                Usage Charges
+                <button>Usage Charges</button>
               </Link>
               {session && (
                 <Link
@@ -287,16 +295,18 @@ const Header = () => {
                   href="/user"
                   className="block px-8 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
                 >
-                  Orders
+                  <button>Orders</button>
                 </Link>
               )}
               {session ? (
                 <Link
-                  href="/profile"
                   onClick={toggleDropdown}
+                  href={
+                    session?.user?.isAdmin === "admin" ? "/admin" : "/profile"
+                  }
                   className="block px-8 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
                 >
-                  Profile
+                  <button>Profile</button>
                 </Link>
               ) : (
                 <button
