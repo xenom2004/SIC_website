@@ -4,6 +4,7 @@ import React from 'react';
 import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
 import Statistics from './components/Statistics';
 import { Roboto } from 'next/font/google'
+import MyCarousel from './components/MyCarousel';
 const roboto = Roboto({
 	weight: '100',
 	subsets: ['latin'],
@@ -224,7 +225,7 @@ export default function Home() {
 			
 				{/* ----------------------------------------------------------------------------------------------------------------- */}
 
-
+				{/* <div className="flex justify-center"><MyCarousel/></div> */}
 				
 
                {/* ------------------------------------------------------------------------------------------------------------------- */}
