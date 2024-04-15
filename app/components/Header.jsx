@@ -132,34 +132,33 @@ const Header = () => {
 
         {/* Navigation links for large and extra-large screens */}
         <div className="hidden md:flex items-center space-x-4">
-          <button>
-            <Link
-              href="/"
-              className={`font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
-              style={
-                language === "hindi"
-                  ? { fontWeight: "bold", fontSize: "1.2em", lineHeight: "1.5" }
-                  : {}
-              }
-            >
-              {language === "english" ? "Home" : "होम"}
-            </Link>
-          </button>
+          <Link
+            href="/"
+            className={`font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
+            style={
+              language === "hindi"
+                ? { fontWeight: "bold", fontSize: "1.2em", lineHeight: "1.5" }
+                : {}
+            }
+          >
+            <button>{language === "english" ? "Home" : "होम"}</button>
+          </Link>
 
           {/* Usage Charges Link */}
-          <button>
-            <Link
-              href="/usageCharges"
-              className={`font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
-              style={
-                language === "hindi"
-                  ? { fontWeight: "bold", fontSize: "1.2em", lineHeight: "1.5" }
-                  : {}
-              }
-            >
+
+          <Link
+            href="/usageCharges"
+            className={`font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
+            style={
+              language === "hindi"
+                ? { fontWeight: "bold", fontSize: "1.2em", lineHeight: "1.5" }
+                : {}
+            }
+          >
+            <button>
               {language === "english" ? "Usage Charges" : "उपयोग शुल्क"}
-            </Link>
-          </button>
+            </button>
+          </Link>
 
           {/* Instruments */}
           <div className="mr-4">
@@ -173,23 +172,22 @@ const Header = () => {
 
           {/* Orders */}
           {session && (
-            <button>
-              <Link
-                href="/user"
-                className={`font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
-                style={
-                  language === "hindi"
-                    ? {
-                        fontWeight: "bold",
-                        fontSize: "1.2em",
-                        lineHeight: "1.5",
-                      }
-                    : {}
-                }
-              >
-                {language === "english" ? "Orders" : "आदेश"}
-              </Link>
-            </button>
+            <Link
+              href="/user"
+              className={`font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
+              style={
+                language === "hindi"
+                  ? {
+                      fontWeight: "bold",
+                      fontSize: "1.2em",
+                      lineHeight: "1.5",
+                    }
+                  : {}
+              }
+            >
+              {" "}
+              <button>{language === "english" ? "Orders" : "आदेश"}</button>
+            </Link>
           )}
 
           {/* Profile or Sign In/Register */}
@@ -269,53 +267,47 @@ const Header = () => {
           {/* Conditionally render dropdown content based on state */}
           {isDropdownOpen && (
             <div className="absolute top-full right-0 w-52 bg-gray-800 py-2 text-center">
-              <button>
-                <Link
-                  onClick={toggleDropdown}
-                  href="/"
-                  className="block px-8 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
-                >
-                  Home
-                </Link>
-              </button>
+              <Link
+                onClick={toggleDropdown}
+                href="/"
+                className="block px-8 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
+              >
+                <button>Home</button>
+              </Link>
+
               <div onClick={toggleDropdown}>
                 <Instruments language={language} />
               </div>
               <div onClick={toggleDropdown}>
                 <About language={language} />
               </div>
-              <button>
+
+              <Link
+                onClick={toggleDropdown}
+                href="/usageCharges"
+                className="block px-8 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
+              >
+                <button>Usage Charges</button>
+              </Link>
+              {session && (
                 <Link
                   onClick={toggleDropdown}
-                  href="/usageCharges"
+                  href="/user"
                   className="block px-8 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
                 >
-                  Usage Charges
+                  <button>Orders</button>
                 </Link>
-              </button>
-              {session && (
-                <button>
-                  <Link
-                    onClick={toggleDropdown}
-                    href="/user"
-                    className="block px-8 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
-                  >
-                    Orders
-                  </Link>
-                </button>
               )}
               {session ? (
-                <button>
-                  <Link
-                    onClick={toggleDropdown}
-                    href={
-                      session?.user?.isAdmin === "admin" ? "/admin" : "/profile"
-                    }
-                    className="block px-8 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
-                  >
-                    Profile
-                  </Link>
-                </button>
+                <Link
+                  onClick={toggleDropdown}
+                  href={
+                    session?.user?.isAdmin === "admin" ? "/admin" : "/profile"
+                  }
+                  className="block px-8 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
+                >
+                  <button>Profile</button>
+                </Link>
               ) : (
                 <button
                   onClick={handleSignIn}
