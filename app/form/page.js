@@ -135,12 +135,16 @@ const FormComponent = () => {
       });
 
       // Check if request was successful
-      if (response.ok) {
+      const d=await response.json();
+      if (response.ok && d.status === "success") {
         console.log("Form submitted successfully");
         alert("form submitted successfully");
 
         // You can handle success actions here, e.g., redirect user to another page
-      } else {
+      }else if(d.status==="fail"){
+        alert("Please complete profile details.");
+      }
+       else {
         // Handle server errors or other issues
         console.error("Failed to submit form:", response.statusText);
         // You can display an error message to the user

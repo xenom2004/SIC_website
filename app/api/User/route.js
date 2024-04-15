@@ -25,7 +25,18 @@ const find_cost=(inst,order_form,type)=>{
   
   }
 
-
+  const areRequiredFieldsFilled = (profileData) => {
+    // List of required fields
+    const requiredFields = ["profileName", "phone", "institute", "email", "gst_number","loginType","cover_image"];
+    if(profileData.loginType==="Academic"){
+      requiredFields.push("supervisorName", "supervisorEmail", "studentDesignation");}
+    else{
+      requiredFields.push("Designation");
+    }  
+  
+    // Check if all required fields are filled
+    return requiredFields.every(field => profileData[field]);
+  };
 
 export async function POST(req,res){
     // console.log("hi11")
@@ -35,6 +46,24 @@ export async function POST(req,res){
     const forms=JSON.parse(data.formData);
     await mongoose.connect(connection.connection);
     const Userdetails=await User.find({"name":data.usersession.name});
+
+    console.log(Userdetails,"user");
+    if(!areRequiredFieldsFilled(Userdetails[0])){
+      // console.log("opop")
+
+      return NextResponse.json({status:"fail"})
+
+
+    }
+
+
+
+
+
+
+
+
+
     const inst=await instrument.find(); 
     // const new_data={id:id,forms:JSON.parse(data.formData)};
     const new_order={"name":data.usersession.name ,

@@ -64,6 +64,11 @@ const handleImageChange = (e,setfunc) => {
   
 
   const handlesave=async ()=>{
+    if (!areRequiredFieldsFilled()) {
+      // If not all required fields are filled, do nothing
+      alert("please fill all the details");
+      return;
+    }
     const data={
       ...profileData,
       "name":session.user.name,
@@ -75,6 +80,12 @@ const handleImageChange = (e,setfunc) => {
       
     }
     console.log(data,"on my data");
+    // write a function to check if profile data has all the required details or not
+    
+    
+
+
+
     const response = await fetch('/api/updateProfile', {
       method: 'POST',
       headers: {
@@ -114,6 +125,21 @@ const handleImageChange = (e,setfunc) => {
     }
     return true;
     }
+    const areRequiredFieldsFilled = () => {
+      // List of required fields
+      const requiredFields = ["profileName", "phone", "institute", "email", "gst_number", "loginType"];
+    
+      // Add additional required fields based on loginType
+      if (profileData["loginType"] === "Academic") {
+        requiredFields.push("supervisorName", "supervisorEmail", "studentDesignation");
+      } else {
+        requiredFields.push("Designation");
+      }
+      console.log(profileData,requiredFields ,"profileData");
+    
+      // Check if all required fields are filled
+      return requiredFields.every(field => profileData[field] !== undefined && profileData[field] !== null && profileData[field] !== "");
+    };
   
   useEffect(() => {
     async function getData() {
@@ -196,7 +222,7 @@ const handleImageChange = (e,setfunc) => {
 
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name:</label>
 
-          <input type="text" id="name" name="name" value={session.user.name}  disabled={true} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+          <input type="text" id="name" required name="name" value={session.user.name}  disabled={true} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
 
         </div>
 
@@ -204,7 +230,7 @@ const handleImageChange = (e,setfunc) => {
 
           <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Profile Name</label>
 
-          <input type="text" id="phone" name="profileName" value={profileData?.profileName} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+          <input type="text" id="phone" required name="profileName" value={profileData?.profileName} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
 
         </div>
 
@@ -212,7 +238,7 @@ const handleImageChange = (e,setfunc) => {
 
           <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone:</label>
 
-          <input type="text" id="phone" name="phone" value={profileData?.phone} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+          <input type="text" id="phone" required  name="phone" value={profileData?.phone} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
 
         </div>
 
@@ -220,7 +246,7 @@ const handleImageChange = (e,setfunc) => {
 
           <label htmlFor="institute" className="block text-sm font-medium text-gray-700">Institute:</label>
 
-          <input type="text" id="institute" name="institute" value={profileData?.institute} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+          <input type="text" id="institute" required  name="institute" value={profileData?.institute} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
 
         </div>
 
@@ -228,7 +254,7 @@ const handleImageChange = (e,setfunc) => {
 
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email:</label>
 
-          <input type="email" id="email" name="email" value={profileData?.email} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+          <input type="email" id="email" required name="email" value={profileData?.email} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
 
         </div>
 
@@ -236,7 +262,7 @@ const handleImageChange = (e,setfunc) => {
 
           <label  className="block text-sm font-medium text-gray-700">Gst number</label>
 
-          <input type="text" id="email" name="gst_number" value={profileData?.gst_number} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+          <input type="text" id="email" required name="gst_number" value={profileData?.gst_number} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
 
         </div>
 
@@ -254,11 +280,14 @@ const handleImageChange = (e,setfunc) => {
         </Button>
       </DropdownTrigger>
       <DropdownMenu 
-        onAction={(key) => {setloginType(key)}}
+        onAction={(key) => {setloginType(key);setProfileData({
+          ...profileData,
+          "loginType": key,
+        });}}
         aria-label="Single selection example"
         variant="flat"
         disallowEmptySelection
-        selectionMode="single"
+        // selectionMode="single"
         
       >
         <DropdownItem key="Academic">Academic</DropdownItem>
@@ -273,7 +302,7 @@ const handleImageChange = (e,setfunc) => {
 
           <label htmlFor="supervisorName"  className="block text-sm font-medium text-gray-700">Supervisor Name:</label>
 
-          <input type="text" id="supervisorName" name="supervisorName" value={profileData?.supervisorName} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+          <input type="text" id="supervisorName" required name="supervisorName" value={profileData?.supervisorName} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
 
         </div>
 
@@ -281,7 +310,7 @@ const handleImageChange = (e,setfunc) => {
 
           <label htmlFor="supervisorEmail" className="block text-sm font-medium text-gray-700">Supervisor Email:</label>
 
-          <input type="email" id="supervisorEmail" name="supervisorEmail" value={profileData?.supervisorEmail} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+          <input type="email" id="supervisorEmail" required name="supervisorEmail" value={profileData?.supervisorEmail} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
 
         </div>
 
@@ -289,7 +318,7 @@ const handleImageChange = (e,setfunc) => {
 
           <label htmlFor="studentDesignation" className="block text-sm font-medium text-gray-700">Student Designation:</label>
 
-          <input type="text" id="studentDesignation" name="studentDesignation" value={profileData?.studentDesignation} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+          <input type="text" id="studentDesignation" required name="studentDesignation" value={profileData?.studentDesignation} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
 
         </div>
 
@@ -300,7 +329,7 @@ const handleImageChange = (e,setfunc) => {
 
           <label htmlFor="supervisorEmail" className="block text-sm font-medium text-gray-700">Designation</label>
 
-          <input type="text" id="supervisorEmail" name="Designation" value={profileData?.Designation} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+          <input type="text" id="supervisorEmail" required name="Designation" value={profileData?.Designation} onChange={handleChange} disabled={!isEditing} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
 
         </div>
     
@@ -310,7 +339,7 @@ const handleImageChange = (e,setfunc) => {
         <div className={`mb-4 `}>
 
           <label htmlFor="supervisorEmail" className="block text-sm font-medium text-gray-700">Upload Profile Image    <AddAPhotoSharp/> </label>
-          <input type="file" name="profile_image" disabled={!isEditing} onChange={(e)=>{handleImageChange(e,setImage)}}  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" ></input>
+          <input type="file" name="profile_image"  disabled={!isEditing} onChange={(e)=>{handleImageChange(e,setImage)}}  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" ></input>
         </div>
         {image && (
         <div>
@@ -321,7 +350,7 @@ const handleImageChange = (e,setfunc) => {
         <div className={`mb-4 `}>
 
           <label htmlFor="supervisorEmail" className="block text-sm font-medium text-gray-700">Upload cover letter for verification of profile(Academic/commercial) </label>
-          <input type="file" name="cover_image" disabled={!isEditing} onChange={(e)=>{handleImageChange(e,setcover_image)}} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" accept="image/*"></input>
+          <input type="file" name="cover_image"  disabled={!isEditing} onChange={(e)=>{handleImageChange(e,setcover_image)}} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" accept="image/*"></input>
         </div>
         {cover_image && (
         <div>

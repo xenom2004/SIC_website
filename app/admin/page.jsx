@@ -186,8 +186,10 @@ const admin = () => {
     try {
       const response = await fetch("/api/addinstruments", {
         method: "POST",
+      cache: 'no-store' ,
         body: JSON.stringify({
           name: new_inst_name,
+
           description: new_inst_desc,
           image: new_inst_imagelink,
           status: new_inst_status,
@@ -210,32 +212,32 @@ const admin = () => {
     add_ins_button.current.click();
     console.log("successfullly");
   };
+  const fetchInstruments = async () => {
+    try {
+      const response = await fetch("/api/instruments",{ cache: 'no-store' });
+      if (!response.ok) {
+        throw new Error(`Failed to fetch instruments: ${response.status}`);
+      }
+      const data = await response.json();
+      setInstruments(data);
+    } catch (error) {
+      console.error("Error fetching instruments:", error);
+    }
+  };
+  const fetchRequest = async () => {
+    try {
+      const timestamp = Date.now();
+      const response = await fetch(`/api/Pendingrequest?t=${timestamp}`,{ cache: 'no-store' });
+      if (!response.ok) {
+        throw new Error(`Failed to fetch request: ${response.status}`);
+      }
+      const data = await response.json();
+      setpeoplereq(data);
+    } catch (error) {
+      console.error("Error fetching instruments:", error);
+    }
+  };
   useEffect(() => {
-    const fetchInstruments = async () => {
-      try {
-        const response = await fetch("/api/instruments");
-        if (!response.ok) {
-          throw new Error(`Failed to fetch instruments: ${response.status}`);
-        }
-        const data = await response.json();
-        setInstruments(data);
-      } catch (error) {
-        console.error("Error fetching instruments:", error);
-      }
-    };
-    const fetchRequest = async () => {
-      try {
-        const timestamp = Date.now();
-        const response = await fetch(`/api/Pendingrequest?t=${timestamp}`,{ cache: 'no-store' });
-        if (!response.ok) {
-          throw new Error(`Failed to fetch request: ${response.status}`);
-        }
-        const data = await response.json();
-        setpeoplereq(data);
-      } catch (error) {
-        console.error("Error fetching instruments:", error);
-      }
-    };
 
     fetchInstruments();
     // fetchRequest();
