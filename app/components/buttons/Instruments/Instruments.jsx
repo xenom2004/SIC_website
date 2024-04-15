@@ -11,25 +11,25 @@ const instrumentData = {
     { title: "WDS/WDX", link: "/instruments/5" },
   ],
   Microscopy: [
-    { title: "FE-SEM", link: "/instruments/sem" },
-    { title: "CLSM", link: "/instruments/tem" },
-    { title: "AFM" , link: "/instruments/afm"},
-    { title: "TIRM" , link: "/intruments/TIRM"}
+    { title: "FE-SEM", link: "/instruments/15" },
+    { title: "CLSM", link: "/instruments/18" },
+    { title: "AFM" , link: "/instruments/16"},
+    { title: "TIRM" , link: "/intruments/17"}
   ],
   Spectroscopy: [
-    { title: "NMR 500", link: "/instruments/uv-vis" },
-    { title: "NMR 400", link: "/instruments/ir" },
-    { title: "FT-IR", link: "/instruments/ft-ir" },
-    { title: "TCSPC",link: "/instruments/tcspc"},
-    { title: "CD",link: "/instruments/cd"},
-    { title: "PL" , link: "/instruments/pl"},
-    { title: "UV-VS" , link: "/instruments/uv-vs"},
-    { title: "NIR" , link: "/instruments/xrd"},
-    { title: "SF" , link: "/instruments/sf"},
+    { title: "NMR 500", link: "/instruments/6" },
+    { title: "NMR 400", link: "/instruments/7" },
+    { title: "FT-IR", link: "/instruments/8" },
+    { title: "TCSPC",link: "/instruments/9"},
+    { title: "CD",link: "/instruments/10"},
+    { title: "PL" , link: "/instruments/11"},
+    { title: "UV-VS" , link: "/instruments/12"},
+    { title: "NIR" , link: "/instruments/13"},
+    { title: "SF" , link: "/instruments/14"},
   ],
   Chromatography: [
-    { title: "HR-MS", link: "/instruments/gc" },
-    { title: "HPLC-RP", link: "/instruments/lc" },
+    { title: "HR-MS", link: "/instruments/19" },
+    { title: "HPLC-RP", link: "/instruments/20" },
   ],
 };
 
