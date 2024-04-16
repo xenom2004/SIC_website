@@ -146,20 +146,17 @@ const FormComponent = () => {
       });
 
       // Check if request was successful
-      const d=await response.json();
+      const d = await response.json();
       if (response.ok && d.status === "success") {
         console.log("Form submitted successfully");
         setLoader(0);
         alert("form submitted successfully");
 
         // You can handle success actions here, e.g., redirect user to another page
-      }else if(d.status==="fail"){
+      } else if (d.status === "fail") {
         setLoader(0);
         alert("Please complete profile details.");
-
-
-      }
-       else {
+      } else {
         // Handle server errors or other issues
         console.error("Failed to submit form:", response.statusText);
         // You can display an error message to the user
@@ -195,16 +192,19 @@ const FormComponent = () => {
 
   return (
     <div className="container mx-auto md:py-20 py-10">
-      <div className="mx-auto">
+      <div className="mx-auto mb-8">
         <h2 className="text-2xl text-center font-bold p-4 mx-auto">
           Selected Instruments:
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 justify-center">
+      <div className="flex flex-wrap justify-center gap-4">
         {selectedInstruments.map((instrument, index) => {
           return (
-            <div key={index} className="p-4">
+            <div
+              key={index}
+              className="p-4 border rounded-md w-full sm:w-1/2 md:w-1/3"
+            >
               {forms_instrument[instrument.id]}
             </div>
           );
