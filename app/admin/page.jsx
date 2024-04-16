@@ -109,29 +109,38 @@ const admin = () => {
   useEffect(() => {
     console.log("--------------------------------", state);
   }, [state])
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      setError(null);
+  const fetchData = async () => {
+    setIsLoading(true);
+    setError(null);
 
-      try {
-        const response = await fetch("/api/Pendingrequest", { cache: 'no-store' });
-
+    try {
+      const response = await fetch("/api/Pendingrequest",  {method: "GET",cache: 'no-store' })
+      .then((response)=>{
         if (!response.ok) {
           throw new Error("Failed to fetch orders");
         }
-        const data = await response.json();
-        // console.log(data,"my res");
-
+        return response.json();
+      }).
+      then((data) => {
         setpeoplereq(data);
-        // console.log(data);
-      } catch (err) {
+      }).catch((err)=>{
         console.error(err);
         setError("Failed to fetch orders");
-      } finally {
-        setIsLoading(false);
-      }
-    };
+      });
+
+      
+      // const data = await response.json();
+      // console.log(data,"my res");
+
+      
+      // console.log(data);
+    } catch (err) {
+      
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  useEffect(() => {
 
     fetchData();
   }, [session]);
@@ -145,7 +154,7 @@ const admin = () => {
       setError(null);
 
       try {
-        const response = await fetch("/api/Pendingrequest",{ cache: 'no-store' });
+        const response = await fetch("/api/Pendingrequest",{method: "GET",cache: 'no-store' });
 
         if (!response.ok) {
           throw new Error("Failed to fetch orders");
@@ -166,7 +175,7 @@ const admin = () => {
       console.log("3")
 
       try {
-        const response = await fetch("/api/instruments",{ cache: 'no-store' });
+        const response = await fetch("/api/instruments",{method: "GET",cache: 'no-store' });
         if (!response.ok) {
           throw new Error(`Failed to fetch instruments: ${response.status}`);
         }
@@ -214,7 +223,7 @@ const admin = () => {
   };
   const fetchInstruments = async () => {
     try {
-      const response = await fetch("/api/instruments",{ cache: 'no-store' });
+      const response = await fetch("/api/instruments",{method: "GET",cache: 'no-store' });
       if (!response.ok) {
         throw new Error(`Failed to fetch instruments: ${response.status}`);
       }
@@ -345,7 +354,7 @@ const admin = () => {
                     <button className="ml-4 justify-center">Pending Request</button>
                   </h1>
 
-                  <h1
+                  {/* <h1
                     onClick={refresh}
                     className={`px-2 ${state === "request" ? "bg-blue-200" : "bg-white"
                       }  items-center h-12 flex flex-row hover:border-blue-300 border-2 hover:bg-blue-100 text-xl text-blue-700`}
@@ -355,7 +364,7 @@ const admin = () => {
                       style={{ color: "black" }}
                     ></i>{" "}
                     <button className="ml-4 justify-center">Refresh</button>
-                  </h1>
+                  </h1> */}
 
                 </div>
 

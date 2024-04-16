@@ -19,7 +19,7 @@ export async function GET(req,{params}) {
     }
 
     if(decoded!=null && decoded.username===data.username ){
-        console.log("hu",decoded)
+        // console.log("hu",decoded)
         await mongoose.connect(connection.connection);
     const user=await User.find({"name":data.username});
     return Response.json({status:"success",details:user[0]});

@@ -154,7 +154,10 @@ const FormComponent = () => {
 
         // You can handle success actions here, e.g., redirect user to another page
       }else if(d.status==="fail"){
+        setLoader(0);
         alert("Please complete profile details.");
+
+
       }
        else {
         // Handle server errors or other issues

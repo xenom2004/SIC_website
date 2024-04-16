@@ -2,7 +2,7 @@
 import mongoose from "mongoose";
 import connection from "../../../lib/db"  
 import instrument from "../../../lib/modal/instrument";
-
+export const dynamic = 'force-dynamic'
 export async function POST(req) {
     try {
         const data = await req.json();

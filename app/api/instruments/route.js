@@ -2,6 +2,7 @@
 import mongoose from "mongoose";
 import connection from "../../lib/db"  
 import instrument from "../../lib/modal/instrument";
+import { NextResponse } from "next/server";
 // const instruments = [
 //   {
 //     id: 1,
@@ -316,16 +317,16 @@ import instrument from "../../lib/modal/instrument";
   
 // ];
 
-
-export async function GET() {
+export const dynamic = 'force-dynamic'
+export async function GET(req) {
     try{
     await mongoose.connect(connection.connection);
     const inst=await instrument.find();
     // console.log(inst,"op")
 
 
-    return Response.json(inst);}
+    return NextResponse.json(inst);} //
     catch{
-        return Response.json({"status":"fail"});
+        return NextResponse.json({"status":"fail"});
     }
 }

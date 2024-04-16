@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
 import connection from "../../lib/db";
 import Order from "../../lib/modal/order";
+export const dynamic = 'force-dynamic'
 import { NextResponse } from "next/server";
 
-export async function GET(req, res) {
+export async function GET(req) {
     const val = await mongoose.connect(connection.connection);
     // console.log(connection);
     try {

@@ -112,11 +112,11 @@ export async function POST(req,res){
 }
 
 export async function GET() {
-    console.log("jjjjjjj")
+    // console.log("jjjjjjj")
     await mongoose.connect(connection.connection)
     const user=await User.find({"name":"Joee"});
     await mongoose.connection.close();
-    console.log(user,"kkk");
+    // console.log(user,"kkk");
 
     return Response.json(user);
 }

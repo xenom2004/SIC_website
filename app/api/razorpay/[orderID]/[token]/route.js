@@ -49,10 +49,10 @@ const find_cost=(inst,order_form,type)=>{
 
 }
 export async function GET(req,{params}) {
-    console.log("niug")
+    // console.log("niug")
     try{
     const id=params.orderID
-    console.log(id,"opo");
+    // console.log(id,"opo");
     await mongoose.connect(connection.connection);
     const order_details=await Order.findById(id);
     const inst=await instrument.find(); 

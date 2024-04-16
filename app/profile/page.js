@@ -59,12 +59,13 @@ const ProfilePage = () => {
   };
 
   const handlesave = async () => {
-    setLoader(1);
+    
     if (!areRequiredFieldsFilled()) {
       // If not all required fields are filled, do nothing
       alert("please fill all the details");
       return;
     }
+    setLoader(1);
     const data = {
       ...profileData,
       "name":session.user.name,
@@ -122,7 +123,7 @@ const ProfilePage = () => {
       } else {
         requiredFields.push("Designation");
       }
-      console.log(profileData,requiredFields ,"profileData");
+      // console.log(profileData,requiredFields ,"profileData");
     
       // Check if all required fields are filled
       return requiredFields.every(field => profileData[field] !== undefined && profileData[field] !== null && profileData[field] !== "");
@@ -156,7 +157,7 @@ const ProfilePage = () => {
         const data = await res.json();
         // console.log(data,"kio")
         if (data.status == "success") {
-          console.log("jijii", data.details);
+          // console.log("jijii", data.details);
           setuser_details(data.details);
           setProfileData(data.details);
           setImage(data.details.image);
@@ -305,7 +306,10 @@ const ProfilePage = () => {
         </Button>
       </DropdownTrigger>
       <DropdownMenu 
-        onAction={(key) => {setloginType(key)}}
+        onAction={(key) => {setloginType(key);setProfileData({
+          ...profileData,
+          "loginType": key,
+        });}}
         aria-label="Single selection example"
         variant="flat"
         disallowEmptySelection

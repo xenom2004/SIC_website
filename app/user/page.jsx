@@ -236,7 +236,7 @@ export default function Page() {
                       <p className="grow">Instruments</p>
                       <p>amount</p>
                     </div>
-                    {/* {console.log(order_details?.form_details, "hii")} */}
+                    {console.log(order_details?.form_details, "hii")}
                     {/* {order_details?.form_details.map((inst) => (
                       <div className="flex flex-row  ">
                         <p className="grow truncate ">{inst.name}</p>
@@ -249,7 +249,7 @@ export default function Page() {
                           {transformedForms[key]?.name}
                         </p>
                         <p className="text-wrap">
-                          {transformedForms[key].price}
+                          {order_details?.form_details[key].quantity}
                         </p>
                       </div>
                     ))}
