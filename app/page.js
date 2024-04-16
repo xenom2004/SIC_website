@@ -267,7 +267,7 @@ export default function Home() {
             </button>
           </Link>
         </div>
-        {/* ------------------------------------------------------------------------------------------------------------------ */}
+        {/* ------------------------------------------------------------------------------------------------------------------- */}
         <div className="py-16 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center mt-32">
           <h2 className="text-3xl font-roboto-thin text-ligthSky mb-8">
             How To Use Our Instruments?
@@ -396,11 +396,52 @@ export default function Home() {
             </div>
           </div>
         </div>
+        {/* ------------------------------------------------------------------------------------------------------------------ */}
+        <div className="container mx-auto mt-32">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
+            {/* Second Section */}
+            <div
+              className="sm:col-span-2 lg:col-span-4 bg-white text-black p-8 rounded-lg flex flex-col justify-between items-start"
+              style={{ order: "2" }}
+            >
+              {/* Change items-start */}
+              <div>
+                <h2 className="text-xl font-bold mb-4">
+                  Why Choose Our Program?
+                </h2>
+                <p className="text-lg">
+                  Our training programs are meticulously crafted to provide you
+                  with the essential skills and knowledge required to excel in
+                  the instrumentation field. Backed by seasoned instructors and
+                  cutting-edge facilities, we offer an immersive learning
+                  journey tailored to meet your specific career aspirations. Our
+                  comprehensive curriculum covers both theoretical concepts and
+                  practical hands-on experience, ensuring that you graduate
+                  fully equipped to tackle real-world challenges in the
+                  industry.
+                </p>
+              </div>
+              <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4">
+                Explore Further
+              </button>
+            </div>
+            {/* First Section */}
+            <div
+              className="sm:col-span-2 lg:col-span-2 bg-lightSky text-white p-8 rounded-lg flex flex-col items-center justify-center"
+              style={{ order: "1" }}
+            >
+              {/* Add items-center */}
+              <h2 className="text-4xl mb-8">
+                Discover Our Renowned Training Program for Interns and Fresh
+                Graduates
+              </h2>
+            </div>
+          </div>
+        </div>
+        ;
         {/* ---------------------------------------------------------------------------------------------------------------------- */}
         <Statistics />
         {/* ----------------------------------------------------------------------------------------------------------------- */}
-        {/* 
-				<div className="flex justify-center p-4 "><MyCarousel/></div> */}
         {/* ------------------------------------------------------------------------------------------------------------------- */}
       </main>
     </div>
