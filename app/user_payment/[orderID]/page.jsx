@@ -274,7 +274,10 @@ const OrderDetails = () => {
 
   return (
     <div className="w-full px-24 mx-auto bg-white shadow-lg p-4 rounded-md mt-8">
-      <h1 className="text-2xl font-bold mb-4">{order.name}</h1>
+      <h1 className="text-2xl font-bold mb-4">
+        Name: {order.name.charAt(0).toUpperCase() + order.name.slice(1)}
+      </h1>
+
       <div className="mb-4">
         <h2 className="text-lg font-semibold mb-2">Form Details:</h2>
         <p>
@@ -296,7 +299,7 @@ const OrderDetails = () => {
               onClick={handlepaymnent}
               className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mr-2"
             >
-              confirm Payment
+              Confirm Payment
             </button>
           </div>
         </>
