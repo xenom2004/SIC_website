@@ -176,7 +176,11 @@ const FormComponent = () => {
   };
 
   if (status === "loading") {
-    return <p>Loading...</p>;
+    return (
+      <div className="h-screen flex items-center justify-center fixed top-0 left-0 right-0 bottom-0 bg-white z-50">
+        <Spinner />
+      </div>
+    );
   }
 
   if (status === "unauthenticated") {
@@ -218,7 +222,7 @@ const FormComponent = () => {
       <div className="flex justify-center mt-4">
         <Button
           onClick={send}
-          className="text-center px-auto text-2xl hover:bg-green-500 justify-center flex"
+          className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mr-2"
         >
           Send for verification
         </Button>
