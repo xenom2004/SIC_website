@@ -247,7 +247,7 @@ const Header = () => {
             </button>
           )}
 
-          <span className="px-4">
+          <span className="px-4 hidden">
             <Switch
               checked={checked}
               onChange={handleChange}

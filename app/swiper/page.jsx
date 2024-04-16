@@ -1,15 +1,14 @@
-"use client"
+"use client";
 import MyCarousel from "../components/MyCarousel";
 
-import React from 'react'
+import React from "react";
 
 const page = () => {
   return (
-
     <div>
-      <MyCarousel/>
+      <MyCarousel />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;
