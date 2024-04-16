@@ -108,53 +108,56 @@ const admin = () => {
 
   useEffect(() => {
     console.log("--------------------------------", state);
-  }, [state])
+  }, [state]);
   const fetchData = async () => {
     setIsLoading(true);
     setError(null);
 
     try {
-      const response = await fetch("/api/Pendingrequest",  {method: "GET",cache: 'no-store' })
-      .then((response)=>{
-        if (!response.ok) {
-          throw new Error("Failed to fetch orders");
-        }
-        return response.json();
-      }).
-      then((data) => {
-        setpeoplereq(data);
-      }).catch((err)=>{
-        console.error(err);
-        setError("Failed to fetch orders");
-      });
+      const response = await fetch("/api/Pendingrequest", {
+        method: "GET",
+        cache: "no-store",
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to fetch orders");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setpeoplereq(data);
+        })
+        .catch((err) => {
+          console.error(err);
+          setError("Failed to fetch orders");
+        });
 
-      
       // const data = await response.json();
       // console.log(data,"my res");
 
-      
       // console.log(data);
     } catch (err) {
-      
     } finally {
       setIsLoading(false);
     }
   };
   useEffect(() => {
-
     fetchData();
   }, [session]);
 
   const refresh = async () => {
-    console.log("1")
+    console.log("1");
     const fetchData = async () => {
-      console.log("2")
+      console.log("2");
 
       setIsLoading(true);
       setError(null);
 
       try {
-        const response = await fetch("/api/Pendingrequest",{method: "GET",cache: 'no-store' });
+        const response = await fetch("/api/Pendingrequest", {
+          method: "GET",
+          cache: "no-store",
+        });
 
         if (!response.ok) {
           throw new Error("Failed to fetch orders");
@@ -172,10 +175,13 @@ const admin = () => {
       }
     };
     const fetchInstruments = async () => {
-      console.log("3")
+      console.log("3");
 
       try {
-        const response = await fetch("/api/instruments",{method: "GET",cache: 'no-store' });
+        const response = await fetch("/api/instruments", {
+          method: "GET",
+          cache: "no-store",
+        });
         if (!response.ok) {
           throw new Error(`Failed to fetch instruments: ${response.status}`);
         }
@@ -187,15 +193,13 @@ const admin = () => {
     };
     fetchInstruments();
     fetchData();
-  }
-
-
+  };
 
   const AddInstrument = async () => {
     try {
       const response = await fetch("/api/addinstruments", {
         method: "POST",
-      cache: 'no-store' ,
+        cache: "no-store",
         body: JSON.stringify({
           name: new_inst_name,
 
@@ -223,7 +227,10 @@ const admin = () => {
   };
   const fetchInstruments = async () => {
     try {
-      const response = await fetch("/api/instruments",{method: "GET",cache: 'no-store' });
+      const response = await fetch("/api/instruments", {
+        method: "GET",
+        cache: "no-store",
+      });
       if (!response.ok) {
         throw new Error(`Failed to fetch instruments: ${response.status}`);
       }
@@ -236,7 +243,9 @@ const admin = () => {
   const fetchRequest = async () => {
     try {
       const timestamp = Date.now();
-      const response = await fetch(`/api/Pendingrequest?t=${timestamp}`,{ cache: 'no-store' });
+      const response = await fetch(`/api/Pendingrequest?t=${timestamp}`, {
+        cache: "no-store",
+      });
       if (!response.ok) {
         throw new Error(`Failed to fetch request: ${response.status}`);
       }
@@ -247,7 +256,6 @@ const admin = () => {
     }
   };
   useEffect(() => {
-
     fetchInstruments();
     // fetchRequest();
   }, [session]);
@@ -287,74 +295,81 @@ const admin = () => {
     }
   }
 
-
   return (
     <>
       {session &&
         session.user.isAdmin === "admin" &&
-        status === "authenticated" &&
-        <>
-          <div className="bg-blue-100 h-fit  w-full">
-            <div className="bg-black bg-opacity-25 h-[1000px] md:[800px]  lg:h-fit md:p-8 md:m-8 m-2 p-2 rounded-xl">
-              <div className="flex flex-col md:flex-row w-full md:h-full h-fit  z-10">
-                <div className="bg-white  flex flex-row md:flex-col h-fit md:h-full md:min-h-screen min-w-[20%]">
-                  <h1 className=" hidden md:flex px-2 items-center h-12 flex flex-row hover:border-blue-300 border-2  text-xl text-blue-700">
-                    <i
-                      className="fa-brands fa-hive fa-3xl "
-                      style={{ color: "black" }}
-                    ></i>
-                    <p className="ml-4 justify-center">DashBoard</p>
-                  </h1>
-                  <h1
-                    onClick={() => setstate("stats")}
-                    className={`${state === "stats" ? "bg-blue-200" : "bg-white"
+        status === "authenticated" && (
+          <>
+            <div className="bg-blue-100 h-fit  w-full">
+              <div className="bg-black bg-opacity-25 h-[1000px] md:[800px]  lg:h-fit md:p-8 md:m-8 m-2 p-2 rounded-xl">
+                <div className="flex flex-col md:flex-row w-full md:h-full h-fit  z-10">
+                  <div className="bg-white  flex flex-row md:flex-col h-fit md:h-full md:min-h-screen min-w-[20%]">
+                    <h1 className=" hidden md:flex px-2 items-center h-12 flex flex-row hover:border-blue-300 border-2  text-xl text-blue-700">
+                      <i
+                        className="fa-brands fa-hive fa-3xl "
+                        style={{ color: "black" }}
+                      ></i>
+                      <p className="ml-4 justify-center">DashBoard</p>
+                    </h1>
+                    <h1
+                      onClick={() => setstate("stats")}
+                      className={`${
+                        state === "stats" ? "bg-blue-200" : "bg-white"
                       } px-2 items-center h-12 flex flex-row hover:border-blue-300 border-2 hover:bg-blue-100 text-xl text-blue-700`}
-                  >
-                    <i
-                      className="fa-solid fa-chart-simple fa-3xl "
-                      style={{ color: "black" }}
-                    ></i>{" "}
-                    <button className="ml-4 justify-center">Stats</button>
-                  </h1>
-                  <h1
-                    onClick={() => setstate("instruments")}
-                    className={`px-2 ${state === "instruments" ? "bg-blue-200" : "bg-white"
+                    >
+                      <i
+                        className="fa-solid fa-chart-simple fa-3xl "
+                        style={{ color: "black" }}
+                      ></i>{" "}
+                      <button className="ml-4 justify-center">Stats</button>
+                    </h1>
+                    <h1
+                      onClick={() => setstate("instruments")}
+                      className={`px-2 ${
+                        state === "instruments" ? "bg-blue-200" : "bg-white"
                       } items-center h-12 flex flex-row hover:border-blue-300 border-2 hover:bg-blue-100 text-xl text-blue-700`}
-                  >
-                    <i
-                      className="fa-solid fa-fax fa-3xl "
-                      style={{ color: "black" }}
-                    ></i>{" "}
-                    <button className="ml-4 justify-center">Instruments</button>
-                  </h1>
-                  <h1
-                    onClick={() => setstate("cost")}
-                    className={`px-2 hidden ${state === "cost" ? "bg-blue-200" : "bg-white"
+                    >
+                      <i
+                        className="fa-solid fa-fax fa-3xl "
+                        style={{ color: "black" }}
+                      ></i>{" "}
+                      <button className="ml-4 justify-center">
+                        Instruments
+                      </button>
+                    </h1>
+                    <h1
+                      onClick={() => setstate("cost")}
+                      className={`px-2 hidden ${
+                        state === "cost" ? "bg-blue-200" : "bg-white"
                       }  items-center h-12 sm:flex sm:flex-row hover:border-blue-300 border-2 hover:bg-blue-100 text-xl text-blue-700`}
-                  >
-                    <i
-                      className="fa-solid fa-calculator fa-3xl "
-                      style={{ color: "black" }}
-                    ></i>{" "}
-                    <button className="ml-4 justify-center">
-                      <Link href="/SIC - Fee Structure.pdf" locale="false">
-                        Cost
-                      </Link>
-                    </button>
-                  </h1>
-                  <h1
-                    onClick={() => setstate("request")}
-                    className={`px-2 ${state === "request" ? "bg-blue-200" : "bg-white"
+                    >
+                      <i
+                        className="fa-solid fa-calculator fa-3xl "
+                        style={{ color: "black" }}
+                      ></i>{" "}
+                      <button className="ml-4 justify-center">
+                        <Link href="/SIC - Fee Structure.pdf" locale="false">
+                          Cost
+                        </Link>
+                      </button>
+                    </h1>
+                    <h1
+                      onClick={() => setstate("request")}
+                      className={`px-2 ${
+                        state === "request" ? "bg-blue-200" : "bg-white"
                       }  items-center h-12 flex flex-row hover:border-blue-300 border-2 hover:bg-blue-100 text-xl text-blue-700`}
-                  >
-                    <i
-                      className="fa-solid fa-person-circle-question fa-3xl "
-                      style={{ color: "black" }}
-                    ></i>{" "}
-                    <button className="ml-4 justify-center">Pending Request</button>
-                  </h1>
+                    >
+                      <i
+                        className="fa-solid fa-person-circle-question fa-3xl "
+                        style={{ color: "black" }}
+                      ></i>{" "}
+                      <button className="ml-4 justify-center">
+                        Pending Request
+                      </button>
+                    </h1>
 
-                  {/* <h1
+                    {/* <h1
                     onClick={refresh}
                     className={`px-2 ${state === "request" ? "bg-blue-200" : "bg-white"
                       }  items-center h-12 flex flex-row hover:border-blue-300 border-2 hover:bg-blue-100 text-xl text-blue-700`}
@@ -365,14 +380,93 @@ const admin = () => {
                     ></i>{" "}
                     <button className="ml-4 justify-center">Refresh</button>
                   </h1> */}
+                  </div>
 
-                </div>
+                  {state === "stats" && (
+                    <div className="ml-2 lg:grid flex-col flex    lg:grid-cols-2 gap-4 w-full h-screen">
+                      <div className="bg-custompurple rounded-xl p-4 gap-y-2 flex flex-col w-full min-h-[400px] ">
+                        <div className="flex flex-row  ">
+                          <p className="text-black grow  text-md">
+                            Pending request
+                          </p>
+                          {/* <App people={{ item: peoplereq }} /> */}
+                          <input
+                            className="rounded-lg p-2"
+                            type="text"
+                            value={reqfilter}
+                            onChange={handleChangereq}
+                            placeholder="search by name"
+                          />
+                        </div>
+                        <div className="gap-y-2  flex flex-col rounded-xl bg-white p-4 w-full max-h-[350px] overflow-y-auto  h-full">
+                          {filteredDatareq.length > 0 ? (
+                            filteredDatareq.map((req) => (
+                              <RequestCard key={req.id} req={req} />
+                            ))
+                          ) : (
+                            <p className=" flex items-center justify-center h-full w-full ">
+                              Loading requests..
+                            </p>
+                          )}
+                        </div>
+                      </div>
 
-                {state === "stats" && (
-                  <div className="ml-2 lg:grid flex-col flex    lg:grid-cols-2 gap-4 w-full h-screen">
-                    <div className="bg-custompurple rounded-xl p-4 gap-y-2 flex flex-col w-full min-h-[400px] ">
+                      <div className="bg-custompurple rounded-xl p-4 gap-y-2 flex flex-col w-full min-h-[400px]">
+                        <div className="flex flex-row  ">
+                          <p className="text-black grow  text-md">
+                            Check Instruents
+                          </p>
+                          {/* <App people={{ item: instruments }} /> */}
+                          <input
+                            className="rounded-lg p-2"
+                            type="text"
+                            value={filter}
+                            onChange={handleChangefilter}
+                            placeholder="search by name"
+                          />
+                        </div>
+                        <div className="gap-y-2 flex flex-col rounded-xl bg-white p-4 w-full max-h-[350px] overflow-y-auto  h-full">
+                          {filteredData.length > 0 ? (
+                            filteredData.map((req) => (
+                              <InstrumentCard key={req.id} instrument={req} />
+                            ))
+                          ) : (
+                            <p className=" flex items-center justify-center h-full w-full ">
+                              Loading instruments..
+                            </p>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className=" bg-custompurple items-center justify-center flex col-span-2 w-full h-full">
+                        <div className="flex flex-row items-center gap-x-8 justify-center">
+                          <div className="flex flex-col bg-slate-300 rounded-xl  p-4">
+                            <h1 className="test-green-600 text-center">
+                              Payment completed
+                            </h1>
+                            {console.log(peoplereq, "lopllp")}
+                            <h1 className="text-5xl font-bold text-center">
+                              {calculate_totalCompletedRequest(peoplereq)}
+                            </h1>
+                          </div>
+                          <div className="flex  bg-slate-300 rounded-xl p-4 flex-col">
+                            <h1 className="test-black  text-center">
+                              Pending Request
+                            </h1>
+                            <h1 className="text-5xl font-bold text-center">
+                              {calculate_totalPendingRequest(peoplereq)}
+                            </h1>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {state === "request" && (
+                    <div className="bg-custompurple rounded-xl p-4 ml-2 flex flex-col w-full min-h-[400px] ">
                       <div className="flex flex-row  ">
-                        <p className="text-black grow  text-md">Pending request</p>
+                        <p className="text-black grow  text-md">
+                          Pending request
+                        </p>
                         {/* <App people={{ item: peoplereq }} /> */}
                         <input
                           className="rounded-lg p-2"
@@ -382,10 +476,10 @@ const admin = () => {
                           placeholder="search by name"
                         />
                       </div>
-                      <div className="gap-y-2  flex flex-col rounded-xl bg-white p-4 w-full max-h-[350px] overflow-y-auto  h-full">
+                      <div className="gap-y-2  flex flex-col rounded-xl bg-white p-4 w-full mt-4 overflow-y-auto max-h-[550px]  h-full">
                         {filteredDatareq.length > 0 ? (
                           filteredDatareq.map((req) => (
-                            <RequestCard key={req.id} req={req} />
+                            <PendingReqC key={req.id} req={req} />
                           ))
                         ) : (
                           <p className=" flex items-center justify-center h-full w-full ">
@@ -393,12 +487,16 @@ const admin = () => {
                           </p>
                         )}
                       </div>
-                    </div>
 
-                    <div className="bg-custompurple rounded-xl p-4 gap-y-2 flex flex-col w-full min-h-[400px]">
+                      {/* <PendingReqC /> */}
+                    </div>
+                  )}
+                  {state === "instruments" && (
+                    <div className="bg-custompurple rounded-xl  p-4 ml-2 flex flex-col w-full min-h-[600px] ">
                       <div className="flex flex-row  ">
-                        <p className="text-black grow  text-md">Check Instruents</p>
-                        {/* <App people={{ item: instruments }} /> */}
+                        <p className="text-black grow  text-md">
+                          Check Instruents
+                        </p>
                         <input
                           className="rounded-lg p-2"
                           type="text"
@@ -407,10 +505,10 @@ const admin = () => {
                           placeholder="search by name"
                         />
                       </div>
-                      <div className="gap-y-2 flex flex-col rounded-xl bg-white p-4 w-full max-h-[350px] overflow-y-auto  h-full">
+                      <div className="gap-y-2 mt-2 flex flex-col rounded-xl bg-white p-4 w-full max-h-[500px] overflow-y-auto  h-full">
                         {filteredData.length > 0 ? (
                           filteredData.map((req) => (
-                            <InstrumentCard key={req.id} instrument={req} />
+                            <InstrumentCardComp key={req.id} instrument={req} />
                           ))
                         ) : (
                           <p className=" flex items-center justify-center h-full w-full ">
@@ -418,84 +516,8 @@ const admin = () => {
                           </p>
                         )}
                       </div>
-                    </div>
 
-                    <div className=" bg-custompurple items-center justify-center flex col-span-2 w-full h-full">
-                      <div className="flex flex-row items-center gap-x-8 justify-center">
-                        <div className="flex flex-col bg-slate-300 rounded-xl  p-4">
-                          <h1 className="test-green-600 text-center">
-                            Payment completed
-                          </h1>
-                          {console.log(peoplereq, "lopllp")}
-                          <h1 className="text-5xl font-bold text-center">
-                            {calculate_totalCompletedRequest(peoplereq)}
-                          </h1>
-                        </div>
-                        <div className="flex  bg-slate-300 rounded-xl p-4 flex-col">
-                          <h1 className="test-black  text-center">
-                            Pending Request
-                          </h1>
-                          <h1 className="text-5xl font-bold text-center">
-                            {calculate_totalPendingRequest(peoplereq)}
-                          </h1>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-                {state === "request" && (
-                  <div className="bg-custompurple rounded-xl p-4 ml-2 flex flex-col w-full min-h-[400px] ">
-                    <div className="flex flex-row  ">
-                      <p className="text-black grow  text-md">Pending request</p>
-                      {/* <App people={{ item: peoplereq }} /> */}
-                      <input
-                        className="rounded-lg p-2"
-                        type="text"
-                        value={reqfilter}
-                        onChange={handleChangereq}
-                        placeholder="search by name"
-                      />
-                    </div>
-                    <div className="gap-y-2  flex flex-col rounded-xl bg-white p-4 w-full mt-4 overflow-y-auto max-h-[550px]  h-full">
-                      {filteredDatareq.length > 0 ? (
-                        filteredDatareq.map((req) => (
-                          <PendingReqC key={req.id} req={req} />
-                        ))
-                      ) : (
-                        <p className=" flex items-center justify-center h-full w-full ">
-                          Loading requests..
-                        </p>
-                      )}
-                    </div>
-
-                    {/* <PendingReqC /> */}
-                  </div>
-                )}
-                {state === "instruments" && (
-                  <div className="bg-custompurple rounded-xl  p-4 ml-2 flex flex-col w-full min-h-[600px] ">
-                    <div className="flex flex-row  ">
-                      <p className="text-black grow  text-md">Check Instruents</p>
-                      <input
-                        className="rounded-lg p-2"
-                        type="text"
-                        value={filter}
-                        onChange={handleChangefilter}
-                        placeholder="search by name"
-                      />
-                    </div>
-                    <div className="gap-y-2 mt-2 flex flex-col rounded-xl bg-white p-4 w-full max-h-[500px] overflow-y-auto  h-full">
-                      {filteredData.length > 0 ? (
-                        filteredData.map((req) => (
-                          <InstrumentCardComp key={req.id} instrument={req} />
-                        ))
-                      ) : (
-                        <p className=" flex items-center justify-center h-full w-full ">
-                          Loading instruments..
-                        </p>
-                      )}
-                    </div>
-
-                    <>
+                      {/* <>
                       <Button className="h-[80px] my-4" onPress={onOpen}>
                         Add Instruments
                       </Button>
@@ -557,21 +579,20 @@ const admin = () => {
                           )}
                         </ModalContent>
                       </Modal>
-                    </>
-                  </div>
-                )}
+                    </> */}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        </>}
+          </>
+        )}
     </>
-
-
   );
-}
-  // }
-  // else{
-  //   return <div>"fu"</div>
-  // }
+};
+// }
+// else{
+//   return <div>"fu"</div>
+// }
 
 export default admin;

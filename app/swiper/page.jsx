@@ -115,3 +115,4 @@ const Page = () => {
 };
 
 export default Page;
+/* HTML: <div class="loader"></div> */
