@@ -1,11 +1,12 @@
+This is a web application that automates the request making procedure for instruments available at the Sophiticated Instrumentation Facililty, IIT Indore.
+To use our project follow the following steps:
+
+
 <!-- -----------------------------------------------User------------------------------------------------------------- -->
 
 
 Steps to follow to run the SIC Website:
-1) open folder SIC_WEBSITE.
-2) type " npm i" in terminal.
-3) type " npm run dev " in terminal.
-4) go to " localhost:3000 "
+1) Go to "https://sic-website-lac.vercel.app"
 5) register an account and login.
 6) Go through intruments and check availability.
 7) Go to Usage Charges to calculate total cost and place order.
@@ -17,8 +18,8 @@ Steps to follow to run the SIC Website:
 13) Send sample to SIC.
 
 For Admin access:
-1) login as username:"jio", password:"jio".
-2) go to "localhost:3000/admin"
+1) login as username:"admin", password:"1234".
+2) go to "https://sic-website-lac.vercel.app/admin"
 3) view orders and accept/reject them.
 
 

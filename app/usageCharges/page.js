@@ -36,10 +36,10 @@ const Row = ({
   return (
     <>
       <tr className="mx-auto " key={instrument.id}>
-        <td className=" text-center hover:bg-slate-100 border px-4 py-2">
+        <td className=" hover:bg-slate-100 border px-4 py-2">
           {instrument.id}
         </td>
-        <td className=" text-center hover:bg-slate-100 border px-4 py-2">
+        <td className="hover:bg-slate-100 border px-4 py-2">
           {instrument.name}
         </td>
         <td
@@ -396,7 +396,7 @@ const ChargeCalculator = () => {
             <tr className="bg-gray-100">
               <th className=" text-center px-4 py-2">#</th>
 
-              <th className="   text-center px-4 py-2">Instrument Name</th>
+              <th className="px-4 py-2">Instrument Name</th>
               <th className="md:hidden">
                 <Dropdown>
                   <DropdownTrigger>
