@@ -40,9 +40,9 @@ export default function Page() {
             </div>
             <div className="md:w-1/2">
               <img
-                src="https://sic.iiti.ac.in/wp-content/uploads/2022/08/png-clipart-mission-statement-vision-statement-business-marketing-mission-company-logo-innovation-thumbnail-2.png"
+                src="https://cdn-icons-png.freepik.com/512/1628/1628615.png"
                 alt="Mission Statement"
-                className="rounded-lg"
+                className="rounded-lg w-60"
               />
             </div>
           </section>
@@ -57,11 +57,11 @@ export default function Page() {
                 world in terms of cost, efficiency, and range of services.
               </p>
             </div>
-            <div className="md:w-1/2">
+            <div className="md:w-1/2 md:pl-8 flex justify-center">
               <img
-                src="https://sic.iiti.ac.in/wp-content/uploads/2022/08/download-3.png"
+                src="https://cdn-icons-png.freepik.com/512/5419/5419089.png"
                 alt="Vision Statement"
-                className="rounded-lg"
+                className="rounded-lg w-60 md:w-auto"
               />
             </div>
           </section>
