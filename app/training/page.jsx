@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 // // import Container from '../components/Container';
 import { getSession } from "next-auth/react";
 import { Spinner } from "@nextui-org/react";
+import Link from "next/link";
 // const Page = () => {
 //   const { data: session } = useSession();
 //   const router = useRouter();
@@ -168,7 +169,9 @@ export default function Page() {
               Registration Fee (In ₹.INR Including GST)
               <p className=" title-font sm:text-sm py-2 text-blue-700">
                 {" "}
+                <Link href="https://drive.google.com/file/d/1B751Vi1cWHBrV1YIcu2NfIO0vyIYKwQn/view?usp=sharing">
                 Brochure
+                </Link>
               </p>
             </h3>
             <h3 className="title-font lg:text-xl py-2 mx-24 text">
@@ -176,9 +179,10 @@ export default function Page() {
               Payment.
               <p className=" title-font sm:text-sm py-2 text-blue-700">
                 {" "}
-                Application Form
+                <Link href="https://docs.google.com/forms/d/e/1FAIpQLSfLYsTwCdywujwLzSSsvPRTBedt65Q9Pg8X4x7Kg5MEU4C_sw/viewform">Application Form</Link>
               </p>
-              <p className=" title-font sm:text-sm  text-blue-700"> Pay Now</p>
+              <p className=" title-font sm:text-sm  text-blue-700">
+                <Link href="https://forms.eduqfix.com/indoreiit/add?formType=4599113494952032"> Pay Now</Link></p>
             </h3>
           </div>
         </div>

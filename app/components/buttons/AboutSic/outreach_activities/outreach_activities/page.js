@@ -153,9 +153,9 @@ const Page = () => {
       dots[i].classList.add("bg-green-600");
     }
 
-    slides[newIndex - 1].classList.remove("hidden");
-    dots[newIndex - 1].classList.remove("bg-green-600");
-    dots[newIndex - 1].classList.add("bg-yellow-500");
+    slides[newIndex - 1]?.classList.remove("hidden");
+    dots[newIndex - 1]?.classList.remove("bg-green-600");
+    dots[newIndex - 1]?.classList.add("bg-yellow-500");
   }
 
   return (
