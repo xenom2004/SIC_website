@@ -40,6 +40,7 @@ const SingleCrystalXRayForm = () => {
   const [IR,setIR]=useState(GETitem(null, 'IR'));
   const [NMR,setNMR]=useState(GETitem(null, 'NMR'));
   const [Mass_spectrum,setMass_spectrum]=useState(GETitem(null, 'Mass_spectrum'));
+  const [remark,setremark]=useState(GETitem(null, 'remark'));
   // const [otherTechniques, setOtherTechniques] = useState({
   //   IR: GETitem(null, 'IR'),
   //   NMR: GETitem(null, 'NMR'),
@@ -214,6 +215,20 @@ const SingleCrystalXRayForm = () => {
             id="structureMaterial"
             value={structureMaterial}
             onChange={(e) => SETitem(e, setStructureMaterial, 'structureMaterial')}
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Enter starting material and solvent Information"
+            required
+          />
+        </div>
+        <div className="mb-4 mt-4">
+          <label htmlFor="structureMaterial" className="block text-gray-700 text-sm font-bold mb-2">
+            Any Remarks/ additional requests?
+          </label>
+          <input
+            type="text"
+            id="structureMaterial"
+            value={remark}
+            onChange={(e) => SETitem(e, setremark, 'remark')}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter starting material and solvent Information"
             required

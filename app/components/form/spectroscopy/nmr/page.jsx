@@ -21,7 +21,7 @@ const NMR = () => {
     }
     return def;
   };
-
+  const [remark,setremark]=useState(GETitem(null, 'remark'));
   const [amount, setAmount] = useState(() => GETitem('', 'amount'));
   const [D2O, setD2O] = useState(() => GETitem(false, 'D2O'));
   const [CD3COCH3, setCD3COCH3] = useState(() => GETitem(false, 'CD3COCH3'));
@@ -160,6 +160,20 @@ const NMR = () => {
             onChange={(e) => SETitem(e, setMolecularStructure, 'molecularStructure')}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter molecular structure..."
+            required
+          />
+        </div>
+        <div className="mb-4 mt-4">
+          <label htmlFor="structureMaterial" className="block text-gray-700 text-sm font-bold mb-2">
+            Any Remarks/ additional requests?
+          </label>
+          <input
+            type="text"
+            id="structureMaterial"
+            value={remark}
+            onChange={(e) => SETitem(e, setremark, 'remark')}
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Enter starting material and solvent Information"
             required
           />
         </div>

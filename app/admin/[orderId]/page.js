@@ -260,8 +260,15 @@ const OrderDetails = () => {
           </div>
 
           <div class="md:w-1/2 mt-4 md:mt-0">
+            Cover Letter:
             <img
               src={profileData?.cover_image}
+              class="w-full rounded-lg shadow-lg"
+              alt="Cover Image"
+            />
+            ID Card:
+            <img
+              src={profileData?.image}
               class="w-full rounded-lg shadow-lg"
               alt="Cover Image"
             />

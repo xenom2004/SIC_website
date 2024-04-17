@@ -4,7 +4,7 @@ const SFMForm = (prop) => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold mb-4 text-center">Additional Analysis Request Form</h2>
+      <h2 className="text-3xl font-bold mb-4 text-center">SpectroFluorometer Request Form</h2>
       <form  className="max-w-md mx-auto">
       <div className="grid grid-cols-2 gap-8">
         <div className="mb-4">
@@ -93,6 +93,20 @@ const SFMForm = (prop) => {
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
             placeholder="Enter special request..." 
           ></textarea>
+        </div>
+        <div className="mb-4 mt-4">
+          <label htmlFor="structureMaterial" className="block text-gray-700 text-sm font-bold mb-2">
+            Any Remarks/ additional requests?
+          </label>
+          <input
+            type="text"
+            id="structureMaterial"
+            value={prop.prop?.remark}
+            // onChange={(e) => SETitem(e, setremark, 'remark')}
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Enter starting material and solvent Information"
+            required
+          />
         </div>
         </div>
 

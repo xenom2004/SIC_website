@@ -181,7 +181,7 @@ const admin = () => {
         const response = await fetch("/api/instruments", {
           method: "GET",
           cache: "no-store",
-        });
+        }); 
         if (!response.ok) {
           throw new Error(`Failed to fetch instruments: ${response.status}`);
         }
@@ -338,6 +338,7 @@ const admin = () => {
                         Instruments
                       </button>
                     </h1>
+                    <Link href="/SIC - Fee Structure.pdf" locale="false">
                     <h1
                       onClick={() => setstate("cost")}
                       className={`px-2 hidden ${
@@ -349,11 +350,11 @@ const admin = () => {
                         style={{ color: "black" }}
                       ></i>{" "}
                       <button className="ml-4 justify-center">
-                        <Link href="/SIC - Fee Structure.pdf" locale="false">
+                        
                           Cost
-                        </Link>
+                        
                       </button>
-                    </h1>
+                    </h1></Link>
                     <h1
                       onClick={() => setstate("request")}
                       className={`px-2 ${
@@ -414,7 +415,7 @@ const admin = () => {
                       <div className="bg-custompurple rounded-xl p-4 gap-y-2 flex flex-col w-full min-h-[400px]">
                         <div className="flex flex-row  ">
                           <p className="text-black grow  text-md">
-                            Check Instruents
+                            Check Instruments
                           </p>
                           {/* <App people={{ item: instruments }} /> */}
                           <input

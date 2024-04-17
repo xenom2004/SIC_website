@@ -29,6 +29,7 @@ const ChemicalDataForm = () => {
   const [Other, setOther] = useState(() => GETitem(false, 'Other'));
   const [molecularFormula, setMolecularFormula] = useState(() => GETitem('', 'molecularFormula'));
   const [molecularStructure, setMolecularStructure] = useState(() => GETitem('', 'molecularStructure'));
+  const [remark,setremark]=useState(GETitem(null, 'remark'));
 
   useEffect(() => {
     const handleStorageChange = () => {
@@ -99,7 +100,7 @@ const ChemicalDataForm = () => {
               type="checkbox"
               
               checked={D2O}
-              onChange={() => handleSolubilityChange('D2O')}
+              onChange={(e) => SETitem(e, setD2O, 'D2O')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">D2O</span>
@@ -109,7 +110,7 @@ const ChemicalDataForm = () => {
               type="checkbox"
               
               checked={CD3COCH3}
-              onChange={() => handleSolubilityChange('CD3COCH3')}
+              onChange={(e) => SETitem(e, setCD3COCH3,"CD3COCH3")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">CD3COCH3</span>
@@ -119,7 +120,7 @@ const ChemicalDataForm = () => {
               type="checkbox"
               checked={MeOD}
               
-              onChange={() => handleSolubilityChange('MeOD')}
+              onChange={(e)=> SETitem(e, setMeOD,"MeOD")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">MeOD</span>
@@ -129,7 +130,7 @@ const ChemicalDataForm = () => {
               type="checkbox"
               checked={Other}
               
-              onChange={() => handleSolubilityChange('Other')}
+              onChange={(e)=> SETitem(e, setOther,"Other")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Other</span>
@@ -163,6 +164,21 @@ const ChemicalDataForm = () => {
             required
           />
         </div>
+        <div className="mb-4 mt-4">
+          <label htmlFor="structureMaterial" className="block text-gray-700 text-sm font-bold mb-2">
+            Any Remarks/ additional requests?
+          </label>
+          <input
+            type="text"
+            id="structureMaterial"
+            value={remark}
+            onChange={(e) => SETitem(e, setremark, 'remark')}
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Enter starting material and solvent Information"
+            required
+          />
+        </div>
+
 
       
       </form>
