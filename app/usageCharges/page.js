@@ -453,7 +453,7 @@ const ChargeCalculator = () => {
         {!session ? (
           <>
             <Button onPress={onOpen} color="success">
-              Proceed Furthur
+              Proceed Further
             </Button>
             <Modal
               backdrop="opaque"
