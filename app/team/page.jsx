@@ -49,9 +49,7 @@ export default function Page() {
     return <p>Loading...</p>
   }
 
-  if (status === "unauthenticated") {
-   router.push("./");
-  }
+ 
 
   return (
     <>
