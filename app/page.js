@@ -46,6 +46,12 @@ export default function Home() {
                   </button>
                 </Link>
               </div>
+              
+              <div className="flex justify-center md:justify-start my-4">
+                <Link href="./help" className="text-white-600">
+                Need help navigating the site? Click Here
+                </Link>
+              </div>
             </div>
           </section>
         </div>
