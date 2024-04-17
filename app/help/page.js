@@ -79,6 +79,8 @@ const HelpPage = () => {
         </ul>
       </div>
       <div className="w-full md:w-3/4 p-4">
+        <h3 className="text-xl font-bold mb-4">
+          Follow the guidelines to ease your request making process</h3>
         <section id="create-account" className="mb-8">
           <h2 className="text-xl font-semibold mb-4">1.Create account</h2>
           <p className="text-gray-800">
