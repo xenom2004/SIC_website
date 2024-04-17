@@ -117,6 +117,80 @@ const About = () => {
                 </span>
               )}
             </a>
+            <a
+              href="/team"
+              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+            >
+              {language === "english" ? (
+                "Faculty and Staff"
+              ) : (
+                <span
+                  style={{
+                    fontSize: "1.1em",
+                    fontWeight: "bold",
+                    lineHeight: "1.5",
+                  }}
+                >
+                  आउटरीच गतिविधियाँ
+                </span>
+              )}
+            </a>
+
+            <a
+              href="/training"
+              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+            >
+              {language === "english" ? (
+                "Training"
+              ) : (
+                <span
+                  style={{
+                    fontSize: "1.1em",
+                    fontWeight: "bold",
+                    lineHeight: "1.5",
+                  }}
+                >
+                  आउटरीच गतिविधियाँ
+                </span>
+              )}
+            </a>
+
+            <a
+              href="https://drive.google.com/file/d/1rpH2MmpYilbapkYzZpIcfUuHfsfDeHAW/view?usp=sharing"
+              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+            >
+              {language === "english" ? (
+                "Our Quality policy"
+              ) : (
+                <span
+                  style={{
+                    fontSize: "1.1em",
+                    fontWeight: "bold",
+                    lineHeight: "1.5",
+                  }}
+                >
+                  आउटरीच गतिविधियाँ
+                </span>
+              )}
+            </a>
+            <a
+              href="/help"
+              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+            >
+              {language === "english" ? (
+                "Help"
+              ) : (
+                <span
+                  style={{
+                    fontSize: "1.1em",
+                    fontWeight: "bold",
+                    lineHeight: "1.5",
+                  }}
+                >
+                  आउटरीच गतिविधियाँ
+                </span>
+              )}
+            </a>
           </li>
         </ul>
       </div>

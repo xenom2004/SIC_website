@@ -53,9 +53,7 @@ export default function Page() {
     );
   }
 
-  if (status === "unauthenticated") {
-    router.push("./");
-  }
+  
 
   return (
     <>
