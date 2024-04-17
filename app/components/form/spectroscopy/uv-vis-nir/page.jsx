@@ -25,6 +25,7 @@ const UVVISNIRForm = () => {
     const [noOfSamples, setNoOfSamples] = useState(GETitem("", "noOfSamples"));
     const [wavelengthRange, setWavelengthRange] = useState(GETitem("", "wavelengthRange"));
     const [specialExperiment, setSpecialExperiment] = useState(GETitem("", "specialExperiment"));
+    const [remark,setremark]=useState(GETitem(null, 'remark'));
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -70,6 +71,20 @@ const UVVISNIRForm = () => {
                         required
                     ></textarea>
                 </div>
+                <div className="mb-4 mt-4">
+          <label htmlFor="structureMaterial" className="block text-gray-700 text-sm font-bold mb-2">
+            Any Remarks/ additional requests?
+          </label>
+          <input
+            type="text"
+            id="structureMaterial"
+            value={remark}
+            onChange={(e) => SETitem(e, setremark, 'remark')}
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Enter starting material and solvent Information"
+            required
+          />
+        </div>
 
             </form>
         </div>

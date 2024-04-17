@@ -338,6 +338,7 @@ const admin = () => {
                         Instruments
                       </button>
                     </h1>
+                    <Link href="/SIC - Fee Structure.pdf" locale="false">
                     <h1
                       onClick={() => setstate("cost")}
                       className={`px-2 hidden ${
@@ -349,11 +350,11 @@ const admin = () => {
                         style={{ color: "black" }}
                       ></i>{" "}
                       <button className="ml-4 justify-center">
-                        <Link href="/SIC - Fee Structure.pdf" locale="false">
+                        
                           Cost
-                        </Link>
+                        
                       </button>
-                    </h1>
+                    </h1></Link>
                     <h1
                       onClick={() => setstate("request")}
                       className={`px-2 ${

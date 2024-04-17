@@ -39,6 +39,7 @@ const XAFSForm = () => {
   const [mdsSheetAttached, setMdsSheetAttached] = useState(GETitem(false, "mdsSheetAttached"));
   const [mdsSheetNonAttached, setMdsSheetNonAttached] = useState(GETitem(false, "mdsSheetNonAttached"));
   const [specialPrecautions, setSpecialPrecautions] = useState(GETitem("", "specialPrecautions"));
+  const [remark,setremark]=useState(GETitem(null, 'remark'));
 
   // Handle form submission
   const handleSubmit = (e) => {
@@ -218,6 +219,20 @@ const XAFSForm = () => {
             rows="3"
             className="resize-none appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter special precautions..."
+            required
+          />
+        </div>
+        <div className="mb-4 mt-4">
+          <label htmlFor="structureMaterial" className="block text-gray-700 text-sm font-bold mb-2">
+            Any Remarks/ additional requests?
+          </label>
+          <input
+            type="text"
+            id="structureMaterial"
+            value={remark}
+            onChange={(e) => SETitem(e, setremark, 'remark')}
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Enter starting material and solvent Information"
             required
           />
         </div>

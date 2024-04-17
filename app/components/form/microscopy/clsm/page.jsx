@@ -21,7 +21,7 @@ const FluorescenceMicroscopyForm = () => {
     }
     return def;
   };
-
+  const [remark,setremark]=useState(GETitem(null, 'remark'));
   const [sampleType, setSampleType] = useState(() => GETitem("", "sampleType"));
   const [numberOfSamples, setNumberOfSamples] = useState(() => GETitem("", "numberOfSamples"));
   const [visualized, setVisualized] = useState(() => GETitem(false, "visualized"));
@@ -156,6 +156,20 @@ const FluorescenceMicroscopyForm = () => {
               required
             />
           </div> 
+          <div className="mb-4 mt-4">
+          <label htmlFor="structureMaterial" className="block text-gray-700 text-sm font-bold mb-2">
+            Any Remarks/ additional requests?
+          </label>
+          <input
+            type="text"
+            id="structureMaterial"
+            value={remark}
+            onChange={(e) => SETitem(e, setremark, 'remark')}
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Enter starting material and solvent Information"
+            required
+          />
+        </div>
         </div>
 
         {/* Submit Button */}
