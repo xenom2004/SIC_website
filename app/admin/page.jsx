@@ -181,7 +181,7 @@ const admin = () => {
         const response = await fetch("/api/instruments", {
           method: "GET",
           cache: "no-store",
-        });
+        }); 
         if (!response.ok) {
           throw new Error(`Failed to fetch instruments: ${response.status}`);
         }
@@ -414,7 +414,7 @@ const admin = () => {
                       <div className="bg-custompurple rounded-xl p-4 gap-y-2 flex flex-col w-full min-h-[400px]">
                         <div className="flex flex-row  ">
                           <p className="text-black grow  text-md">
-                            Check Instruents
+                            Check Instruments
                           </p>
                           {/* <App people={{ item: instruments }} /> */}
                           <input
