@@ -99,7 +99,7 @@ export default function Home() {
                 alt="Book"
                 className="h-16 w-16 mb-4"
               />
-              <h2 className="text-lg text-lightSky font-bold mb-2">Company</h2>
+              <h2 className="text-lg text-lightSky font-bold mb-2">Industry</h2>
               <p className="text-justify text-lg text-lightSky text-center">
                 Welcome to our state-of-the-art Instrumentation Center, where
                 precision meets innovation. As a leading provider of
@@ -168,15 +168,15 @@ export default function Home() {
                 <Link href="/instruments/1">
                   <li>Single Crystal X-ray Diffraction Facility</li>
                 </Link>
-                <br />
+                <br/>
                 <Link href="/instruments/2">
                   <li>Powder X-ray Diffraction Facility</li>
                 </Link>
-                <br />
+                <br/>
                 <Link href="/instruments/3">
                   <li>X-ray Absorption Fine Structure</li>
                 </Link>
-                <br />
+                <br/>
                 <Link href="/instruments/4">
                   <li>Energy Dispersive X-Ray Spectroscopy</li>
                 </Link>
@@ -196,17 +196,21 @@ export default function Home() {
                 <Link href="/instruments/15">
                   <li>Scanning Electron Microscopy (FE-SEM)</li>
                 </Link>
+                <br />
                 <Link href="/instruments/16">
                   <li>Atomic Force Microscopy (AFM)</li>
                 </Link>
+                <br />
                 <Link href="/instruments/17">
                   <li>
                     Total Internal Reflection Fluorescence Microscopy(TIRFM)
                   </li>
                 </Link>
+                <br />
                 <Link href="/instruments/18">
                   <li>Confocal Microscopy</li>
                 </Link>
+                <br />  
               </ul>
             </div>
             {/* Spectroscopy */}

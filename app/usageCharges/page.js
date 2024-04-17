@@ -36,10 +36,10 @@ const Row = ({
   return (
     <>
       <tr className="mx-auto " key={instrument.id}>
-        <td className=" text-center hover:bg-slate-100 border px-4 py-2">
+        <td className=" hover:bg-slate-100 border px-4 py-2">
           {instrument.id}
         </td>
-        <td className=" text-center hover:bg-slate-100 border px-4 py-2">
+        <td className="hover:bg-slate-100 border px-4 py-2">
           {instrument.name}
         </td>
         <td
