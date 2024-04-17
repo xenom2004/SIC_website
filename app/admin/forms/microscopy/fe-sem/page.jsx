@@ -5,7 +5,7 @@ const FESEMForm = (prop) => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h2 className="mx-auto text-3xl font-bold mb-4">FE-SEM  Scanning Electron Microscopy Request  Form</h2>
+      <h2 className="mx-auto text-3xl text-center font-bold mb-4">FE-SEM  Scanning Electron Microscopy Request  Form</h2>
       <form  className="max-w-md mx-auto">
       <div className="mb-4">
           <label htmlFor="natureOfSample" className="block text-gray-700 text-sm font-bold mb-2">

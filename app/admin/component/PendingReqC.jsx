@@ -15,11 +15,14 @@ const PendingReqC = ({ req }) => {
     <div>
       <div className="flex items-center bg-blue-300 rounded-xl flex-row w-full p-2 ">
         <div className="flex grow">
-          <img
+          {/* <img
             className="hidden sm:flex rounded-full w-[50px] h-[50px]"
             src={req.image}
             alt="img"
-          ></img>
+          ></img> */}
+          <button className="mr-8 p-2  text-black h-fit  lg:w-[200px] md:w-[100px] hidden sm:flex flex-col text-center rounded-xl">
+          <span className="align-left font-bold">order ID:</span> {hexString}
+        </button>
           <div className="flex flex-col pl-8">
             <h1 className="text-black font-bold text-xs items-center">
               {req.loginType}
@@ -32,6 +35,7 @@ const PendingReqC = ({ req }) => {
         <button className="mr-8 p-2 bg-black text-white h-fit  lg:w-[200px] md:w-[100px]  text-center rounded-xl">
           {req.status}
         </button>
+        
         <Link href={`admin/${hexString}?id=${hexString}`}>
 
         <button className="mr-8 p-2 bg-black text-blue-300 sm:text-white lg:w-[200px] h-fit md:w-[100px] text-center rounded-xl">
