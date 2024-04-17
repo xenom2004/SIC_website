@@ -38,6 +38,8 @@ export default function Home() {
                   >
                     Learn More
                   </button>
+                  </Link>
+                  <Link href="https://sic.iiti.ac.in/software-used-for-data-processing-and-development">
                   <button
                     type="button"
                     className="bg-blue-500 hover:bg-blue-600 text-white mx-4 font-bold py-2 px-4 rounded"
