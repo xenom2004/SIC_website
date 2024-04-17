@@ -99,7 +99,7 @@ const ChemicalDataForm = () => {
               type="checkbox"
               
               checked={D2O}
-              onChange={() => handleSolubilityChange('D2O')}
+              onChange={(e) => SETitem(e, setD2O, 'D2O')}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">D2O</span>
@@ -109,7 +109,7 @@ const ChemicalDataForm = () => {
               type="checkbox"
               
               checked={CD3COCH3}
-              onChange={() => handleSolubilityChange('CD3COCH3')}
+              onChange={(e) => SETitem(e, setCD3COCH3,"CD3COCH3")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">CD3COCH3</span>
@@ -119,7 +119,7 @@ const ChemicalDataForm = () => {
               type="checkbox"
               checked={MeOD}
               
-              onChange={() => handleSolubilityChange('MeOD')}
+              onChange={(e)=> SETitem(e, setMeOD,"MeOD")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">MeOD</span>
@@ -129,7 +129,7 @@ const ChemicalDataForm = () => {
               type="checkbox"
               checked={Other}
               
-              onChange={() => handleSolubilityChange('Other')}
+              onChange={(e)=> SETitem(e, setOther,"Other")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Other</span>

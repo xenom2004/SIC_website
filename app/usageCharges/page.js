@@ -396,7 +396,7 @@ const ChargeCalculator = () => {
             <tr className="bg-gray-100">
               <th className=" text-center px-4 py-2">#</th>
 
-              <th className="   text-center px-4 py-2">Instrument Name</th>
+              <th className="px-4 py-2">Instrument Name</th>
               <th className="md:hidden">
                 <Dropdown>
                   <DropdownTrigger>

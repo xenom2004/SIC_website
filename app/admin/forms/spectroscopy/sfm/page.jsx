@@ -4,7 +4,7 @@ const SFMForm = (prop) => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold mb-4 text-center">Additional Analysis Request Form</h2>
+      <h2 className="text-3xl font-bold mb-4 text-center">SpectroFluorometer Request Form</h2>
       <form  className="max-w-md mx-auto">
       <div className="grid grid-cols-2 gap-8">
         <div className="mb-4">
