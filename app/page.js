@@ -170,7 +170,7 @@ export default function Home() {
               <h2 className="text-xl font-bold mb-2 text-lightSky">
                 X-ray Instruments
               </h2>
-              <ul className="text-lg text-center">
+              <ul className="text-lg">
                 <Link href="/instruments/1">
                   <li>Single Crystal X-ray Diffraction Facility</li>
                 </Link>
@@ -198,7 +198,7 @@ export default function Home() {
               <h2 className="text-xl font-bold mb-2 text-lightSky">
                 Microscopy Instruments
               </h2>
-              <ul className="text-lg text-center">
+              <ul className="text-lg">
                 <Link href="/instruments/15">
                   <li>Scanning Electron Microscopy (FE-SEM)</li>
                 </Link>
@@ -213,8 +213,8 @@ export default function Home() {
                     Total Internal Reflection Fluorescence Microscopy(TIRFM)
                   </li>
                 </Link>
-                <br />
 
+                <br />
                 <Link href="/instruments/18">
                   <li>Confocal Microscopy</li>
                 </Link>
@@ -231,7 +231,7 @@ export default function Home() {
               <h2 className="text-xl font-bold mb-2 text-lightSky">
                 Spectroscopy Instruments
               </h2>
-              <ul className="text-lg text-center">
+              <ul className="text-lg">
                 <Link href="/instruments/6">
                   {" "}
                   <li>Nuclear Magnetic Resonance(NMR) 500MHz</li>
@@ -252,7 +252,7 @@ export default function Home() {
               <h2 className="text-xl font-bold mb-2 text-lightSky">
                 Chromatography Instruments
               </h2>
-              <ul className="text-lg text-center">
+              <ul className="text-lg">
                 <Link href="/instruments/19">
                   {" "}
                   <li>HR-MS</li>
