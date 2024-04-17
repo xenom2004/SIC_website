@@ -282,7 +282,7 @@ const ChargeCalculator = () => {
             </th>
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+        <tbody className=" bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
           <tr className="hover:bg-gray-100 dark:hover:bg-gray-700">
             <th
               scope="row"
@@ -387,7 +387,7 @@ const ChargeCalculator = () => {
         </Link>
       </div>
 
-      <div className="px-2 ">
+      <div className="sm:px-2 pl-12  sm:mx-0 ">
         <h2 className="text-3xl font-bold mb-4 text-lightSky text-center pt-4">
           Select Instruments:
         </h2>
@@ -396,11 +396,11 @@ const ChargeCalculator = () => {
             <tr className="bg-gray-100">
               <th className=" text-center px-4 py-2">#</th>
 
-              <th className="px-4 py-2">Instrument Name</th>
+              <th className="sm:px-4 sm:py-2 px-0 ">Instrument Name</th>
               <th className="md:hidden">
                 <Dropdown>
                   <DropdownTrigger>
-                    <Button variant="bordered">{current_charge}⌄</Button>
+                    <Button variant="bordered">{current_charge}</Button>
                   </DropdownTrigger>
                   <DropdownMenu
                     aria-label="Action event example"
