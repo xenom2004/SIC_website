@@ -36,7 +36,7 @@ const Row = ({
   return (
     <>
       <tr className="mx-auto " key={instrument.id}>
-        <td className=" hover:bg-slate-100 border px-4 py-2">
+        <td className="hidden sm:table-cell hover:bg-slate-100 border px-4 py-2">
           {instrument.id}
         </td>
         <td className="hover:bg-slate-100 border px-4 py-2">
@@ -387,14 +387,14 @@ const ChargeCalculator = () => {
         </Link>
       </div>
 
-      <div className="sm:px-2 pl-12  sm:mx-0 ">
+      <div className="sm:px-2   sm:mx-0 ">
         <h2 className="text-3xl font-bold mb-4 text-lightSky text-center pt-4">
           Select Instruments:
         </h2>
         <table className=" table-auto w-full border-collapse">
           <thead>
             <tr className="bg-gray-100">
-              <th className=" text-center px-4 py-2">#</th>
+              <th className="hidden sm:table-cell text-center px-4 py-2">#</th>
 
               <th className="sm:px-4 sm:py-2 px-0 ">Instrument Name</th>
               <th className="md:hidden">

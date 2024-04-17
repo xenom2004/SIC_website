@@ -311,10 +311,11 @@ const OrderDetails = () => {
       <div className="mb-4">
         <h2 className="text-lg font-semibold mb-2">Form Details:</h2>
         <p>
-          {/* {console.log(order,"kio")} */}
-          {Object?.keys(order.form_details).map((key) => {
+          {console.log(order.form_details,"kio")}
+          {order.form_details!==undefined && (
+          Object?.keys(order.form_details).map((key) => {
             return forms_instrument[key](order.form_details[key]);
-          })}
+          }))}
         </p>
       </div>
 

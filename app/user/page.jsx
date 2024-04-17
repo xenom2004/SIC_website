@@ -243,7 +243,7 @@ export default function Page() {
                         <p className="text-wrap">{inst.amount}</p>
                       </div>
                     ))} */}
-                    {Object.keys(order_details?.form_details).map((key) => (
+                    {order_details?.form_details!==undefined && (Object.keys(order_details?.form_details).map((key) => (
                       <div key={key} className="flex flex-row">
                         <p className="grow truncate">
                           {transformedForms[key]?.name}
@@ -252,7 +252,7 @@ export default function Page() {
                           {order_details?.form_details[key].quantity}
                         </p>
                       </div>
-                    ))}
+                    )))}
                     <p className="mt-12">
                       <span className="text-sm sm:text-lg font-bold mr-1 ">
                         Total Payment
@@ -270,11 +270,11 @@ export default function Page() {
                     </div>
                   )}
                   {order_details?.status == "Payment Incomplete" && (
-                    <div className="flex flex-row items-center">
+                    <div className="flex flex-row justify-center items-center">
                       <Link
                         href={`/user_payment/${order_details?._id}?id=${order_details?._id}`}
                       >
-                        <Button className="w-full px-4 m-4 bg-blue-700 text-white">
+                        <Button className="w-full px-4 m-4 justify-center bg-blue-700 text-white">
                           Proceed to payment
                         </Button>
                       </Link>
@@ -288,9 +288,9 @@ export default function Page() {
               )}
             </div>
           </div>
-          <div className="lg:hidden flex flex-row items-center">
+          <div className="lg:hidden flex flex-row items-center justify-center">
           <Link href="/usageCharges">
-            <Button className="w-full px-4 m-4 bg-blue-700 text-white">
+            <Button className="w-full  align-center px-4 m-4 bg-blue-700 text-white">
               Place Order
             </Button>
             </Link>
