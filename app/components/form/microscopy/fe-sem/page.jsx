@@ -10,6 +10,17 @@ const PLForm = () => {
     setvariable(e.target.value)
 
 }
+
+const SETitem2 = (e, setVariable, variable) => {
+  const formDetails = JSON.parse(localStorage.getItem("form_details")) || {};
+  formDetails[id] = formDetails[id] || {};
+  formDetails[id][variable] =
+    e.target.type === "checkbox" ? e.target.checked : e.target.value;
+  localStorage.setItem("form_details", JSON.stringify(formDetails));
+  setVariable(
+    e.target.type === "checkbox" ? e.target.checked : e.target.value
+  );
+};
 const GETitem=(def,variable)=>{
 
   
@@ -25,42 +36,28 @@ const GETitem=(def,variable)=>{
 
   const [natureOfSample, setNatureOfSample] = useState(GETitem(null,"natureOfSample"));
   const [noOfSamples, setNoOfSamples]=useState(GETitem(null,"noOfSamples"));
-  const [nonconductive, setonductive] = useState(GETitem(null,"noOfSamples"));
-  const [conductive, setConductive] = useState({
-    conductive:GETitem(null,"conductive"),
-    nonconductive:GETitem(null,"nonconductive")
-  });
-  const [description,setDescription]=useState({
-    SEM:GETitem(null,"SEM"),
-    EDX:GETitem(null,"EDX"),
-    WDX:GETitem(null,"WDX")
-  }
-  )
+  const [nonconductive, setnonconductive] = useState(GETitem(null,"nonconductive"));
+  const [conductive, setConductive] = useState(GETitem(null,"conductive") );
+  const [SEM, setSEM] = useState(GETitem(null,"SEM"));
+  const [EDX, setEDX] = useState(GETitem(null,"EDX"));
+  const [WDX, setWDX] = useState(GETitem(null,"WDX"));
+
+  
   const [expectedElements,setExpectedElements]=useState(GETitem(null,"expectedElements"));
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission (send data to server)
-    console.log('Form Data:', { natureOfSample, noOfSamples, conductive, description,expectedElements });
+    // console.log('Form Data:', { natureOfSample, noOfSamples, conductive, description,expectedElements });
   };
 
-  const handleConductiveChange=(option)=>{
-    setConductive({
-        ...conductive,
-        [option]:!conductive[option],
-    });
-  };
+  
 
-  const handleDescriptionChange=(option)=>{
-    setDescription({
-        ...description,
-        [option]:!description[option],
-    });
-  };
+ 
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h2 className="mx-auto text-3xl font-bold mb-4">Photo-luminescence (Field Emission Scanning Electron Microscope) Form</h2>
+      <h2 className="mx-auto text-3xl font-bold mb-4">FE-SEM  Scanning Electron Microscopy Request  Form</h2>
       <form onSubmit={handleSubmit} className="max-w-md mx-auto">
       <div className="mb-4">
           <label htmlFor="natureOfSample" className="block text-gray-700 text-sm font-bold mb-2">
@@ -96,8 +93,8 @@ const GETitem=(def,variable)=>{
             <input
               type="checkbox"
               value="Conductive"
-              checked={conductive.conductive}
-              onChange={(e) => SETitem(e,setConductive,"conductive")}
+              checked={conductive}
+              onChange={(e) => SETitem2(e,setConductive,"conductive")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Conductive</span>
@@ -106,8 +103,8 @@ const GETitem=(def,variable)=>{
             <input
               type="checkbox"
               value="nonconductive"
-              checked={conductive.nonconductive}
-              onChange={(e) => SETitem(e,setConductive,"nonconductive")}
+              checked={nonconductive}
+              onChange={(e) => SETitem2(e,setnonconductive,"nonconductive")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">Non-conductive</span>
@@ -122,8 +119,8 @@ const GETitem=(def,variable)=>{
               type="checkbox"
               value="SEM"
               
-              checked={description.SEM}
-              onChange={(e) => SETitem(e,setDescription,"SEM")}
+              checked={SEM}
+              onChange={(e) => SETitem2(e,setSEM,"SEM")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">SEM</span>
@@ -133,8 +130,8 @@ const GETitem=(def,variable)=>{
               type="checkbox"
               value="EDM"
               
-              checked={description.EDM}
-              onChange={(e) => SETitem(e,setDescription,"EDM")}
+              checked={EDX}
+              onChange={(e) => SETitem2(e,setEDX,"EDX")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">EDM</span>
@@ -144,8 +141,8 @@ const GETitem=(def,variable)=>{
               type="checkbox"
               value="WDX"
               
-              checked={description.WDX}
-              onChange={(e) => SETitem(e,setDescription,"WDX")}
+              checked={WDX}
+              onChange={(e) => SETitem2(e,setWDX,"WDX")}
               className="form-checkbox h-5 w-5 text-gray-600"
             />
             <span className="ml-2">WDX</span>
