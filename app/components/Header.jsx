@@ -145,6 +145,10 @@ const Header = () => {
           </Link>
 
           {/* Usage Charges Link */}
+          {/* Instruments */}
+          <div className="mr-4">
+            <Instruments language={language} />
+          </div>
 
           <Link
             href="/usageCharges"
@@ -159,11 +163,6 @@ const Header = () => {
               {language === "english" ? "Usage Charges" : "उपयोग शुल्क"}
             </button>
           </Link>
-
-          {/* Instruments */}
-          <div className="mr-4">
-            <Instruments language={language} />
-          </div>
 
           {/* About */}
           <div className="mr-4">
@@ -247,7 +246,7 @@ const Header = () => {
             </button>
           )}
 
-          <span className="px-4">
+          <span className="px-4 hidden">
             <Switch
               checked={checked}
               onChange={handleChange}

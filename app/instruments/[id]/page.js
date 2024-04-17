@@ -1,8 +1,15 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 import { Spinner } from "@nextui-org/react";
-import { useSession } from 'next-auth/react';
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+  Button,
+} from "@nextui-org/react";
 
 export default function Instrument({ params }) {
   const [instrument, setInstrument] = useState(null);
@@ -13,36 +20,33 @@ export default function Instrument({ params }) {
   const [dataFetched, setDataFetched] = useState(false);
   const updatestatus = async (key) => {
     var result = confirm("Are you sure you want update?");
-    setDataFetched(!dataFetched)
+    setDataFetched(!dataFetched);
     if (result) {
       try {
         const response = await fetch("/api/instruments/update", {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
             instrument: instrument,
-            updatedstatus: key
-          })
-        })
-        console.log("lop", response)
-        const res = await response.json()
+            updatedstatus: key,
+          }),
+        });
+        console.log("lop", response);
+        const res = await response.json();
         if (res.status === "success") {
           setinstrument_status(key);
 
           alert("successfully updated instrumnets status");
-        }
-        else {
+        } else {
           alert("Failure in instrument update");
         }
-
       } catch (error) {
         console.log(error);
       }
-
     }
-  }
+  };
   useEffect(() => {
     const fetchInstrument = async () => {
       try {
@@ -65,10 +69,11 @@ export default function Instrument({ params }) {
   }, [params.id, dataFetched]);
 
   if (loading) {
-    return <div className="h-screen flex items-center justify-center fixed top-0 left-0 right-0 bottom-0 bg-white z-50">
-      <Spinner />
-    </div>;
-
+    return (
+      <div className="h-screen flex items-center justify-center fixed top-0 left-0 right-0 bottom-0 bg-white z-50">
+        <Spinner />
+      </div>
+    );
   }
 
   if (error) {
@@ -79,7 +84,11 @@ export default function Instrument({ params }) {
     return <p>Instrument not found</p>;
   }
   if (status === "loading") {
-    return <div className="h-screen flex items-center justify-center fixed top-0 left-0 right-0 bottom-0 bg-white z-50">Loading</div>
+    return (
+      <div className="h-screen flex items-center justify-center fixed top-0 left-0 right-0 bottom-0 bg-white z-50">
+        Loading
+      </div>
+    );
   }
   // console.log(session?, "lop")
 
@@ -90,47 +99,45 @@ export default function Instrument({ params }) {
           <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-lightSky">
             {instrument.name}
           </h1>
-          <p className="mb-8 leading-relaxed">
-            {instrument.info}
-          </p>
+          <p className="mb-8 leading-relaxed">{instrument.info}</p>
           <div className="flex justify-center mb-8">
             <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded-full text-lg mr-4">
               Form Submission
             </button>
-            <button className="inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded-full text-lg">
-              Cost Calculator
-            </button>
-            {session && session.user.isAdmin === "admin" && (<>
-              <div className="ml-4">
-                <Dropdown >
-                  <DropdownTrigger>
-                    <Button
-                      className="inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded-full text-lg"
-                      radius='full'
-
+            <Link href="/usageCharges">
+              <button className="inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded-full text-lg">
+                Cost Calculator
+              </button>
+            </Link>
+            {session && session.user.isAdmin === "admin" && (
+              <>
+                <div className="ml-4">
+                  <Dropdown>
+                    <DropdownTrigger>
+                      <Button
+                        className="inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded-full text-lg"
+                        radius="full"
+                      >
+                        {instrument_status !== null
+                          ? instrument_status
+                          : "working"}
+                      </Button>
+                    </DropdownTrigger>
+                    <DropdownMenu
+                      onAction={(key) => {
+                        updatestatus(key);
+                      }}
+                      aria-label="Single selection example"
+                      variant="flat"
+                      disallowEmptySelection
                     >
-                      {instrument_status !== null ? instrument_status : "working"}
-                    </Button>
-                  </DropdownTrigger>
-                  <DropdownMenu
-                    onAction={(key) => { updatestatus(key) }}
-                    aria-label="Single selection example"
-                    variant="flat"
-                    disallowEmptySelection
-                    selectionMode="single"
-
-                  >
-                    <DropdownItem key="working">working</DropdownItem>
-                    <DropdownItem key="unavailable">unavailable</DropdownItem>
-
-                  </DropdownMenu>
-                </Dropdown>
-              </div>
-
-            </>
-            )
-
-            }
+                      <DropdownItem key="working">working</DropdownItem>
+                      <DropdownItem key="unavailable">unavailable</DropdownItem>
+                    </DropdownMenu>
+                  </Dropdown>
+                </div>
+              </>
+            )}
           </div>
         </div>
         <div className="border rounded-md p-8 shadow-md mb-6 flex flex-col">
@@ -138,10 +145,9 @@ export default function Instrument({ params }) {
             className="w-full h-84 object-cover rounded-md"
             alt="instrument"
             src={instrument.image}
-            style={{ maxWidth: '100%', maxHeight: '100%' }}
+            style={{ maxWidth: "100%", maxHeight: "100%" }}
           />
         </div>
-
       </div>
     </section>
   );
