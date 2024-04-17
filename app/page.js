@@ -34,9 +34,15 @@ export default function Home() {
                 <Link href="./about">
                   <button
                     type="button"
-                    className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+                    className="bg-blue-500 hover:bg-blue-600 text-white  font-bold py-2 px-4 rounded"
                   >
                     Learn More
+                  </button>
+                  <button
+                    type="button"
+                    className="bg-blue-500 hover:bg-blue-600 text-white mx-4 font-bold py-2 px-4 rounded"
+                  >
+                    Software Download
                   </button>
                 </Link>
               </div>
@@ -196,6 +202,7 @@ export default function Home() {
                 <Link href="/instruments/15">
                   <li>Scanning Electron Microscopy (FE-SEM)</li>
                 </Link>
+
                 <br />
                 <Link href="/instruments/16">
                   <li>Atomic Force Microscopy (AFM)</li>
@@ -207,9 +214,11 @@ export default function Home() {
                   </li>
                 </Link>
                 <br />
+                <br />
                 <Link href="/instruments/18">
                   <li>Confocal Microscopy</li>
                 </Link>
+                <br />
                 <br />  
               </ul>
             </div>
@@ -265,7 +274,7 @@ export default function Home() {
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-roboto-thin text-white mb-4">
             Interested in Utilizing Our Premium Instruments?
           </h2>
-          <Link href="/usageCharges">
+          <Link href="/instruments">
             <button className="bg-lightSky text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 border border-white hover:bg-white hover:text-lightSky">
               Learn More
             </button>
@@ -425,9 +434,11 @@ export default function Home() {
                   industry.
                 </p>
               </div>
-              <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4">
-                Explore Further
-              </button>
+              <Link href="/training">
+                <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4">
+                  Explore Further
+                </button>
+              </Link>
             </div>
             {/* First Section */}
             <div

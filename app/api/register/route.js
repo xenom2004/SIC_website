@@ -24,7 +24,7 @@ export async function POST(req, res) {
         const hashedPassword = await bcrypt.hash(data.password, 10);
 
         // Create a new user with the hashed password
-        const newUser = await User.create({"profileName": data.username,  "name": data.username, "password": hashedPassword, "order": data.order, "loginType": "cred" });
+        const newUser = await User.create({"profileName": data.username,  "name": data.username, "password": hashedPassword, "order": data.order, "loginType": "Academic" });
 
         // console.log(newUser, "created user", data);
 

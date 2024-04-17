@@ -1,118 +1,86 @@
-import React from "react";
+"use client";
+import { useEffect, useRef, useState } from "react";
 
-const Page = () => {
+const Gallery = () => {
+  const slideGalleryRef = useRef(null);
+  const scrollbarThumbRef = useRef(null);
+  const [slideCount, setSlideCount] = useState(0);
+  const slideHeight = 720;
+  const marginTop = 16;
+
+  useEffect(() => {
+    const slideGallery = slideGalleryRef.current;
+    const slides = Array.from(slideGallery.querySelectorAll(".slides > div"));
+    const thumbnails = slides.map((slide, i) => (
+      <img
+        key={i}
+        src={slide.querySelector("img").src}
+        data-id={i}
+        onClick={() => scrollToElement(i)}
+        className="w-16 h-16 cursor-pointer"
+      />
+    ));
+    setSlideCount(slides.length);
+    scrollThumb();
+    return () => {
+      // Cleanup
+    };
+  }, []);
+
+  const scrollToElement = (index) => {
+    slideGalleryRef.current.scrollTo(0, index * slideHeight + marginTop);
+  };
+
+  const scrollThumb = () => {
+    const slideGallery = slideGalleryRef.current;
+    const index = Math.floor(slideGallery.scrollTop / slideHeight);
+    // scrollbarThumbRef.current.style.height = `${((index + 1) / slideCount) * slideHeight}px`;
+  };
+
   return (
-    <div className="flex justify-center items-center my-16">
-      <div className="flex items-center space-x-4">
-        <div className="bg-sky-500 text-white px-6 py-3 rounded-l-md font-medium hover:bg-white hover:text-sky-500 transition-colors duration-300">
-          Usage Charges
-          <svg
-            className="inline-block w-5 h-5 ml-2"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M9 5l7 7-7 7"
-            ></path>
-          </svg>
+    <div className="gallery-container flex justify-center">
+      <div className="thumbnails flex flex-col gap-2">
+        {/* Thumbnails will be added here */}
+      </div>
+      {/* <div
+        className="scrollbar h-80 w-1 bg-gray-300 block ml-2"
+        ref={scrollbarThumbRef}
+      ></div> */}
+      <div
+        className="slides grid grid-rows-auto gap-4 w-[calc(540px + 1rem)] px-1 h-80 overflow-y-auto overscroll-y-contain"
+        ref={slideGalleryRef}
+        onScroll={scrollThumb}
+      >
+        <div>
+          <img src="https://picsum.photos/id/1067/540/720" alt="slide" />
         </div>
-        <div className="bg-sky-500 text-white px-6 py-3 font-medium hover:bg-white hover:text-sky-500 transition-colors duration-300">
-          Login
-          <svg
-            className="inline-block w-5 h-5 ml-2"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M9 5l7 7-7 7"
-            ></path>
-          </svg>
+        <div>
+          <img src="https://picsum.photos/id/122/540/720" alt="slide" />
         </div>
-        <div className="bg-sky-500 text-white px-6 py-3 font-medium hover:bg-white hover:text-sky-500 transition-colors duration-300">
-          Create Profile
-          <svg
-            className="inline-block w-5 h-5 ml-2"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M9 5l7 7-7 7"
-            ></path>
-          </svg>
+        <div>
+          <img src="https://picsum.photos/id/188/540/720" alt="slide" />
         </div>
-        <div className="bg-sky-500 text-white px-6 py-3 font-medium hover:bg-white hover:text-sky-500 transition-colors duration-300">
-          Book Instrument
-          <svg
-            className="inline-block w-5 h-5 ml-2"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M9 5l7 7-7 7"
-            ></path>
-          </svg>
+        <div>
+          <img src="https://picsum.photos/id/249/540/720" alt="slide" />
         </div>
-        <div className="bg-sky-500 text-white px-6 py-3 font-medium hover:bg-white hover:text-sky-500 transition-colors duration-300">
-          Send Cover Letter
-          <svg
-            className="inline-block w-5 h-5 ml-2"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M9 5l7 7-7 7"
-            ></path>
-          </svg>
+        <div>
+          <img src="https://picsum.photos/id/257/540/720" alt="slide" />
         </div>
-        <div className="bg-sky-500 text-white px-6 py-3 font-medium hover:bg-white hover:text-sky-500 transition-colors duration-300">
-          Pay
-          <svg
-            className="inline-block w-5 h-5 ml-2"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M9 5l7 7-7 7"
-            ></path>
-          </svg>
+        <div>
+          <img src="https://picsum.photos/id/259/540/720" alt="slide" />
         </div>
-        <div className="bg-sky-500 text-white px-6 py-3 rounded-r-md font-medium hover:bg-white hover:text-sky-500 transition-colors duration-300">
-          Send Sample
+        <div>
+          <img src="https://picsum.photos/id/283/540/720" alt="slide" />
+        </div>
+        <div>
+          <img src="https://picsum.photos/id/288/540/720" alt="slide" />
+        </div>
+        <div>
+          <img src="https://picsum.photos/id/299/540/720" alt="slide" />
         </div>
       </div>
     </div>
   );
 };
 
-export default Page;
-/* HTML: <div class="loader"></div> */
+export default Gallery;

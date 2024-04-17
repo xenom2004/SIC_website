@@ -9,7 +9,7 @@ export async function POST(req) {
   
   try{
   const data=await req.json();
-  console.log(data,"l");
+  // console.log(data,"l");
   let decoded=null;
   if(data.accessToken!=null){
       decoded = jwtDecode(data.accessToken);
