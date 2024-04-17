@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-const PowderXRDForm = () => {
+const PowderXRDForm = (prop) => {
   const [samples, setSamples] = useState([
     { srNo: 1, sampleCode: "", description: "" },
     { srNo: 2, sampleCode: "", description: "" },
