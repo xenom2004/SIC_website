@@ -174,15 +174,15 @@ export default function Home() {
                 <Link href="/instruments/1">
                   <li>Single Crystal X-ray Diffraction Facility</li>
                 </Link>
-                <br/>
+                <br />
                 <Link href="/instruments/2">
                   <li>Powder X-ray Diffraction Facility</li>
                 </Link>
-                <br/>
+                <br />
                 <Link href="/instruments/3">
                   <li>X-ray Absorption Fine Structure</li>
                 </Link>
-                <br/>
+                <br />
                 <Link href="/instruments/4">
                   <li>Energy Dispersive X-Ray Spectroscopy</li>
                 </Link>
@@ -214,12 +214,11 @@ export default function Home() {
                   </li>
                 </Link>
                 <br />
-                <br />
+
                 <Link href="/instruments/18">
                   <li>Confocal Microscopy</li>
                 </Link>
                 <br />
-                <br />  
               </ul>
             </div>
             {/* Spectroscopy */}
