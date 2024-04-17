@@ -42,7 +42,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <a href="/about" className="text-gray-400 hover:text-white">
                   About
                 </a>
               </li>
