@@ -172,26 +172,6 @@ const Header = () => {
           {/* Orders */}
           {session && (
             <Link
-              href="/user"
-              className={`font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
-              style={
-                language === "hindi"
-                  ? {
-                      fontWeight: "bold",
-                      fontSize: "1.2em",
-                      lineHeight: "1.5",
-                    }
-                  : {}
-              }
-            >
-              {" "}
-              <button>{language === "english" ? "Orders" : "आदेश"}</button>
-            </Link>
-          )}
-
-          {/* Profile or Sign In/Register */}
-          {session ? (
-            <Link
               href={session?.user?.isAdmin === "admin" ? "/admin" : "/profile"}
             >
               <button
@@ -208,6 +188,26 @@ const Header = () => {
               >
                 {language === "english" ? "Profile" : "प्रोफ़ाइल"}
               </button>
+            </Link>
+          )}
+
+          {/* Profile or Sign In/Register */}
+          {session ? (
+            <Link
+              href="/user"
+              className={`font-semibold px-4 py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 ${language === "hindi" ? "font-bold" : ""}`}
+              style={
+                language === "hindi"
+                  ? {
+                      fontWeight: "bold",
+                      fontSize: "1.2em",
+                      lineHeight: "1.5",
+                    }
+                  : {}
+              }
+            >
+              {" "}
+              <button>{language === "english" ? "Orders" : "आदेश"}</button>
             </Link>
           ) : (
             <button
@@ -291,21 +291,22 @@ const Header = () => {
               {session && (
                 <Link
                   onClick={toggleDropdown}
-                  href="/user"
-                  className="block px-8 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
-                >
-                  <button>Orders</button>
-                </Link>
-              )}
-              {session ? (
-                <Link
-                  onClick={toggleDropdown}
                   href={
                     session?.user?.isAdmin === "admin" ? "/admin" : "/profile"
                   }
                   className="block px-8 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
                 >
                   <button>Profile</button>
+                </Link>
+              )}
+
+              {session ? (
+                <Link
+                  onClick={toggleDropdown}
+                  href="/user"
+                  className="block px-8 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
+                >
+                  <button>Orders</button>
                 </Link>
               ) : (
                 <button

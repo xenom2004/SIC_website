@@ -17,7 +17,7 @@ const InstrumentCard = ({ instrument }) => {
         return "text-green-500";
       case "calibrating":
         return "text-yellow-500";
-      case "maintenance":
+      case "unavailable":
         return "text-red-500";
       case "offline":
         return "text-gray-500";

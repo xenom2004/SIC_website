@@ -46,6 +46,7 @@ export default function Instrument({ params }) {
         console.log(error);
       }
     }
+    setinstrument_status(key);
   };
   useEffect(() => {
     const fetchInstrument = async () => {
