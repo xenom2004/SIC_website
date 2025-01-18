@@ -1,11 +1,13 @@
 "use client";
 import React, { useState, useRef } from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
-const About = () => {
+const About = (prop) => {
+
+  const language=prop.language
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const [language, uselanguage] = useState("english");
   const handleDropdownOpen = () => {
     setIsDropdownOpen(true);
   };

@@ -6,76 +6,38 @@ import Instruments from "./buttons/Instruments/Instruments";
 import About from "./buttons/AboutSic/page";
 import { Switch } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
+import { useTranslation } from "../TranslationalContext";
 
 const Header = () => {
   const { data: session, status } = useSession();
   const [checked, setChecked] = useState(true);
   const router = useRouter();
-  const [language, setLanguage] = useState(() => {
-    if (typeof window !== "undefined" && localStorage.getItem("language")) {
-      // If localStorage is available and 'language' item is set
-      var language = localStorage.getItem("language");
-      // Do something with the 'language' variable
-      // console.log("Language stored in localStorage:", language);
-
-      return language;
-    } else {
-      // console.log(
-      //   "Language not stored in localStorage or localStorage not available."
-      // );
-      return "english";
-      // If localStorage is not available or 'language' item is not set
-    }
+  const [language, setLanguage1] = useState(() => {
+    return "english";
   });
   const [first, Usefirst] = useState("1");
   const [lang, setlang] = useState();
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     const storedLanguage = localStorage.getItem("language");
-  //     if (storedLanguage) {
-  //       localStorage.removeItem("language");
-  //       localStorage.setItem("language", "english");
-  //     } else {
-  //       // If language is not stored, set default language to English and store in localStorage
-  //       setChecked(true);
-  //       localStorage.setItem("language", "english");
-  //     }
-  //   } else {
-  //     localStorage.setItem("language", "english");
-  //   }
-  // }, [localStorage.getItem("language")]);
-  // useEffect(() => {
-  //   // Update language preference based on switch state
-  //   setLanguage(checked ? "english" : "hindi");
-  //   checked
-  //     ? localStorage.setItem("language", "english")
-  //     : localStorage.setItem("language", "hindi");
-  // }, [checked]);
+  const { translate, setLanguage } = useTranslation();
+
+  
+
 
   const handleChange = () => {
     setChecked(!checked);
     let langi = null;
-    console.log(localStorage.getItem("language"));
-    if (localStorage.getItem("language") != null) {
-      localStorage.setItem("language", language);
-      langi = language;
-    } else {
-      langi = localStorage.getItem("language");
-    }
+    langi = session.user.language;  
 
     if (langi === "english") {
       setLanguage("hindi");
-      localStorage.setItem("language", "hindi");
-      router.push("/");
-      console.log("here in my");
+      session.user.language = "hindi";
+      // router.push("/");
     } else {
       setLanguage("english");
-      localStorage.setItem("language", "english");
+      session.user.language = "english";  
 
-      router.push("/");
+      // router.push("/");
     }
-    // Toggle switch state
-    window.location.reload();
+    // window.location.reload();
   };
 
   const handleSignIn = () => {
@@ -109,9 +71,14 @@ const Header = () => {
       </header>
     );
   }
+  
+
 
   return (
+    <>
+    
     <header className="text-gray-100 bg-lightSky body-font shadow-md fixed w-full z-50 top-0 mb-12">
+    <div>{translate("welcome")}</div>
       <nav className="container px-4 md:px-6 py-4 mx-auto flex items-center justify-between">
         <Link href="/" className="flex items-center">
           <img
@@ -246,12 +213,14 @@ const Header = () => {
             </button>
           )}
 
-          <span className="px-4 hidden">
-            <Switch
+          <span className="px-4 ">
+            {/* <Switch
               checked={checked}
               onChange={handleChange}
               inputProps={{ "aria-label": "controlled" }}
-            ></Switch>
+            ></Switch> */}
+          <button onClick={() => setLanguage("en")}>English</button>
+          <button onClick={() => setLanguage("hi")}>हिंदी</button>
           </span>
         </div>
 
@@ -329,6 +298,7 @@ const Header = () => {
         </div>
       </nav>
     </header>
+    </>
   );
 };
 

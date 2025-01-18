@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { Spinner } from "@nextui-org/react";
+import { useTranslation } from "../TranslationalContext";
 
 const InstrumentCard = ({ instrument }) => {
   const sliceInfo = (info) => {
@@ -9,6 +10,7 @@ const InstrumentCard = ({ instrument }) => {
     const words = info.split(" ");
     return words.slice(0, 10).join(" ") + "...";
   };
+  
   // console.log(instrument,"i")
 
   const getStatusColor = (status) => {
@@ -54,7 +56,7 @@ const InstrumentCard = ({ instrument }) => {
 const InstrumentList = () => {
   const [loading, setLoading] = React.useState(true);
   const [instruments, setInstruments] = React.useState([]);
-
+  const { translate, setLanguage } = useTranslation();
   React.useEffect(() => {
     const fetchInstruments = async () => {
       try {
@@ -77,7 +79,8 @@ const InstrumentList = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl text-lightSky font-bold mb-8">
-        Instruments Live Status
+        {translate("instruments")}
+        {/* Instruments Live Status */}
       </h1>
       {loading ? (
         <div className="h-screen flex items-center justify-center fixed top-0 left-0 right-0 bottom-0 bg-white z-50">

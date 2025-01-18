@@ -73,6 +73,7 @@ export const options = {
                 // console.log(session.user,"rn")
                 // console.log(session.user.email,"email")
                 const user = await User.findOne({ 'name': session.user.name });
+                
                 // console.log(session.user.email,"email2")
                 if(user){
                     // console.log(user,"dbguygey")
@@ -102,6 +103,7 @@ export const options = {
                     { expiresIn: "1h" }
                   );
             }
+          
             return session;
         },
         jwt: async ({ user, token }) => {
