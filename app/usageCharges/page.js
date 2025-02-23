@@ -52,11 +52,11 @@ const Row = ({
         >
           {instrument.commercial_charge}
         </td>
-        <td
+        {/* <td
           className={` ${current_charge === "charge" ? "table-cell" : "hidden"} md:table-cell text-center hover:bg-slate-100 border px-4 py-2`}
         >
           {instrument.charge}
-        </td>
+        </td> */}
         <td className=" text-center hover:bg-slate-100 border px-4 py-2 flex items-center">
           <button
             onClick={() =>
@@ -412,7 +412,7 @@ const ChargeCalculator = () => {
                     <DropdownItem key="commercial">
                       commercial/industrial Charge (₹)
                     </DropdownItem>
-                    <DropdownItem key="charge">Charge (₹)</DropdownItem>
+                    {/* <DropdownItem key="charge">Charge (₹)</DropdownItem> */}
                   </DropdownMenu>
                 </Dropdown>
               </th>
@@ -422,9 +422,9 @@ const ChargeCalculator = () => {
               <th className={`hidden md:table-cell text-center px-4 py-2`}>
                 commercial/industrial Charge (₹)
               </th>
-              <th className={`hidden   md:table-cell text-center px-4 py-2`}>
+              {/* <th className={`hidden   md:table-cell text-center px-4 py-2`}>
                 Charge (₹)
-              </th>
+              </th> */}
               <th className="text-center px-4 py-2">Quantity</th>
               <th className="text-center px-4 py-2">select</th>
             </tr>
@@ -579,7 +579,7 @@ const ChargeCalculator = () => {
                   className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                   onClick={handlePayNowClick}
                 >
-                  Proceed Furthur
+                  Proceed Further
                 </button>
                 {formDataExists ? (
                   <button

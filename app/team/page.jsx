@@ -35,7 +35,7 @@ export default function Page() {
                       <img
                         alt="team"
                         className=" flex-shrink-0  rounded-full w-full h-60 object-cover object-top mb-4 "
-                        src="https://sic.iiti.ac.in/wp-content/uploads/2022/09/AKDas-removebg-preview.png"
+                        src="https://i.imgur.com/F3DdNVh.jpeg"
                       />
                       <div className="w-full">
                         <h2 className="title-font font-medium text-lg text-gray-900">
@@ -97,7 +97,7 @@ export default function Page() {
                     <img
                       alt="team"
                       className=" flex-shrink-0  rounded-full w-full h-60 object-cover object-top mb-4"
-                      src="https://sic.iiti.ac.in/wp-content/uploads/2023/09/IMG-2546-removebg-preview.png"
+                      src="https://i.imgur.com/a/yywiNcK"
                     />
                     <div className="w-full">
                     <h2 className="title-font font-medium text-lg text-gray-900">

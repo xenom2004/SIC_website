@@ -156,7 +156,7 @@ const Header = () => {
                     : {}
                 }
               >
-                {language === "english" ? "Profile" : "प्रोफ़ाइल"}
+                {translate("Profile1")}
               </button>
             </Link>
           )}
@@ -177,7 +177,7 @@ const Header = () => {
               }
             >
               {" "}
-              <button>{language === "english" ? "Orders" : "आदेश"}</button>
+              <button>{translate("Order")}</button>
             </Link>
           ) : (
             <button
@@ -212,7 +212,7 @@ const Header = () => {
                   : {}
               }
             >
-              {language === "english" ? "Logout" : "लॉग आउट"}
+              {translate("Logout")}
             </button>
           )}
 
@@ -222,8 +222,13 @@ const Header = () => {
               onChange={handleChange}
               inputProps={{ "aria-label": "controlled" }}
             ></Switch> */}
-          <button onClick={() => setLanguage("en")}>English</button>
-          <button onClick={() => setLanguage("hi")}>हिंदी</button>
+          <button onClick={() => setLanguage("en")} style={{ marginRight: "10px" }}>
+        <img src="https://sic.iiti.ac.in/wp-content/plugins/gtranslate/flags/svg/en.svg" alt="🇬🇧" width="20" /> EN
+      </button>
+
+      <button onClick={() => setLanguage("hi")} style={{ marginRight: "10px" }}>
+        <img src="https://sic.iiti.ac.in/wp-content/plugins/gtranslate/flags/svg/hi.svg" alt="🇮🇳" width="20" /> IN
+      </button>
           </span>
         </div>
 
@@ -268,7 +273,7 @@ const Header = () => {
                   }
                   className="block px-8 font-semibold py-2 bg-blue-850 text-white hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
                 >
-                  <button>Profile</button>
+                  <button>{translate("Profile1")}</button>
                 </Link>
               )}
 
