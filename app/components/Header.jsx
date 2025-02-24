@@ -227,7 +227,7 @@ const Header = () => {
       </button>
 
       <button onClick={() => setLanguage("hi")} style={{ marginRight: "10px" }}>
-        <img src="https://sic.iiti.ac.in/wp-content/plugins/gtranslate/flags/svg/hi.svg" alt="🇮🇳" width="20" /> IN
+        <img src="https://sic.iiti.ac.in/wp-content/plugins/gtranslate/flags/svg/hi.svg" alt="🇮🇳" width="20" /> HI
       </button>
           </span>
         </div>
