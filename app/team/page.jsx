@@ -35,17 +35,20 @@ export default function Page() {
                       <img
                         alt="team"
                         className=" flex-shrink-0  rounded-full w-full h-60 object-cover object-top mb-4 "
-                        src="https://i.imgur.com/F3DdNVh.jpeg"
-                      />
+                        // Prof. Apurba K. Das Professor–In–Charge SIC
+                        src="https://i.imgur.com/ZUxSkMV.png" />   
+                        
                       <div className="w-full">
+                      
                         <h2 className="title-font font-medium text-lg text-gray-900">
-                          {translate("temp177")}
+                         
+                          {translate("temp229")}
                         </h2>
-                        <h3 className="text-gray-500 mb-3">  {translate("temp178")}</h3>
-                        <p className="mb-4">
+                        <h3 className="text-gray-500 mb-3">  {translate("temp230")}</h3>
+                        {/* <p className="mb-4">
                            {translate("temp179")}
-                        </p>
-                        <span className="inline-flex">
+                        </p> */}
+                        {/* <span className="inline-flex">
                           <a className="text-gray-500">
                             <svg
                               fill="none"
@@ -85,7 +88,7 @@ export default function Page() {
                               <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
                             </svg>
                           </a>
-                        </span>
+                        </span> */}
                       </div>
                     </div>
                   </div>
@@ -97,17 +100,18 @@ export default function Page() {
                     <img
                       alt="team"
                       className=" flex-shrink-0  rounded-full w-full h-60 object-cover object-top mb-4"
-                      src="https://i.imgur.com/a/yywiNcK"
+                      // Prof. Krushna R. Mavani Co-Convener SIC
+                      src="https://i.imgur.com/J0JDuBx.png"
                     />
                     <div className="w-full">
                     <h2 className="title-font font-medium text-lg text-gray-900">
-                          {translate("temp177")}
+                          {translate("temp231")}
                         </h2>
-                        <h3 className="text-gray-500 mb-3">  {translate("temp178")}</h3>
-                        <p className="mb-4">
+                        <h3 className="text-gray-500 mb-3">  {translate("temp232")}</h3>
+                        {/* <p className="mb-4">
                            {translate("temp179")}
-                        </p>
-                      <span className="inline-flex">
+                        </p> */}
+                      {/* <span className="inline-flex">
                         <a className="text-gray-500">
                           <svg
                             fill="none"
@@ -147,7 +151,7 @@ export default function Page() {
                             <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
                           </svg>
                         </a>
-                      </span>
+                      </span> */}
                     </div>
                   </div>
                 </div>
@@ -168,17 +172,18 @@ export default function Page() {
                   <img
                     alt="team"
                     className="flex-shrink-0 rounded-full w-full h-60 object-cover object-center mb-4"
-                    src="https://sic.iiti.ac.in/wp-content/uploads/2022/09/1661927359120-removebg-preview.png"
+                    // Mr. Kinny Pandey
+                    src="https://i.imgur.com/5o3eklD.jpeg"
                   />
                   <div className="w-full">
                   <h2 className="title-font font-medium text-lg text-gray-900">
-                          {translate("temp177")}
+                          {translate("temp233")}
                         </h2>
-                        <h3 className="text-gray-500 mb-3">  {translate("temp178")}</h3>
+                        <h3 className="text-gray-500 mb-3">  {translate("temp234")}</h3>
                         <p className="mb-4">
-                           {translate("temp179")}
+                           {translate("temp235")}
                         </p>
-                    <span className="inline-flex">
+                    {/* <span className="inline-flex">
                       <a className="text-gray-500">
                         <svg
                           fill="none"
@@ -218,7 +223,7 @@ export default function Page() {
                           <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
                         </svg>
                       </a>
-                    </span>
+                    </span> */}
                   </div>
                 </div>
               </div>
@@ -227,17 +232,19 @@ export default function Page() {
                   <img
                     alt="team"
                     className="flex-shrink-0 rounded-full w-full h-60 object-cover object-center mb-4"
-                    src="https://sic.iiti.ac.in/wp-content/uploads/2022/09/kp-removebg-preview.png"
+                    // Dr. Ravinder
+
+                    src="https://i.imgur.com/syCfGuw.jpeg"
                   />
                   <div className="w-full">
                   <h2 className="title-font font-medium text-lg text-gray-900">
-                          {translate("temp177")}
+                          {translate("temp236")}
                         </h2>
-                        <h3 className="text-gray-500 mb-3">  {translate("temp178")}</h3>
+                        <h3 className="text-gray-500 mb-3">  {translate("temp237")}</h3>
                         <p className="mb-4">
-                           {translate("temp179")}
+                           {translate("temp238")}
                         </p>
-                    <span className="inline-flex">
+                    {/* <span className="inline-flex">
                       <a className="text-gray-500">
                         <svg
                           fill="none"
@@ -277,7 +284,7 @@ export default function Page() {
                           <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
                         </svg>
                       </a>
-                    </span>
+                    </span> */}
                   </div>
                 </div>
               </div>
@@ -286,17 +293,18 @@ export default function Page() {
                   <img
                     alt="team"
                     className="flex-shrink-0 rounded-full w-full h-60 object-cover object-center mb-4"
-                    src="https://sic.iiti.ac.in/wp-content/uploads/2022/09/GS-removebg-preview.png"
+                    // Er. Atul Singh
+                    src="https://i.imgur.com/87y4idQ.jpeg"
                   />
                   <div className="w-full">
                   <h2 className="title-font font-medium text-lg text-gray-900">
-                          {translate("temp177")}
+                          {translate("temp239")}
                         </h2>
-                        <h3 className="text-gray-500 mb-3">  {translate("temp178")}</h3>
+                        <h3 className="text-gray-500 mb-3">  {translate("temp240")}</h3>
                         <p className="mb-4">
-                           {translate("temp179")}
+                           {translate("temp241")}
                         </p>
-                    <span className="inline-flex">
+                    {/* <span className="inline-flex">
                       <a className="text-gray-500">
                         <svg
                           fill="none"
@@ -336,7 +344,7 @@ export default function Page() {
                           <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
                         </svg>
                       </a>
-                    </span>
+                    </span> */}
                   </div>
                 </div>
               </div>
@@ -345,17 +353,18 @@ export default function Page() {
                   <img
                     alt="team"
                     className="flex-shrink-0 rounded-full w-full h-60 object-cover object-center mb-4"
-                    src="https://sic.iiti.ac.in/wp-content/uploads/2022/09/1661927359135-removebg-preview.png"
+                    // Mr. Ghanashyam Bhavsar
+                    src="https://i.imgur.com/Od6kCg1.jpeg"
                   />
                   <div className="w-full">
                   <h2 className="title-font font-medium text-lg text-gray-900">
-                          {translate("temp177")}
+                          {translate("temp242")}
                         </h2>
-                        <h3 className="text-gray-500 mb-3">  {translate("temp178")}</h3>
+                        <h3 className="text-gray-500 mb-3">  {translate("temp243")}</h3>
                         <p className="mb-4">
-                           {translate("temp179")}
+                           {translate("temp244")}
                         </p>
-                    <span className="inline-flex">
+                    {/* <span className="inline-flex">
                       <a className="text-gray-500">
                         <svg
                           fill="none"
@@ -395,7 +404,7 @@ export default function Page() {
                           <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
                         </svg>
                       </a>
-                    </span>
+                    </span> */}
                   </div>
                 </div>
               </div>
@@ -409,17 +418,18 @@ export default function Page() {
                 <img
                   alt="team"
                   className="flex-shrink-0 rounded-full w-full h-60 object-cover object-center mb-4"
-                  src="https://sic.iiti.ac.in/wp-content/uploads/2023/09/IMG_2484-removebg-preview-1-e1693978199967.png"
+                  // Mr. Ranjeet raghuwanshi
+                  src="https://i.imgur.com/bxQBnxv.jpeg"
                 />
                 <div className="w-full">
                 <h2 className="title-font font-medium text-lg text-gray-900">
-                          {translate("temp177")}
+                          {translate("temp245")}
                         </h2>
-                        <h3 className="text-gray-500 mb-3">  {translate("temp178")}</h3>
+                        <h3 className="text-gray-500 mb-3">  {translate("temp246")}</h3>
                         <p className="mb-4">
-                           {translate("temp179")}
+                           {translate("temp247")}
                         </p>
-                  <span className="inline-flex">
+                  {/* <span className="inline-flex">
                     <a className="text-gray-500">
                       <svg
                         fill="none"
@@ -459,7 +469,7 @@ export default function Page() {
                         <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
                       </svg>
                     </a>
-                  </span>
+                  </span> */}
                 </div>
               </div>
             </div>
@@ -468,17 +478,18 @@ export default function Page() {
                 <img
                   alt="team"
                   className="flex-shrink-0 rounded-full w-full h-60 object-cover object-center mb-4"
-                  src="https://sic.iiti.ac.in/wp-content/uploads/2022/09/1661927359128__2_-removebg-preview-1-283x300.png"
+                  // Ms. Kajal Chaudhari
+                  src="https://i.imgur.com/XKLipeh.jpeg"
                 />
                 <div className="w-full">
                 <h2 className="title-font font-medium text-lg text-gray-900">
-                          {translate("temp177")}
+                          {translate("temp248")}
                         </h2>
-                        <h3 className="text-gray-500 mb-3">  {translate("temp178")}</h3>
+                        <h3 className="text-gray-500 mb-3">  {translate("temp249")}</h3>
                         <p className="mb-4">
-                           {translate("temp179")}
+                           {translate("temp250")}
                         </p>
-                  <span className="inline-flex">
+                  {/* <span className="inline-flex">
                     <a className="text-gray-500">
                       <svg
                         fill="none"
@@ -518,7 +529,7 @@ export default function Page() {
                         <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
                       </svg>
                     </a>
-                  </span>
+                  </span> */}
                 </div>
               </div>
             </div>
@@ -537,15 +548,16 @@ export default function Page() {
                   <img
                     alt="team"
                     className="flex-shrink-0 rounded-full w-full h-60 object-cover object-center mb-4"
-                    src="https://sic.iiti.ac.in/wp-content/uploads/2022/09/Suman_SIR-removebg-preview.png"
+                    // Prof. Suman Mukhopadhyay
+                    src="https://i.imgur.com/wL4SPKg.png"
                   />
                   <div className="w-full">
                   <h2 className="title-font font-medium text-lg text-gray-900">
-                          {translate("temp177")}
+                          {translate("temp251")}
                         </h2>
-                        <h3 className="text-gray-500 mb-3">  {translate("temp178")}</h3>
-                        <p className="mb-4">
-                           {translate("temp179")}
+                        <h3 className="text-gray-500 mb-3">  {translate("temp252")}</h3>
+                        {/* <p className="mb-4">
+                           {translate("temp252")}
                         </p>
                     <span className="inline-flex">
                       <a className="text-gray-500">
@@ -587,7 +599,7 @@ export default function Page() {
                           <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
                         </svg>
                       </a>
-                    </span>
+                    </span> */}
                   </div>
                 </div>
               </div>
@@ -596,17 +608,18 @@ export default function Page() {
                   <img
                     alt="team"
                     className="flex-shrink-0 rounded-full w-full h-60 object-cover object-center mb-4"
-                    src="https://sic.iiti.ac.in/wp-content/uploads/2022/09/Sheikh_M_mobina-removebg-preview.png"
+                    // Prof. Shaikh M. Mobin
+                    src="https://i.imgur.com/KaCOBOQ.png"
                   />
                   <div className="w-full">
                   <h2 className="title-font font-medium text-lg text-gray-900">
-                          {translate("temp177")}
+                          {translate("temp253")}
                         </h2>
-                        <h3 className="text-gray-500 mb-3">  {translate("temp178")}</h3>
-                        <p className="mb-4">
+                        <h3 className="text-gray-500 mb-3">  {translate("temp254")}</h3>
+                        {/* <p className="mb-4">
                            {translate("temp179")}
-                        </p>
-                    <span className="inline-flex">
+                        </p> */}
+                    {/* <span className="inline-flex">
                       <a className="text-gray-500">
                         <svg
                           fill="none"
@@ -646,7 +659,7 @@ export default function Page() {
                           <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
                         </svg>
                       </a>
-                    </span>
+                    </span> */}
                   </div>
                 </div>
               </div>
