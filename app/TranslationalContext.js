@@ -352,7 +352,7 @@ temp300:""
       Translate:"अनुवाद",
       title:"परिष्कृत उपकरण केंद्र",
       Profile1:"प्रोफ़ाइल",
-      Order:"आदेश",
+      Order:"ख़रीदे",
       Login_register:"लॉगिन/पंजीकरण",
       Logout:"लॉगआउट ",
       Usage:"उपयोग शुल्क",
